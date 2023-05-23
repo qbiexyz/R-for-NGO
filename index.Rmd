@@ -1,0 +1,128 @@
+---
+title: "R for NGO"
+author: "台北大學社會所_吳永健"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography:
+- book.bib
+- packages.bib
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  set in the _output.yml file.
+  The HTML output format for this example is bookdown::gitbook,
+link-citations: yes
+github-repo: "rstudio/bookdown-demo"
+---
+
+# 前言_關於本講義
+
+這份講義是希望讓原本沒有程式與或統計基礎的人，能夠在短時間初步了解R語言的**簡單概念和操作**，以及能夠**進行初步的資料讀取、清理、分析與視覺化**。
+
+由於是初步介紹的入門講義，因此會簡單介紹一下R的基礎概念，但部分過於涉及程式設計的部分會稍微略過，重點會放在**如何獲取資料與簡單清理**以及後續**使用政府開放資料實作**部分
+
+目的是讓讀者能夠輕鬆並短時間知道使用資料的好處，因此在分析或實作上，也不會涉及到深入的統計或視覺化，
+
+若是在看過這份講義後對進階分析有興趣者，可以到以下參考書籍或資源，進一步學習。
+
+## R語言 應用性: 高、難度: 中高
+
+R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，若想要做的分析一般的套件沒有支援時，可以自寫函數或程式來處理，另外在**統計方法與視覺化**上面都有很多應用，且網路上有很多自學資源以及論壇解答遇到的問題。\
+缺點在於學習坡度較高、需要學習程式語言，新的外裝套件並沒有通過學術檢證、沒有售後服務。
+
+## 學習目標
+
+1.  初步認識R語言
+2.  初步知道R語言大概可以做到什麼
+3.  運用R語言讀取資料
+4.  運用R語言進行簡單資料清理
+5.  運用R語言進行簡單探索性分析與資料視覺化
+
+## 參考資料
+
+### 講義
+
+本講義是擷取/修改下列講義部分內容，希望能透過更簡易的方式了解資料分析初步內容與過程，若因此對於資料分析有興趣，想嘗試更深入的資料分析， 建議深入查看以下講義中更完整的內容。
+
+-   量化研究方法實作(課堂教材)，by [陳易甫](https://sociology.ntpu.edu.tw/index.php/ch/teacher/teacher_more/4)
+-   [資料科學與R語言](https://yijutseng.github.io/DataScienceRBook/index.html)，by [曾意儒](https://www.cs.nycu.edu.tw/members/detail/yijutseng)
+-   [Programming for Data Science (I)](https://tpemartin.github.io/NTPU-R-for-Data-Science-EN/)，by [林茂廷](https://econ.ntpu.edu.tw/teachers/5/22)
+-   [輕鬆學習 R 語言](https://eloquentr.datainpoint.com/)，by [郭耀仁](https://hahow.in/@tonykuoyj)
+-   [R for Fledglings](https://www.uvm.edu/~tdonovan/RforFledglings/#fn1)
+-   [R for HR:An Introduction to Human Resource Analytics Using R](https://rforhr.com/)
+-   [R for Epidemiology](https://www.r4epi.com/)
+-   [R for Data Science](https://r4ds.had.co.nz/)
+-   [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+### 其他學習資源
+
+-   [其他進階R books](https://www.rstudio.com/resources/books/)
+-   [各種Cheatsheets](https://posit.co/resources/cheatsheets/)
+-   [Posit](https://posit.co/)
+-   網路上的各種筆記或論壇
+-   chatgpt?
+
+### 政府公開資料相關資源
+
+以下列出台灣部分的政府公開資料，下面列出的只是一小部分，還有很多其他政府或非政府的Open data可以自行探索
+
+-   [政府資料開放平台](https://data.gov.tw/)
+-   [臺北市資料大平台](https://data.taipei/)
+-   [中華民國統計資訊網](https://www.stat.gov.tw/Default.aspx)
+-   [教育部統計資料](https://depart.moe.edu.tw/ED4500/Default.aspx)
+-   [衛服部統計資料](https://dep.mohw.gov.tw/dos/mp-113.html)
+-   [內政部警政署統計資料](https://www.npa.gov.tw/ch/app/folder/589)
+-   [PRIDE政策研究指標資料庫](https://pride.stpi.narl.org.tw/index)
+-   [政府各部會調查型資料](https://srda.sinica.edu.tw/browsingbydatatype.php?category=surveymethod&type=4) (需加入srda會員並根據用途申請)
+
+除台灣外，世界各國也有各自的Open data，可以用關鍵字在google查找，另外也有[網站](https://opendatainception.io/)整理世界各地約2600以上的開放資料庫，可以按照地圖去查找
+
+參考: [資料分析人的福利：20個免費開放資料源](https://www.finereport.com/tw/data-analysis/freedata.html)\
+
+## 大綱(教材主題)
+
+基礎篇_R的介面與R studio的介紹
+
+-   什麼是R 和 Rstudio
+-   下載R 和 Rstudio
+-   Rstudio介面與初步設定
+-   安裝套件和help
+-   錯誤訊息
+
+基礎篇_R語言的基礎概念
+
+-   指派與命名
+-   基本運算
+-   資料型態
+-   資料結構
+-   簡單條件判斷式
+
+基礎篇_選取、新增、替換與刪除元素
+
+-   選取
+-   新增
+-   替換
+-   刪除
+
+進階篇_資料讀取、匯出、合併與初步瀏覽
+
+-   設定工作路徑
+-   讀取資料
+-   匯出檔案
+-   簡單資料合併
+-   初步瀏覽
+
+進階篇_資料清理與整理
+
+-   資料屬性查詢函數
+-   資料排序
+-   字串處理
+-   遺漏值處理
+-   dplyr(資處部分)
+
+進階篇_簡單探索性分析與資料視覺化
+
+-   summary....
+-   ggplot2
+
+應用篇_政府公開資料實際操作

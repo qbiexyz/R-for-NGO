@@ -1,0 +1,29 @@
+# 進階篇_資料清理與整理
+
+### 轉換資料型態或結構
+使用`as.targetClass`將值轉換為`targetClass`類。
+
+-   `as.numeric()`將值轉換為數字類
+-   `as.character()`將值轉換為字符類
+-   其他轉換......
+
+```{r eval=FALSE}
+num_t1 <- c(0.1, 2 , 4)
+char_t1 <- c("0.1", "2", "4")
+
+as.character(num_t1)
+as.numeric(char_t1)
+```
+
+## 遺漏值處理
+
+## 字串處理
+
+## dplyr
+
+
+1.查看資料
+2.資料型態轉換
+3.資處
+4.新建變項
+5.
