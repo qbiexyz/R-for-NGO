@@ -178,23 +178,50 @@ bind_rows(data_frame1, data_frame2)
 在處理特殊資料或是一些特殊統計分析時，可能需要將資料做長寬轉換處理，`tidyr`套件中提供的兩個好用的函數`pivot_longer()`、`pivot_wider()`，\
 在此並不多作介紹，有興趣可以查看[參考1](https://r4ds.had.co.nz/tidy-data.html#pivoting)、[參考2](https://www.r4epi.com/restructuring-data-frames.html#pivoting-longer)
 
-
-## 初步瀏覽
+## 資料瀏覽
 
 ### 資料屬性查詢函數
-若已經將資料讀取到R裡面，一開始當然是要看一下或檢查資料的大致狀況如何\
-以內建資料`iris`為例:\
+
+若已經將資料讀取到R裡面，一開始需要看一下或檢查資料的大致狀況如何\
+以內建資料`iris`為例:
 
 ```{r eval=FALSE}
+# 讀取內建資料
 data(iris)
-View(iris)
+## 先執行一個指令，內建資料才會顯示在Environment
 
+# 查看資料內容
+View(iris) ## 查看資料
+head(iris) ## 查看前6筆資料內容
+tail(iris) ## 查看後6筆資料內容
 
+# 查看資料各種名稱
+names(iris) ## 顯示資料名稱
+colnames(iris) ## 顯示欄位名稱
+rownames(iris) ## 顯示列名稱(若沒有則顯示編號)
+dimnames(iris) ## 先顯示列再顯示欄位的名稱
 
-str(iris)
+# 查看資料長度 
+length(iris) ## 顯示資料查度(若為data.frame會顯示欄位數)
+dim(iris) ## 先顯示列再顯示欄位的長度
+
+# 顯示資料的架構資訊
+str(iris) 
+class(iris$Sepal.Length) ## 數值資料
+class(iris$Species) ## 類別資料
+
+# 簡單查看資料分配
+table(iris$Sepal.Length) ## Sepal.Length次數分配
+table(iris$Species) ## Species次數分配
+
+# 上述函數也可以合併使用
+## 顯示前6筆資料的Species次數分配
+table(head(iris)$Species)
 ```
 
 ### 資料排序、篩選
+
+另外也可以對資料進行排序與篩選，
 
 ```{r eval=FALSE}
 
@@ -206,6 +233,3 @@ head(sort(iris$Sepal.Length))
 head(order(iris$Sepal.Length))
 
 ```
-
-
-

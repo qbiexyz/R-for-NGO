@@ -58,6 +58,7 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 
 -   [其他進階R books](https://www.rstudio.com/resources/books/)
 -   [各種Cheatsheets](https://posit.co/resources/cheatsheets/)
+-   [RPubs](https://rpubs.com/)
 -   [Posit](https://posit.co/)
 -   網路上的各種筆記或論壇
 -   chatgpt?
