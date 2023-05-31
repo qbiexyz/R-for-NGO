@@ -180,10 +180,10 @@ bind_rows(data_frame1, data_frame2)
 
 ## 資料瀏覽
 
-### 資料屬性查詢函數
-
 若已經將資料讀取到R裡面，一開始需要看一下或檢查資料的大致狀況如何\
 以內建資料`iris`為例:
+
+### 資料屬性查詢函數
 
 ```{r eval=FALSE}
 # 讀取內建資料
@@ -219,17 +219,26 @@ table(iris$Species) ## Species次數分配
 table(head(iris)$Species)
 ```
 
-### 資料排序、篩選
+### 資料排序
 
-另外也可以對資料進行排序與篩選，
+另外也可以對向量或資料進行排序
 
 ```{r eval=FALSE}
 
+nosort <- c(1, 6, 5, 8, 2, 3)
+sort(nosort) ## 預設是由小排到大
+sort(nosort, decreasing = T) ## 由大排到小
+
+#以內建資料為例
 data(iris)
 names(iris)
 
-head(iris)
-head(sort(iris$Sepal.Length))
-head(order(iris$Sepal.Length))
+head(iris$Sepal.Width) ## 顯示Sepal.Width前6筆資料
+head(sort(iris$Sepal.Width)) ## 顯示排序之後的Sepal.Width前6筆資料
 
+head(order(iris$Sepal.Width)) ## 顯示排序之後前6筆資料的原始位置(由小到大)
+head(order(iris$Sepal.Width, decreasing = T)) ## 顯示排序之後前6筆資料的原始位置(由大到小)
+
+## 根據排序之後的Sepal.Width前6筆資料的原始位置，來排序整個資料
+head(iris[order(iris$Sepal.Width), ]) 
 ```
