@@ -1,0 +1,80 @@
+# 應用篇_資料清理與整理
+
+以下為資處常使用的套件:\
+大部分的資處會使用一個整合性的套件[tidyverse](https://tidyverse.tidyverse.org/index.html)，其功能非常強大，在此只會簡單介紹部分常用內容(tidyverse整合套件中的dplyr)，另外也有些其他套件可以更容易獲有效率來處理資料。
+
+```{r eval=FALSE}
+library(tidyverse) # 大部分的資處工具
+library(data.table) # 高效能資處工具
+library(DescTools) # 初步描述統計
+library(sjmisc) # 設置缺失值
+library(sjlabelled) # 上標籤用
+library(validate) # 資料檢誤
+```
+
+接下來會使用前面範例中的WVS_w7的.cvs檔案，來繼續示範資料的初步清理與整理，
+```{r eval=FALSE}
+library(readr)
+WVS_w7 <- read_csv("data/WVS_w7/data.csv", 
+    locale = locale(encoding = "BIG5"))
+```
+
+1.先查看資料概況是否有問題
+
+```{r eval=FALSE}
+
+WVS_w7_1 <- as.data.table(WVS_w7)
+
+
+```
+
+
+
+
+
+
+1.查看變項初步分配，來檢查是否有不合理值或缺失值
+
+```{r eval=FALSE}
+## 初步次數分配 & 描述統計
+Desc(WVS_w7$a01)
+
+table(WVS_w7$a01) 
+
+frq(WVS_w7$a01) 
+```
+
+
+## dplyr
+
+1.查看資料 2.資料型態轉換 3.資處 4.新建變項 5.
+
+### 轉換資料型態或結構
+
+使用`as.targetClass`將值轉換為`targetClass`類。
+
+-   `as.numeric()`將值轉換為數字類
+-   `as.character()`將值轉換為字符類
+-   其他轉換......
+
+```{r eval=FALSE}
+num_t1 <- c(0.1, 2 , 4)
+char_t1 <- c("0.1", "2", "4")
+
+as.character(num_t1)
+as.numeric(char_t1)
+```
+
+
+轉換資料型態或結構
+初步查看變項分配，來檢查是否有不合理值或缺失值
+產生新變項
+
+設定變項名稱、變項值名稱
+設定缺失值
+
+
+
+## 遺漏值處理
+
+## 字串處理
