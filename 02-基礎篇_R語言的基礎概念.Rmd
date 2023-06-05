@@ -4,24 +4,25 @@
 
 -   指派（assignment）：將資料儲存至一個代號（變項）內。\
     可以用"\<-" 或"="。但使用"\<-"好過"="\
-    「\<-」的 Windows快捷鍵: 「**Alt+-**」
+    「\<-」的 Windows快捷鍵: 「**Alt+-**」\
+    (另外也可以換個方向指派"-\>"，但較少使用)
 
 ```{r eval=FALSE}
 # 將24存在「a」這個代號當中
 a <- 24 
 a = 24
+24 -> a
 
 # 將a-10存在「b」這個代號當中(a 需要先被指派)
 b <- a-10
 ## or
-a - 10 -> b
+a-10 -> b
 
 # 若a已經代表24，那麼b就會等於24-10=14
 b
 ```
 
-若有指派a，則旁邊Environment -> Global Environment -> Values 就會出現a
-![](picture/a.png)
+若有指派a，則旁邊Environment -\> Global Environment -\> Values 就會出現a ![](picture/a.png)
 
 -   有效的命名
 
@@ -250,6 +251,7 @@ data_list <- as.data.frame(data_list)
 ```
 
 ## 查詢資料型態或結構
+
 -   Type: 是查看電腦如何儲存資料，物件的基本型態
 -   Class: 是查看物件的類別(螢幕顯示的型態)，及能對它進行的操作所做的分類
 

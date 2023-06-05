@@ -20,16 +20,17 @@ setwd("D:/Dropbox/R_for_NGO")
 
 ## 讀取資料
 
-**開放資料**(英語：Open data)指的是一種經過挑選與許可的資料。這種資料不受著作權、專利權，以及其他管理機制所限制，可以開放給社會公眾，任何人都可以自由出版使用，不論是要拿來出版或是做其他的運用都不加以限制。\
-Open data 運動希望達成的目標與開放原始碼、內容開放、開放獲取等其他「開放」運動類似。Open data 背後的核心思想由來已久(例如在 Mertonian tradition of science)，但 Open data 這名詞直到近代才出現，拜網際網路崛起而為人所知，尤其是 Data.gov 等 Open data 政府組織的設立。 [(維基百科)](https://zh.wikipedia.org/wiki/%E9%96%8B%E6%94%BE%E8%B3%87%E6%96%99)
+常見的Open Data儲存方式包括
+- 表格式檔案（包含 CSV 資料(.csv)、Excel 試算表(.xlsx)、spss(.sav)、stata(.dta)、SAS(.sas7bdat)）
+- 非表格式檔案（包含 TXT 資料、JSON 資料、XML資料），\
 
-常見的Open Data儲存方式包括表格式檔案（包含 CSV 資料、Excel 試算表）、非表格式檔案（包含 TXT 資料、JSON 資料、XML資料），\
-但大多數的公開資料都可以**直接下載CSV檔案**，因此在此先介紹這個較簡單的方式，\
+但大多數的公開資料都可以**直接下載CSV檔案**，或是調查資料大多都有提供spss、stata或SAS的檔案格式，因此在此先介紹這個較簡單的方式，\
+
 另外其他透過網路爬蟲、API或JSON與XML格式的資料，暫不多做介紹，有興趣者可以到以下連結查看[參考1](https://yijutseng.github.io/DataScienceRBook/io.html#api)、[參考2](https://eloquentr.datainpoint.com/webScraping.html#%E5%AE%89%E8%A3%9D%E8%88%87%E8%BC%89%E5%85%A5%E5%A5%97%E4%BB%B6)、[參考3](https://cran.r-project.org/doc/manuals/r-release/R-data.html)
 
 ### Import Dataset功能 (RStudio)
 
-若是檔案為可直接下載(通常來說，多數公開資料都有提供直接下載的`.CVS`檔案格式)，包括文字檔、其他軟體的檔案格式，\
+若是檔案為可直接下載(表格式檔案式)，包括文字檔、其他軟體的檔案格式，\
 在RStudio當中有提供直接點選讀取資料的功能，包括純文字.txt、.cvs、或Excel試算表.xslx、spss、SAS、Stata的檔案格式
 
 下圖以讀取.cvs檔案為範例，\
