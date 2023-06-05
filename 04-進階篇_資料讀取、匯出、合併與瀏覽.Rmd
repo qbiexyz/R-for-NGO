@@ -2,10 +2,9 @@
 
 ## 設定工作路徑
 
-首先可以先設定放檔案路徑，比較需要注意的是在路徑上平常多是使用`\`，\
-但在R中需要使用`/`
+首先可以先設定放檔案路徑，(需要注意的是在路徑上平常多是使用`\`，但在R中需要使用`/)`
 
-這樣之後讀取或匯出資料就只需要寫檔案名稱，不用加上前面路徑，會直接存在設定路徑的資料夾中，若檔案需要放在另外位置，也只須在檔名前面加上需要存取的位置
+設定好路徑之後，讀取或匯出資料就只需要寫檔案名稱，不用加上前面路徑，會直接存在設定路徑的資料夾中，若檔案需要放在另外位置，也只須在檔名前面加上需要存取的位置
 
 可以對需要存放的資料夾按\
 右鍵-\>內容-\>位置或是右鍵-\>複製路徑\
@@ -21,8 +20,9 @@ setwd("D:/Dropbox/R_for_NGO")
 ## 讀取資料
 
 常見的Open Data儲存方式包括
-- 表格式檔案（包含 CSV 資料(.csv)、Excel 試算表(.xlsx)、spss(.sav)、stata(.dta)、SAS(.sas7bdat)）
-- 非表格式檔案（包含 TXT 資料、JSON 資料、XML資料），\
+
+-   表格式檔案（包含 CSV 資料(.csv)、Excel 試算表(.xlsx)、spss(.sav)、stata(.dta)、SAS(.sas7bdat)）
+-   非表格式檔案（包含 TXT 資料、JSON 資料、XML資料）
 
 但大多數的公開資料都可以**直接下載CSV檔案**，或是調查資料大多都有提供spss、stata或SAS的檔案格式，因此在此先介紹這個較簡單的方式，\
 
@@ -33,16 +33,45 @@ setwd("D:/Dropbox/R_for_NGO")
 若是檔案為可直接下載(表格式檔案式)，包括文字檔、其他軟體的檔案格式，\
 在RStudio當中有提供直接點選讀取資料的功能，包括純文字.txt、.cvs、或Excel試算表.xslx、spss、SAS、Stata的檔案格式
 
-下圖以讀取.cvs檔案為範例，\
+下圖以讀取WVS_w7的.cvs檔案為範例，\
 1. 點選`Import Dataset` -\> `From Text(readr)...`\
 2. 出現視窗後點選左上角`Browse`，點選要輸入的檔案\
 3. 之後空白處會載入部分資料提供預覽，可以根據需求更改參數(左下角)\
-4. 右下角也有提供程式碼，且就是根據你點選的方式呈現，可以點選完後複製程式碼(右下有個類似紙的圖案)，這樣就可以留下讀檔案的紀錄
+4. 右下角也有提供程式碼，且就是根據你點選的方式呈現，可以點選完後複製程式碼(右下有個類似紙的圖案)，這樣就可以留下讀檔案的紀錄\
+5. 若檔案中文字有亂碼也是在左下更改
 
-\
-![](picture/Import_Dataset.png)
+![](picture/Import_Dataset.png)\
 
-![](picture/Import_Dataset2.png)\
+![](picture/Import_Dataset3.png)\
+
+![](picture/Import_Dataset4.png)\
+
+![](picture/Import_Dataset5.png)\
+
+```{r eval=FALSE}
+# 讀取WVS_w7的.cvs檔案
+library(readr)
+data <- read_csv("data/WVS_w7/data.csv")
+View(data)
+
+# 但此時文字可能會有亂碼狀況，可以設定編碼
+library(readr)
+data <- read_csv("data/WVS_w7/data.csv", 
+    locale = locale(encoding = "BIG5"))
+View(data)
+
+# 上面預設是讀取後命名為data，也可以自行更改
+WVS_w7 <- read_csv("data/WVS_w7/data.csv")
+```
+
+![](picture/Import_Dataset6.png)\
+
+```{r eval=FALSE}
+# 或著讀取WVS_w7的.dta檔案
+library(haven)
+data <- read_dta("data/WVS_w7/data.dta")
+View(data)
+```
 
 ## 匯出檔案
 
@@ -171,6 +200,7 @@ iris_newcol <- cbind(iris, ## 資料框
 merge(data_frame1, data_frame2, by="idvar", all=TRUE)
 
 # 增加觀察值：使用dplyr的bind_rows()
+library(dplyr)
 bind_rows(data_frame1, data_frame2)
 ```
 
@@ -187,37 +217,38 @@ bind_rows(data_frame1, data_frame2)
 ### 資料屬性查詢函數
 
 ```{r eval=FALSE}
-# 讀取內建資料
-data(iris)
-## 先執行一個指令，內建資料才會顯示在Environment
+# 讀取WVS_w7資料
+library(readr)
+WVS_w7 <- read_csv("data/WVS_w7/data.csv", 
+                   locale = locale(encoding = "BIG5"))
 
 # 查看資料內容
-View(iris) ## 查看資料
-head(iris) ## 查看前6筆資料內容
-tail(iris) ## 查看後6筆資料內容
+View(WVS_w7) ## 查看資料
+head(WVS_w7) ## 查看前6筆資料內容
+tail(WVS_w7) ## 查看後6筆資料內容
 
 # 查看資料各種名稱
-names(iris) ## 顯示資料名稱
-colnames(iris) ## 顯示欄位名稱
-rownames(iris) ## 顯示列名稱(若沒有則顯示編號)
-dimnames(iris) ## 先顯示列再顯示欄位的名稱
+names(WVS_w7) ## 顯示資料名稱
+colnames(WVS_w7) ## 顯示欄位名稱
+rownames(WVS_w7) ## 顯示列名稱(若沒有則顯示編號)
+dimnames(WVS_w7) ## 先顯示列再顯示欄位的名稱
 
 # 查看資料長度 
-length(iris) ## 顯示資料查度(若為data.frame會顯示欄位數)
-dim(iris) ## 先顯示列再顯示欄位的長度
+length(WVS_w7) ## 顯示資料查度(若為data.frame會顯示欄位數)
+dim(WVS_w7) ## 先顯示列再顯示欄位的長度
 
 # 顯示資料的架構資訊
-str(iris) 
-class(iris$Sepal.Length) ## 數值資料
-class(iris$Species) ## 類別資料
+str(WVS_w7) 
+class(WVS_w7$a01) ## 數值資料
+class(WVS_w7$m25s) ## 文字資料
 
 # 簡單查看資料分配
-table(iris$Sepal.Length) ## Sepal.Length次數分配
-table(iris$Species) ## Species次數分配
+table(WVS_w7$a01) ## a01(性別)次數分配
+table(WVS_w7$m25s) ## m25s(投票給政黨選擇其他的回答)次數分配
 
 # 上述函數也可以合併使用
-## 顯示前6筆資料的Species次數分配
-table(head(iris)$Species)
+## 顯示前6筆資料的a01(性別)次數分配
+table(head(WVS_w7)$a01)
 ```
 
 ### 資料排序
@@ -230,16 +261,17 @@ nosort <- c(1, 6, 5, 8, 2, 3)
 sort(nosort) ## 預設是由小排到大
 sort(nosort, decreasing = T) ## 由大排到小
 
-#以內建資料為例
-data(iris)
-names(iris)
+# 讀取WVS_w7資料
+library(readr)
+WVS_w7 <- read_csv("data/WVS_w7/data.csv", 
+                   locale = locale(encoding = "BIG5"))
 
-head(iris$Sepal.Width) ## 顯示Sepal.Width前6筆資料
-head(sort(iris$Sepal.Width)) ## 顯示排序之後的Sepal.Width前6筆資料
+head(WVS_w7$a01) ## 顯示a01(性別)前6筆資料
+head(sort(WVS_w7$a01)) ## 顯示排序之後的Sepal.Width前6筆資料
 
-head(order(iris$Sepal.Width)) ## 顯示排序之後前6筆資料的原始位置(由小到大)
-head(order(iris$Sepal.Width, decreasing = T)) ## 顯示排序之後前6筆資料的原始位置(由大到小)
+head(order(WVS_w7$a01)) ## 顯示排序之後前6筆資料的原始位置(由小到大)
+head(order(WVS_w7$a01, decreasing = T)) ## 顯示排序之後前6筆資料的原始位置(由大到小)
 
-## 根據排序之後的Sepal.Width前6筆資料的原始位置，來排序整個資料
-head(iris[order(iris$Sepal.Width), ]) 
+## 根據排序之後的a01(性別)前6筆資料的原始位置，來排序整個資料
+head(WVS_w7[order(WVS_w7$a01), ]) 
 ```

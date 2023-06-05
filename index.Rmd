@@ -52,6 +52,7 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 -   [R for Epidemiology](https://www.r4epi.com/)
 -   [R for Data Science](https://r4ds.had.co.nz/)
 -   [R for Data Science (2e)](https://r4ds.hadley.nz/)
+-   [tidyverse](https://tidyverse.tidyverse.org/index.html)
 
 ### 其他學習資源
 
@@ -62,9 +63,9 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 -   網路上的各種筆記或論壇
 -   chatgpt?
 
-## 資料 
+## 資料
 
-**開放資料**(英語：Open data)指的是一種經過挑選與許可的資料。這種資料不受著作權、專利權，以及其他管理機制所限制，可以開放給社會公眾，任何人都可以自由出版使用，不論是要拿來出版或是做其他的運用都不加以限制。\
+**開放資料**(英語：Open data)指的是一種經過挑選與許可的資料。這種資料不受著作權、專利權，以及其他管理機制所限制，可以開放給社會公眾，任何人都可以自由出版使用，不論是要拿來出版或是做其他的運用都不加以限制。
 
 ### 政府公開資料相關資源
 
@@ -72,6 +73,7 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 
 -   [政府資料開放平台](https://data.gov.tw/)
 -   [臺北市資料大平台](https://data.taipei/)
+-   [社會經濟資料服務平台](https://segis.moi.gov.tw/STAT/Web/Portal/STAT_PortalHome.aspx)
 -   [中華民國統計資訊網](https://www.stat.gov.tw/Default.aspx)
 -   [教育部統計資料](https://depart.moe.edu.tw/ED4500/Default.aspx)
 -   [衛服部統計資料](https://dep.mohw.gov.tw/dos/mp-113.html)
@@ -80,11 +82,13 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 
 除台灣外，世界各國也有各自的Open data，可以用關鍵字自行查找，另外也有[網站](https://opendatainception.io/)整理世界各地約2600以上的開放資料庫，可以按照地圖去查找
 
-參考: [資料分析人的福利：20個免費開放資料源](https://www.finereport.com/tw/data-analysis/freedata.html)\
+參考: [資料分析人的福利：20個免費開放資料源](https://www.finereport.com/tw/data-analysis/freedata.html)
 
-### 公開調查資料 
+### 公開調查資料
 
-另外也有一些「調查資料」可以免費提供申請下載使用，在台灣多數有公開的調查資料會被整理在[「SRDA學術調查資料庫」](https://srda.sinica.edu.tw/index.php)當中，其中也包括政府每年的調查型資料，兩者都可以提供申請下載使用，但也需注意相關的參考格式/
+另外也有一些「調查資料」可以免費提供申請下載使用，調查資料可能不像Open data一樣可以隨意使用，但多數公開的調查資料經申請後即可下載使用，
+
+在台灣多數有公開的調查資料會被整理在[「SRDA學術調查資料庫」](https://srda.sinica.edu.tw/index.php)當中，其中也包括政府每年的調查型資料，兩者都可以提供申請下載使用，但也需注意相關的參考格式/
 
 若需要下載資料需要先加入會員，一般而言若不具有學術身分，也可以加入網路會員/
 
@@ -96,11 +100,9 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 
 ### 講義使用資料
 
-講義後續範例會使用[世界價值觀第七波的台灣調查](https://srda.sinica.edu.tw/datasearch_detail.php?id=3473)，/
-資料可在SRDA上下載取得，或是在[此連結]()下載使用
-![](picture/WVS_w7.png)
+講義後續範例會使用[世界價值觀第七波的台灣調查](https://srda.sinica.edu.tw/datasearch_detail.php?id=3473)，資料可在SRDA上下載取得，或是在[此連結](https://github.com/qbiexyz/R-for-NGO/tree/master/data/WVS_w7)下載使用 ![](picture/WVS_w7.png)
 
-參考:蔡明璋、陳志柔(2023)。物質主義、後物質主義與新政治：世界價值觀第七波的台灣調查與亞洲國家的比較(C00344)【原始數據】取自中央研究院人文社會科學研究中心調查研究專題中心學術調查研究資料庫。https://doi.org/10.6141/TW-SRDA-C00344-1
+參考:蔡明璋、陳志柔(2023)。物質主義、後物質主義與新政治：世界價值觀第七波的台灣調查與亞洲國家的比較(C00344)【原始數據】取自中央研究院人文社會科學研究中心調查研究專題中心學術調查研究資料庫。<https://doi.org/10.6141/TW-SRDA-C00344-1>
 
 ## 大綱(教材主題)
 
