@@ -43,7 +43,9 @@ weather <-
 print(weather)
 ```
 
-若想較簡易得知list中元素位置，可以直接點選(如下圖) ![](picture/weather_search.png) ![](picture/weather_search2.png) ![](picture/weather_search3.png)
+若想較簡易得知list中元素位置，可以直接點選(如下圖)
+
+![](picture/weather_search.png) ![](picture/weather_search2.png) ![](picture/weather_search3.png)
 
 ```{r eval=FALSE}
 # 取出today當中的台北市 (若有名稱時[[""]] 和$ 可以相互使用)

@@ -50,6 +50,7 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 -   [R for Fledglings](https://www.uvm.edu/~tdonovan/RforFledglings/#fn1)
 -   [R for HR:An Introduction to Human Resource Analytics Using R](https://rforhr.com/)
 -   [R for Epidemiology](https://www.r4epi.com/)
+-   [R Package Showcase](https://uribo.github.io/rpkg_showcase/index.html)
 -   [R for Data Science](https://r4ds.had.co.nz/)
 -   [R for Data Science (2e)](https://r4ds.hadley.nz/)
 -   [tidyverse](https://tidyverse.tidyverse.org/index.html)
@@ -139,14 +140,12 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 
 應用篇_資料清理與整理
 
--   字串處理
--   遺漏值處理
--   dplyr(資處部分)
+-   簡單介紹dplyr基礎概念
+-   簡單實作資料清理
+-   簡單字串處理
 
-應用篇_簡單探索性與初步統計分析
+應用篇_簡單探索性分析與資料視覺化
 
 -   summary....
 -   123
 -   ggplot2
-
-應用篇_簡單資料視覺化
