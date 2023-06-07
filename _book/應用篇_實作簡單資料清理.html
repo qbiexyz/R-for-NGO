@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 應用篇_實作簡單資料清理 | R for NGO</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 應用篇_實作簡單資料清理 | R for NGO" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 應用篇_實作簡單資料清理 | R for NGO" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="台北大學社會所_吳永健" />
+
+
+<meta name="date" content="2023-06-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="進階篇_資料讀取匯出合併與瀏覽.html"/>
+<link rel="next" href="應用篇_簡單探索性分析與資料視覺化.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 前言_關於本講義</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r語言-應用性-高難度-中高"><i class="fa fa-check"></i><b>1.1</b> R語言 應用性: 高、難度: 中高</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#學習目標"><i class="fa fa-check"></i><b>1.2</b> 學習目標</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#參考資料"><i class="fa fa-check"></i><b>1.3</b> 參考資料</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#講義"><i class="fa fa-check"></i><b>1.3.1</b> 講義</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#其他學習資源"><i class="fa fa-check"></i><b>1.3.2</b> 其他學習資源</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#資料"><i class="fa fa-check"></i><b>1.4</b> 資料</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#政府公開資料相關資源"><i class="fa fa-check"></i><b>1.4.1</b> 政府公開資料相關資源</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#公開調查資料"><i class="fa fa-check"></i><b>1.4.2</b> 公開調查資料</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#講義使用資料"><i class="fa fa-check"></i><b>1.4.3</b> 講義使用資料</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#大綱教材主題"><i class="fa fa-check"></i><b>1.5</b> 大綱(教材主題)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html"><i class="fa fa-check"></i><b>2</b> 基礎篇_R 與R studio的介紹</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#什麼是r-和-rstudio"><i class="fa fa-check"></i><b>2.1</b> 什麼是R 和 Rstudio</a></li>
+<li class="chapter" data-level="2.2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#下載r-和-rstudio"><i class="fa fa-check"></i><b>2.2</b> 下載R 和 Rstudio</a></li>
+<li class="chapter" data-level="2.3" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio介面與初步設定"><i class="fa fa-check"></i><b>2.3</b> Rstudio介面與初步設定</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio介面"><i class="fa fa-check"></i><b>2.3.1</b> Rstudio介面</a></li>
+<li class="chapter" data-level="2.3.2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio初步設定"><i class="fa fa-check"></i><b>2.3.2</b> Rstudio初步設定</a></li>
+<li class="chapter" data-level="2.3.3" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#新建r-script"><i class="fa fa-check"></i><b>2.3.3</b> 新建R Script</a></li>
+<li class="chapter" data-level="2.3.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#新建r-project"><i class="fa fa-check"></i><b>2.3.4</b> 新建R project</a></li>
+<li class="chapter" data-level="2.3.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#小技巧"><i class="fa fa-check"></i><b>2.3.5</b> 小技巧</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝套件和help"><i class="fa fa-check"></i><b>2.4</b> 安裝套件和help</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝講義所用套件"><i class="fa fa-check"></i><b>2.4.1</b> 安裝講義所用套件</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#錯誤訊息"><i class="fa fa-check"></i><b>2.5</b> 錯誤訊息</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html"><i class="fa fa-check"></i><b>3</b> 基礎篇_R語言的基礎概念</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#指派與命名"><i class="fa fa-check"></i><b>3.1</b> 指派與命名</a></li>
+<li class="chapter" data-level="3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#基本運算"><i class="fa fa-check"></i><b>3.2</b> 基本運算</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數學基本運算"><i class="fa fa-check"></i><b>3.2.1</b> 數學基本運算</a></li>
+<li class="chapter" data-level="3.2.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯運算"><i class="fa fa-check"></i><b>3.2.2</b> 邏輯運算</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料型態"><i class="fa fa-check"></i><b>3.3</b> 資料型態</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數字numeric"><i class="fa fa-check"></i><b>3.3.1</b> 數字(numeric):</a></li>
+<li class="chapter" data-level="3.3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#字串character"><i class="fa fa-check"></i><b>3.3.2</b> 字串(character):</a></li>
+<li class="chapter" data-level="3.3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯logical"><i class="fa fa-check"></i><b>3.3.3</b> 邏輯(logical):</a></li>
+<li class="chapter" data-level="3.3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#日期date"><i class="fa fa-check"></i><b>3.3.4</b> 日期(date):</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料結構"><i class="fa fa-check"></i><b>3.4</b> 資料結構</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#向量vectors"><i class="fa fa-check"></i><b>3.4.1</b> 向量(vectors):</a></li>
+<li class="chapter" data-level="3.4.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#因子factor"><i class="fa fa-check"></i><b>3.4.2</b> 因子(factor):</a></li>
+<li class="chapter" data-level="3.4.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#清單list"><i class="fa fa-check"></i><b>3.4.3</b> 清單(list):</a></li>
+<li class="chapter" data-level="3.4.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#矩陣matrices"><i class="fa fa-check"></i><b>3.4.4</b> 矩陣(matrices):</a></li>
+<li class="chapter" data-level="3.4.5" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#陣列array"><i class="fa fa-check"></i><b>3.4.5</b> 陣列(array):</a></li>
+<li class="chapter" data-level="3.4.6" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料架構data-frame"><i class="fa fa-check"></i><b>3.4.6</b> 資料架構(data frame)：</a></li>
+<li class="chapter" data-level="3.4.7" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#查詢資料型態或結構"><i class="fa fa-check"></i><b>3.4.7</b> 查詢資料型態或結構</a></li>
+<li class="chapter" data-level="3.4.8" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#轉換資料型態或結構"><i class="fa fa-check"></i><b>3.4.8</b> 轉換資料型態或結構</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#簡單條件判斷式"><i class="fa fa-check"></i><b>3.5</b> 簡單條件判斷式</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#if-else敘述"><i class="fa fa-check"></i><b>3.5.1</b> if-else敘述</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="進階篇_選取新增替換與刪除元素.html"><a href="進階篇_選取新增替換與刪除元素.html"><i class="fa fa-check"></i><b>4</b> 進階篇_選取、新增、替換與刪除元素</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="進階篇_選取新增替換與刪除元素.html"><a href="進階篇_選取新增替換與刪除元素.html#選取"><i class="fa fa-check"></i><b>4.1</b> 選取</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="進階篇_選取新增替換與刪除元素.html"><a href="進階篇_選取新增替換與刪除元素.html#取出vector中的元素"><i class="fa fa-check"></i><b>4.1.1</b> 取出vector中的元素</a></li>
+<li class="chapter" data-level="4.1.2" data-path="進階篇_選取新增替換與刪除元素.html"><a href="進階篇_選取新增替換與刪除元素.html#取出list中的元素"><i class="fa fa-check"></i><b>4.1.2</b> 取出list中的元素</a></li>
+<li class="chapter" data-level="4.1.3" data-path="進階篇_選取新增替換與刪除元素.html"><a href="進階篇_選取新增替換與刪除元素.html#取出data.frame中的元素"><i class="fa fa-check"></i><b>4.1.3</b> 取出data.frame中的元素</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="進階篇_選取新增替換與刪除元素.html"><a href="進階篇_選取新增替換與刪除元素.html#新增"><i class="fa fa-check"></i><b>4.2</b> 新增</a></li>
+<li class="chapter" data-level="4.3" data-path="進階篇_選取新增替換與刪除元素.html"><a href="進階篇_選取新增替換與刪除元素.html#替換"><i class="fa fa-check"></i><b>4.3</b> 替換</a></li>
+<li class="chapter" data-level="4.4" data-path="進階篇_選取新增替換與刪除元素.html"><a href="進階篇_選取新增替換與刪除元素.html#刪除"><i class="fa fa-check"></i><b>4.4</b> 刪除</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html"><i class="fa fa-check"></i><b>5</b> 進階篇_資料讀取、匯出、合併與瀏覽</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#設定工作路徑"><i class="fa fa-check"></i><b>5.1</b> 設定工作路徑</a></li>
+<li class="chapter" data-level="5.2" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#讀取資料"><i class="fa fa-check"></i><b>5.2</b> 讀取資料</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#import-dataset功能-rstudio"><i class="fa fa-check"></i><b>5.2.1</b> Import Dataset功能 (RStudio)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#匯出檔案"><i class="fa fa-check"></i><b>5.3</b> 匯出檔案</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#r物件.rds"><i class="fa fa-check"></i><b>5.3.1</b> R物件.rds</a></li>
+<li class="chapter" data-level="5.3.2" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#文字檔.txt"><i class="fa fa-check"></i><b>5.3.2</b> 文字檔.txt</a></li>
+<li class="chapter" data-level="5.3.3" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#csv檔.csv"><i class="fa fa-check"></i><b>5.3.3</b> CSV檔.csv</a></li>
+<li class="chapter" data-level="5.3.4" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#excel-試算表.xslx"><i class="fa fa-check"></i><b>5.3.4</b> Excel 試算表.xslx</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#簡單資料合併"><i class="fa fa-check"></i><b>5.4</b> 簡單資料合併</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#其他資料轉換"><i class="fa fa-check"></i><b>5.4.1</b> 其他資料轉換</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#資料瀏覽"><i class="fa fa-check"></i><b>5.5</b> 資料瀏覽</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#資料屬性查詢函數"><i class="fa fa-check"></i><b>5.5.1</b> 資料屬性查詢函數</a></li>
+<li class="chapter" data-level="5.5.2" data-path="進階篇_資料讀取匯出合併與瀏覽.html"><a href="進階篇_資料讀取匯出合併與瀏覽.html#資料排序"><i class="fa fa-check"></i><b>5.5.2</b> 資料排序</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html"><i class="fa fa-check"></i><b>6</b> 應用篇_實作簡單資料清理</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#前置準備"><i class="fa fa-check"></i><b>6.1</b> 前置準備</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#讀取需要使用套件"><i class="fa fa-check"></i><b>6.1.1</b> 讀取需要使用套件</a></li>
+<li class="chapter" data-level="6.1.2" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#設定工作路徑-1"><i class="fa fa-check"></i><b>6.1.2</b> 設定工作路徑</a></li>
+<li class="chapter" data-level="6.1.3" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#讀取檔案"><i class="fa fa-check"></i><b>6.1.3</b> 讀取檔案</a></li>
+<li class="chapter" data-level="6.1.4" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#選取需要的變項到新的資料檔中"><i class="fa fa-check"></i><b>6.1.4</b> 選取需要的變項到新的資料檔中</a></li>
+<li class="chapter" data-level="6.1.5" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#瀏覽資料"><i class="fa fa-check"></i><b>6.1.5</b> 瀏覽資料</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#資料檢誤"><i class="fa fa-check"></i><b>6.2</b> 資料檢誤</a></li>
+<li class="chapter" data-level="6.3" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#設定不合理值"><i class="fa fa-check"></i><b>6.3</b> 設定不合理值</a></li>
+<li class="chapter" data-level="6.4" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#新建修改轉換變項"><i class="fa fa-check"></i><b>6.4</b> 新建/修改/轉換變項</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#將資料上標籤"><i class="fa fa-check"></i><b>6.4.1</b> 將資料上標籤</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#其他"><i class="fa fa-check"></i><b>6.5</b> 其他</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="應用篇_實作簡單資料清理.html"><a href="應用篇_實作簡單資料清理.html#簡單字串處理"><i class="fa fa-check"></i><b>6.5.1</b> 簡單字串處理</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="應用篇_簡單探索性分析與資料視覺化.html"><a href="應用篇_簡單探索性分析與資料視覺化.html"><i class="fa fa-check"></i><b>7</b> 06-應用篇_簡單探索性分析與資料視覺化</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for NGO</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="應用篇_實作簡單資料清理" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> 應用篇_實作簡單資料清理<a href="應用篇_實作簡單資料清理.html#應用篇_實作簡單資料清理" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>接下來會使用前面範例的WVS_w7中CSV格式的檔案，來繼續示範資料的初步清理與整理，</p>
+<p>以下範例會以關於台灣中生育小孩及照顧父母這兩個的價值觀作為簡單的發想進行操作，<br />
+<strong>「不同性別、年齡、平均月收入的人會如何思考-&gt;生育小孩是盡社會的責任與成年子女有責任長期照顧父母」</strong></p>
+<p>上一章節有介紹過一些瀏覽資料的語法，在此因為我們匯入的是沒有標籤的csv資料，各個變項與值代表什麼可以到<strong>調查問卷或codebook</strong>查看，</p>
+<p><img src="picture/WVS_w7_b3738.png" /><br />
+由此可知B37變項所代表的是「是否同意生育小孩是盡社會的責任」，且值代表的是「1是非常同意、5是非常不同意」<br />
+由此可知B38變項所代表的是「是否同意成年子女有責任長期照顧父母」，且值代表的是「1是非常同意、5是非常不同意」</p>
+<p>從問卷可得知以下面變項再資料當中題號、題目與值代表的意思:<br />
+(問卷的題號有時也會跟資料不太一樣，以此份資料為例，問卷為大寫字母、而資料為小寫字母)</p>
+<ul>
+<li>性別 = A01</li>
+<li>年齡 = A03</li>
+<li>平均月收入 = A21_3</li>
+<li>生育小孩是盡社會的責任 = B37</li>
+<li>成年子女有責任長期照顧父母 = B38</li>
+</ul>
+<div id="前置準備" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> 前置準備<a href="應用篇_實作簡單資料清理.html#前置準備" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="讀取需要使用套件" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> 讀取需要使用套件<a href="應用篇_實作簡單資料清理.html#讀取需要使用套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>以下為資處常使用的套件:<br />
+大部分的資處會使用到一個整合性的套件<a href="https://tidyverse.tidyverse.org/index.html">tidyverse</a>，其功能非常強大，在此只會簡單介紹部分常用內容，另外也有些其他套件可以更容易獲有效率來處理資料。</p>
+<p><strong>在接續下面分析前請先library以下套件</strong></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="應用篇_實作簡單資料清理.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># 大部分的資處工具</span></span>
+<span id="cb43-2"><a href="應用篇_實作簡單資料清理.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table) <span class="co"># 高效能資處工具</span></span>
+<span id="cb43-3"><a href="應用篇_實作簡單資料清理.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools) <span class="co"># 初步描述統計</span></span>
+<span id="cb43-4"><a href="應用篇_實作簡單資料清理.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc) <span class="co"># 設置缺失值</span></span>
+<span id="cb43-5"><a href="應用篇_實作簡單資料清理.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjlabelled) <span class="co"># 上標籤用</span></span>
+<span id="cb43-6"><a href="應用篇_實作簡單資料清理.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(validate) <span class="co"># 資料檢誤</span></span></code></pre></div>
+<p>接下來關於資料清理的部分，並不會特別單一仔細的講解，而是會使用<strong>簡單的實際例子</strong>來呈現，並適時補充一點額外的解釋，當然由於R語言的功能強大有很多套件，也持續在整合並強化，下面介紹的資料清理可能<strong>不會是唯一</strong>的方式，也不一定是最有效率方式，但仍可以稍微參考。</p>
+</div>
+<div id="設定工作路徑-1" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> 設定工作路徑<a href="應用篇_實作簡單資料清理.html#設定工作路徑-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="應用篇_實作簡單資料清理.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/Dropbox/R_for_NGO&quot;</span>) </span></code></pre></div>
+</div>
+<div id="讀取檔案" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> 讀取檔案<a href="應用篇_實作簡單資料清理.html#讀取檔案" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="應用篇_實作簡單資料清理.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb45-2"><a href="應用篇_實作簡單資料清理.html#cb45-2" aria-hidden="true" tabindex="-1"></a>WVS_w7 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/WVS_w7/data.csv&quot;</span>, </span>
+<span id="cb45-3"><a href="應用篇_實作簡單資料清理.html#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&quot;BIG5&quot;</span>))</span></code></pre></div>
+</div>
+<div id="選取需要的變項到新的資料檔中" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> 選取需要的變項到新的資料檔中<a href="應用篇_實作簡單資料清理.html#選取需要的變項到新的資料檔中" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="應用篇_實作簡單資料清理.html#cb46-1" aria-hidden="true" tabindex="-1"></a>WVS_w7_n1 <span class="ot">&lt;-</span> WVS_w7[<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;a01&quot;</span>, <span class="st">&quot;a03&quot;</span>, <span class="st">&quot;a21_3&quot;</span>, <span class="st">&quot;a32&quot;</span>, <span class="st">&quot;b37&quot;</span>, <span class="st">&quot;b38&quot;</span>)]</span></code></pre></div>
+</div>
+<div id="瀏覽資料" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> 瀏覽資料<a href="應用篇_實作簡單資料清理.html#瀏覽資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>查看變項初步分配，來檢查是否有不合理值或缺失值<br />
+(以下指令都還有各自呈現的細節可以調整，可自行查看該指令的help)</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="應用篇_實作簡單資料清理.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 初步查看次數分配 </span></span>
+<span id="cb47-2"><a href="應用篇_實作簡單資料清理.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(WVS_w7_n1<span class="sc">$</span>b37, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>) <span class="do">## 呈現簡單次數分配(useNA 是設定列出是否有NA) </span></span>
+<span id="cb47-3"><a href="應用篇_實作簡單資料清理.html#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="應用篇_實作簡單資料清理.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(WVS_w7_n1<span class="sc">$</span>b37) <span class="do">## 呈現更多內容的次數分配表</span></span></code></pre></div>
+<p><img src="picture/b37.png" /><br />
+上圖為<code>frq(WVS_w7$b37)</code>的結果，我們初步得知此資料當中，b37變項有多少人/比例回答非常同意或非常不同意，但須注意可以看到有97、98的選項，從問卷當中可得知「97是不知道、98是拒答」，回答這兩個選項的應該是不會被納入分析當中，接下來也會說明如何處理，</p>
+</div>
+</div>
+<div id="資料檢誤" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> 資料檢誤<a href="應用篇_實作簡單資料清理.html#資料檢誤" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>一開始可能可以做一些「資料檢誤」的工作來檢查資料，<code>validate</code>就是較有效率處理的套件，以下只做簡單介紹，更多詳細檢誤方式可以<a href="https://cran.r-project.org/web/packages/validate/vignettes/cookbook.html#Preface">參考1</a>、<a href="https://uribo.github.io/rpkg_showcase/utility/validate.html">參考2</a></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="應用篇_實作簡單資料清理.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 以下簡單設定幾個檢誤條件</span></span>
+<span id="cb48-2"><a href="應用篇_實作簡單資料清理.html#cb48-2" aria-hidden="true" tabindex="-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">validator</span>(</span>
+<span id="cb48-3"><a href="應用篇_實作簡單資料清理.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">is_unique</span>(id), <span class="do">## 檢查是否有重複id</span></span>
+<span id="cb48-4"><a href="應用篇_實作簡單資料清理.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  a03 <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> a03 <span class="sc">&lt;=</span> <span class="dv">85</span> <span class="do">## 檢查年齡是否在18-85之間(資料只對18-85歲抽樣)</span></span>
+<span id="cb48-5"><a href="應用篇_實作簡單資料清理.html#cb48-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-6"><a href="應用篇_實作簡單資料清理.html#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="應用篇_實作簡單資料清理.html#cb48-7" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">confront</span>(WVS_w7_n1, rules) <span class="do">## 前面放使用data，後面放檢誤規則</span></span>
+<span id="cb48-8"><a href="應用篇_實作簡單資料清理.html#cb48-8" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">summary</span>(out) <span class="sc">%&gt;%</span> <span class="do">## 呈現檢誤結果</span></span>
+<span id="cb48-9"><a href="應用篇_實作簡單資料清理.html#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb48-10"><a href="應用篇_實作簡單資料清理.html#cb48-10" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb48-11"><a href="應用篇_實作簡單資料清理.html#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="應用篇_實作簡單資料清理.html#cb48-12" aria-hidden="true" tabindex="-1"></a>vilt <span class="ot">=</span> <span class="fu">violating</span>(WVS_w7_n1, out[<span class="dv">2</span>]) <span class="do">## 查看那些資料是不符合檢誤的條件，out中是設定幾個檢誤條件</span></span>
+<span id="cb48-13"><a href="應用篇_實作簡單資料清理.html#cb48-13" aria-hidden="true" tabindex="-1"></a>vilt</span></code></pre></div>
+<p><img src="picture/validator1.png" /><br />
+<img src="picture/validator2.png" /></p>
+</div>
+<div id="設定不合理值" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> 設定不合理值<a href="應用篇_實作簡單資料清理.html#設定不合理值" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>資料可能會有一些不合理的值，或是像上述「97是不知道、98是拒答」，在分析上會當作遺漏值處理<br />
+R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數值型的遺漏值<code>NA_integer_</code>或是字串型的遺漏值<code>NA_character_</code></p>
+<p>以下僅列出部分方式，但同樣也有其他套件可以做到相同的設定遺漏值</p>
+<p>目標是先將96/99都當作NA處理，並回傳到新的dataframe<code>WVS_w7_n2</code></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="應用篇_實作簡單資料清理.html#cb49-1" aria-hidden="true" tabindex="-1"></a>WVS_w7_n2  <span class="ot">&lt;-</span> WVS_w7_n1 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將WVS_w7_n1(資料)連結到mutate()函數</span></span>
+<span id="cb49-2"><a href="應用篇_實作簡單資料清理.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="do">## mutate 代表創建/修改新變項</span></span>
+<span id="cb49-3"><a href="應用篇_實作簡單資料清理.html#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第一種設定遺漏值方式(用if_else)</span></span>
+<span id="cb49-4"><a href="應用篇_實作簡單資料清理.html#cb49-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">a01 =</span> <span class="fu">if_else</span>(a01 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">96</span><span class="sc">:</span><span class="dv">99</span>),  <span class="do">## 當a01的值在(%in%) 96-99之間，</span></span>
+<span id="cb49-5"><a href="應用篇_實作簡單資料清理.html#cb49-5" aria-hidden="true" tabindex="-1"></a>                      <span class="cn">NA_integer_</span>,    <span class="do">## 設定為遺漏(NA_integer_)，</span></span>
+<span id="cb49-6"><a href="應用篇_實作簡單資料清理.html#cb49-6" aria-hidden="true" tabindex="-1"></a>                      a01),           <span class="do">## 其他回傳原本的值</span></span>
+<span id="cb49-7"><a href="應用篇_實作簡單資料清理.html#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第二種設定遺漏值方式(用set_na)</span></span>
+<span id="cb49-8"><a href="應用篇_實作簡單資料清理.html#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">a03 =</span> <span class="fu">set_na</span>(a03, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span>, <span class="dv">97</span>, <span class="dv">98</span>, <span class="dv">99</span>)), <span class="do">## 設定a03當中96-99為NA</span></span>
+<span id="cb49-9"><a href="應用篇_實作簡單資料清理.html#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">a21_3 =</span> <span class="fu">set_na</span>(a21_3, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span><span class="sc">:</span><span class="dv">99</span>)),</span>
+<span id="cb49-10"><a href="應用篇_實作簡單資料清理.html#cb49-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">b37 =</span> <span class="fu">set_na</span>(b37, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span><span class="sc">:</span><span class="dv">99</span>)),</span>
+<span id="cb49-11"><a href="應用篇_實作簡單資料清理.html#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">b38 =</span> <span class="fu">set_na</span>(b38, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span><span class="sc">:</span><span class="dv">99</span>))</span>
+<span id="cb49-12"><a href="應用篇_實作簡單資料清理.html#cb49-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb49-13"><a href="應用篇_實作簡單資料清理.html#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="應用篇_實作簡單資料清理.html#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(WVS_w7_n2)</span></code></pre></div>
+</div>
+<div id="新建修改轉換變項" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> 新建/修改/轉換變項<a href="應用篇_實作簡單資料清理.html#新建修改轉換變項" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>接著我們可以對變項進行一些修改，<br />
+以下僅列出部分方式，但同樣也有其他套件可以做到相同的資料清理</p>
+<ul>
+<li>性別 = a01
+<ul>
+<li>原先: 1 = 男 2 = 女</li>
+<li>修改成: 0 = 男 1 = 女
+<ul>
+<li>轉成類別變項(factor)並命名為<code>female</code></li>
+</ul></li>
+</ul></li>
+<li>年齡 = a03
+<ul>
+<li>原先: 連續的數值</li>
+<li>1.新建一個變項等於A03，命名為<code>age</code></li>
+<li>2.修改成: 18/29 = 青年 30/64 = 中年 65/85 = 老年，
+<ul>
+<li>轉成類別變項(factor)並命名為<code>age_g3</code></li>
+</ul></li>
+</ul></li>
+<li>生育小孩是盡社會的責任 = b37
+<ul>
+<li>原先: 分數越大越不同意(1是非常同意、5是非常不同意)</li>
+<li>修改成: 分數越大越同意(1是非常不同意、5是非常同意)並命名為<code>duty_child</code></li>
+</ul></li>
+<li>成年子女有責任長期照顧父母 = b38
+<ul>
+<li>原先: 分數越大越不同意(1是非常同意、5是非常不同意)</li>
+<li>修改成: 分數越大越同意(1是非常不同意、5是非常同意)並命名為<code>duty_Parents</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="應用篇_實作簡單資料清理.html#cb50-1" aria-hidden="true" tabindex="-1"></a>WVS_w7_n3  <span class="ot">&lt;-</span> WVS_w7_n2 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將WVS_w7_n2(資料)連結到mutate()函數</span></span>
+<span id="cb50-2"><a href="應用篇_實作簡單資料清理.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="do">## mutate 代表創建/修改新變項</span></span>
+<span id="cb50-3"><a href="應用篇_實作簡單資料清理.html#cb50-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb50-4"><a href="應用篇_實作簡單資料清理.html#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#性別</span></span>
+<span id="cb50-5"><a href="應用篇_實作簡單資料清理.html#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span> <span class="fu">case_match</span>( <span class="do">## case_match 將變項值重新編碼</span></span>
+<span id="cb50-6"><a href="應用篇_實作簡單資料清理.html#cb50-6" aria-hidden="true" tabindex="-1"></a>      a01, <span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>, <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span>, <span class="do">## 原先1變成0、2變成1</span></span>
+<span id="cb50-7"><a href="應用篇_實作簡單資料清理.html#cb50-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="cn">NA</span> <span class="do">## 其他沒定義到的設定成NA(也設定成返回原先a01的值)</span></span>
+<span id="cb50-8"><a href="應用篇_實作簡單資料清理.html#cb50-8" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb50-9"><a href="應用篇_實作簡單資料清理.html#cb50-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb50-10"><a href="應用篇_實作簡單資料清理.html#cb50-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 年齡</span></span>
+<span id="cb50-11"><a href="應用篇_實作簡單資料清理.html#cb50-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> a03,</span>
+<span id="cb50-12"><a href="應用篇_實作簡單資料清理.html#cb50-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb50-13"><a href="應用篇_實作簡單資料清理.html#cb50-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 年齡三分組</span></span>
+<span id="cb50-14"><a href="應用篇_實作簡單資料清理.html#cb50-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_g3 =</span> <span class="fu">case_match</span>( </span>
+<span id="cb50-15"><a href="應用篇_實作簡單資料清理.html#cb50-15" aria-hidden="true" tabindex="-1"></a>      a03, <span class="fu">c</span>(<span class="dv">18</span><span class="sc">:</span><span class="dv">29</span>) <span class="sc">~</span> <span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">64</span>) <span class="sc">~</span> <span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">65</span><span class="sc">:</span><span class="dv">85</span>) <span class="sc">~</span> <span class="dv">3</span>, </span>
+<span id="cb50-16"><a href="應用篇_實作簡單資料清理.html#cb50-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="cn">NA</span> </span>
+<span id="cb50-17"><a href="應用篇_實作簡單資料清理.html#cb50-17" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb50-18"><a href="應用篇_實作簡單資料清理.html#cb50-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb50-19"><a href="應用篇_實作簡單資料清理.html#cb50-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 同意生育小孩是盡社會的責任</span></span>
+<span id="cb50-20"><a href="應用篇_實作簡單資料清理.html#cb50-20" aria-hidden="true" tabindex="-1"></a>      <span class="do">## 第一種方式: case_match 將變項值重新編碼</span></span>
+<span id="cb50-21"><a href="應用篇_實作簡單資料清理.html#cb50-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">duty_child =</span> <span class="fu">case_match</span>( </span>
+<span id="cb50-22"><a href="應用篇_實作簡單資料清理.html#cb50-22" aria-hidden="true" tabindex="-1"></a>      b37, <span class="dv">1</span> <span class="sc">~</span> <span class="dv">5</span>, <span class="dv">2</span> <span class="sc">~</span> <span class="dv">4</span>, <span class="dv">3</span> <span class="sc">~</span> <span class="dv">3</span>, <span class="dv">4</span> <span class="sc">~</span> <span class="dv">2</span>, <span class="dv">5</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
+<span id="cb50-23"><a href="應用篇_實作簡單資料清理.html#cb50-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="cn">NA</span> </span>
+<span id="cb50-24"><a href="應用篇_實作簡單資料清理.html#cb50-24" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb50-25"><a href="應用篇_實作簡單資料清理.html#cb50-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb50-26"><a href="應用篇_實作簡單資料清理.html#cb50-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 成年子女有責任長期照顧父母</span></span>
+<span id="cb50-27"><a href="應用篇_實作簡單資料清理.html#cb50-27" aria-hidden="true" tabindex="-1"></a>      <span class="do">## 第二種方式: 直接做數學運算</span></span>
+<span id="cb50-28"><a href="應用篇_實作簡單資料清理.html#cb50-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">duty_Parents =</span> <span class="dv">6</span> <span class="sc">-</span> b38</span>
+<span id="cb50-29"><a href="應用篇_實作簡單資料清理.html#cb50-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="do">## 可以根據上面mutate好的變項再連結到下面transform函數</span></span>
+<span id="cb50-30"><a href="應用篇_實作簡單資料清理.html#cb50-30" aria-hidden="true" tabindex="-1"></a>      <span class="fu">transform</span>( <span class="do">## 轉換資料型態</span></span>
+<span id="cb50-31"><a href="應用篇_實作簡單資料清理.html#cb50-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">female =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的female變成類別變項(factor)</span></span>
+<span id="cb50-32"><a href="應用篇_實作簡單資料清理.html#cb50-32" aria-hidden="true" tabindex="-1"></a>          female,</span>
+<span id="cb50-33"><a href="應用篇_實作簡單資料清理.html#cb50-33" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="do">## 設定類別的順序</span></span>
+<span id="cb50-34"><a href="應用篇_實作簡單資料清理.html#cb50-34" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;男&quot;</span>, <span class="st">&quot;女&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
+<span id="cb50-35"><a href="應用篇_實作簡單資料清理.html#cb50-35" aria-hidden="true" tabindex="-1"></a>          ),</span>
+<span id="cb50-36"><a href="應用篇_實作簡單資料清理.html#cb50-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">age_g3 =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的female變成類別變項(factor)</span></span>
+<span id="cb50-37"><a href="應用篇_實作簡單資料清理.html#cb50-37" aria-hidden="true" tabindex="-1"></a>          age_g3,</span>
+<span id="cb50-38"><a href="應用篇_實作簡單資料清理.html#cb50-38" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="do">## 設定類別的順序</span></span>
+<span id="cb50-39"><a href="應用篇_實作簡單資料清理.html#cb50-39" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;青年&quot;</span>, <span class="st">&quot;中年&quot;</span>, <span class="st">&quot;老年&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
+<span id="cb50-40"><a href="應用篇_實作簡單資料清理.html#cb50-40" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb50-41"><a href="應用篇_實作簡單資料清理.html#cb50-41" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb50-42"><a href="應用篇_實作簡單資料清理.html#cb50-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-43"><a href="應用篇_實作簡單資料清理.html#cb50-43" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(WVS_w7_n3)</span></code></pre></div>
+<div id="將資料上標籤" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> 將資料上標籤<a href="應用篇_實作簡單資料清理.html#將資料上標籤" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>另外除了剛剛factor有上值標籤(labels)，其實也有其他套件可以幫助數值變項上標籤<br />
+可以在呈現時更容易了解</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="應用篇_實作簡單資料清理.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 可以先查看次數分配，此時duty_child是沒有值標籤的</span></span>
+<span id="cb51-2"><a href="應用篇_實作簡單資料清理.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(WVS_w7_n3<span class="sc">$</span>duty_child)</span>
+<span id="cb51-3"><a href="應用篇_實作簡單資料清理.html#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="應用篇_實作簡單資料清理.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set_label 變項標籤variable labels</span></span>
+<span id="cb51-5"><a href="應用篇_實作簡單資料清理.html#cb51-5" aria-hidden="true" tabindex="-1"></a>WVS_w7_n3  <span class="ot">&lt;-</span> WVS_w7_n3 <span class="sc">%&gt;%</span></span>
+<span id="cb51-6"><a href="應用篇_實作簡單資料清理.html#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb51-7"><a href="應用篇_實作簡單資料清理.html#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span>  <span class="fu">set_label</span>(female,</span>
+<span id="cb51-8"><a href="應用篇_實作簡單資料清理.html#cb51-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;性別&quot;</span>), </span>
+<span id="cb51-9"><a href="應用篇_實作簡單資料清理.html#cb51-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">duty_child =</span> <span class="fu">set_label</span>(duty_child,</span>
+<span id="cb51-10"><a href="應用篇_實作簡單資料清理.html#cb51-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;同意生育小孩是盡社會的責任&quot;</span>)</span>
+<span id="cb51-11"><a href="應用篇_實作簡單資料清理.html#cb51-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb51-12"><a href="應用篇_實作簡單資料清理.html#cb51-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-13"><a href="應用篇_實作簡單資料清理.html#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="co"># set_label 變項值標籤value labels</span></span>
+<span id="cb51-14"><a href="應用篇_實作簡單資料清理.html#cb51-14" aria-hidden="true" tabindex="-1"></a>WVS_w7_n3  <span class="ot">&lt;-</span> WVS_w7_n3 <span class="sc">%&gt;%</span></span>
+<span id="cb51-15"><a href="應用篇_實作簡單資料清理.html#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb51-16"><a href="應用篇_實作簡單資料清理.html#cb51-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span>  <span class="fu">set_labels</span>(female,</span>
+<span id="cb51-17"><a href="應用篇_實作簡單資料清理.html#cb51-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;男&quot;</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">&quot;女&quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;遺漏值&quot;</span> <span class="ot">=</span> <span class="dv">96</span>)), </span>
+<span id="cb51-18"><a href="應用篇_實作簡單資料清理.html#cb51-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">duty_child =</span> <span class="fu">set_labels</span>(duty_child,</span>
+<span id="cb51-19"><a href="應用篇_實作簡單資料清理.html#cb51-19" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;非常不同意&quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;非常同意&quot;</span> <span class="ot">=</span> <span class="dv">5</span>, <span class="st">&quot;拒答&quot;</span> <span class="ot">=</span> <span class="dv">98</span>))</span>
+<span id="cb51-20"><a href="應用篇_實作簡單資料清理.html#cb51-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb51-21"><a href="應用篇_實作簡單資料清理.html#cb51-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-22"><a href="應用篇_實作簡單資料清理.html#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 再次查看次數分配可以看到有值標籤了</span></span>
+<span id="cb51-23"><a href="應用篇_實作簡單資料清理.html#cb51-23" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(WVS_w7_n3<span class="sc">$</span>duty_child)</span></code></pre></div>
+</div>
+</div>
+<div id="其他" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> 其他<a href="應用篇_實作簡單資料清理.html#其他" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="簡單字串處理" class="section level3 hasAnchor" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> 簡單字串處理<a href="應用篇_實作簡單資料清理.html#簡單字串處理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="進階篇_資料讀取匯出合併與瀏覽.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="應用篇_簡單探索性分析與資料視覺化.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-應用篇_實作簡單資料清理.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
