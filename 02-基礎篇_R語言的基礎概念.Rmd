@@ -330,3 +330,7 @@ ifelse(score >= 60, "及格", "不及格")
 ifelse(score >= 90, "優秀",
        ifelse(score >= 60, "及格", "不及格"))
 ```
+
+## pipe
+
+

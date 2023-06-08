@@ -25,7 +25,9 @@
 ### 讀取需要使用套件
 
 以下為資處常使用的套件:\
-大部分的資處會使用到一個整合性的套件[tidyverse](https://tidyverse.tidyverse.org/index.html)，其功能非常強大，在此只會簡單介紹部分常用內容，另外也有些其他套件可以更容易獲有效率來處理資料。
+大部分的資處會使用到一個整合性的套件[tidyverse](https://tidyverse.tidyverse.org/index.html)(上述連結點進去後，可以根據不同套件的連結查看套件的cheatsheet)，其功能非常強大，在此只會簡單介紹關於資處的部分內容，
+
+![](picture/tidyverse.png)\
 
 **在接續下面分析前請先library以下套件**
 
@@ -66,10 +68,10 @@ WVS_w7_n1 <- WVS_w7[c("id", "a01", "a03", "a21_3", "a32", "b37", "b38")]
 (以下指令都還有各自呈現的細節可以調整，可自行查看該指令的help)
 
 ```{r eval=FALSE}
-# 初步查看次數分配 
+# 初步查看次數分配(以b37為例)
 table(WVS_w7_n1$b37, useNA = "always") ## 呈現簡單次數分配(useNA 是設定列出是否有NA) 
 
-frq(WVS_w7_n1$b37) ## 呈現更多內容的次數分配表
+frq(WVS_w7_n1$b37) ## 呈現更多內容的次數分配表與簡單描述統計
 ```
 
 ![](picture/b37.png)\
@@ -222,5 +224,16 @@ WVS_w7_n3  <- WVS_w7_n3 %>%
 frq(WVS_w7_n3$duty_child)
 ```
 
+![](picture/labels1.png)\
+![](picture/labels2.png)
+
 ## 其他
-### 簡單字串處理
+
+### 字串處理
+
+除了上述簡單介紹的對於「數值」資料的處理，另外也有針對「字串」資料的處理，\
+但這部分較複雜，有興趣者至以下連結參考，[參考1](https://tpemartin.github.io/NTPU-R-for-Data-Science/operationonvectorandlist.html#on-character-class)、[參考2](https://yijutseng.github.io/DataScienceRBook/manipulation.html#%E6%96%87%E5%AD%97%E5%AD%97%E4%B8%B2%E8%99%95%E7%90%86)、[參考3](https://github.com/tidyverse/stringr)
+
+### 時間資料處理
+
+有時資料也會包括時間形式的數據，而[lubridate](https://github.com/tidyverse/lubridate)就是專門處理時間數據的套件，有興趣者有可以自行參考

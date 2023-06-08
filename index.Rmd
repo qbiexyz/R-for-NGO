@@ -17,8 +17,7 @@ github-repo: "rstudio/bookdown-demo"
 
 # 前言_關於本講義
 
-講義的資料若有錯誤，再麻煩寄信告知修改
-email: qbieqbiexyz@gmail.com
+講義的資料若有錯誤，再麻煩寄信告知修改 email: [qbieqbiexyz\@gmail.com](mailto:qbieqbiexyz@gmail.com){.email}
 
 這份講義是希望讓原本沒有程式與或統計基礎的人，能夠在短時間初步了解R語言的**簡單概念和操作**，以及能夠**進行初步的資料讀取、清理、分析與視覺化**。
 
@@ -44,18 +43,19 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 
 ### 講義
 
-本講義是擷取/修改下列講義部分內容，希望能透過更簡易的方式了解資料分析初步內容與過程，若因此對於資料分析有興趣，想嘗試更深入的資料分析， 建議深入查看以下講義中更完整的內容。
+本講義是擷取/修改下列講義部分內容，希望能透過更簡易的方式了解資料分析初步內容與過程，若因此對於資料分析有興趣，想嘗試更進階/深入的資料分析， 建議深入查看以下講義中更完整的內容。
 
+-   [R for Data Science](https://r4ds.had.co.nz/)
+-   [R for Data Science (2e)](https://r4ds.hadley.nz/)
 -   量化研究方法實作(課堂教材)，by [陳易甫](https://sociology.ntpu.edu.tw/index.php/ch/teacher/teacher_more/4)
 -   [資料科學與R語言](https://yijutseng.github.io/DataScienceRBook/index.html)，by [曾意儒](https://www.cs.nycu.edu.tw/members/detail/yijutseng)
 -   [Programming for Data Science (I)](https://tpemartin.github.io/NTPU-R-for-Data-Science-EN/)，by [林茂廷](https://econ.ntpu.edu.tw/teachers/5/22)
 -   [輕鬆學習 R 語言](https://eloquentr.datainpoint.com/)，by [郭耀仁](https://hahow.in/@tonykuoyj)
+-   [R语言教程](https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html)
 -   [R for Fledglings](https://www.uvm.edu/~tdonovan/RforFledglings/#fn1)
 -   [R for HR:An Introduction to Human Resource Analytics Using R](https://rforhr.com/)
 -   [R for Epidemiology](https://www.r4epi.com/)
 -   [R Package Showcase](https://uribo.github.io/rpkg_showcase/index.html)
--   [R for Data Science](https://r4ds.had.co.nz/)
--   [R for Data Science (2e)](https://r4ds.hadley.nz/)
 -   [tidyverse](https://tidyverse.tidyverse.org/index.html)
 
 ### 其他學習資源
