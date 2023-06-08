@@ -84,7 +84,7 @@ View(data)
 #取得R內建資料
 data(iris)
 
-saveRDS(iris,"iris.rds") ## 前面是data名稱、後面是要存的檔案名稱
+saveRDS(iris, "iris.rds") ## 前面是data名稱、後面是要存的檔案名稱
 ```
 
 ### 文字檔.txt
@@ -111,7 +111,7 @@ write.table(iris, file = "iris.txt", sep = ",", row.names = F, col.names = T)
 #取得R內建資料
 data(iris)
 
-write.csv(iris,file="iris.csv",row.names = F)
+write.csv(iris, file = "iris.csv", row.names = F)
 ```
 
 ### Excel 試算表.xslx
