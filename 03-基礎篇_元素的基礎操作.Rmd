@@ -1,11 +1,11 @@
-# 進階篇_選取、新增、替換與刪除元素
+# 基礎篇_元素的基礎操作
 
 ## 選取
 
 ### 取出vector中的元素
 
 ```{r eval=FALSE}
-vector_choose <- c("apple","banana","cat")
+vector_choose <- c("apple", "banana", "cat")
 
 # 有多少位置可選(該元素的長度)：
 length(vector_choose)
@@ -112,31 +112,31 @@ iris_c1_5 <- iris$Sepal.Length # 用欄位名稱選取
 1. 找出不存在的位置\
 2. 給予這個不存在位置一個值
 
-例如，若想將範例`vector_choose`中新增一個`"4"`:
+例如，若想將範例`vector_add`中新增一個`"4"`:
 
 ```{r eval=FALSE}
-vector_choose <- c("apple","banana","cat")
-vector_choose
+vector_add <- c("apple", "banana", "cat")
+vector_add
 
 # 1.找出不存在的位置
-## vector_choose 只有三個元素、因此第四個位置的元素是不存在的
-vector_choose[[3]] # 存在"cat"
-vector_choose[[4]] # 不存在元素(會出現Error)
+## vector_add 只有三個元素、因此第四個位置的元素是不存在的
+vector_add[[3]] # 存在"cat"
+vector_add[[4]] # 不存在元素(會出現Error)
 
 # 2. 給予這個不存在位置一個值
-## 因此若想在vector_choose加上第四個元素"4"，
-## 需要將"dog" 指派到vector_choose 的第四個位置
-vector_choose[[4]] <- "4"
-vector_choose
+## 因此若想在vector_add加上第四個元素"4"，
+## 需要將"dog" 指派到vector_add的第四個位置
+vector_add[[4]] <- "4"
+vector_add
 
 # 也可以新增多個元素
-vector_choose <- c("apple","banana","cat")
-vector_choose[4:6] <- c("4", "5", "6")
-vector_choose
+vector_add1 <- c("apple", "banana", "cat")
+vector_add1[4:6] <- c("4", "5", "6")
+vector_add1
 ## or
-vector_choose <- c("apple","banana","cat")
-vector_choose[c(4, 6 , 7)] <- c("4", "6", "7") # 此時第5個位置會變成NA
-vector_choose
+vector_add2 <- c("apple", "banana", "cat")
+vector_add2[c(4, 6 , 7)] <- c("4", "6", "7") # 此時第5個位置會變成NA
+vector_add2
 ```
 
 其他list或data.frame的新增也是類似相同概念
@@ -147,35 +147,35 @@ vector_choose
 1. 找出需要替換元素的位置\
 2. 給予這個需要替換元素的位置另一個值
 
-例如，若想將範例`vector_choose`中原先的`"banana"`，替換成`"2"`:
+例如，若想將範例`vector_replace`中原先的`"banana"`，替換成`"2"`:
 
 ```{r eval=FALSE}
-vector_choose <- c("apple","banana","cat")
-vector_choose
+vector_replace <- c("apple", "banana", "cat")
+vector_replace
 
 # 1.找出需要替換元素的位置
-## vector_choose "banana"是在第二個位置
-vector_choose[[2]] # 存在"banana"
+## vector_replace "banana"是在第二個位置
+vector_replace[[2]] # 存在"banana"
 
 # 2. 給予這個需要替換元素的位置另一個值
-## 因此若想在vector_choose加上第四個元素"4"，
-## 需要將"dog" 指派到vector_choose 的第四個位置
-vector_choose[[2]] <- "2"
-vector_choose
+## 因此若想在vector_replace加上第四個元素"4"，
+## 需要將"dog" 指派到vector_replace 的第四個位置
+vector_replace[[2]] <- "2"
+vector_replace
 
 # 也可以替換多個元素
-vector_choose <- c("apple","banana","cat")
-vector_choose[1:2] <- c("1", "2") # 此時"apple"和"banana"會變成"1"、"2"
-vector_choose
+vector_replace1 <- c("apple", "banana", "cat")
+vector_replace1[1:2] <- c("1", "2") # 此時"apple"和"banana"會變成"1"、"2"
+vector_replace1
 ## or
-vector_choose <- c("apple","banana","cat")
-vector_choose[c(1, 3)] <- c("1", "3") # 此時"apple"和"cat"會變成"1"、"3"
-vector_choose
+vector_replace2 <- c("apple", "banana", "cat")
+vector_replace2[c(1, 3)] <- c("1", "3") # 此時"apple"和"cat"會變成"1"、"3"
+vector_replace2
 
 # 也可以同時新增和替換元素
-vector_choose <- c("apple","banana","cat")
-vector_choose[c(1, 3, 4)] <- c("1", "3", "4")
-vector_choose
+vector_replace3 <- c("apple", "banana", "cat")
+vector_replace3[c(1, 3, 4)] <- c("1", "3", "4")
+vector_replace3
 ```
 
 其他list或data.frame的替換也是類似相同概念
@@ -189,21 +189,21 @@ vector_choose
 第二種:\
 取出不需要的元素，用`-`回存自己(回存`-`即是刪去)(只能用在vector)
 
-例如，若想將範例`vector_choose`中原先的`"apple"`和`"cat"`刪除:
+例如，若想將範例`vector_delete`中原先的`"apple"`和`"cat"`刪除:
 
 ```{r eval=FALSE}
-vector_choose <- c("apple","banana","cat")
-vector_choose
+vector_delete <- c("apple", "banana", "cat")
+vector_delete
 
 # 1.找出需要刪除元素的位置
-vector_choose[c(1, 3)] 
+vector_delete[c(1, 3)] 
 
 # 2. 取出需要的元素("banana")再回存自己(沒有取出的，即是刪去)
-vector_choose <- vector_choose[[2]]
-vector_choose
+vector_delete1 <- vector_delete[[2]]
+vector_delete1
 ## or 取出不需要的元素("apple"、"cat")
-vector_choose <- vector_choose[-c(1, 3)]
-vector_choose
+vector_delete2 <- vector_delete[-c(1, 3)]
+vector_delete2
 ```
 
 另外list的形式是用`NULL`來刪除，\
@@ -227,4 +227,52 @@ weather$today[[1]]
 # 替換成NULL(刪除)
 weather$today[[1]] <- NULL
 weather
+```
+
+## 命名
+
+若要對元素進行命名，需使用`"name"=value`，\
+在命名時只能夠使用`=`，不能使用`<-`
+
+另外在命名時，也可以使用\`，如果是常規的命名，也可以都不加\
+或者可以使用`setNames`、`names()`相關函數
+
+以向量為例，想對1、2、3分別命名為apple、banana、cat
+
+```{r eval=FALSE}
+vector_name <- c(1, 2, 3)
+vector_name
+
+# 方法1
+vector_name1 <- c("apple" = 1 , "banana" = 2 , "cat" = 3)
+vector_name1
+
+# 方法2
+vector_name2 <- c(`apple` = 1 , `banana` = 2 , `cat` = 3)
+vector_name2
+
+# 方法3
+vector_name3 <- c(apple = 1 , banana = 2 , cat = 3)
+vector_name3
+
+# 方法4
+vector_name4 <- setNames(c(1, 2, 3), c("apple", "banana", "cat"))
+vector_name4
+
+# 方法5
+vector_name5 <- c(1, 2, 3)
+names(vector_name5) <- c("apple", "banana", "cat")
+vector_name5
+```
+
+其他list或data.frame的替換也是類似相同概念
+
+另外若元素有命名，前面的選取、新增等操作中，也可以用命名的文字來取代位置
+
+```{r eval=FALSE}
+vector_name <- c(1, 2, 3)
+vector_name[[1]]
+
+vector_name1 <- c("apple" = 1 , "banana" = 2 , "cat" = 3)
+vector_name1["apple"]
 ```

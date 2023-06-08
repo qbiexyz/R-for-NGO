@@ -1,4 +1,4 @@
-# 進階篇_資料讀取、匯出、合併與瀏覽
+# 應用篇_資料讀取、匯出、合併與瀏覽
 
 ## 設定工作路徑
 
@@ -40,13 +40,12 @@ setwd("D:/Dropbox/R_for_NGO")
 4. 右下角也有提供程式碼，且就是根據你點選的方式呈現，可以點選完後複製程式碼(右下有個類似紙的圖案)，這樣就可以留下讀檔案的紀錄\
 5. 若檔案中文字有亂碼也是在左下更改
 
-![](picture/Import_Dataset.png)\
+![](picture/Import_Dataset.png)
 
-![](picture/Import_Dataset3.png)\
+![](picture/Import_Dataset3.png)
 
 ![](picture/Import_Dataset4.png)\
-
-![](picture/Import_Dataset5.png)\
+![](picture/Import_Dataset5.png)
 
 ```{r eval=FALSE}
 # 讀取WVS_w7的.cvs檔案
@@ -64,7 +63,7 @@ View(data)
 WVS_w7 <- read_csv("data/WVS_w7/data.csv")
 ```
 
-![](picture/Import_Dataset6.png)\
+![](picture/Import_Dataset6.png)
 
 ```{r eval=FALSE}
 # 或著讀取WVS_w7的.dta檔案

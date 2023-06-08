@@ -110,7 +110,7 @@ R語言的遺漏值是以`NA`表示，但可以進一部細分成數值型的遺
 目標是先將96/99都當作NA處理，並回傳到新的dataframe`WVS_w7_n2`
 
 ```{r eval=FALSE}
-WVS_w7_n2  <- WVS_w7_n1 %>% ## %>% : pipe 將WVS_w7_n1(資料)連結到mutate()函數
+WVS_w7_n2  <- WVS_w7_n1 %>% ## %>% : pipe 將WVS_w7_n1(資料)用於mutate()函數中
   mutate( ## mutate 代表創建/修改新變項
     # 第一種設定遺漏值方式(用if_else)
     a01 = if_else(a01 %in% c(96:99),  ## 當a01的值在(%in%) 96-99之間，
@@ -225,9 +225,9 @@ frq(WVS_w7_n3$duty_child)
 ```
 
 ![](picture/labels1.png)\
-![](picture/labels2.png)
+![](picture/labels2.png)\
 
-## 其他
+## 其他處理
 
 ### 字串處理
 

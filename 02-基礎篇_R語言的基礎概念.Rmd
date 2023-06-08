@@ -22,7 +22,9 @@ a-10 -> b
 b
 ```
 
-若有指派a，則旁邊Environment -\> Global Environment -\> Values 就會出現a ![](picture/a.png)
+若有指派a，則旁邊Environment -\> Global Environment -\> Values 就會出現a
+
+![](picture/a.png)
 
 -   有效的命名
 
@@ -33,13 +35,15 @@ b
 
     -   以英文字母開頭(常見多以小寫字母開頭)
 
-    ```{r eval=FALSE}
+```{r eval=FALSE}
     #常見命名
     incomeLevel <- c("low", "middle", "high")
     income_level <- c("low", "middle", "high")
-    ```
+```
 
 ## 基本運算
+
+以下介紹簡單的運算方式，另外還有很多其他函數可以做基礎或進階的數學換算或運算，若有需要使用到可自行查找
 
 ### 數學基本運算
 
@@ -49,19 +53,14 @@ num2 <- 10
 
 # 加 + 
 num1+num2 ## 1+10 = 11
-
 # 減 - 
 num1-num2 ## 1-10 = -9
-
 # 乘 * 
 num1*num2 ## 1*10 = 10
-
 # 除 / 
 num1/num2 ## 1/10 = 0.1
-
 # 餘數 %% 
 10%%3 ## 10除以3後所得餘數
-
 # 次方 ^ 
 10^2 ## 10的2次方 = 100
 ```
@@ -74,27 +73,20 @@ num2 <- 10
 
 # 大於 > 
 num1 > num2 ## num1是否大於num2 -> FALSE
-
 # 小於 <
 num1 < num2 ## num1是否小於num2 -> TRUE
-
 # 等於 ==，為了不與變數設定混淆，判斷兩變數是否相等，要用雙等號
 num1 == num2 ## num1是否等於num2 -> FALSE
-
 # 大於等於 >=
 num1 >= num2 ## num1是否大於等於num2 -> FALSE
-
 # 小於等於 <=
 num1 <= num2 ## num1是否小於等於num2 -> TRUE
-
 # 且 &
 TRUE & TRUE ## TRUE
 TRUE & FALSE ## FALSE
-
 # 或 |
 TRUE | TRUE ## TRUE
 TRUE | FALSE ## TRUE
-
 # 反向布林變數! 
 !TRUE ## 不等於TRUE 所以是 FALSE
 ```
@@ -331,6 +323,42 @@ ifelse(score >= 90, "優秀",
        ifelse(score >= 60, "及格", "不及格"))
 ```
 
-## pipe
+## 管道控制pipe
 
+在語法操作上，很常需要對於同一個變項進行重複操作，在此`magrittr`套件提供了一些可以讓程式更容易查看、理解的語法，而在R版本4.1.0後也有提後一個內建的符號來進行，以下對此作簡單介紹，後續資料處理的章節會較常使用到 [參考1](https://tpemartin.github.io/NTPU-R-for-Data-Science-EN/operations-on-atomic-vectors.html#pipe-operator)、[參考2](https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/prog-control.html)
 
+### \|\> & %\>%
+
+`|>`為內建的連結符號，目的是要將符號左側的變項連結(放入使用)到符號右邊的函數 `%>%`是`magrittr`套件中的其中一個管道，其使用方法大致與`|>`一模一樣
+
+```{r eval=FALSE}
+library(magrittr)
+
+# 有個函數f()，想在函數當中放入x
+## 方法1
+f(x)
+## 方法2 
+x |> f() # 視為將x用於(放入)f()函數當中
+x %>% f()
+# 有個函數g()，考可以放入兩個參數，想在函數當中放入x
+## 方法1
+g(x, y) 
+## 方法2 
+x |> g(y)
+x %>% g(y)
+
+# 管道也可以連續使用
+x |> f(x) |> g(y) 
+x %>% f(x %>% g(y) 
+## 等於
+g(f(x), y)
+```
+
+### 其他管道控制
+
+`magrittr`套件中也包含其他讓程式更容易理解的管道，\
+可以做為參考就好
+
+-   `%T%`是臨時想查看f(x)但最後卻想只返回x值就可以使用`x %T% f()`，如此並不會改變x的值
+-   `%<>%`如同`%>%`，但是將原先x的值變為f(x)，使用`x %>% f()`，可以將x變成f(x)
+-   ...
