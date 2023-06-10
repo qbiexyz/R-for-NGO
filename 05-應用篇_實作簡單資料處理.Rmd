@@ -32,12 +32,12 @@
 **在接續下面分析前請先library以下套件**
 
 ```{r eval=FALSE}
-library(tidyverse) # 大部分的資處工具
-library(data.table) # 高效能資處工具
-library(DescTools) # 初步描述統計
-library(sjmisc) # 設置缺失值
-library(sjlabelled) # 上標籤用
-library(validate) # 資料檢誤
+library(tidyverse) ## 大部分的資處工具 (包含dplyr套件)
+library(data.table) ## 高效能資處工具
+library(DescTools) ## 初步描述統計
+library(sjmisc) ## 設置缺失值
+library(sjlabelled) ## 上標籤用
+library(validate) ## 資料檢誤
 ```
 
 接下來關於資料清理的部分，並不會特別單一仔細的講解，而是會使用**簡單的實際例子**來呈現，並適時補充一點額外的解釋，當然由於R語言的功能強大有很多套件，也持續在整合並強化，下面介紹的資料清理可能**不會是唯一**的方式，也不一定是最有效率方式，但仍可以稍微參考。
@@ -111,7 +111,7 @@ R語言的遺漏值是以`NA`表示，但可以進一部細分成數值型的遺
 
 ```{r eval=FALSE}
 WVS_w7_n2  <- WVS_w7_n1 %>% ## %>% : pipe 將WVS_w7_n1(資料)用於mutate()函數中
-  mutate( ## mutate 代表創建/修改新變項
+  mutate( ## 使用dplyr套件中的 mutate()代表創建/修改變項
     # 第一種設定遺漏值方式(用if_else)
     a01 = if_else(a01 %in% c(96:99),  ## 當a01的值在(%in%) 96-99之間，
                       NA_integer_,    ## 設定為遺漏(NA_integer_)，
@@ -145,13 +145,13 @@ view(WVS_w7_n2)
     -   修改成: 分數越大越同意(1是非常不同意、5是非常同意)並命名為`duty_child`
 -   成年子女有責任長期照顧父母 = b38
     -   原先: 分數越大越不同意(1是非常同意、5是非常不同意)
-    -   修改成: 分數越大越同意(1是非常不同意、5是非常同意)並命名為`duty_Parents`
+    -   修改成: 分數越大越同意(1是非常不同意、5是非常同意)並命名為`duty_parents`
 
 ```{r eval=FALSE}
 WVS_w7_n3  <- WVS_w7_n2 %>% ## %>% : pipe 將WVS_w7_n2(資料)連結到mutate()函數
-  mutate( ## mutate 代表創建/修改新變項
+  mutate( ## 使用dplyr套件中的 mutate()代表創建/修改變項
     
-    #性別
+    # 性別
     female = case_match( ## case_match 將變項值重新編碼
       a01, 1 ~ 0, 2 ~ 1, ## 原先1變成0、2變成1
       .default = NA ## 其他沒定義到的設定成NA(也設定成返回原先a01的值)
@@ -175,7 +175,7 @@ WVS_w7_n3  <- WVS_w7_n2 %>% ## %>% : pipe 將WVS_w7_n2(資料)連結到mutate()�
     
     # 成年子女有責任長期照顧父母
       ## 第二種方式: 直接做數學運算
-    duty_Parents = 6 - b38
+    duty_parents = 6 - b38
   ) %>% ## 可以根據上面mutate好的變項再連結到下面transform函數
       transform( ## 轉換資料型態
         female = factor( ## 將前面重新編碼的female變成類別變項(factor)
@@ -189,6 +189,9 @@ WVS_w7_n3  <- WVS_w7_n2 %>% ## %>% : pipe 將WVS_w7_n2(資料)連結到mutate()�
           labels = c("青年", "中年", "老年") ## 設定類別的標籤
           )
         )
+
+# 將不需要的欄位刪除
+WVS_w7_n3 <- subset(WVS_w7_n3, select = c(-a01, -a03, -a21_3, -a32, -b37, -b38))
 
 view(WVS_w7_n3)
 ```
@@ -223,11 +226,28 @@ WVS_w7_n3  <- WVS_w7_n3 %>%
 # 再次查看次數分配可以看到有值標籤了
 frq(WVS_w7_n3$duty_child)
 ```
-
 ![](picture/labels1.png)\
 ![](picture/labels2.png)\
 
+## 遺漏值處理
+
+若將需要分析的變項都清理、創建/修改整理好後，不同的變項可能有不同數量的遺漏值，在此這些缺失值可能就會導致在分析上樣本數的差距\
+對於這些缺失值有很多種處理方式，但在此不會特別介紹，
+
+以下將所有有缺失的資料在分析時用`complete.cases`一併排除
+
+```{r eval=FALSE}
+# 查看遺漏值
+is.na(WVS_w7_n3$duty_child) ## 遺漏值的位置會顯示成TRUE
+sum(is.na(WVS_w7_n3$duty_child)) ## 計算遺漏值的數量
+
+# 排除遺漏值
+WVS_w7_n4 <- WVS_w7_n3[complete.cases(WVS_w7_n3), ]
+```
+
 ## 其他處理
+
+除了上述所說的清理方式，實務上可能還會碰到其他類型需要較複雜處理的資料，以及其他方式的清理，以下列出兩個常見處理的資料型態，有需要者可再進一步查看，當然也有蠻多部分可能是講義所沒有列出，若有碰到再自行上網查找相關方法
 
 ### 字串處理
 
@@ -237,3 +257,15 @@ frq(WVS_w7_n3$duty_child)
 ### 時間資料處理
 
 有時資料也會包括時間形式的數據，而[lubridate](https://github.com/tidyverse/lubridate)就是專門處理時間數據的套件，有興趣者有可以自行參考
+
+## 匯出資料
+
+最後我們需要將資料輸出以便後續分析或保存，前一章節有介紹過如何輸出資料
+
+在此，當我們資料清理好後，可能之後還需要做進一步的分析，但若並不是在同一時間來做或需換個檔案來寫分析時，可以將處理好的檔案先暫時存成.rds檔案，以便之後繼續在R語言使用\
+若整理好也可以存成其他格式
+
+```{r eval=FALSE}
+# 存成.rds檔
+saveRDS(WVS_w7_n4, "data/practice/WVS_w7_n4")
+```

@@ -62,26 +62,33 @@ New Project -\> New Directory -\> New Project -\> 設定Project Name 和放檔�
 至於詳細的用法，我們可以用「**help**」來看這個套件的語法該如何設定
 
 ```{r eval=FALSE}
-#安裝套件：
+# 安裝套件：
 install.packages("haven")
 
-#載入套件：
+# 載入套件：
 library(haven)
-#or
+# or
 require(haven)
 
 #查詢套件/函數用法
 help(haven) # 查詢套件
 help(read_dta) # 查詢函數
-#or
+# or
 ?haven
 ?read_dta
-#or 在想查詢的套件/函數上面按F1
+# or 在想查詢的套件/函數上面按F1
 ```
 
 ### 安裝講義所用套件
 
-writexl\
+```{r eval=FALSE}
+# 接下來會用到的套件
+pkgs <- c("haven", "lubridate", "magrittr",  "readr", "writexl",
+          "dplyr", "tidyverse", "data.table", "DescTools", "sjmisc", 
+          "sjlabelled", "validate", "skimr")
+# 一次安裝套件：
+install.packages("pkgs")
+```
 
 ## 錯誤訊息
 

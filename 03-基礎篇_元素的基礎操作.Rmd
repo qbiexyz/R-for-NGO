@@ -8,19 +8,21 @@
 vector_choose <- c("apple", "banana", "cat")
 
 # 有多少位置可選(該元素的長度)：
-length(vector_choose)
+length(vector_choose) ## [1] 3
 ```
 
 ![](picture/vector_choose.png)
 
 ```{r eval=FALSE}
+vector_choose <- c("apple", "banana", "cat")
+
 # 取出apple
-vector_choose[[1]]
+vector_choose[[1]] ## [1] "apple"
 head(vector_choose, 1) ## 取出vector_choose向量的前n個元素
 
 # 取出banana和cat
-vector_choose[c(2, 3)]
-vector_choose[c(2:3)]
+vector_choose[c(2, 3)] ## [1] "banana" "cat"
+vector_choose[c(2:3)] ## [1] "banana" "cat"
 tail(vector_choose, 2) ## 取出vector_choose向量的後n個元素
 ```
 
@@ -49,15 +51,15 @@ print(weather)
 
 ```{r eval=FALSE}
 # 取出today當中的台北市 (若有名稱時[[""]] 和$ 可以相互使用)
-weather[["today"]][[1]][[1]]
+weather[["today"]][[1]][[1]] ## [1] "台北市"
 ## or
-weather$today[[1]][[1]]
+weather$today[[1]][[1]] ## [1] "台北市"
 
 # 比較[[]] 和 [] 差別
-taipei1 <- weather$today[[1]][[1]]
+taipei1 <- weather$today[[1]][[1]] 
 taipei2 <- weather$today[[1]][1]
-taipei1
-taipei2
+taipei1 ## [1] "台北市"
+taipei2 ## [[1]] [1] "台北市"
 ```
 
 上述可以看到選取資料時有`[[]] 和 []`兩種，差別在於:
@@ -71,13 +73,13 @@ taipei2
 
 ```{r eval=FALSE}
 # 取出tomorrow當中新北市的highest_temp值(25) 並保留highest_temp的名稱
-weather$tomorrow[[2]][[2]] 
-weather$tomorrow[[2]][[2]][1]
+weather$tomorrow[[2]][[2]] ## highest_temp 28
+weather$tomorrow[[2]][[2]][1] ## highest_temp 28
 
 # 取出tomorrow當中新北市的highest_temp值(25) 並捨棄highest_temp的名稱
-weather[["tomorrow"]][[2]][[2]][["highest_temp"]] 
+weather[["tomorrow"]][[2]][[2]][["highest_temp"]] ## [1] 28
 ## or
-weather$tomorrow[[2]][[2]][[1]]
+weather$tomorrow[[2]][[2]][[1]] ## [1] 28
 ```
 
 ### 取出data.frame中的元素
@@ -116,7 +118,6 @@ iris_c1_5 <- iris$Sepal.Length # 用欄位名稱選取
 
 ```{r eval=FALSE}
 vector_add <- c("apple", "banana", "cat")
-vector_add
 
 # 1.找出不存在的位置
 ## vector_add 只有三個元素、因此第四個位置的元素是不存在的
@@ -124,7 +125,7 @@ vector_add[[3]] # 存在"cat"
 vector_add[[4]] # 不存在元素(會出現Error)
 
 # 2. 給予這個不存在位置一個值
-## 因此若想在vector_add加上第四個元素"4"，
+## 因此若想在vector_add加上第四個元素"4"
 ## 需要將"dog" 指派到vector_add的第四個位置
 vector_add[[4]] <- "4"
 vector_add
@@ -151,7 +152,6 @@ vector_add2
 
 ```{r eval=FALSE}
 vector_replace <- c("apple", "banana", "cat")
-vector_replace
 
 # 1.找出需要替換元素的位置
 ## vector_replace "banana"是在第二個位置
@@ -193,7 +193,6 @@ vector_replace3
 
 ```{r eval=FALSE}
 vector_delete <- c("apple", "banana", "cat")
-vector_delete
 
 # 1.找出需要刪除元素的位置
 vector_delete[c(1, 3)] 
@@ -229,6 +228,24 @@ weather$today[[1]] <- NULL
 weather
 ```
 
+## 判斷位置
+
+在上述了解元素的操作後，我們還可以根據元素進行位置的判斷，\
+可以使用`which()`和`%in%`\
+
+`which()`函數是進行()中的條件邏輯判斷，並返回位置\
+`x %in% y` 是針對左邊x是否包含在右邊y中，並返回邏輯值
+
+```{r eval=FALSE}
+vector_which <- c("apple", "banana", "cat")
+
+which(vector_which == "apple") ## 返回apple的位置1
+which(vector_which != "apple") ## 返回不是apple的位置2、3
+which(c(T,F,T)) ## 返回c(T,F,T)中為TURE值的位置。
+
+vector_which %in% "apple" ## 返回邏輯值，apple的位置為TURE，不是的為FALSE
+```
+
 ## 命名
 
 若要對元素進行命名，需使用`"name"=value`，\
@@ -241,7 +258,6 @@ weather
 
 ```{r eval=FALSE}
 vector_name <- c(1, 2, 3)
-vector_name
 
 # 方法1
 vector_name1 <- c("apple" = 1 , "banana" = 2 , "cat" = 3)

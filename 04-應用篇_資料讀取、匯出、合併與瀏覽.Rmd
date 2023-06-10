@@ -13,8 +13,11 @@
 若是使用R Project打開，除非需要更換路徑，不然預設就是R Project的資料夾
 
 ```{r eval=FALSE}
-#設定工作路徑
+# 設定工作路徑
 setwd("D:/Dropbox/R_for_NGO") 
+
+# 顯示目前的工作路徑
+getwd()
 ```
 
 ## 讀取資料
@@ -72,16 +75,16 @@ data <- read_dta("data/WVS_w7/data.dta")
 View(data)
 ```
 
-## 匯出檔案
+## 匯出資料
 
-在R處理完檔案後，通常會將檔案匯出成其他另外檔案提供其他人使用，較常匯出使用的檔案格式tab分隔的文字檔`.txt`或是逗號分隔的文字檔`.csv`，有一些格式上的呈現可以另外再進行參數設定，這邊只會介紹簡單的匯出形式，若要調整可參考該函數的help文件
+在R處理完檔案後，通常會將資料匯出成其他另外檔案提供其他人使用，較常匯出使用的檔案格式tab分隔的文字檔`.txt`或是逗號分隔的文字檔`.csv`，有一些格式上的呈現可以另外再進行參數設定，這邊只會介紹簡單的匯出形式，若要調整可參考該函數的help文件
 
 ### R物件.rds
 
 若是處理到一半，之後還要繼續用R處理，可以先匯出成R物件檔案`.rds`，較方便自己下次處理，後續最後處理完成再轉換成其他常見檔案
 
 ```{r eval=FALSE}
-#取得R內建資料
+# 取得R內建資料
 data(iris)
 
 saveRDS(iris, "iris.rds") ## 前面是data名稱、後面是要存的檔案名稱
@@ -90,13 +93,13 @@ saveRDS(iris, "iris.rds") ## 前面是data名稱、後面是要存的檔案名�
 ### 文字檔.txt
 
 ```{r eval=FALSE}
-#查詢write.table的help文件
+# 查詢write.table的help文件
 ?write.table
 
-#取得R內建資料
+# 取得R內建資料
 data(iris)
 
-#匯出成.txt檔案
+# 匯出成.txt檔案
 write.table(iris, file = "iris.txt", sep = ",", row.names = F, col.names = T)
 ```
 
@@ -105,10 +108,10 @@ write.table(iris, file = "iris.txt", sep = ",", row.names = F, col.names = T)
 ### CSV檔.csv
 
 ```{r eval=FALSE}
-#查詢write.csv的help文件
+# 查詢write.csv的help文件
 ?write.csv
 
-#取得R內建資料
+# 取得R內建資料
 data(iris)
 
 write.csv(iris, file = "iris.csv", row.names = F)
@@ -119,13 +122,13 @@ write.csv(iris, file = "iris.csv", row.names = F)
 存成`.xlsx`需另外使用其他套件，在此使用的是`writexl`，但也有其他的套件也可以輸出成.xlsx(如`openxlsx`)
 
 ```{r eval=FALSE}
-#載入writexl套件
+# 載入writexl套件
 library(writexl)
 
-#查詢write_xlsx的help文件
+# 查詢write_xlsx的help文件
 ?write_xlsx
 
-#取得R內建資料
+# 取得R內建資料
 data(iris)
 
 write_xlsx(list(iris = iris), "iris.xlsx") 
@@ -140,8 +143,8 @@ write_xlsx(list(iris = iris), "iris.xlsx")
 
 ```{r eval=FALSE}
 # vector
-rbind(c(1, 2, 3), #第一列
-      c("apple", "banana", "cat")  #第二列
+rbind(c(1, 2, 3), ## 第一列
+      c("apple", "banana", "cat")  ## 第二列
       ) 
 
 # 取得R內建資料
@@ -149,7 +152,7 @@ data(iris)
 names(iris)
 
 # 新增成另一個資料
-iris_nrow <- rbind(iris, #資料框
+iris_nrow <- rbind(iris, ## 資料框
       c(1, 2, 3, 4, "setosa")  ## 新增一列
       ) 
 
@@ -168,11 +171,11 @@ iris <- rbind(iris, #資料框
 
 ```{r eval=FALSE}
 # vector
-cbind(c(1, 2, 3), #第一行
-      c("apple", "banana", "cat")  #第二行
+cbind(c(1, 2, 3), ## 第一行
+      c("apple", "banana", "cat")  ## 第二行
       ) 
 
-#取得R內建資料
+# 取得R內建資料
 data(iris)
 names(iris)
 
@@ -186,7 +189,7 @@ iris_newcol <- cbind(iris, ## 資料框
 
 ### 其他資料轉換
 
-#### dplyr套件提供更有效率的資料結合方法
+#### 用dplyr套件合併資料
 
 在資料想以某個欄位為依據進行合併時(像是長期資料，想以個人id將兩波資料合併)，\
 可以使用R原先內建的`merge`或是用dplyr套件提供的相關指令\
@@ -255,7 +258,6 @@ table(head(WVS_w7)$a01)
 另外也可以對向量或資料進行排序
 
 ```{r eval=FALSE}
-
 nosort <- c(1, 6, 5, 8, 2, 3)
 sort(nosort) ## 預設是由小排到大
 sort(nosort, decreasing = T) ## 由大排到小
@@ -274,3 +276,51 @@ head(order(WVS_w7$a01, decreasing = T)) ## 顯示排序之後前6筆資料的原
 ## 根據排序之後的a01(性別)前6筆資料的原始位置，來排序整個資料
 head(WVS_w7[order(WVS_w7$a01), ]) 
 ```
+
+### 用dplyr瀏覽
+
+dplyr套件有許多函數可以更方便的瀏覽或操作data.frame資料，在此先介紹部分關於瀏覽相關功能，之後章節會進一步介紹處理資料功能，\
+[dplyr cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf、)、[參考1](https://dplyr.tidyverse.org/)、[參考2](https://tpemartin.github.io/NTPU-R-for-Data-Science/working-with-data-frame.html)、[參考3](https://yijutseng.github.io/DataScienceRBook/eda.html#dplyr)、[參考4](https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/summary-manip.html)
+
+-   `select()`: 可以選擇要分析的欄位(Column)
+-   `filter()`: 可以選擇要分析的觀察值(Row)
+-   `arrange()`: 用來排序觀察值
+-   `group_by()`: 用來分組瀏覽
+
+```{r eval=FALSE}
+# 讀取WVS_w7資料
+library(readr)
+WVS_w7 <- read_csv("data/WVS_w7/data.csv", 
+                   locale = locale(encoding = "BIG5"))
+
+# 載入套件
+library(tidyverse) ## 整合性的資料分析(包括dplyr)
+## OR
+library(dplyr) ## 也可以直接載入dplyr
+
+
+# select() 若只想要查看欄位 id、a01(性別)
+WVS_w7 %>%
+  select(id, a01)
+
+# filter() 若只想要查看觀察值 a01(性別) = 1(男性)
+WVS_w7 %>%
+  filter(a01 == 1)
+
+# arrange() 若想根據a01(性別)和id排序(先排序a01再排id)
+WVS_w7 %>%
+  arrange(a01, id)
+
+# group_by() 若想根據a01(性別)進行分組來看男女性不同的年齡平均
+## 通常是與summarise()結合使用，來查看描述統計
+WVS_w7 %>%
+  group_by(a01) %>% 
+  summarise(age_mean = mean(a03))
+```
+
+### 其他
+
+#### data.table
+
+data.table是data.frame資料格式的延伸，在處理或讀取資料上比data.frame還來的有效率，\
+這部分進階的可以[參考1](https://yijutseng.github.io/DataScienceRBook/eda.html)

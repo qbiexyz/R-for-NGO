@@ -1,17 +1,26 @@
 # 基礎篇_R語言的基礎概念
 
-## 指派與命名
+## 物件基礎操作
 
--   指派（assignment）：將資料儲存至一個代號（變項）內。\
-    可以用"\<-" 或"="。但使用"\<-"好過"="\
-    「\<-」的 Windows快捷鍵: 「**Alt+-**」\
-    (另外也可以換個方向指派"-\>"，但較少使用)
+### 指派（assignment）：
+
+將資料儲存至一個代號（變項）內，\
+可以用"\<-" 或"="。但使用"\<-"好過"="(另外也可以換個方向指派"-\>"，但較少使用)\
+「\<-」的 Windows快捷鍵: 「**Alt+-**」
 
 ```{r eval=FALSE}
 # 將24存在「a」這個代號當中
 a <- 24 
 a = 24
 24 -> a
+
+# 用print()函數將物件內容輸出
+print(a)
+## or 直接打物件名稱
+a
+
+# 用rm()函數移除物件
+rm(a)
 
 # 將a-10存在「b」這個代號當中(a 需要先被指派)
 b <- a-10
@@ -26,6 +35,8 @@ b
 
 ![](picture/a.png)
 
+### 命名
+
 -   有效的命名
 
     -   以字母(大小寫都可)、數字、逗點(.)、下底線(\_)開頭
@@ -36,9 +47,9 @@ b
     -   以英文字母開頭(常見多以小寫字母開頭)
 
 ```{r eval=FALSE}
-    #常見命名
-    incomeLevel <- c("low", "middle", "high")
-    income_level <- c("low", "middle", "high")
+# 常見命名
+incomeLevel <- c("low", "middle", "high")
+income_level <- c("low", "middle", "high")
 ```
 
 ## 基本運算
@@ -160,19 +171,19 @@ c("apple", "banana", 5) ## 等於c("apple, banana", "5")
 # 原本是文字資料，設定類別
 fac_1 <- factor(c("低收入", "中等收入", "高收入", "低收入"),
                 levels = c("低收入", "中等收入", "高收入"))
-table(fac_1) ##查看次數分配
+table(fac_1) ## 查看次數分配
 
 # 原本是數字資料，設定類別
 fac_2 <- factor(c(1, 2, 3, 1, 3),
                 levels = c(1, 2, 3), 
                 labels = c("低收入", "中等收入", "高收入")) 
-table(fac_2) ##查看次數分配
+table(fac_2) ## 查看次數分配
 
 # 若是資料多了一個4沒有被設定類別 -> 被當成缺失值
 fac_3 <- factor(c(1, 2, 3, 1, 3, 4),
                 levels = c(1, 2, 3),
                 labels = c("低收入", "中等收入", "高收入")) 
-table(fac_3) ##查看次數分配
+table(fac_3) ## 查看次數分配
 ```
 
 ### 清單(list):
@@ -222,7 +233,7 @@ vec_2 <- c(15, 17, 27, 3, 10, 11)
 output <- array(c(vec_1, vec_2), dim = c(3, 3, 2))
 ```
 
-### 資料架構(data frame)：
+### 資料架構(data.frame)：
 
 像是我們用的套裝統計軟體（如excel, spss, stata）中資料儲存的方式。 每一欄（Column）儲存不同的資料、每一列（Row）代表不同的觀察值
 
@@ -249,14 +260,14 @@ data_list <- as.data.frame(data_list)
 
 ```{r eval=FALSE}
 # type
-typeof(c("John", "Mary"))
-typeof(c(2, 3.1412))
-typeof(c(TRUE, TRUE, F))
+typeof(c("John", "Mary")) ## "character"
+typeof(c(2, 3.1412)) ## "double"
+typeof(c(TRUE, TRUE, F)) ## "logical"
 
 # class
-class(c("John", "Mary"))
-class(c(2, 3.1412))
-class(c(TRUE, TRUE, F))
+class(c("John", "Mary")) ## "character"
+class(c(2, 3.1412)) ## "numeric"
+class(c(TRUE, TRUE, F)) ## "logical"
 ```
 
 ### 轉換資料型態或結構
@@ -271,8 +282,14 @@ class(c(TRUE, TRUE, F))
 num_t1 <- c(0.1, 2 , 4)
 char_t1 <- c("0.1", "2", "4")
 
-as.character(num_t1)
-as.numeric(char_t1)
+num_t2 <- as.character(num_t1)
+char_t2 <- as.numeric(char_t1)
+
+class(num_t1) ## "numeric"
+class(num_t2) ## "character"
+
+class(char_t1) ## "character"
+class(char_t2) ## "numeric"
 ```
 
 ## 簡單條件判斷式
