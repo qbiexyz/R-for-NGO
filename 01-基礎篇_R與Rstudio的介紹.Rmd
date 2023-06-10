@@ -70,13 +70,13 @@ library(haven)
 # or
 require(haven)
 
-#查詢套件/函數用法
-help(haven) # 查詢套件
-help(read_dta) # 查詢函數
-# or
+# 查詢套件/函數用法
+help(haven) ## 查詢套件
+help(read_dta) ## 查詢函數
+## or
 ?haven
 ?read_dta
-# or 在想查詢的套件/函數上面按F1
+## or 在想查詢的套件/函數上面按F1
 ```
 
 ### 安裝講義所用套件
