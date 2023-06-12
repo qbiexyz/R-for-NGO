@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-06-11" />
+<meta name="date" content="2023-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -320,7 +320,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 6</span> 應用篇_實作簡單資料處理<a href="應用篇_實作簡單資料處理.html#應用篇_實作簡單資料處理" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>接下來會使用前面範例的WVS_w7中CSV格式的檔案，來繼續示範資料的初步清理與整理，</p>
 <p>以下範例會以關於台灣中生育小孩及照顧父母這兩個的價值觀作為簡單的發想進行操作，<br />
-<strong>「不同性別、年齡、平均月收入的人會如何思考-&gt;生育小孩是盡社會的責任與成年子女有責任長期照顧父母」</strong></p>
+<strong>「不同性別、年齡的人會如何思考-&gt;生育小孩是盡社會的責任與成年子女有責任長期照顧父母的價值觀」</strong></p>
 <p>上一章節有介紹過一些瀏覽資料的語法，在此因為我們匯入的是沒有標籤的csv資料，各個變項與值代表什麼可以到<strong>調查問卷或codebook</strong>查看，</p>
 <p><img src="picture/WVS_w7_b3738.png" /><br />
 由此可知B37變項所代表的是「是否同意生育小孩是盡社會的責任」，且值代表的是「1是非常同意、5是非常不同意」<br />
@@ -330,7 +330,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>性別 = A01</li>
 <li>年齡 = A03</li>
-<li>平均月收入 = A21_3</li>
 <li>生育小孩是盡社會的責任 = B37</li>
 <li>成年子女有責任長期照顧父母 = B38</li>
 </ul>
@@ -363,7 +362,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="選取需要的變項到新的資料檔中" class="section level3 hasAnchor" number="6.1.4">
 <h3><span class="header-section-number">6.1.4</span> 選取需要的變項到新的資料檔中<a href="應用篇_實作簡單資料處理.html#選取需要的變項到新的資料檔中" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="應用篇_實作簡單資料處理.html#cb52-1" aria-hidden="true" tabindex="-1"></a>WVS_w7_n1 <span class="ot">&lt;-</span> WVS_w7[<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;a01&quot;</span>, <span class="st">&quot;a03&quot;</span>, <span class="st">&quot;a21_3&quot;</span>, <span class="st">&quot;a32&quot;</span>, <span class="st">&quot;b37&quot;</span>, <span class="st">&quot;b38&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="應用篇_實作簡單資料處理.html#cb52-1" aria-hidden="true" tabindex="-1"></a>WVS_w7_n1 <span class="ot">&lt;-</span> WVS_w7[<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;a01&quot;</span>, <span class="st">&quot;a03&quot;</span>, <span class="st">&quot;b37&quot;</span>, <span class="st">&quot;b38&quot;</span>)]</span></code></pre></div>
 </div>
 <div id="瀏覽資料" class="section level3 hasAnchor" number="6.1.5">
 <h3><span class="header-section-number">6.1.5</span> 瀏覽資料<a href="應用篇_實作簡單資料處理.html#瀏覽資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -400,8 +399,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.3</span> 設定不合理值<a href="應用篇_實作簡單資料處理.html#設定不合理值" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>資料可能會有一些不合理的值，或是像上述「97是不知道、98是拒答」，在分析上會當作遺漏值處理<br />
 R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數值型的遺漏值<code>NA_integer_</code>或是字串型的遺漏值<code>NA_character_</code></p>
-<p>以下僅列出部分方式，但同樣也有其他套件可以做到相同的設定遺漏值</p>
-<p>目標是先將96/99都當作NA處理，並回傳到新的dataframe<code>WVS_w7_n2</code></p>
+<p>以下僅列出部分方式，但同樣也有其他套件可以做到相同的設定遺漏值<br />
+目標是先將96/99都當作NA處理，並回傳到新的dataframe<code>WVS_w7_n2</code></p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="應用篇_實作簡單資料處理.html#cb55-1" aria-hidden="true" tabindex="-1"></a>WVS_w7_n2  <span class="ot">&lt;-</span> WVS_w7_n1 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將WVS_w7_n1(資料)用於mutate()函數中</span></span>
 <span id="cb55-2"><a href="應用篇_實作簡單資料處理.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="do">## 使用dplyr套件中的 mutate()代表創建/修改變項</span></span>
 <span id="cb55-3"><a href="應用篇_實作簡單資料處理.html#cb55-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第一種設定遺漏值方式(用if_else)</span></span>
@@ -410,12 +409,11 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <span id="cb55-6"><a href="應用篇_實作簡單資料處理.html#cb55-6" aria-hidden="true" tabindex="-1"></a>                      a01),           <span class="do">## 其他回傳原本的值</span></span>
 <span id="cb55-7"><a href="應用篇_實作簡單資料處理.html#cb55-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第二種設定遺漏值方式(用set_na)</span></span>
 <span id="cb55-8"><a href="應用篇_實作簡單資料處理.html#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">a03 =</span> <span class="fu">set_na</span>(a03, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span>, <span class="dv">97</span>, <span class="dv">98</span>, <span class="dv">99</span>)), <span class="do">## 設定a03當中96-99為NA</span></span>
-<span id="cb55-9"><a href="應用篇_實作簡單資料處理.html#cb55-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">a21_3 =</span> <span class="fu">set_na</span>(a21_3, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span><span class="sc">:</span><span class="dv">99</span>)),</span>
-<span id="cb55-10"><a href="應用篇_實作簡單資料處理.html#cb55-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">b37 =</span> <span class="fu">set_na</span>(b37, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span><span class="sc">:</span><span class="dv">99</span>)),</span>
-<span id="cb55-11"><a href="應用篇_實作簡單資料處理.html#cb55-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">b38 =</span> <span class="fu">set_na</span>(b38, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span><span class="sc">:</span><span class="dv">99</span>))</span>
-<span id="cb55-12"><a href="應用篇_實作簡單資料處理.html#cb55-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb55-13"><a href="應用篇_實作簡單資料處理.html#cb55-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-14"><a href="應用篇_實作簡單資料處理.html#cb55-14" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(WVS_w7_n2)</span></code></pre></div>
+<span id="cb55-9"><a href="應用篇_實作簡單資料處理.html#cb55-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">b37 =</span> <span class="fu">set_na</span>(b37, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span><span class="sc">:</span><span class="dv">99</span>)),</span>
+<span id="cb55-10"><a href="應用篇_實作簡單資料處理.html#cb55-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">b38 =</span> <span class="fu">set_na</span>(b38, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">96</span><span class="sc">:</span><span class="dv">99</span>))</span>
+<span id="cb55-11"><a href="應用篇_實作簡單資料處理.html#cb55-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb55-12"><a href="應用篇_實作簡單資料處理.html#cb55-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-13"><a href="應用篇_實作簡單資料處理.html#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(WVS_w7_n2)</span></code></pre></div>
 </div>
 <div id="新建修改轉換變項" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> 新建/修改/轉換變項<a href="應用篇_實作簡單資料處理.html#新建修改轉換變項" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -485,7 +483,7 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <span id="cb56-33"><a href="應用篇_實作簡單資料處理.html#cb56-33" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="do">## 設定類別的順序</span></span>
 <span id="cb56-34"><a href="應用篇_實作簡單資料處理.html#cb56-34" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;男&quot;</span>, <span class="st">&quot;女&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
 <span id="cb56-35"><a href="應用篇_實作簡單資料處理.html#cb56-35" aria-hidden="true" tabindex="-1"></a>          ),</span>
-<span id="cb56-36"><a href="應用篇_實作簡單資料處理.html#cb56-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">age_g3 =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的female變成類別變項(factor)</span></span>
+<span id="cb56-36"><a href="應用篇_實作簡單資料處理.html#cb56-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">age_g3 =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的age_g3變成類別變項(factor)</span></span>
 <span id="cb56-37"><a href="應用篇_實作簡單資料處理.html#cb56-37" aria-hidden="true" tabindex="-1"></a>          age_g3,</span>
 <span id="cb56-38"><a href="應用篇_實作簡單資料處理.html#cb56-38" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="do">## 設定類別的順序</span></span>
 <span id="cb56-39"><a href="應用篇_實作簡單資料處理.html#cb56-39" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;青年&quot;</span>, <span class="st">&quot;中年&quot;</span>, <span class="st">&quot;老年&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
@@ -493,7 +491,7 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <span id="cb56-41"><a href="應用篇_實作簡單資料處理.html#cb56-41" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb56-42"><a href="應用篇_實作簡單資料處理.html#cb56-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-43"><a href="應用篇_實作簡單資料處理.html#cb56-43" aria-hidden="true" tabindex="-1"></a><span class="co"># 將不需要的欄位刪除</span></span>
-<span id="cb56-44"><a href="應用篇_實作簡單資料處理.html#cb56-44" aria-hidden="true" tabindex="-1"></a>WVS_w7_n3 <span class="ot">&lt;-</span> <span class="fu">subset</span>(WVS_w7_n3, <span class="at">select =</span> <span class="fu">c</span>(<span class="sc">-</span>a01, <span class="sc">-</span>a03, <span class="sc">-</span>a21_3, <span class="sc">-</span>a32, <span class="sc">-</span>b37, <span class="sc">-</span>b38))</span>
+<span id="cb56-44"><a href="應用篇_實作簡單資料處理.html#cb56-44" aria-hidden="true" tabindex="-1"></a>WVS_w7_n3 <span class="ot">&lt;-</span> <span class="fu">subset</span>(WVS_w7_n3, <span class="at">select =</span> <span class="fu">c</span>(<span class="sc">-</span>a01, <span class="sc">-</span>a03, <span class="sc">-</span>b37, <span class="sc">-</span>b38))</span>
 <span id="cb56-45"><a href="應用篇_實作簡單資料處理.html#cb56-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-46"><a href="應用篇_實作簡單資料處理.html#cb56-46" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(WVS_w7_n3)</span></code></pre></div>
 <div id="將資料上標籤" class="section level3 hasAnchor" number="6.4.1">
@@ -504,7 +502,7 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <span id="cb57-2"><a href="應用篇_實作簡單資料處理.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(WVS_w7_n3<span class="sc">$</span>duty_child)</span>
 <span id="cb57-3"><a href="應用篇_實作簡單資料處理.html#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-4"><a href="應用篇_實作簡單資料處理.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set_label 變項標籤variable labels</span></span>
-<span id="cb57-5"><a href="應用篇_實作簡單資料處理.html#cb57-5" aria-hidden="true" tabindex="-1"></a>WVS_w7_n3  <span class="ot">&lt;-</span> WVS_w7_n3 <span class="sc">%&gt;%</span></span>
+<span id="cb57-5"><a href="應用篇_實作簡單資料處理.html#cb57-5" aria-hidden="true" tabindex="-1"></a>WVS_w7_n3 <span class="ot">&lt;-</span> WVS_w7_n3 <span class="sc">%&gt;%</span></span>
 <span id="cb57-6"><a href="應用篇_實作簡單資料處理.html#cb57-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
 <span id="cb57-7"><a href="應用篇_實作簡單資料處理.html#cb57-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span>  <span class="fu">set_label</span>(female,</span>
 <span id="cb57-8"><a href="應用篇_實作簡單資料處理.html#cb57-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;性別&quot;</span>), </span>

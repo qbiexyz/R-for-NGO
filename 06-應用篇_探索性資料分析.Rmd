@@ -56,7 +56,7 @@ p + geom_圖形類型(...) + ## 使用哪種圖形、並做進階設定
 
 ## 簡單呈現探索式資料分析
 
-(**下列接續的分析只是挑選變項來示範，可能兩者並沒有太多關係或意義**)
+(**下列接續的分析只是挑選變項來示範操作，可能兩者並沒有太多關係或意義**)
 
 在呈現探索式資料分析前，我們可以再一次整體瀏覽一下清理好的資料，\
 利用`skimr`套件可以整體查看分析資料各個變項的狀況(細節可再設定)，\
@@ -81,7 +81,9 @@ skim(WVS_w7_n4, female, age, age_g3, duty_child, duty_parents) |> print()
 
 ### 單一類別變項
 
-以性別(female)為例，呈現男女性的次數分配，並以長條圖呈現
+以性別(female)為例，呈現男女性的**次數分配**
+
+可以看到男性的樣本為592筆、佔約49%，女性的樣本稍多一點為625筆、佔約51%
 
 ```{r eval=FALSE}
 # 次數分配
@@ -97,9 +99,17 @@ table(WVS_w7_n4[["female"]])
 
 table(WVS_w7_n4[["female"]]) |>
   prop.table()
+```
 
+![](picture/06_1.png)\
+![](picture/06_2.png)
+
+接著也可以用**長條圖**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
+
+```{r eval=FALSE}
 # 畫圖呈現
 ## 畫圖(長條圖)呈現男女分別樣本數
+## 先建立一個次數分配表
 d_female <- WVS_w7_n4 |>
   count(female) |>
   mutate(
@@ -118,34 +128,31 @@ ggplot(d_female, aes(x = female, y = pct)) +
     labels = scales::percent)
 ```
 
+![](picture/06_3.png)\
+![](picture/06_4.png)\
+
 ### 單一數值變項
 
-以年齡(age)為例，呈現描述統計，並以直方圖、盒形呈現
+以年齡(age)為例，呈現**描述統計**
+
+可以看到平均年齡和中位數都約落在48歲左右，年齡最小為1最小值為18歲、最大為85歲，
 
 ```{r eval=FALSE}
 # 描述統計
-## 使用直接計算方式呈現數值的百分比
-d_age <- WVS_w7_n4 |>
-  count(age) |> 
-  mutate(pct = n / sum(n))
-
-knitr::kable(d_age)
-
 ## 使用summary函數
 summary(WVS_w7_n4[["age"]])
 
 ## 若只想看平均數也可以直接指定
 WVS_w7_n4 |>
   summarize(mean = mean(age))
+```
 
+![](picture/06_5.png)
+
+接著也可以用**直方圖、折線圖或盒形圖**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
+
+```{r eval=FALSE}
 # 畫圖呈現
-## 畫圖(長條圖)呈現數值的百分比
-ggplot(d_age, aes(x = age, y = pct)) +
-  geom_col() +
-  scale_y_continuous(
-    name = "Percent",
-    labels = scales::percent)
-
 ## 畫圖(直方圖)呈現
 ggplot(WVS_w7_n4, aes(x = age)) +
   geom_histogram() ## geom_histogram()是直方圖
@@ -160,9 +167,15 @@ ggplot(WVS_w7_n4, aes(x = "", y = age)) +
   labs(x = "")
 ```
 
+![](picture/06_6.png)\
+![](picture/06_7.png)\
+![](picture/06_8.png)\
+
 ### 兩個類別變項
 
-查看性別(female)與年齡三組(age_g3)的分布，並以堆疊長條圖、並列長條圖呈現
+查看性別(female)與年齡三組(age_g3)的分布，做成**交叉表**的方式呈現
+
+可以看到整體而言，這份資料不同年齡段男女性的比例也都是接近差不多的，男性在中年稍微多一點點、而女性則是在青年和老年稍微多一點點
 
 ```{r eval=FALSE}
 # 交叉表
@@ -173,7 +186,7 @@ d_female <- WVS_w7_n4 |>
   mutate(pct = n / sum(n)) |>
   ungroup()
 
-knitr::kable(d_female)
+d_female
 
 ## 使用table()函數
 with(WVS_w7_n4, table(
@@ -184,7 +197,15 @@ with(WVS_w7_n4, table(
 with(WVS_w7_n4, gmodels::CrossTable(
   female, age_g3
 ))
+```
 
+![](picture/06_9.png)\
+![](picture/06_10.png)\
+![](picture/06_11.png)
+
+接著也可以用**堆疊長條圖、並列長條圖**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
+
+```{r eval=FALSE}
 # 畫圖呈現
 ## 堆疊長條圖
 ggplot(d_female, aes(
@@ -197,15 +218,26 @@ ggplot(d_female, aes(
   geom_col(position = "dodge") ## "dodge" 指定堆疊並列
 ```
 
+![](picture/06_12.png)\
+![](picture/06_13.png)\
+
 ### 兩個數值變項
 
-查看年齡(age)和對於生育小孩是盡社會的責任(duty_child)的看法的關係，計算兩者相關係數，並以散布圖呈現
+查看年齡(age)和對於生育小孩是盡社會的責任(duty_child)的看法的關係，計算兩者**相關係數**
+
+兩者的相關係數約為0.28，算是低度相關
 
 ```{r eval=FALSE}
 # 相關係數
 WVS_w7_n4 |>
   summarize(cor = cor(age, duty_child, use="complete.obs"))
+```
 
+![](picture/06_14.png)
+
+接著也可以用**散布圖、並加上預測線**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
+
+```{r eval=FALSE}
 # 畫圖呈現
 ## 散布圖
 ggplot(WVS_w7_n4, aes(x = age, y = duty_child)) +
@@ -217,51 +249,76 @@ ggplot(WVS_w7_n4, aes(x = age, y = duty_child)) +
   geom_smooth()
 ```
 
+![](picture/06_15.png)\
+![](picture/06_16.png)\
+
 ### 一個類別一個數值變項
 
-查看不同性別(female)，對於生育小孩是盡社會的責任(duty_child)的看法，並以分組盒形圖、分組折線圖呈現
+查看不同性別(female)，對於成年子女有責任長期照顧父母(duty_parents)的看法呈現
+
+可以看到男性平均(3.96)略大於女性(3.7)，代表可能男性相較女性更同意成年子女有責任長期照顧父母，但可能還須進一步的統計去檢驗
 
 ```{r eval=FALSE}
 # 分組描述統計
 WVS_w7_n4 |>
   group_by(female) |> ## 以female做分組
-  summarize(mean = mean(duty_child))
+  summarize(mean = mean(duty_parents))
+```
 
+![](picture/06_17.png)
+
+接著也可以用**分組盒形圖、分組折線圖線**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)並以
+
+```{r eval=FALSE}
 # 畫圖呈現
 ## 分組盒形圖
 ggplot(WVS_w7_n4, aes(
-  x = female, y = duty_child)) +
+  x = female, y = duty_parents)) +
   geom_boxplot()
 
 ## 分組折線圖
 ggplot(WVS_w7_n4, aes(
-  x = duty_child,
+  x = duty_parents,
   color = female)) +
   geom_freqpoly()
 ```
 
+![](picture/06_18.png)\
+![](picture/06_19.png)\
+
 ### 兩個數值變項用類別變項分組
 
-查看不同性別(female)，如何影響對於年齡(age)對於成年子女有責任長期照顧父母(duty_parents)的看法，並以分組散布圖呈現
+查看不同性別(female)，如何影響對於年齡(age)對於生育小孩是盡社會的責任(duty_child)的看法，並以分組散布圖呈現
+
+可以看到年齡和同意生育小孩是盡社會的責任的相關，女性(0.34)似乎比男性(0.23)來的大，但仍都屬於低度相關
 
 ```{r eval=FALSE}
 # 分組相關係數
 WVS_w7_n4 |>
   group_by(female) |> ## 以female做分組
-  summarize(cor = cor(age, duty_parents, use="complete.obs"))
+  summarize(cor = cor(age, duty_child, use="complete.obs"))
+```
 
+![](picture/06_20.png)
+
+接著也可以用**按照性別分組呈現散布圖、並加上預測線**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)並以
+
+```{r eval=FALSE}
 # 畫圖呈現
 ## 分組散布圖
-ggplot(WVS_w7_n4, aes(x = age, y = duty_parents)) +
+ggplot(WVS_w7_n4, aes(x = age, y = duty_child)) +
   geom_point() +
-  geom_smooth() +
   facet_wrap(~ female) ## 按照性別分組
 
 ## 加上預測線
-ggplot(WVS_w7_n4, aes(x = age, y = duty_parents)) +
+ggplot(WVS_w7_n4, aes(x = age, y = duty_child)) +
   geom_point() +
-  geom_smooth()
+  geom_smooth() +
+  facet_wrap(~ female) ## 按照性別分組
 ```
+
+![](picture/06_21.png)\
+![](picture/06_22.png)\
 
 ### 其他進階統計
 

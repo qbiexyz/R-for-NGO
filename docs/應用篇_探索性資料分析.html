@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-06-11" />
+<meta name="date" content="2023-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -366,7 +366,7 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 </div>
 <div id="簡單呈現探索式資料分析" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> 簡單呈現探索式資料分析<a href="應用篇_探索性資料分析.html#簡單呈現探索式資料分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>(<strong>下列接續的分析只是挑選變項來示範，可能兩者並沒有太多關係或意義</strong>)</p>
+<p>(<strong>下列接續的分析只是挑選變項來示範操作，可能兩者並沒有太多關係或意義</strong>)</p>
 <p>在呈現探索式資料分析前，我們可以再一次整體瀏覽一下清理好的資料，<br />
 利用<code>skimr</code>套件可以整體查看分析資料各個變項的狀況(細節可再設定)，<br />
 輸出結果呈現三個表，</p>
@@ -391,7 +391,8 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 </p>
 <div id="單一類別變項" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> 單一類別變項<a href="應用篇_探索性資料分析.html#單一類別變項" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>以性別(female)為例，呈現男女性的次數分配，並以長條圖呈現</p>
+<p>以性別(female)為例，呈現男女性的<strong>次數分配</strong></p>
+<p>可以看到男性的樣本為592筆、佔約49%，女性的樣本稍多一點為625筆、佔約51%</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="應用篇_探索性資料分析.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 次數分配</span></span>
 <span id="cb63-2"><a href="應用篇_探索性資料分析.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 使用直接計算方式</span></span>
 <span id="cb63-3"><a href="應用篇_探索性資料分析.html#cb63-3" aria-hidden="true" tabindex="-1"></a>WVS_w7_n4 <span class="sc">|&gt;</span></span>
@@ -404,156 +405,176 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <span id="cb63-10"><a href="應用篇_探索性資料分析.html#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(WVS_w7_n4[[<span class="st">&quot;female&quot;</span>]])</span>
 <span id="cb63-11"><a href="應用篇_探索性資料分析.html#cb63-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-12"><a href="應用篇_探索性資料分析.html#cb63-12" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(WVS_w7_n4[[<span class="st">&quot;female&quot;</span>]]) <span class="sc">|&gt;</span></span>
-<span id="cb63-13"><a href="應用篇_探索性資料分析.html#cb63-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>()</span>
-<span id="cb63-14"><a href="應用篇_探索性資料分析.html#cb63-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-15"><a href="應用篇_探索性資料分析.html#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
-<span id="cb63-16"><a href="應用篇_探索性資料分析.html#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(長條圖)呈現男女分別樣本數</span></span>
-<span id="cb63-17"><a href="應用篇_探索性資料分析.html#cb63-17" aria-hidden="true" tabindex="-1"></a>d_female <span class="ot">&lt;-</span> WVS_w7_n4 <span class="sc">|&gt;</span></span>
-<span id="cb63-18"><a href="應用篇_探索性資料分析.html#cb63-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(female) <span class="sc">|&gt;</span></span>
-<span id="cb63-19"><a href="應用篇_探索性資料分析.html#cb63-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb63-20"><a href="應用篇_探索性資料分析.html#cb63-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="do">## 計算百分比</span></span>
-<span id="cb63-21"><a href="應用篇_探索性資料分析.html#cb63-21" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb63-22"><a href="應用篇_探索性資料分析.html#cb63-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-23"><a href="應用篇_探索性資料分析.html#cb63-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(<span class="at">x =</span> female, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb63-24"><a href="應用篇_探索性資料分析.html#cb63-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="do">## geom_col()是長條圖</span></span>
-<span id="cb63-25"><a href="應用篇_探索性資料分析.html#cb63-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-26"><a href="應用篇_探索性資料分析.html#cb63-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-27"><a href="應用篇_探索性資料分析.html#cb63-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(長條圖)呈現男女分別百分比</span></span>
-<span id="cb63-28"><a href="應用篇_探索性資料分析.html#cb63-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(<span class="at">x =</span> female, <span class="at">y =</span> pct)) <span class="sc">+</span></span>
-<span id="cb63-29"><a href="應用篇_探索性資料分析.html#cb63-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb63-30"><a href="應用篇_探索性資料分析.html#cb63-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb63-31"><a href="應用篇_探索性資料分析.html#cb63-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;Percent&quot;</span>,</span>
-<span id="cb63-32"><a href="應用篇_探索性資料分析.html#cb63-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span>percent)</span></code></pre></div>
+<span id="cb63-13"><a href="應用篇_探索性資料分析.html#cb63-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>()</span></code></pre></div>
+<p><img src="picture/06_1.png" /><br />
+<img src="picture/06_2.png" /></p>
+<p>接著也可以用<strong>長條圖</strong>先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="應用篇_探索性資料分析.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
+<span id="cb64-2"><a href="應用篇_探索性資料分析.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(長條圖)呈現男女分別樣本數</span></span>
+<span id="cb64-3"><a href="應用篇_探索性資料分析.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 先建立一個次數分配表</span></span>
+<span id="cb64-4"><a href="應用篇_探索性資料分析.html#cb64-4" aria-hidden="true" tabindex="-1"></a>d_female <span class="ot">&lt;-</span> WVS_w7_n4 <span class="sc">|&gt;</span></span>
+<span id="cb64-5"><a href="應用篇_探索性資料分析.html#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(female) <span class="sc">|&gt;</span></span>
+<span id="cb64-6"><a href="應用篇_探索性資料分析.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb64-7"><a href="應用篇_探索性資料分析.html#cb64-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="do">## 計算百分比</span></span>
+<span id="cb64-8"><a href="應用篇_探索性資料分析.html#cb64-8" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb64-9"><a href="應用篇_探索性資料分析.html#cb64-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-10"><a href="應用篇_探索性資料分析.html#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(<span class="at">x =</span> female, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb64-11"><a href="應用篇_探索性資料分析.html#cb64-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="do">## geom_col()是長條圖</span></span>
+<span id="cb64-12"><a href="應用篇_探索性資料分析.html#cb64-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-13"><a href="應用篇_探索性資料分析.html#cb64-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-14"><a href="應用篇_探索性資料分析.html#cb64-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(長條圖)呈現男女分別百分比</span></span>
+<span id="cb64-15"><a href="應用篇_探索性資料分析.html#cb64-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(<span class="at">x =</span> female, <span class="at">y =</span> pct)) <span class="sc">+</span></span>
+<span id="cb64-16"><a href="應用篇_探索性資料分析.html#cb64-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb64-17"><a href="應用篇_探索性資料分析.html#cb64-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb64-18"><a href="應用篇_探索性資料分析.html#cb64-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;Percent&quot;</span>,</span>
+<span id="cb64-19"><a href="應用篇_探索性資料分析.html#cb64-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span>percent)</span></code></pre></div>
+<p><img src="picture/06_3.png" /><br />
+<img src="picture/06_4.png" /><br />
+</p>
 </div>
 <div id="單一數值變項" class="section level3 hasAnchor" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> 單一數值變項<a href="應用篇_探索性資料分析.html#單一數值變項" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>以年齡(age)為例，呈現描述統計，並以直方圖、盒形呈現</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="應用篇_探索性資料分析.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 描述統計</span></span>
-<span id="cb64-2"><a href="應用篇_探索性資料分析.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 使用直接計算方式呈現數值的百分比</span></span>
-<span id="cb64-3"><a href="應用篇_探索性資料分析.html#cb64-3" aria-hidden="true" tabindex="-1"></a>d_age <span class="ot">&lt;-</span> WVS_w7_n4 <span class="sc">|&gt;</span></span>
-<span id="cb64-4"><a href="應用篇_探索性資料分析.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(age) <span class="sc">|&gt;</span> </span>
-<span id="cb64-5"><a href="應用篇_探索性資料分析.html#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
-<span id="cb64-6"><a href="應用篇_探索性資料分析.html#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-7"><a href="應用篇_探索性資料分析.html#cb64-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(d_age)</span>
-<span id="cb64-8"><a href="應用篇_探索性資料分析.html#cb64-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-9"><a href="應用篇_探索性資料分析.html#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 使用summary函數</span></span>
-<span id="cb64-10"><a href="應用篇_探索性資料分析.html#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WVS_w7_n4[[<span class="st">&quot;age&quot;</span>]])</span>
-<span id="cb64-11"><a href="應用篇_探索性資料分析.html#cb64-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-12"><a href="應用篇_探索性資料分析.html#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 若只想看平均數也可以直接指定</span></span>
-<span id="cb64-13"><a href="應用篇_探索性資料分析.html#cb64-13" aria-hidden="true" tabindex="-1"></a>WVS_w7_n4 <span class="sc">|&gt;</span></span>
-<span id="cb64-14"><a href="應用篇_探索性資料分析.html#cb64-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(age))</span>
-<span id="cb64-15"><a href="應用篇_探索性資料分析.html#cb64-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-16"><a href="應用篇_探索性資料分析.html#cb64-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
-<span id="cb64-17"><a href="應用篇_探索性資料分析.html#cb64-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(長條圖)呈現數值的百分比</span></span>
-<span id="cb64-18"><a href="應用篇_探索性資料分析.html#cb64-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_age, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> pct)) <span class="sc">+</span></span>
-<span id="cb64-19"><a href="應用篇_探索性資料分析.html#cb64-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb64-20"><a href="應用篇_探索性資料分析.html#cb64-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb64-21"><a href="應用篇_探索性資料分析.html#cb64-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;Percent&quot;</span>,</span>
-<span id="cb64-22"><a href="應用篇_探索性資料分析.html#cb64-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
-<span id="cb64-23"><a href="應用篇_探索性資料分析.html#cb64-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-24"><a href="應用篇_探索性資料分析.html#cb64-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(直方圖)呈現</span></span>
-<span id="cb64-25"><a href="應用篇_探索性資料分析.html#cb64-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
-<span id="cb64-26"><a href="應用篇_探索性資料分析.html#cb64-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="do">## geom_histogram()是直方圖</span></span>
-<span id="cb64-27"><a href="應用篇_探索性資料分析.html#cb64-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-28"><a href="應用篇_探索性資料分析.html#cb64-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(折線圖)呈現</span></span>
-<span id="cb64-29"><a href="應用篇_探索性資料分析.html#cb64-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
-<span id="cb64-30"><a href="應用篇_探索性資料分析.html#cb64-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">bins =</span> <span class="dv">30</span>) <span class="do">## geom_histogram()是折線圖</span></span>
-<span id="cb64-31"><a href="應用篇_探索性資料分析.html#cb64-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-32"><a href="應用篇_探索性資料分析.html#cb64-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(盒形圖)呈現</span></span>
-<span id="cb64-33"><a href="應用篇_探索性資料分析.html#cb64-33" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> age)) <span class="sc">+</span></span>
-<span id="cb64-34"><a href="應用篇_探索性資料分析.html#cb64-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="do">## geom_boxplot()是折線圖</span></span>
-<span id="cb64-35"><a href="應用篇_探索性資料分析.html#cb64-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>以年齡(age)為例，呈現<strong>描述統計</strong></p>
+<p>可以看到平均年齡和中位數都約落在48歲左右，年齡最小為1最小值為18歲、最大為85歲，</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="應用篇_探索性資料分析.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 描述統計</span></span>
+<span id="cb65-2"><a href="應用篇_探索性資料分析.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 使用summary函數</span></span>
+<span id="cb65-3"><a href="應用篇_探索性資料分析.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WVS_w7_n4[[<span class="st">&quot;age&quot;</span>]])</span>
+<span id="cb65-4"><a href="應用篇_探索性資料分析.html#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="應用篇_探索性資料分析.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 若只想看平均數也可以直接指定</span></span>
+<span id="cb65-6"><a href="應用篇_探索性資料分析.html#cb65-6" aria-hidden="true" tabindex="-1"></a>WVS_w7_n4 <span class="sc">|&gt;</span></span>
+<span id="cb65-7"><a href="應用篇_探索性資料分析.html#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(age))</span></code></pre></div>
+<p><img src="picture/06_5.png" /></p>
+<p>接著也可以用<strong>直方圖、折線圖或盒形圖</strong>先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="應用篇_探索性資料分析.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
+<span id="cb66-2"><a href="應用篇_探索性資料分析.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(直方圖)呈現</span></span>
+<span id="cb66-3"><a href="應用篇_探索性資料分析.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<span id="cb66-4"><a href="應用篇_探索性資料分析.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="do">## geom_histogram()是直方圖</span></span>
+<span id="cb66-5"><a href="應用篇_探索性資料分析.html#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="應用篇_探索性資料分析.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(折線圖)呈現</span></span>
+<span id="cb66-7"><a href="應用篇_探索性資料分析.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<span id="cb66-8"><a href="應用篇_探索性資料分析.html#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">bins =</span> <span class="dv">30</span>) <span class="do">## geom_histogram()是折線圖</span></span>
+<span id="cb66-9"><a href="應用篇_探索性資料分析.html#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-10"><a href="應用篇_探索性資料分析.html#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 畫圖(盒形圖)呈現</span></span>
+<span id="cb66-11"><a href="應用篇_探索性資料分析.html#cb66-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> age)) <span class="sc">+</span></span>
+<span id="cb66-12"><a href="應用篇_探索性資料分析.html#cb66-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="do">## geom_boxplot()是折線圖</span></span>
+<span id="cb66-13"><a href="應用篇_探索性資料分析.html#cb66-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="picture/06_6.png" /><br />
+<img src="picture/06_7.png" /><br />
+<img src="picture/06_8.png" /><br />
+</p>
 </div>
 <div id="兩個類別變項" class="section level3 hasAnchor" number="7.2.3">
 <h3><span class="header-section-number">7.2.3</span> 兩個類別變項<a href="應用篇_探索性資料分析.html#兩個類別變項" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>查看性別(female)與年齡三組(age_g3)的分布，並以堆疊長條圖、並列長條圖呈現</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="應用篇_探索性資料分析.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 交叉表</span></span>
-<span id="cb65-2"><a href="應用篇_探索性資料分析.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 用計算方式</span></span>
-<span id="cb65-3"><a href="應用篇_探索性資料分析.html#cb65-3" aria-hidden="true" tabindex="-1"></a>d_female <span class="ot">&lt;-</span> WVS_w7_n4 <span class="sc">|&gt;</span></span>
-<span id="cb65-4"><a href="應用篇_探索性資料分析.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(female, age_g3) <span class="sc">|&gt;</span></span>
-<span id="cb65-5"><a href="應用篇_探索性資料分析.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
-<span id="cb65-6"><a href="應用篇_探索性資料分析.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb65-7"><a href="應用篇_探索性資料分析.html#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb65-8"><a href="應用篇_探索性資料分析.html#cb65-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-9"><a href="應用篇_探索性資料分析.html#cb65-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(d_female)</span>
-<span id="cb65-10"><a href="應用篇_探索性資料分析.html#cb65-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-11"><a href="應用篇_探索性資料分析.html#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 使用table()函數</span></span>
-<span id="cb65-12"><a href="應用篇_探索性資料分析.html#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(WVS_w7_n4, <span class="fu">table</span>(</span>
-<span id="cb65-13"><a href="應用篇_探索性資料分析.html#cb65-13" aria-hidden="true" tabindex="-1"></a>  female, age_g3</span>
-<span id="cb65-14"><a href="應用篇_探索性資料分析.html#cb65-14" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb65-15"><a href="應用篇_探索性資料分析.html#cb65-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-16"><a href="應用篇_探索性資料分析.html#cb65-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 使用CrossTable()函數</span></span>
-<span id="cb65-17"><a href="應用篇_探索性資料分析.html#cb65-17" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(WVS_w7_n4, gmodels<span class="sc">::</span><span class="fu">CrossTable</span>(</span>
-<span id="cb65-18"><a href="應用篇_探索性資料分析.html#cb65-18" aria-hidden="true" tabindex="-1"></a>  female, age_g3</span>
-<span id="cb65-19"><a href="應用篇_探索性資料分析.html#cb65-19" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb65-20"><a href="應用篇_探索性資料分析.html#cb65-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-21"><a href="應用篇_探索性資料分析.html#cb65-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
-<span id="cb65-22"><a href="應用篇_探索性資料分析.html#cb65-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 堆疊長條圖</span></span>
-<span id="cb65-23"><a href="應用篇_探索性資料分析.html#cb65-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(</span>
-<span id="cb65-24"><a href="應用篇_探索性資料分析.html#cb65-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> age_g3, <span class="at">fill =</span> female, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb65-25"><a href="應用篇_探索性資料分析.html#cb65-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;stack&quot;</span>) <span class="do">## &quot;stack&quot; 指定堆疊</span></span>
-<span id="cb65-26"><a href="應用篇_探索性資料分析.html#cb65-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-27"><a href="應用篇_探索性資料分析.html#cb65-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 並列長條圖</span></span>
-<span id="cb65-28"><a href="應用篇_探索性資料分析.html#cb65-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(</span>
-<span id="cb65-29"><a href="應用篇_探索性資料分析.html#cb65-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> age_g3, <span class="at">fill =</span> female, <span class="at">y =</span> pct)) <span class="sc">+</span> </span>
-<span id="cb65-30"><a href="應用篇_探索性資料分析.html#cb65-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="do">## &quot;dodge&quot; 指定堆疊並列</span></span></code></pre></div>
+<p>查看性別(female)與年齡三組(age_g3)的分布，做成<strong>交叉表</strong>的方式呈現</p>
+<p>可以看到整體而言，這份資料不同年齡段男女性的比例也都是接近差不多的，男性在中年稍微多一點點、而女性則是在青年和老年稍微多一點點</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="應用篇_探索性資料分析.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 交叉表</span></span>
+<span id="cb67-2"><a href="應用篇_探索性資料分析.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 用計算方式</span></span>
+<span id="cb67-3"><a href="應用篇_探索性資料分析.html#cb67-3" aria-hidden="true" tabindex="-1"></a>d_female <span class="ot">&lt;-</span> WVS_w7_n4 <span class="sc">|&gt;</span></span>
+<span id="cb67-4"><a href="應用篇_探索性資料分析.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(female, age_g3) <span class="sc">|&gt;</span></span>
+<span id="cb67-5"><a href="應用篇_探索性資料分析.html#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
+<span id="cb67-6"><a href="應用篇_探索性資料分析.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb67-7"><a href="應用篇_探索性資料分析.html#cb67-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb67-8"><a href="應用篇_探索性資料分析.html#cb67-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-9"><a href="應用篇_探索性資料分析.html#cb67-9" aria-hidden="true" tabindex="-1"></a>d_female</span>
+<span id="cb67-10"><a href="應用篇_探索性資料分析.html#cb67-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-11"><a href="應用篇_探索性資料分析.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 使用table()函數</span></span>
+<span id="cb67-12"><a href="應用篇_探索性資料分析.html#cb67-12" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(WVS_w7_n4, <span class="fu">table</span>(</span>
+<span id="cb67-13"><a href="應用篇_探索性資料分析.html#cb67-13" aria-hidden="true" tabindex="-1"></a>  female, age_g3</span>
+<span id="cb67-14"><a href="應用篇_探索性資料分析.html#cb67-14" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb67-15"><a href="應用篇_探索性資料分析.html#cb67-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-16"><a href="應用篇_探索性資料分析.html#cb67-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 使用CrossTable()函數</span></span>
+<span id="cb67-17"><a href="應用篇_探索性資料分析.html#cb67-17" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(WVS_w7_n4, gmodels<span class="sc">::</span><span class="fu">CrossTable</span>(</span>
+<span id="cb67-18"><a href="應用篇_探索性資料分析.html#cb67-18" aria-hidden="true" tabindex="-1"></a>  female, age_g3</span>
+<span id="cb67-19"><a href="應用篇_探索性資料分析.html#cb67-19" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+<p><img src="picture/06_9.png" /><br />
+<img src="picture/06_10.png" /><br />
+<img src="picture/06_11.png" /></p>
+<p>接著也可以用<strong>堆疊長條圖、並列長條圖</strong>先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="應用篇_探索性資料分析.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
+<span id="cb68-2"><a href="應用篇_探索性資料分析.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 堆疊長條圖</span></span>
+<span id="cb68-3"><a href="應用篇_探索性資料分析.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(</span>
+<span id="cb68-4"><a href="應用篇_探索性資料分析.html#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> age_g3, <span class="at">fill =</span> female, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb68-5"><a href="應用篇_探索性資料分析.html#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;stack&quot;</span>) <span class="do">## &quot;stack&quot; 指定堆疊</span></span>
+<span id="cb68-6"><a href="應用篇_探索性資料分析.html#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="應用篇_探索性資料分析.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 並列長條圖</span></span>
+<span id="cb68-8"><a href="應用篇_探索性資料分析.html#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(</span>
+<span id="cb68-9"><a href="應用篇_探索性資料分析.html#cb68-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> age_g3, <span class="at">fill =</span> female, <span class="at">y =</span> pct)) <span class="sc">+</span> </span>
+<span id="cb68-10"><a href="應用篇_探索性資料分析.html#cb68-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="do">## &quot;dodge&quot; 指定堆疊並列</span></span></code></pre></div>
+<p><img src="picture/06_12.png" /><br />
+<img src="picture/06_13.png" /><br />
+</p>
 </div>
 <div id="兩個數值變項" class="section level3 hasAnchor" number="7.2.4">
 <h3><span class="header-section-number">7.2.4</span> 兩個數值變項<a href="應用篇_探索性資料分析.html#兩個數值變項" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>查看年齡(age)和對於生育小孩是盡社會的責任(duty_child)的看法的關係，計算兩者相關係數，並以散布圖呈現</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="應用篇_探索性資料分析.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 相關係數</span></span>
-<span id="cb66-2"><a href="應用篇_探索性資料分析.html#cb66-2" aria-hidden="true" tabindex="-1"></a>WVS_w7_n4 <span class="sc">|&gt;</span></span>
-<span id="cb66-3"><a href="應用篇_探索性資料分析.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(age, duty_child, <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>))</span>
-<span id="cb66-4"><a href="應用篇_探索性資料分析.html#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-5"><a href="應用篇_探索性資料分析.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
-<span id="cb66-6"><a href="應用篇_探索性資料分析.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 散布圖</span></span>
-<span id="cb66-7"><a href="應用篇_探索性資料分析.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> duty_child)) <span class="sc">+</span></span>
-<span id="cb66-8"><a href="應用篇_探索性資料分析.html#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="do">## geom_point()是散布圖</span></span>
-<span id="cb66-9"><a href="應用篇_探索性資料分析.html#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-10"><a href="應用篇_探索性資料分析.html#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 加上預測線</span></span>
-<span id="cb66-11"><a href="應用篇_探索性資料分析.html#cb66-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> duty_child)) <span class="sc">+</span></span>
-<span id="cb66-12"><a href="應用篇_探索性資料分析.html#cb66-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb66-13"><a href="應用篇_探索性資料分析.html#cb66-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<p>查看年齡(age)和對於生育小孩是盡社會的責任(duty_child)的看法的關係，計算兩者<strong>相關係數</strong></p>
+<p>兩者的相關係數約為0.28，算是低度相關</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="應用篇_探索性資料分析.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 相關係數</span></span>
+<span id="cb69-2"><a href="應用篇_探索性資料分析.html#cb69-2" aria-hidden="true" tabindex="-1"></a>WVS_w7_n4 <span class="sc">|&gt;</span></span>
+<span id="cb69-3"><a href="應用篇_探索性資料分析.html#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(age, duty_child, <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>))</span></code></pre></div>
+<p><img src="picture/06_14.png" /></p>
+<p>接著也可以用<strong>散布圖、並加上預測線</strong>先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="應用篇_探索性資料分析.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
+<span id="cb70-2"><a href="應用篇_探索性資料分析.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 散布圖</span></span>
+<span id="cb70-3"><a href="應用篇_探索性資料分析.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> duty_child)) <span class="sc">+</span></span>
+<span id="cb70-4"><a href="應用篇_探索性資料分析.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="do">## geom_point()是散布圖</span></span>
+<span id="cb70-5"><a href="應用篇_探索性資料分析.html#cb70-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-6"><a href="應用篇_探索性資料分析.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 加上預測線</span></span>
+<span id="cb70-7"><a href="應用篇_探索性資料分析.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> duty_child)) <span class="sc">+</span></span>
+<span id="cb70-8"><a href="應用篇_探索性資料分析.html#cb70-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb70-9"><a href="應用篇_探索性資料分析.html#cb70-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<p><img src="picture/06_15.png" /><br />
+<img src="picture/06_16.png" /><br />
+</p>
 </div>
 <div id="一個類別一個數值變項" class="section level3 hasAnchor" number="7.2.5">
 <h3><span class="header-section-number">7.2.5</span> 一個類別一個數值變項<a href="應用篇_探索性資料分析.html#一個類別一個數值變項" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>查看不同性別(female)，對於生育小孩是盡社會的責任(duty_child)的看法，並以分組盒形圖、分組折線圖呈現</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="應用篇_探索性資料分析.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 分組描述統計</span></span>
-<span id="cb67-2"><a href="應用篇_探索性資料分析.html#cb67-2" aria-hidden="true" tabindex="-1"></a>WVS_w7_n4 <span class="sc">|&gt;</span></span>
-<span id="cb67-3"><a href="應用篇_探索性資料分析.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
-<span id="cb67-4"><a href="應用篇_探索性資料分析.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(duty_child))</span>
-<span id="cb67-5"><a href="應用篇_探索性資料分析.html#cb67-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-6"><a href="應用篇_探索性資料分析.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
-<span id="cb67-7"><a href="應用篇_探索性資料分析.html#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 分組盒形圖</span></span>
-<span id="cb67-8"><a href="應用篇_探索性資料分析.html#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(</span>
-<span id="cb67-9"><a href="應用篇_探索性資料分析.html#cb67-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> female, <span class="at">y =</span> duty_child)) <span class="sc">+</span></span>
-<span id="cb67-10"><a href="應用篇_探索性資料分析.html#cb67-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb67-11"><a href="應用篇_探索性資料分析.html#cb67-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-12"><a href="應用篇_探索性資料分析.html#cb67-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 分組折線圖</span></span>
-<span id="cb67-13"><a href="應用篇_探索性資料分析.html#cb67-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(</span>
-<span id="cb67-14"><a href="應用篇_探索性資料分析.html#cb67-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> duty_child,</span>
-<span id="cb67-15"><a href="應用篇_探索性資料分析.html#cb67-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> female)) <span class="sc">+</span></span>
-<span id="cb67-16"><a href="應用篇_探索性資料分析.html#cb67-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>()</span></code></pre></div>
+<p>查看不同性別(female)，對於成年子女有責任長期照顧父母(duty_parents)的看法呈現</p>
+<p>可以看到男性平均(3.96)略大於女性(3.7)，代表可能男性相較女性更同意成年子女有責任長期照顧父母，但可能還須進一步的統計去檢驗</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="應用篇_探索性資料分析.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 分組描述統計</span></span>
+<span id="cb71-2"><a href="應用篇_探索性資料分析.html#cb71-2" aria-hidden="true" tabindex="-1"></a>WVS_w7_n4 <span class="sc">|&gt;</span></span>
+<span id="cb71-3"><a href="應用篇_探索性資料分析.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
+<span id="cb71-4"><a href="應用篇_探索性資料分析.html#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(duty_parents))</span></code></pre></div>
+<p><img src="picture/06_17.png" /></p>
+<p>接著也可以用<strong>分組盒形圖、分組折線圖線</strong>先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)並以</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="應用篇_探索性資料分析.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
+<span id="cb72-2"><a href="應用篇_探索性資料分析.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 分組盒形圖</span></span>
+<span id="cb72-3"><a href="應用篇_探索性資料分析.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(</span>
+<span id="cb72-4"><a href="應用篇_探索性資料分析.html#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> female, <span class="at">y =</span> duty_parents)) <span class="sc">+</span></span>
+<span id="cb72-5"><a href="應用篇_探索性資料分析.html#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb72-6"><a href="應用篇_探索性資料分析.html#cb72-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-7"><a href="應用篇_探索性資料分析.html#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 分組折線圖</span></span>
+<span id="cb72-8"><a href="應用篇_探索性資料分析.html#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(</span>
+<span id="cb72-9"><a href="應用篇_探索性資料分析.html#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> duty_parents,</span>
+<span id="cb72-10"><a href="應用篇_探索性資料分析.html#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> female)) <span class="sc">+</span></span>
+<span id="cb72-11"><a href="應用篇_探索性資料分析.html#cb72-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>()</span></code></pre></div>
+<p><img src="picture/06_18.png" /><br />
+<img src="picture/06_19.png" /><br />
+</p>
 </div>
 <div id="兩個數值變項用類別變項分組" class="section level3 hasAnchor" number="7.2.6">
 <h3><span class="header-section-number">7.2.6</span> 兩個數值變項用類別變項分組<a href="應用篇_探索性資料分析.html#兩個數值變項用類別變項分組" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>查看不同性別(female)，如何影響對於年齡(age)對於成年子女有責任長期照顧父母(duty_parents)的看法，並以分組散布圖呈現</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="應用篇_探索性資料分析.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 分組相關係數</span></span>
-<span id="cb68-2"><a href="應用篇_探索性資料分析.html#cb68-2" aria-hidden="true" tabindex="-1"></a>WVS_w7_n4 <span class="sc">|&gt;</span></span>
-<span id="cb68-3"><a href="應用篇_探索性資料分析.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
-<span id="cb68-4"><a href="應用篇_探索性資料分析.html#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(age, duty_parents, <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>))</span>
-<span id="cb68-5"><a href="應用篇_探索性資料分析.html#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-6"><a href="應用篇_探索性資料分析.html#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
-<span id="cb68-7"><a href="應用篇_探索性資料分析.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 分組散布圖</span></span>
-<span id="cb68-8"><a href="應用篇_探索性資料分析.html#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> duty_parents)) <span class="sc">+</span></span>
-<span id="cb68-9"><a href="應用篇_探索性資料分析.html#cb68-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb68-10"><a href="應用篇_探索性資料分析.html#cb68-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb68-11"><a href="應用篇_探索性資料分析.html#cb68-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> female) <span class="do">## 按照性別分組</span></span>
-<span id="cb68-12"><a href="應用篇_探索性資料分析.html#cb68-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-13"><a href="應用篇_探索性資料分析.html#cb68-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 加上預測線</span></span>
-<span id="cb68-14"><a href="應用篇_探索性資料分析.html#cb68-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> duty_parents)) <span class="sc">+</span></span>
-<span id="cb68-15"><a href="應用篇_探索性資料分析.html#cb68-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb68-16"><a href="應用篇_探索性資料分析.html#cb68-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<p>查看不同性別(female)，如何影響對於年齡(age)對於生育小孩是盡社會的責任(duty_child)的看法，並以分組散布圖呈現</p>
+<p>可以看到年齡和同意生育小孩是盡社會的責任的相關，女性(0.34)似乎比男性(0.23)來的大，但仍都屬於低度相關</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="應用篇_探索性資料分析.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 分組相關係數</span></span>
+<span id="cb73-2"><a href="應用篇_探索性資料分析.html#cb73-2" aria-hidden="true" tabindex="-1"></a>WVS_w7_n4 <span class="sc">|&gt;</span></span>
+<span id="cb73-3"><a href="應用篇_探索性資料分析.html#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
+<span id="cb73-4"><a href="應用篇_探索性資料分析.html#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(age, duty_child, <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>))</span></code></pre></div>
+<p><img src="picture/06_20.png" /></p>
+<p>接著也可以用<strong>按照性別分組呈現散布圖、並加上預測線</strong>先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)並以</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="應用篇_探索性資料分析.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 畫圖呈現</span></span>
+<span id="cb74-2"><a href="應用篇_探索性資料分析.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 分組散布圖</span></span>
+<span id="cb74-3"><a href="應用篇_探索性資料分析.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> duty_child)) <span class="sc">+</span></span>
+<span id="cb74-4"><a href="應用篇_探索性資料分析.html#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb74-5"><a href="應用篇_探索性資料分析.html#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> female) <span class="do">## 按照性別分組</span></span>
+<span id="cb74-6"><a href="應用篇_探索性資料分析.html#cb74-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-7"><a href="應用篇_探索性資料分析.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 加上預測線</span></span>
+<span id="cb74-8"><a href="應用篇_探索性資料分析.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(WVS_w7_n4, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> duty_child)) <span class="sc">+</span></span>
+<span id="cb74-9"><a href="應用篇_探索性資料分析.html#cb74-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb74-10"><a href="應用篇_探索性資料分析.html#cb74-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb74-11"><a href="應用篇_探索性資料分析.html#cb74-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> female) <span class="do">## 按照性別分組</span></span></code></pre></div>
+<p><img src="picture/06_21.png" /><br />
+<img src="picture/06_22.png" /><br />
+</p>
 </div>
 <div id="其他進階統計" class="section level3 hasAnchor" number="7.2.7">
 <h3><span class="header-section-number">7.2.7</span> 其他進階統計<a href="應用篇_探索性資料分析.html#其他進階統計" class="anchor-section" aria-label="Anchor link to header"></a></h3>

@@ -67,7 +67,7 @@ install.packages("haven")
 
 # 載入套件：
 library(haven)
-# or
+## or
 require(haven)
 
 # 查詢套件/函數用法
