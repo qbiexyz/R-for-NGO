@@ -38,7 +38,9 @@ R Script(.R file)是純粹執行R的語法\
 
 ### 新建R project
 
-![](picture/new_project.png) ![](picture/new_project2.png) 若想要執行的是一個計劃或同一個工作，可能會想將檔案或資料集中在同一個地方，這時可以新建一個New Project的資料夾，將東西統一存放
+![](picture/new_project.png) ![](picture/new_project2.png)
+
+若想要執行的是一個計劃或同一個工作，可能會想將檔案或資料集中在同一個地方，這時可以新建一個New Project的資料夾，將東西統一存放
 
 New Project -\> New Directory -\> New Project -\> 設定Project Name 和放檔案的路徑與資料夾
 
