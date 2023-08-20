@@ -122,20 +122,24 @@ d_female <- R_use_analysis |>
 
 -   畫長條圖呈現男女分別次數
 
-```{r}
+```{r eval=FALSE}
 ggplot(d_female, aes(x = female, y = n)) +
   geom_col() ## geom_col()是長條圖
 ```
 
+![](picture/0601.png)
+
 -   畫長條圖呈現男女分別百分比
 
-```{r}
+```{r eval=FALSE}
 ggplot(d_female, aes(x = female, y = pct)) +
   geom_col() +
   scale_y_continuous(
     name = "Percent",
     labels = scales::percent)
 ```
+
+![](picture/0602.png)
 
 可以看到男性的樣本為48筆、佔約48%，女性的樣本稍多一點為52筆、佔約52%。
 
@@ -162,25 +166,31 @@ R_use_analysis |>
 
 -   直方圖呈現
 
-```{r}
+```{r eval=FALSE}
 ggplot(R_use_analysis, aes(x = bmi)) +
   geom_histogram() ## geom_histogram()是直方圖
 ```
 
+![](picture/0603.png)
+
 -   折線圖呈現
 
-```{r}
+```{r eval=FALSE}
 ggplot(R_use_analysis, aes(x = bmi)) +
   geom_freqpoly(bins = 30) ## geom_histogram()是折線圖
 ```
 
+![](picture/0604.png)
+
 -   盒形圖呈現
 
-```{r}
+```{r eval=FALSE}
 ggplot(R_use_analysis, aes(x = "", y = bmi)) +
   geom_boxplot() + ## geom_boxplot()是折線圖
   labs(x = "")
 ```
+
+![](picture/0605.png)
 
 可以看到平均bmi約落在23.94左右，最小為17.21、最大為35.11。
 
@@ -222,19 +232,23 @@ with(R_use_analysis, gmodels::CrossTable(
 
 -   並列長條圖
 
-```{r}
+```{r eval=FALSE}
 ggplot(d_female, aes(
   x = fitness, fill = female, y = pct)) + 
   geom_col(position = "dodge") ## "dodge" 指定堆疊並列
 ```
 
+![](picture/0607.png)
+
 -   堆疊長條圖
 
-```{r}
+```{r eval=FALSE}
 ggplot(d_female, aes(
   x = fitness, fill = female, y = n)) +
   geom_col(position = "stack") ## "stack" 指定堆疊
 ```
+
+![](picture/0608.png)
 
 可以看到整體而言，女性相較於男性稍微有多一點的塑身意願。
 
@@ -255,18 +269,22 @@ R_use_analysis |>
 
 -   散布圖
 
-```{r}
+```{r eval=FALSE}
 ggplot(R_use_analysis, aes(x = age, y = bmi)) +
   geom_point() ## geom_point()是散布圖
 ```
 
+![](picture/0609.png)
+
 -   加上預測線
 
-```{r}
+```{r eval=FALSE}
 ggplot(R_use_analysis, aes(x = age, y = bmi)) +
   geom_point() +
   geom_smooth(method = "glm")
 ```
+
+![](picture/0610.png)
 
 ### 一個類別一個數值變項
 
@@ -284,20 +302,24 @@ R_use_analysis |>
 
 -   分組盒形圖
 
-```{r}
+```{r eval=FALSE}
 ggplot(R_use_analysis, aes(
   x = female, y = bmi)) +
   geom_boxplot()
 ```
 
+![](picture/0611.png)
+
 -   分組折線圖
 
-```{r}
+```{r eval=FALSE}
 ggplot(R_use_analysis, aes(
   x = bmi,
   color = female)) +
   geom_freqpoly()
 ```
+
+![](picture/0612.png)
 
 可以看到男性的bmi平均為25.63，女性的bmi平均為22.37，男性的bmi略大於女性。
 
@@ -317,20 +339,24 @@ R_use_analysis |>
 
 -   分組散布圖
 
-```{r}
+```{r eval=FALSE}
 ggplot(R_use_analysis, aes(x = age, y = bmi)) +
   geom_point() +
   facet_wrap(~ female) ## 按照性別分組
 ```
 
+![](picture/0613.png)
+
 -   加上預測線
 
-```{r}
+```{r eval=FALSE}
 ggplot(R_use_analysis, aes(x = age, y = bmi)) +
   geom_point() +
   geom_smooth(method = "glm") +
   facet_wrap(~ female) ## 按照性別分組
 ```
+
+![](picture/0614.png)
 
 可以看到不管性別為何，年齡和bmi之間的關係都是低度的正相關，但女性(0.30)的影響似乎比男性(0.16)來的大。
 

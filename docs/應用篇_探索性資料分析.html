@@ -471,7 +471,7 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 </ul>
 <div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="應用篇_探索性資料分析.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(<span class="at">x =</span> female, <span class="at">y =</span> n)) <span class="sc">+</span></span>
 <span id="cb263-2"><a href="應用篇_探索性資料分析.html#cb263-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="do">## geom_col()是長條圖</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+<p><img src="picture/0601.png" /></p>
 <ul>
 <li>畫長條圖呈現男女分別百分比</li>
 </ul>
@@ -480,7 +480,7 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <span id="cb264-3"><a href="應用篇_探索性資料分析.html#cb264-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
 <span id="cb264-4"><a href="應用篇_探索性資料分析.html#cb264-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;Percent&quot;</span>,</span>
 <span id="cb264-5"><a href="應用篇_探索性資料分析.html#cb264-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span>percent)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
+<p><img src="picture/0602.png" /></p>
 <p>可以看到男性的樣本為48筆、佔約48%，女性的樣本稍多一點為52筆、佔約52%。</p>
 </div>
 <div id="單一數值變項" class="section level3 hasAnchor" number="7.2.2">
@@ -506,22 +506,20 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 </ul>
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="應用篇_探索性資料分析.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> bmi)) <span class="sc">+</span></span>
 <span id="cb269-2"><a href="應用篇_探索性資料分析.html#cb269-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="do">## geom_histogram()是直方圖</span></span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick
-## better value with `binwidth`.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
+<p><img src="picture/0603.png" /></p>
 <ul>
 <li>折線圖呈現</li>
 </ul>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="應用篇_探索性資料分析.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> bmi)) <span class="sc">+</span></span>
-<span id="cb271-2"><a href="應用篇_探索性資料分析.html#cb271-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">bins =</span> <span class="dv">30</span>) <span class="do">## geom_histogram()是折線圖</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="應用篇_探索性資料分析.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> bmi)) <span class="sc">+</span></span>
+<span id="cb270-2"><a href="應用篇_探索性資料分析.html#cb270-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">bins =</span> <span class="dv">30</span>) <span class="do">## geom_histogram()是折線圖</span></span></code></pre></div>
+<p><img src="picture/0604.png" /></p>
 <ul>
 <li>盒形圖呈現</li>
 </ul>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="應用篇_探索性資料分析.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
-<span id="cb272-2"><a href="應用篇_探索性資料分析.html#cb272-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="do">## geom_boxplot()是折線圖</span></span>
-<span id="cb272-3"><a href="應用篇_探索性資料分析.html#cb272-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="應用篇_探索性資料分析.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
+<span id="cb271-2"><a href="應用篇_探索性資料分析.html#cb271-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="do">## geom_boxplot()是折線圖</span></span>
+<span id="cb271-3"><a href="應用篇_探索性資料分析.html#cb271-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="picture/0605.png" /></p>
 <p>可以看到平均bmi約落在23.94左右，最小為17.21、最大為35.11。</p>
 </div>
 <div id="兩個類別變項" class="section level3 hasAnchor" number="7.2.3">
@@ -531,13 +529,13 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <ul>
 <li>用計算方式</li>
 </ul>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="應用篇_探索性資料分析.html#cb273-1" aria-hidden="true" tabindex="-1"></a>d_female <span class="ot">&lt;-</span> R_use_analysis <span class="sc">|&gt;</span></span>
-<span id="cb273-2"><a href="應用篇_探索性資料分析.html#cb273-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(female, fitness) <span class="sc">|&gt;</span></span>
-<span id="cb273-3"><a href="應用篇_探索性資料分析.html#cb273-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
-<span id="cb273-4"><a href="應用篇_探索性資料分析.html#cb273-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb273-5"><a href="應用篇_探索性資料分析.html#cb273-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb273-6"><a href="應用篇_探索性資料分析.html#cb273-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb273-7"><a href="應用篇_探索性資料分析.html#cb273-7" aria-hidden="true" tabindex="-1"></a>d_female</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="應用篇_探索性資料分析.html#cb272-1" aria-hidden="true" tabindex="-1"></a>d_female <span class="ot">&lt;-</span> R_use_analysis <span class="sc">|&gt;</span></span>
+<span id="cb272-2"><a href="應用篇_探索性資料分析.html#cb272-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(female, fitness) <span class="sc">|&gt;</span></span>
+<span id="cb272-3"><a href="應用篇_探索性資料分析.html#cb272-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
+<span id="cb272-4"><a href="應用篇_探索性資料分析.html#cb272-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb272-5"><a href="應用篇_探索性資料分析.html#cb272-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb272-6"><a href="應用篇_探索性資料分析.html#cb272-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-7"><a href="應用篇_探索性資料分析.html#cb272-7" aria-hidden="true" tabindex="-1"></a>d_female</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 4
 ##   female fitness     n   pct
 ##   &lt;fct&gt;  &lt;fct&gt;   &lt;int&gt; &lt;dbl&gt;
@@ -548,9 +546,9 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <ul>
 <li>使用<code>table()</code>函數</li>
 </ul>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="應用篇_探索性資料分析.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(R_use_analysis, <span class="fu">table</span>(</span>
-<span id="cb275-2"><a href="應用篇_探索性資料分析.html#cb275-2" aria-hidden="true" tabindex="-1"></a>  female, fitness</span>
-<span id="cb275-3"><a href="應用篇_探索性資料分析.html#cb275-3" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="應用篇_探索性資料分析.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(R_use_analysis, <span class="fu">table</span>(</span>
+<span id="cb274-2"><a href="應用篇_探索性資料分析.html#cb274-2" aria-hidden="true" tabindex="-1"></a>  female, fitness</span>
+<span id="cb274-3"><a href="應用篇_探索性資料分析.html#cb274-3" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
 <pre><code>##       fitness
 ## female  0  1
 ##     男 32 16
@@ -558,9 +556,9 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <ul>
 <li>使用<code>CrossTable()</code>函數</li>
 </ul>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="應用篇_探索性資料分析.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(R_use_analysis, gmodels<span class="sc">::</span><span class="fu">CrossTable</span>(</span>
-<span id="cb277-2"><a href="應用篇_探索性資料分析.html#cb277-2" aria-hidden="true" tabindex="-1"></a>  female, fitness</span>
-<span id="cb277-3"><a href="應用篇_探索性資料分析.html#cb277-3" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="應用篇_探索性資料分析.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(R_use_analysis, gmodels<span class="sc">::</span><span class="fu">CrossTable</span>(</span>
+<span id="cb276-2"><a href="應用篇_探索性資料分析.html#cb276-2" aria-hidden="true" tabindex="-1"></a>  female, fitness</span>
+<span id="cb276-3"><a href="應用篇_探索性資料分析.html#cb276-3" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
 <pre><code>## Registered S3 method overwritten by &#39;gdata&#39;:
 ##   method         from     
 ##   reorder.factor DescTools</code></pre>
@@ -603,17 +601,17 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <ul>
 <li>並列長條圖</li>
 </ul>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="應用篇_探索性資料分析.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(</span>
-<span id="cb280-2"><a href="應用篇_探索性資料分析.html#cb280-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> fitness, <span class="at">fill =</span> female, <span class="at">y =</span> pct)) <span class="sc">+</span> </span>
-<span id="cb280-3"><a href="應用篇_探索性資料分析.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="do">## &quot;dodge&quot; 指定堆疊並列</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="應用篇_探索性資料分析.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(</span>
+<span id="cb279-2"><a href="應用篇_探索性資料分析.html#cb279-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> fitness, <span class="at">fill =</span> female, <span class="at">y =</span> pct)) <span class="sc">+</span> </span>
+<span id="cb279-3"><a href="應用篇_探索性資料分析.html#cb279-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="do">## &quot;dodge&quot; 指定堆疊並列</span></span></code></pre></div>
+<p><img src="picture/0607.png" /></p>
 <ul>
 <li>堆疊長條圖</li>
 </ul>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="應用篇_探索性資料分析.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(</span>
-<span id="cb281-2"><a href="應用篇_探索性資料分析.html#cb281-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> fitness, <span class="at">fill =</span> female, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb281-3"><a href="應用篇_探索性資料分析.html#cb281-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;stack&quot;</span>) <span class="do">## &quot;stack&quot; 指定堆疊</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="應用篇_探索性資料分析.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_female, <span class="fu">aes</span>(</span>
+<span id="cb280-2"><a href="應用篇_探索性資料分析.html#cb280-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> fitness, <span class="at">fill =</span> female, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb280-3"><a href="應用篇_探索性資料分析.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;stack&quot;</span>) <span class="do">## &quot;stack&quot; 指定堆疊</span></span></code></pre></div>
+<p><img src="picture/0608.png" /></p>
 <p>可以看到整體而言，女性相較於男性稍微有多一點的塑身意願。</p>
 </div>
 <div id="兩個數值變項" class="section level3 hasAnchor" number="7.2.4">
@@ -622,8 +620,8 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <ul>
 <li>使用<code>cor()</code>函數，呈現相關係數</li>
 </ul>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="應用篇_探索性資料分析.html#cb282-1" aria-hidden="true" tabindex="-1"></a>R_use_analysis <span class="sc">|&gt;</span></span>
-<span id="cb282-2"><a href="應用篇_探索性資料分析.html#cb282-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(age, bmi, <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="應用篇_探索性資料分析.html#cb281-1" aria-hidden="true" tabindex="-1"></a>R_use_analysis <span class="sc">|&gt;</span></span>
+<span id="cb281-2"><a href="應用篇_探索性資料分析.html#cb281-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(age, bmi, <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>))</span></code></pre></div>
 <pre><code>##         cor
 ## 1 0.2270768</code></pre>
 <p>兩者的相關係數約為0.23，算是低度正相關</p>
@@ -631,25 +629,24 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <ul>
 <li>散布圖</li>
 </ul>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="應用篇_探索性資料分析.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
-<span id="cb284-2"><a href="應用篇_探索性資料分析.html#cb284-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="do">## geom_point()是散布圖</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="應用篇_探索性資料分析.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
+<span id="cb283-2"><a href="應用篇_探索性資料分析.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="do">## geom_point()是散布圖</span></span></code></pre></div>
+<p><img src="picture/0609.png" /></p>
 <ul>
 <li>加上預測線</li>
 </ul>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="應用篇_探索性資料分析.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
-<span id="cb285-2"><a href="應用篇_探索性資料分析.html#cb285-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb285-3"><a href="應用篇_探索性資料分析.html#cb285-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="應用篇_探索性資料分析.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
+<span id="cb284-2"><a href="應用篇_探索性資料分析.html#cb284-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb284-3"><a href="應用篇_探索性資料分析.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>)</span></code></pre></div>
+<p><img src="picture/0610.png" /></p>
 </div>
 <div id="一個類別一個數值變項" class="section level3 hasAnchor" number="7.2.5">
 <h3><span class="header-section-number">7.2.5</span> 一個類別一個數值變項<a href="應用篇_探索性資料分析.html#一個類別一個數值變項" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>查看不同性別(female)的bmi差異</p>
 <p>分組描述統計</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="應用篇_探索性資料分析.html#cb287-1" aria-hidden="true" tabindex="-1"></a>R_use_analysis <span class="sc">|&gt;</span></span>
-<span id="cb287-2"><a href="應用篇_探索性資料分析.html#cb287-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
-<span id="cb287-3"><a href="應用篇_探索性資料分析.html#cb287-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(bmi))</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="應用篇_探索性資料分析.html#cb285-1" aria-hidden="true" tabindex="-1"></a>R_use_analysis <span class="sc">|&gt;</span></span>
+<span id="cb285-2"><a href="應用篇_探索性資料分析.html#cb285-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
+<span id="cb285-3"><a href="應用篇_探索性資料分析.html#cb285-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(bmi))</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##   female  mean
 ##   &lt;fct&gt;  &lt;dbl&gt;
@@ -659,29 +656,27 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <ul>
 <li>分組盒形圖</li>
 </ul>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="應用篇_探索性資料分析.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(</span>
-<span id="cb289-2"><a href="應用篇_探索性資料分析.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> female, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
-<span id="cb289-3"><a href="應用篇_探索性資料分析.html#cb289-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="應用篇_探索性資料分析.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(</span>
+<span id="cb287-2"><a href="應用篇_探索性資料分析.html#cb287-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> female, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
+<span id="cb287-3"><a href="應用篇_探索性資料分析.html#cb287-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="picture/0611.png" /></p>
 <ul>
 <li>分組折線圖</li>
 </ul>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="應用篇_探索性資料分析.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(</span>
-<span id="cb290-2"><a href="應用篇_探索性資料分析.html#cb290-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> bmi,</span>
-<span id="cb290-3"><a href="應用篇_探索性資料分析.html#cb290-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> female)) <span class="sc">+</span></span>
-<span id="cb290-4"><a href="應用篇_探索性資料分析.html#cb290-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>()</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick
-## better value with `binwidth`.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="應用篇_探索性資料分析.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(</span>
+<span id="cb288-2"><a href="應用篇_探索性資料分析.html#cb288-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> bmi,</span>
+<span id="cb288-3"><a href="應用篇_探索性資料分析.html#cb288-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> female)) <span class="sc">+</span></span>
+<span id="cb288-4"><a href="應用篇_探索性資料分析.html#cb288-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>()</span></code></pre></div>
+<p><img src="picture/0612.png" /></p>
 <p>可以看到男性的bmi平均為25.63，女性的bmi平均為22.37，男性的bmi略大於女性。</p>
 </div>
 <div id="兩個數值變項用類別變項分組" class="section level3 hasAnchor" number="7.2.6">
 <h3><span class="header-section-number">7.2.6</span> 兩個數值變項用類別變項分組<a href="應用篇_探索性資料分析.html#兩個數值變項用類別變項分組" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>查看不同性別(female)，如何影響對於年齡(age)對於bmi的影響</p>
 <p>分組相關係數</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="應用篇_探索性資料分析.html#cb292-1" aria-hidden="true" tabindex="-1"></a>R_use_analysis <span class="sc">|&gt;</span></span>
-<span id="cb292-2"><a href="應用篇_探索性資料分析.html#cb292-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
-<span id="cb292-3"><a href="應用篇_探索性資料分析.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(age, bmi, <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="應用篇_探索性資料分析.html#cb289-1" aria-hidden="true" tabindex="-1"></a>R_use_analysis <span class="sc">|&gt;</span></span>
+<span id="cb289-2"><a href="應用篇_探索性資料分析.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span> <span class="do">## 以female做分組</span></span>
+<span id="cb289-3"><a href="應用篇_探索性資料分析.html#cb289-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(age, bmi, <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##   female   cor
 ##   &lt;fct&gt;  &lt;dbl&gt;
@@ -691,19 +686,18 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 <ul>
 <li>分組散布圖</li>
 </ul>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="應用篇_探索性資料分析.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
-<span id="cb294-2"><a href="應用篇_探索性資料分析.html#cb294-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb294-3"><a href="應用篇_探索性資料分析.html#cb294-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> female) <span class="do">## 按照性別分組</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="應用篇_探索性資料分析.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
+<span id="cb291-2"><a href="應用篇_探索性資料分析.html#cb291-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb291-3"><a href="應用篇_探索性資料分析.html#cb291-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> female) <span class="do">## 按照性別分組</span></span></code></pre></div>
+<p><img src="picture/0613.png" /></p>
 <ul>
 <li>加上預測線</li>
 </ul>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="應用篇_探索性資料分析.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
-<span id="cb295-2"><a href="應用篇_探索性資料分析.html#cb295-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb295-3"><a href="應用篇_探索性資料分析.html#cb295-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb295-4"><a href="應用篇_探索性資料分析.html#cb295-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> female) <span class="do">## 按照性別分組</span></span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="應用篇_探索性資料分析.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(R_use_analysis, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bmi)) <span class="sc">+</span></span>
+<span id="cb292-2"><a href="應用篇_探索性資料分析.html#cb292-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb292-3"><a href="應用篇_探索性資料分析.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;glm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb292-4"><a href="應用篇_探索性資料分析.html#cb292-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> female) <span class="do">## 按照性別分組</span></span></code></pre></div>
+<p><img src="picture/0614.png" /></p>
 <p>可以看到不管性別為何，年齡和bmi之間的關係都是低度的正相關，但女性(0.30)的影響似乎比男性(0.16)來的大。</p>
 </div>
 <div id="其他進階統計" class="section level3 hasAnchor" number="7.2.7">
