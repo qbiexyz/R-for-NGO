@@ -10,16 +10,15 @@
 
 ### 前置準備
 
-```{r eval=FALSE}
+```{r message=FALSE}
 library(tidyverse) ## 大部分的資處工具(包含ggplot2套件)
 library(data.table) ## 高效能資處工具
 library(DescTools) ## 初步描述統計
 library(sjmisc) ## 設置缺失值
 library(sjlabelled) ## 上標籤用
-library(validate) ## 資料檢誤
 
 ## 讀取上一章節處理好的資料
-WVS_w7_n4 <- readRDS("data/practice/WVS_w7_n4")
+R_use_analysis <- readRDS("data/R_use_analysis")
 ```
 
 ## 資料視覺化簡略介紹 ggplot2
@@ -41,14 +40,20 @@ R語言當中有內建的基本簡單作圖，但更加常用與更廣為推薦�
 
 當然上述只是簡單步驟，實務上還是有蠻多調整上的細節，[ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf)，有更多調整的函數，其他也有各種樣式可供選擇
 
+
+整體大致簡單結構
+
+-   ggplot
+
 ```{r eval=FALSE}
-# 整體大致簡單結構
-## ggplot
 p <- ggplot(data = 使用資料,
   mapping = aes( 维度 = 變項名稱, ## 像是想設定y軸為duty_child，y = duty_child
     维度2 = 變項名稱2, ...)
+```
 
-## ggplot的結果 + geom_ + 其他設定
+-   ggplot的結果 + geom_ + 其他設定
+
+```{r eval=FALSE}
 p + geom_圖形類型(...) + ## 使用哪種圖形、並做進階設定
   scale_對應座標_顯示設定(...) + ## 座標相關設定
   labs(...) ## 標籤相關設定
@@ -68,59 +73,63 @@ p + geom_圖形類型(...) + ## 使用哪種圖形、並做進階設定
 -   第三個整理出**數值變項**的資訊、包括遺漏值、數值變項的初步描述資訊
     -   age、duty_child、duty_parents
 
-```{r eval=FALSE}
+```{r}
 library(skimr)
 
 ## skim(資料, 選擇要查看變項，沒有設定則是全部)
-skim(WVS_w7_n4, female, age, age_g3, duty_child, duty_parents) |> print()
+skim(R_use_analysis,-id) |> print()
 ```
-
-![](picture/skimr1.png)\
-![](picture/skimr2.png)\
-![](picture/skimr3.png)\
 
 ### 單一類別變項
 
 以性別(female)為例，呈現男女性的**次數分配**
 
-可以看到男性的樣本為592筆、佔約49%，女性的樣本稍多一點為625筆、佔約51%
+查看次數分配
 
-```{r eval=FALSE}
-# 次數分配
-## 使用直接計算方式
-WVS_w7_n4 |>
+-   使用直接計算方式
+
+```{r}
+R_use_analysis |>
   count(female) |> ## count 計算樣本數
   mutate(
     female_pct = n / sum(n) ## 計算出百分比
   )
+```
 
-## 使用table()函數
-table(WVS_w7_n4[["female"]])
+-   使用`table()函數`
 
-table(WVS_w7_n4[["female"]]) |>
+```{r}
+
+table(R_use_analysis[["female"]])
+
+table(R_use_analysis[["female"]]) |>
   prop.table()
 ```
 
-![](picture/06_1.png)\
-![](picture/06_2.png)
-
 接著也可以用**長條圖**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
 
-```{r eval=FALSE}
-# 畫圖呈現
-## 畫圖(長條圖)呈現男女分別樣本數
-## 先建立一個次數分配表
-d_female <- WVS_w7_n4 |>
+畫圖(長條圖)呈現男女分別樣本數
+
+-   先建立一個次數分配表
+
+```{r}
+d_female <- R_use_analysis |>
   count(female) |>
   mutate(
     pct = n / sum(n) ## 計算百分比
-  ) 
+  )
+```
 
+-   畫長條圖呈現男女分別次數
+
+```{r}
 ggplot(d_female, aes(x = female, y = n)) +
   geom_col() ## geom_col()是長條圖
+```
 
+-   畫長條圖呈現男女分別百分比
 
-## 畫圖(長條圖)呈現男女分別百分比
+```{r}
 ggplot(d_female, aes(x = female, y = pct)) +
   geom_col() +
   scale_y_continuous(
@@ -128,197 +137,202 @@ ggplot(d_female, aes(x = female, y = pct)) +
     labels = scales::percent)
 ```
 
-![](picture/06_3.png)\
-![](picture/06_4.png)\
+可以看到男性的樣本為48筆、佔約48%，女性的樣本稍多一點為52筆、佔約52%。
 
 ### 單一數值變項
 
-以年齡(age)為例，呈現**描述統計**
+以bmi為例，呈現**描述統計**
 
-可以看到平均年齡和中位數都約落在48歲左右，年齡最小為1最小值為18歲、最大為85歲，
+描述統計
 
-```{r eval=FALSE}
-# 描述統計
-## 使用summary函數
-summary(WVS_w7_n4[["age"]])
+-   使用summary函數
 
-## 若只想看平均數也可以直接指定
-WVS_w7_n4 |>
-  summarize(mean = mean(age))
+```{r}
+summary(R_use_analysis[["bmi"]])
 ```
 
-![](picture/06_5.png)
+-   若只想看平均數也可以直接指定mean
+
+```{r}
+R_use_analysis |>
+  summarize(mean = mean(bmi))
+```
 
 接著也可以用**直方圖、折線圖或盒形圖**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
 
-```{r eval=FALSE}
-# 畫圖呈現
-## 畫圖(直方圖)呈現
-ggplot(WVS_w7_n4, aes(x = age)) +
+-   直方圖呈現
+
+```{r}
+ggplot(R_use_analysis, aes(x = bmi)) +
   geom_histogram() ## geom_histogram()是直方圖
+```
 
-## 畫圖(折線圖)呈現
-ggplot(WVS_w7_n4, aes(x = age)) +
+-   折線圖呈現
+
+```{r}
+ggplot(R_use_analysis, aes(x = bmi)) +
   geom_freqpoly(bins = 30) ## geom_histogram()是折線圖
+```
 
-## 畫圖(盒形圖)呈現
-ggplot(WVS_w7_n4, aes(x = "", y = age)) +
+-   盒形圖呈現
+
+```{r}
+ggplot(R_use_analysis, aes(x = "", y = bmi)) +
   geom_boxplot() + ## geom_boxplot()是折線圖
   labs(x = "")
 ```
 
-![](picture/06_6.png)\
-![](picture/06_7.png)\
-![](picture/06_8.png)\
+可以看到平均bmi約落在23.94左右，最小為17.21、最大為35.11。
 
 ### 兩個類別變項
 
-查看性別(female)與年齡三組(age_g3)的分布，做成**交叉表**的方式呈現
+查看性別(female)與塑身意願(fitness)的分布，做成**交叉表**的方式呈現
 
-可以看到整體而言，這份資料不同年齡段男女性的比例也都是接近差不多的，男性在中年稍微多一點點、而女性則是在青年和老年稍微多一點點
+交叉表
 
-```{r eval=FALSE}
-# 交叉表
-## 用計算方式
-d_female <- WVS_w7_n4 |>
-  count(female, age_g3) |>
+-   用計算方式
+
+```{r}
+d_female <- R_use_analysis |>
+  count(female, fitness) |>
   group_by(female) |> ## 以female做分組
   mutate(pct = n / sum(n)) |>
   ungroup()
 
 d_female
+```
 
-## 使用table()函數
-with(WVS_w7_n4, table(
-  female, age_g3
-))
+-   使用`table()`函數
 
-## 使用CrossTable()函數
-with(WVS_w7_n4, gmodels::CrossTable(
-  female, age_g3
+```{r}
+with(R_use_analysis, table(
+  female, fitness
 ))
 ```
 
-![](picture/06_9.png)\
-![](picture/06_10.png)\
-![](picture/06_11.png)
+-   使用`CrossTable()`函數
+
+```{r}
+with(R_use_analysis, gmodels::CrossTable(
+  female, fitness
+))
+```
 
 接著也可以用**堆疊長條圖、並列長條圖**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
 
-```{r eval=FALSE}
-# 畫圖呈現
-## 堆疊長條圖
-ggplot(d_female, aes(
-  x = age_g3, fill = female, y = n)) +
-  geom_col(position = "stack") ## "stack" 指定堆疊
+-   並列長條圖
 
-## 並列長條圖
+```{r}
 ggplot(d_female, aes(
-  x = age_g3, fill = female, y = pct)) + 
+  x = fitness, fill = female, y = pct)) + 
   geom_col(position = "dodge") ## "dodge" 指定堆疊並列
 ```
 
-![](picture/06_12.png)\
-![](picture/06_13.png)\
+-   堆疊長條圖
+
+```{r}
+ggplot(d_female, aes(
+  x = fitness, fill = female, y = n)) +
+  geom_col(position = "stack") ## "stack" 指定堆疊
+```
+
+可以看到整體而言，女性相較於男性稍微有多一點的塑身意願。
 
 ### 兩個數值變項
 
-查看年齡(age)和對於生育小孩是盡社會的責任(duty_child)的看法的關係，計算兩者**相關係數**
+查看年齡(age)和bmi的影響關係，計算兩者**相關係數**
 
-兩者的相關係數約為0.28，算是低度相關
+-   使用`cor()`函數，呈現相關係數
 
-```{r eval=FALSE}
-# 相關係數
-WVS_w7_n4 |>
-  summarize(cor = cor(age, duty_child, use="complete.obs"))
+```{r}
+R_use_analysis |>
+  summarize(cor = cor(age, bmi, use="complete.obs"))
 ```
 
-![](picture/06_14.png)
+兩者的相關係數約為0.23，算是低度正相關
 
 接著也可以用**散布圖、並加上預測線**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
 
-```{r eval=FALSE}
-# 畫圖呈現
-## 散布圖
-ggplot(WVS_w7_n4, aes(x = age, y = duty_child)) +
-  geom_point() ## geom_point()是散布圖
+-   散布圖
 
-## 加上預測線
-ggplot(WVS_w7_n4, aes(x = age, y = duty_child)) +
-  geom_point() +
-  geom_smooth()
+```{r}
+ggplot(R_use_analysis, aes(x = age, y = bmi)) +
+  geom_point() ## geom_point()是散布圖
 ```
 
-![](picture/06_15.png)\
-![](picture/06_16.png)\
+-   加上預測線
+
+```{r}
+ggplot(R_use_analysis, aes(x = age, y = bmi)) +
+  geom_point() +
+  geom_smooth(method = "glm")
+```
 
 ### 一個類別一個數值變項
 
-查看不同性別(female)，對於成年子女有責任長期照顧父母(duty_parents)的看法呈現
+查看不同性別(female)的bmi差異
 
-可以看到男性平均(3.96)略大於女性(3.7)，代表可能男性相較女性更同意成年子女有責任長期照顧父母，但可能還須進一步的統計去檢驗
+分組描述統計
 
-```{r eval=FALSE}
-# 分組描述統計
-WVS_w7_n4 |>
+```{r}
+R_use_analysis |>
   group_by(female) |> ## 以female做分組
-  summarize(mean = mean(duty_parents))
+  summarize(mean = mean(bmi))
 ```
-
-![](picture/06_17.png)
 
 接著也可以用**分組盒形圖、分組折線圖線**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
 
-```{r eval=FALSE}
-# 畫圖呈現
-## 分組盒形圖
-ggplot(WVS_w7_n4, aes(
-  x = female, y = duty_parents)) +
-  geom_boxplot()
+-   分組盒形圖
 
-## 分組折線圖
-ggplot(WVS_w7_n4, aes(
-  x = duty_parents,
+```{r}
+ggplot(R_use_analysis, aes(
+  x = female, y = bmi)) +
+  geom_boxplot()
+```
+
+-   分組折線圖
+
+```{r}
+ggplot(R_use_analysis, aes(
+  x = bmi,
   color = female)) +
   geom_freqpoly()
 ```
 
-![](picture/06_18.png)\
-![](picture/06_19.png)\
+可以看到男性的bmi平均為25.63，女性的bmi平均為22.37，男性的bmi略大於女性。
 
 ### 兩個數值變項用類別變項分組
 
-查看不同性別(female)，如何影響對於年齡(age)對於生育小孩是盡社會的責任(duty_child)的看法
+查看不同性別(female)，如何影響對於年齡(age)對於bmi的影響
 
-可以看到年齡和同意生育小孩是盡社會的責任的相關，女性(0.34)似乎比男性(0.23)來的大，但仍都屬於低度相關
+分組相關係數
 
-```{r eval=FALSE}
-# 分組相關係數
-WVS_w7_n4 |>
+```{r}
+R_use_analysis |>
   group_by(female) |> ## 以female做分組
-  summarize(cor = cor(age, duty_child, use="complete.obs"))
+  summarize(cor = cor(age, bmi, use="complete.obs"))
 ```
-
-![](picture/06_20.png)
 
 接著也可以用**按照性別分組呈現散布圖、並加上預測線**先來呈現(以下僅為簡單粗略呈現，若要美化則須再調整)
 
-```{r eval=FALSE}
-# 畫圖呈現
-## 分組散布圖
-ggplot(WVS_w7_n4, aes(x = age, y = duty_child)) +
-  geom_point() +
-  facet_wrap(~ female) ## 按照性別分組
+-   分組散布圖
 
-## 加上預測線
-ggplot(WVS_w7_n4, aes(x = age, y = duty_child)) +
+```{r}
+ggplot(R_use_analysis, aes(x = age, y = bmi)) +
   geom_point() +
-  geom_smooth() +
   facet_wrap(~ female) ## 按照性別分組
 ```
 
-![](picture/06_21.png)\
-![](picture/06_22.png)\
+-   加上預測線
+
+```{r}
+ggplot(R_use_analysis, aes(x = age, y = bmi)) +
+  geom_point() +
+  geom_smooth(method = "glm") +
+  facet_wrap(~ female) ## 按照性別分組
+```
+
+可以看到不管性別為何，年齡和bmi之間的關係都是低度的正相關，但女性(0.30)的影響似乎比男性(0.16)來的大。
 
 ### 其他進階統計
 

@@ -21,7 +21,7 @@ github-repo: "rstudio/bookdown-demo"
 
 這份講義是希望讓原本沒有程式與或統計基礎的人，能夠在短時間初步了解R語言的**簡單概念和操作**，以及能夠**進行初步的資料讀取、清理、分析與視覺化**。
 
-由於是初步介紹的入門講義，因此會簡單介紹一下R的基礎概念，但部分過於涉及程式設計的部分會稍微略過，重點會放在**如何獲取資料與簡單清理**以及後續**使用資料實作初步統計與視覺化**部分
+由於是初步介紹的入門講義，因此會簡單介紹一下R的基礎概念，但部分過於涉及程式設計的部分會稍微略過，重點會放在**了解R的基礎概念、資料處理**以及後續**使用資料實作初步統計與視覺化**部分
 
 目的是讓讀者能夠輕鬆並短時間知道使用資料的好處，因此在分析或實作上，也不會涉及到深入的統計或視覺化，
 
@@ -30,7 +30,7 @@ github-repo: "rstudio/bookdown-demo"
 ## R語言 應用性: 高、難度: 中高
 
 R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，若想要做的分析一般的套件沒有支援時，可以自寫函數或程式來處理，另外在**統計方法與視覺化**上面都有很多應用，且網路上有很多自學資源以及論壇解答遇到的問題。\
-缺點在於學習坡度較高、需要學習程式語言，新的外裝套件並沒有通過學術檢證、沒有售後服務。
+缺點在於，由於R是由類似**程式語言**的方式執行，因此在學習上會比excel、spss、stata等統計軟體再困難一些，較接近python，因此學習坡度較高、需要學習程式語言，且一些新的外裝套件並沒有通過學術檢證、沒有售後服務。
 
 ## 學習目標
 
@@ -51,6 +51,7 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 -   [資料科學與R語言](https://yijutseng.github.io/DataScienceRBook/index.html)，by [曾意儒](https://www.cs.nycu.edu.tw/members/detail/yijutseng)
 -   [Programming for Data Science (I)](https://tpemartin.github.io/NTPU-R-for-Data-Science-EN/)，by [林茂廷](https://econ.ntpu.edu.tw/teachers/5/22)
 -   [輕鬆學習 R 語言](https://eloquentr.datainpoint.com/)，by [郭耀仁](https://hahow.in/@tonykuoyj)
+-   [R 資料科學與統計](https://bookdown.org/jefflinmd38/r4biost/)，by 林建甫
 -   [R语言教程](https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html)
 -   [R for Fledglings](https://www.uvm.edu/~tdonovan/RforFledglings/#fn1)
 -   [R for HR:An Introduction to Human Resource Analytics Using R](https://rforhr.com/)
@@ -66,7 +67,6 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 -   [RPubs](https://rpubs.com/)
 -   [Posit](https://posit.co/)
 -   網路上的各種筆記或論壇
--   chatgpt?
 
 ## 資料
 
@@ -103,11 +103,9 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 
 調查型資料的資源也非常豐富，SRDA也只是整理出部份台灣的調查資料，另外一些可能是放在該調查官網需自行下載，或是跨國型資料、國外的調查資料，有些可能須申請，有些是公開的，大多數都有問卷可以先查看是否有想要分析的題目再決定是否使用該資料，若有需要可以依需求自行搜索並下載
 
-### 講義使用資料
+### 使用資料
 
-講義後續範例會使用[世界價值觀第七波的台灣調查](https://srda.sinica.edu.tw/datasearch_detail.php?id=3473)，資料可在SRDA上下載取得，或是在[此連結](https://github.com/qbiexyz/R-for-NGO/tree/master/data/WVS_w7)下載使用 ![](picture/WVS_w7.png)
-
-參考:蔡明璋、陳志柔(2023)。物質主義、後物質主義與新政治：世界價值觀第七波的台灣調查與亞洲國家的比較(C00344)【原始數據】取自中央研究院人文社會科學研究中心調查研究專題中心學術調查研究資料庫。<https://doi.org/10.6141/TW-SRDA-C00344-1>
+講義有使用到的資料都可以從[這裡](https://github.com/qbiexyz/R-for-NGO/tree/master/data)下載
 
 ## 大綱(教材主題)
 
@@ -130,12 +128,15 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 
 [基礎篇_元素的基礎操作](https://qbiexyz.github.io/R-for-NGO/%E5%9F%BA%E7%A4%8E%E7%AF%87_%E5%85%83%E7%B4%A0%E7%9A%84%E5%9F%BA%E7%A4%8E%E6%93%8D%E4%BD%9C.html)
 
--   選取
--   新增
--   替換
--   刪除
--   判斷位置
--   命名
+-   值與元素
+-   元素位置
+-   檢索/取出元素
+-   `[[]]`和`[]` 差異
+-   替換元素
+-   新增元素
+-   刪除元素
+-   判斷位置的其他方法
+-   元素命名
 
 [應用篇_資料讀取、匯出、合併與瀏覽](https://qbiexyz.github.io/R-for-NGO/%E6%87%89%E7%94%A8%E7%AF%87_%E8%B3%87%E6%96%99%E8%AE%80%E5%8F%96%E5%8C%AF%E5%87%BA%E5%90%88%E4%BD%B5%E8%88%87%E7%80%8F%E8%A6%BD.html)
 
@@ -148,7 +149,6 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 [應用篇_實作簡單資料處理](https://qbiexyz.github.io/R-for-NGO/%E6%87%89%E7%94%A8%E7%AF%87_%E5%AF%A6%E4%BD%9C%E7%B0%A1%E5%96%AE%E8%B3%87%E6%96%99%E8%99%95%E7%90%86.html)
 
 -   前置準備
--   資料檢誤
 -   設定不合理值
 -   新建/修改/轉換變項
 -   遺漏值處理
