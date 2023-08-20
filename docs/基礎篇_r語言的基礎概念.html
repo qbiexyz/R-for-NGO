@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-08-20" />
+<meta name="date" content="2023-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,16 +226,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出vector中的元素"><i class="fa fa-check"></i><b>4.3.1</b> 檢索/取出vector中的元素</a></li>
 <li class="chapter" data-level="4.3.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出list中的元素"><i class="fa fa-check"></i><b>4.3.2</b> 取出list中的元素</a></li>
+<li class="chapter" data-level="4.3.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.3.3</b> <code>[[]]</code>和<code>[]</code> 差異</a></li>
+<li class="chapter" data-level="4.3.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.3.4</b> 取出data frame中的元素</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.4</b> <code>[[]]</code>和<code>[]</code> 差異</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.4.1</b> 取出data frame中的元素</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.5</b> 替換元素</a></li>
-<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.6</b> 新增元素</a></li>
-<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.7</b> 刪除元素</a></li>
-<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.8</b> 判斷位置的其他方法</a></li>
-<li class="chapter" data-level="4.9" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.9</b> 元素命名</a></li>
+<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.4</b> 替換元素</a></li>
+<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.5</b> 新增元素</a></li>
+<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.6</b> 刪除元素</a></li>
+<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.7</b> 判斷位置的其他方法</a></li>
+<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.8</b> 元素命名</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html"><i class="fa fa-check"></i><b>5</b> 應用篇_資料讀取、匯出、合併與瀏覽</a>
 <ul>
@@ -338,7 +336,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>若我們沒有指派成為某個變項，那麼這個物件會直接的顯示在視窗 以下範例單獨顯示「24」</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="基礎篇_r語言的基礎概念.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">24</span></span></code></pre></div>
 <pre><code>## [1] 24</code></pre>
-<p>若是我們有指派物件，那麼這個變項就會暫存在R語言的環境當中，可隨時拿來使用 以下範例將「24」作為一個物件，並指派為「a」(變項名稱)。</p>
+<p>若是我們有指派物件，那麼這個變項就會暫存在R語言的環境當中，可隨時拿來使用</p>
+<p>以下範例將「24」作為一個物件，並指派為「a」(變項名稱)。</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="基礎篇_r語言的基礎概念.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 將24存在「a」這個代號當中</span></span>
 <span id="cb5-2"><a href="基礎篇_r語言的基礎概念.html#cb5-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">24</span> </span>
 <span id="cb5-3"><a href="基礎篇_r語言的基礎概念.html#cb5-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">24</span></span>

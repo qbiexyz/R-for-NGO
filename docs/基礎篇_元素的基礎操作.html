@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-08-20" />
+<meta name="date" content="2023-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,16 +226,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出vector中的元素"><i class="fa fa-check"></i><b>4.3.1</b> 檢索/取出vector中的元素</a></li>
 <li class="chapter" data-level="4.3.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出list中的元素"><i class="fa fa-check"></i><b>4.3.2</b> 取出list中的元素</a></li>
+<li class="chapter" data-level="4.3.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.3.3</b> <code>[[]]</code>和<code>[]</code> 差異</a></li>
+<li class="chapter" data-level="4.3.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.3.4</b> 取出data frame中的元素</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.4</b> <code>[[]]</code>和<code>[]</code> 差異</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.4.1</b> 取出data frame中的元素</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.5</b> 替換元素</a></li>
-<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.6</b> 新增元素</a></li>
-<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.7</b> 刪除元素</a></li>
-<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.8</b> 判斷位置的其他方法</a></li>
-<li class="chapter" data-level="4.9" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.9</b> 元素命名</a></li>
+<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.4</b> 替換元素</a></li>
+<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.5</b> 新增元素</a></li>
+<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.6</b> 刪除元素</a></li>
+<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.7</b> 判斷位置的其他方法</a></li>
+<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.8</b> 元素命名</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html"><i class="fa fa-check"></i><b>5</b> 應用篇_資料讀取、匯出、合併與瀏覽</a>
 <ul>
@@ -368,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="檢索取出元素" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> 檢索/取出元素<a href="基礎篇_元素的基礎操作.html#檢索取出元素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>檢索元素時，第一步就是必須知道該元素的位置，而透過這個位置我們就可以檢索/取出該元素，。</p>
+<p>檢索元素時，第一步就是必須知道該元素的位置，而透過這個位置我們就可以檢索/取出該元素。</p>
 <div id="檢索取出vector中的元素" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> 檢索/取出vector中的元素<a href="基礎篇_元素的基礎操作.html#檢索取出vector中的元素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>假設今天有一個<code>vector_choose</code>的資料，其中包含兩個文字型態的元素(apple,banana)。</p>
@@ -472,9 +470,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="基礎篇_元素的基礎操作.html#cb110-1" aria-hidden="true" tabindex="-1"></a>weather<span class="sc">$</span>today[[<span class="dv">1</span>]][[<span class="dv">1</span>]] <span class="do">## [1] &quot;台北市&quot;</span></span></code></pre></div>
 <pre><code>## [1] &quot;台北市&quot;</code></pre>
 </div>
-</div>
-<div id="和-差異" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> <code>[[]]</code>和<code>[]</code> 差異<a href="基礎篇_元素的基礎操作.html#和-差異" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="和-差異" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> <code>[[]]</code>和<code>[]</code> 差異<a href="基礎篇_元素的基礎操作.html#和-差異" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>在選取元素位置時，有時可以看到選取資料時有<code>[[]]</code>和<code>[]</code>兩種，在此我們可以做個簡單比較:</p>
 <p>taipei1是使用<code>[[]]</code></p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="基礎篇_元素的基礎操作.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 比較[[]] 和 [] 差別</span></span>
@@ -493,9 +490,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="picture/taipei.png" alt="" />
 <p class="caption">taipei2還是list的結構，但taipei1是單純的Value</p>
 </div>
-<p>以下可以自己練習看看: 取出tomorrow當中新北市的highest_temp值(25) 並<strong>保留</strong>highest_temp的名稱</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="基礎篇_元素的基礎操作.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 取出tomorrow當中新北市的highest_temp值(25) 並保留highest_temp的名稱</span></span>
-<span id="cb116-2"><a href="基礎篇_元素的基礎操作.html#cb116-2" aria-hidden="true" tabindex="-1"></a>weather<span class="sc">$</span>tomorrow[[<span class="dv">2</span>]][[<span class="dv">2</span>]] <span class="do">## highest_temp 28</span></span></code></pre></div>
+<p>以下可以練習看看: 取出tomorrow當中新北市的highest_temp值(25) 並<strong>保留</strong>highest_temp的名稱</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="基礎篇_元素的基礎操作.html#cb116-1" aria-hidden="true" tabindex="-1"></a>weather<span class="sc">$</span>tomorrow[[<span class="dv">2</span>]][[<span class="dv">2</span>]] <span class="do">## highest_temp 28</span></span></code></pre></div>
 <pre><code>## highest_temp 
 ##           28</code></pre>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="基礎篇_元素的基礎操作.html#cb118-1" aria-hidden="true" tabindex="-1"></a>weather<span class="sc">$</span>tomorrow[[<span class="dv">2</span>]][[<span class="dv">2</span>]][<span class="dv">1</span>] <span class="do">## highest_temp 28</span></span></code></pre></div>
@@ -507,8 +503,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="基礎篇_元素的基礎操作.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
 <span id="cb122-2"><a href="基礎篇_元素的基礎操作.html#cb122-2" aria-hidden="true" tabindex="-1"></a>weather<span class="sc">$</span>tomorrow[[<span class="dv">2</span>]][[<span class="dv">2</span>]][[<span class="dv">1</span>]] <span class="do">## [1] 28</span></span></code></pre></div>
 <pre><code>## [1] 28</code></pre>
-<div id="取出data-frame中的元素" class="section level3 hasAnchor" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> 取出data frame中的元素<a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="取出data-frame中的元素" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> 取出data frame中的元素<a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>若想取出data frame中的元素，概念仍然根前面兩個相同，而不一樣的地方在於data frames是由<strong>「行/列」</strong>所組成，因此在考慮位置時也需要考慮所處的「行/列」</p>
 <p>首先我們先載入R內建的資料檔案<code>iris</code>(檔案中包括鳶尾花的一些特徵)，載入後一樣可以先從旁邊直接點開瀏覽一下檔案</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="基礎篇_元素的基礎操作.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co">#取得R內建資料</span></span>
@@ -546,8 +543,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div id="替換元素" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> 替換元素<a href="基礎篇_元素的基礎操作.html#替換元素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="替換元素" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> 替換元素<a href="基礎篇_元素的基礎操作.html#替換元素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>若要替換元素，我們可以接續上述的檢索/取出元素，在我們檢索出某一個元素值時，將想要的元素<strong>重新指派</strong>到原先的位置後，就能夠替換了。</p>
 <p>也就是首先我們還是必須先知道要替換元素的位置，<br />
 1. 找出需要替換元素的位置<br />
@@ -587,8 +584,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;1&quot;      &quot;banana&quot; &quot;3&quot;      &quot;4&quot;</code></pre>
 <p>其他list或data frame的替換也是類似相同概念</p>
 </div>
-<div id="新增元素" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> 新增元素<a href="基礎篇_元素的基礎操作.html#新增元素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="新增元素" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> 新增元素<a href="基礎篇_元素的基礎操作.html#新增元素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>若要新增元素、首先我們必須知道元素的位置，也就是上一章節詳細介紹元素的部分，<br />
 1. 找出不存在的位置<br />
 2. 將要新增的值指派到不存在元素的位置</p>
@@ -625,8 +622,8 @@ vector_add1[[4]] # 不存在元素(會出現Error)</code></pre>
 <span id="cb148-8"><a href="基礎篇_元素的基礎操作.html#cb148-8" aria-hidden="true" tabindex="-1"></a>vector_add3</span></code></pre></div>
 <p>其他list或data frame的新增也是類似相同概念</p>
 </div>
-<div id="刪除元素" class="section level2 hasAnchor" number="4.7">
-<h2><span class="header-section-number">4.7</span> 刪除元素<a href="基礎篇_元素的基礎操作.html#刪除元素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="刪除元素" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> 刪除元素<a href="基礎篇_元素的基礎操作.html#刪除元素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>若要刪除元素有兩種方式，<br />
 同樣先找出需要刪除元素的位置<br />
 <strong>第一種</strong>: 只取出需要的元素，再指派到原先的物件(沒有取出的，即是刪去)</p>
@@ -645,7 +642,7 @@ vector_add1[[4]] # 不存在元素(會出現Error)</code></pre>
 <span id="cb153-2"><a href="基礎篇_元素的基礎操作.html#cb153-2" aria-hidden="true" tabindex="-1"></a>vector_delete1 <span class="ot">&lt;-</span> vector_delete1[[<span class="dv">2</span>]]</span>
 <span id="cb153-3"><a href="基礎篇_元素的基礎操作.html#cb153-3" aria-hidden="true" tabindex="-1"></a>vector_delete1 <span class="do">## 只剩下banana，apple和cat則被刪除</span></span></code></pre></div>
 <pre><code>## [1] &quot;banana&quot;</code></pre>
-<p>2_1. 取出不需要(要刪除)的元素(apple和cat)，用<code>-</code>指派到原先的物件</p>
+<p>2_2. 取出不需要(要刪除)的元素(apple和cat)，用<code>-</code>指派到原先的物件</p>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="基礎篇_元素的基礎操作.html#cb155-1" aria-hidden="true" tabindex="-1"></a>vector_delete1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
 <span id="cb155-2"><a href="基礎篇_元素的基礎操作.html#cb155-2" aria-hidden="true" tabindex="-1"></a>vector_delete1 <span class="ot">&lt;-</span> vector_delete1[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
 <span id="cb155-3"><a href="基礎篇_元素的基礎操作.html#cb155-3" aria-hidden="true" tabindex="-1"></a>vector_delete1</span></code></pre></div>
@@ -689,8 +686,8 @@ vector_add1[[4]] # 不存在元素(會出現Error)</code></pre>
 ## [[2]]
 ## [1] &quot;新北市&quot;</code></pre>
 </div>
-<div id="判斷位置的其他方法" class="section level2 hasAnchor" number="4.8">
-<h2><span class="header-section-number">4.8</span> 判斷位置的其他方法<a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="判斷位置的其他方法" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> 判斷位置的其他方法<a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>在上述了解元素的操作後，我們還可以根據元素進行位置的判斷，<br />
 可以使用<code>which()</code>和<code>%in%</code><br />
 </p>
@@ -707,8 +704,8 @@ vector_add1[[4]] # 不存在元素(會出現Error)</code></pre>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="基礎篇_元素的基礎操作.html#cb169-1" aria-hidden="true" tabindex="-1"></a>vector_which <span class="sc">%in%</span> <span class="st">&quot;apple&quot;</span> <span class="do">## 返回邏輯值，apple的位置為TURE，不是的為FALSE</span></span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE</code></pre>
 </div>
-<div id="元素命名" class="section level2 hasAnchor" number="4.9">
-<h2><span class="header-section-number">4.9</span> 元素命名<a href="基礎篇_元素的基礎操作.html#元素命名" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="元素命名" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> 元素命名<a href="基礎篇_元素的基礎操作.html#元素命名" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>若要對元素進行命名，需使用<code>"name"=value</code>，<br />
 在命名時只能夠使用<code>=</code>，不能使用<code>&lt;-</code></p>
 <p>另外在命名時，也可以使用`，如果是常規的命名，也可以都不加<br />
@@ -737,19 +734,19 @@ vector_add1[[4]] # 不存在元素(會出現Error)</code></pre>
 <span id="cb179-2"><a href="基礎篇_元素的基礎操作.html#cb179-2" aria-hidden="true" tabindex="-1"></a>vector_name4</span></code></pre></div>
 <pre><code>##  apple banana    cat 
 ##      1      2      3</code></pre>
-<p>方法4，用names()函數</p>
+<p>方法5，用names()函數</p>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="基礎篇_元素的基礎操作.html#cb181-1" aria-hidden="true" tabindex="-1"></a>vector_name5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb181-2"><a href="基礎篇_元素的基礎操作.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(vector_name5) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
 <span id="cb181-3"><a href="基礎篇_元素的基礎操作.html#cb181-3" aria-hidden="true" tabindex="-1"></a>vector_name5</span></code></pre></div>
 <pre><code>##  apple banana    cat 
 ##      1      2      3</code></pre>
-<p>其他list或data frame的替換也是類似相同概念</p>
 <p>另外若元素有命名，前面的選取、新增等操作中，也可以用命名的文字來取代位置</p>
 <div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="基礎篇_元素的基礎操作.html#cb183-1" aria-hidden="true" tabindex="-1"></a>vector_name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb183-2"><a href="基礎篇_元素的基礎操作.html#cb183-2" aria-hidden="true" tabindex="-1"></a>vector_name[[<span class="dv">1</span>]]</span>
-<span id="cb183-3"><a href="基礎篇_元素的基礎操作.html#cb183-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-4"><a href="基礎篇_元素的基礎操作.html#cb183-4" aria-hidden="true" tabindex="-1"></a>vector_name1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span> <span class="ot">=</span> <span class="dv">1</span> , <span class="st">&quot;banana&quot;</span> <span class="ot">=</span> <span class="dv">2</span> , <span class="st">&quot;cat&quot;</span> <span class="ot">=</span> <span class="dv">3</span>)</span>
-<span id="cb183-5"><a href="基礎篇_元素的基礎操作.html#cb183-5" aria-hidden="true" tabindex="-1"></a>vector_name1[[<span class="st">&quot;apple&quot;</span>]]</span></code></pre></div>
+<span id="cb183-2"><a href="基礎篇_元素的基礎操作.html#cb183-2" aria-hidden="true" tabindex="-1"></a>vector_name[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="基礎篇_元素的基礎操作.html#cb185-1" aria-hidden="true" tabindex="-1"></a>vector_name1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span> <span class="ot">=</span> <span class="dv">1</span> , <span class="st">&quot;banana&quot;</span> <span class="ot">=</span> <span class="dv">2</span> , <span class="st">&quot;cat&quot;</span> <span class="ot">=</span> <span class="dv">3</span>)</span>
+<span id="cb185-2"><a href="基礎篇_元素的基礎操作.html#cb185-2" aria-hidden="true" tabindex="-1"></a>vector_name1[[<span class="st">&quot;apple&quot;</span>]]</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
 
 </div>
 </div>

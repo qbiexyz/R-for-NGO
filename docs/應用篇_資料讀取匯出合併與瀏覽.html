@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-08-20" />
+<meta name="date" content="2023-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,16 +226,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出vector中的元素"><i class="fa fa-check"></i><b>4.3.1</b> 檢索/取出vector中的元素</a></li>
 <li class="chapter" data-level="4.3.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出list中的元素"><i class="fa fa-check"></i><b>4.3.2</b> 取出list中的元素</a></li>
+<li class="chapter" data-level="4.3.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.3.3</b> <code>[[]]</code>和<code>[]</code> 差異</a></li>
+<li class="chapter" data-level="4.3.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.3.4</b> 取出data frame中的元素</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.4</b> <code>[[]]</code>和<code>[]</code> 差異</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.4.1</b> 取出data frame中的元素</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.5</b> 替換元素</a></li>
-<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.6</b> 新增元素</a></li>
-<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.7</b> 刪除元素</a></li>
-<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.8</b> 判斷位置的其他方法</a></li>
-<li class="chapter" data-level="4.9" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.9</b> 元素命名</a></li>
+<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.4</b> 替換元素</a></li>
+<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.5</b> 新增元素</a></li>
+<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.6</b> 刪除元素</a></li>
+<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.7</b> 判斷位置的其他方法</a></li>
+<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.8</b> 元素命名</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html"><i class="fa fa-check"></i><b>5</b> 應用篇_資料讀取、匯出、合併與瀏覽</a>
 <ul>
@@ -333,11 +331,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 右鍵-&gt;內容-&gt;位置或是右鍵-&gt;複製路徑<br />
 查看資料夾的路徑</p>
 <p>若是使用R Project打開，除非需要更換路徑，不然預設就是R Project的資料夾</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 設定工作路徑</span></span>
-<span id="cb184-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/Dropbox/R_for_NGO&quot;</span>) </span>
-<span id="cb184-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb184-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb184-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 顯示目前的工作路徑</span></span>
-<span id="cb184-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb184-5" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 設定工作路徑</span></span>
+<span id="cb187-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/Dropbox/R_for_NGO&quot;</span>) </span>
+<span id="cb187-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb187-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 顯示目前的工作路徑</span></span>
+<span id="cb187-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
 </div>
 <div id="讀取資料" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> 讀取資料<a href="應用篇_資料讀取匯出合併與瀏覽.html#讀取資料" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -378,10 +376,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">右下角也有提供程式碼，且就是根據你點選的方式呈現，可以點選完後複製程式碼</p>
 </div>
 <p>複製的程式</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 讀取R_practice_new的.cvs檔案</span></span>
-<span id="cb185-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb185-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb185-3" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_new.csv&quot;</span>)</span>
-<span id="cb185-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb185-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 讀取R_practice_new的.cvs檔案</span></span>
+<span id="cb188-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb188-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-3" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_new.csv&quot;</span>)</span>
+<span id="cb188-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new)</span></code></pre></div>
 <p>讀取檔案後會出現在Global Environment中</p>
 <div class="figure">
 <img src="picture/Import_Dataset6.png" alt="" />
@@ -393,10 +391,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">點開瀏覽檔案</p>
 </div>
 <p>另外若是要讀取R_practice_new的<strong>.dta檔案</strong>，可是可以用類似上述點選的方式讀取，</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 讀取R_practice_new的.dta檔案</span></span>
-<span id="cb186-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb186-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb186-3" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;data/R_practice_new.dta&quot;</span>)</span>
-<span id="cb186-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 讀取R_practice_new的.dta檔案</span></span>
+<span id="cb189-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb189-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-3" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;data/R_practice_new.dta&quot;</span>)</span>
+<span id="cb189-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new)</span></code></pre></div>
 </div>
 </div>
 <div id="匯出資料" class="section level2 hasAnchor" number="5.3">
@@ -405,46 +403,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="r物件.rds" class="section level3 hasAnchor" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> R物件.rds<a href="應用篇_資料讀取匯出合併與瀏覽.html#r物件.rds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>若是處理到一半，之後還要繼續用R處理，可以先匯出成R物件檔案<code>.rds</code>，較方便自己下次處理，後續最後處理完成再轉換成其他常見檔案</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
-<span id="cb187-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb187-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb187-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(iris, <span class="st">&quot;iris.rds&quot;</span>) <span class="do">## 前面是data名稱、後面是要存的檔案名稱</span></span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
+<span id="cb190-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb190-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(iris, <span class="st">&quot;iris.rds&quot;</span>) <span class="do">## 前面是data名稱、後面是要存的檔案名稱</span></span></code></pre></div>
 </div>
 <div id="文字檔.txt" class="section level3 hasAnchor" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> 文字檔.txt<a href="應用篇_資料讀取匯出合併與瀏覽.html#文字檔.txt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查詢write.table的help文件</span></span>
-<span id="cb188-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-2" aria-hidden="true" tabindex="-1"></a>?write.table</span>
-<span id="cb188-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
-<span id="cb188-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb188-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 匯出成.txt檔案</span></span>
-<span id="cb188-8"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb188-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(iris, <span class="at">file =</span> <span class="st">&quot;iris.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">row.names =</span> F, <span class="at">col.names =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查詢write.table的help文件</span></span>
+<span id="cb191-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-2" aria-hidden="true" tabindex="-1"></a>?write.table</span>
+<span id="cb191-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
+<span id="cb191-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb191-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 匯出成.txt檔案</span></span>
+<span id="cb191-8"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(iris, <span class="at">file =</span> <span class="st">&quot;iris.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">row.names =</span> F, <span class="at">col.names =</span> T)</span></code></pre></div>
 <p><code>write.table</code>的help文件，文件後面也有針對每個參數的描述 <img src="picture/writetable.png" /></p>
 </div>
 <div id="csv檔.csv" class="section level3 hasAnchor" number="5.3.3">
 <h3><span class="header-section-number">5.3.3</span> CSV檔.csv<a href="應用篇_資料讀取匯出合併與瀏覽.html#csv檔.csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查詢write.csv的help文件</span></span>
-<span id="cb189-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-2" aria-hidden="true" tabindex="-1"></a>?write.csv</span>
-<span id="cb189-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
-<span id="cb189-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb189-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb189-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(iris, <span class="at">file =</span> <span class="st">&quot;iris.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查詢write.csv的help文件</span></span>
+<span id="cb192-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-2" aria-hidden="true" tabindex="-1"></a>?write.csv</span>
+<span id="cb192-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
+<span id="cb192-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb192-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(iris, <span class="at">file =</span> <span class="st">&quot;iris.csv&quot;</span>, <span class="at">row.names =</span> F)</span></code></pre></div>
 </div>
 <div id="excel-試算表.xslx" class="section level3 hasAnchor" number="5.3.4">
 <h3><span class="header-section-number">5.3.4</span> Excel 試算表.xslx<a href="應用篇_資料讀取匯出合併與瀏覽.html#excel-試算表.xslx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>存成<code>.xlsx</code>需另外使用其他套件，在此使用的是<code>writexl</code>，但也有其他的套件也可以輸出成.xlsx(如<code>openxlsx</code>)</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 載入writexl套件</span></span>
-<span id="cb190-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
-<span id="cb190-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 查詢write_xlsx的help文件</span></span>
-<span id="cb190-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-5" aria-hidden="true" tabindex="-1"></a>?write_xlsx</span>
-<span id="cb190-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
-<span id="cb190-8"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb190-9"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-10"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb190-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(<span class="fu">list</span>(<span class="at">iris =</span> iris), <span class="st">&quot;iris.xlsx&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 載入writexl套件</span></span>
+<span id="cb193-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
+<span id="cb193-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 查詢write_xlsx的help文件</span></span>
+<span id="cb193-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-5" aria-hidden="true" tabindex="-1"></a>?write_xlsx</span>
+<span id="cb193-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
+<span id="cb193-8"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb193-9"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-10"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(<span class="fu">list</span>(<span class="at">iris =</span> iris), <span class="st">&quot;iris.xlsx&quot;</span>) </span></code></pre></div>
 </div>
 </div>
 <div id="簡單資料合併" class="section level2 hasAnchor" number="5.4">
@@ -459,42 +457,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>在資料當中有時需要新增整列或整行的資料，<br />
 可以使用<code>rbind()</code>和<code>cbind()</code>來完成(vector或是data.frame都適用)</p>
 <p>若今天想在<code>iris</code>資料中加入新的一列(原先有150筆資料新增一筆)</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector</span></span>
-<span id="cb191-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="do">## 第一列</span></span>
-<span id="cb191-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)  <span class="do">## 第二列</span></span>
-<span id="cb191-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-4" aria-hidden="true" tabindex="-1"></a>      ) </span>
-<span id="cb191-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
-<span id="cb191-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb191-8"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span>
-<span id="cb191-9"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-10"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增成另一個資料</span></span>
-<span id="cb191-11"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-11" aria-hidden="true" tabindex="-1"></a>iris_nrow <span class="ot">&lt;-</span> <span class="fu">rbind</span>(iris, <span class="do">## 資料框</span></span>
-<span id="cb191-12"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">&quot;setosa&quot;</span>)  <span class="do">## 新增一列</span></span>
-<span id="cb191-13"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-13" aria-hidden="true" tabindex="-1"></a>      ) </span>
-<span id="cb191-14"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-15"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-15" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
-<span id="cb191-16"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 直接更換原先的資料</span></span>
-<span id="cb191-17"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-17" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">&lt;-</span> <span class="fu">rbind</span>(iris, <span class="co">#資料框</span></span>
-<span id="cb191-18"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">&quot;setosa&quot;</span>)  <span class="do">## 新增一列</span></span>
-<span id="cb191-19"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb191-19" aria-hidden="true" tabindex="-1"></a>      ) </span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector</span></span>
+<span id="cb194-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="do">## 第一列</span></span>
+<span id="cb194-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)  <span class="do">## 第二列</span></span>
+<span id="cb194-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-4" aria-hidden="true" tabindex="-1"></a>      ) </span>
+<span id="cb194-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
+<span id="cb194-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb194-8"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span>
+<span id="cb194-9"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-10"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增成另一個資料</span></span>
+<span id="cb194-11"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-11" aria-hidden="true" tabindex="-1"></a>iris_nrow <span class="ot">&lt;-</span> <span class="fu">rbind</span>(iris, <span class="do">## 資料框</span></span>
+<span id="cb194-12"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">&quot;setosa&quot;</span>)  <span class="do">## 新增一列</span></span>
+<span id="cb194-13"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-13" aria-hidden="true" tabindex="-1"></a>      ) </span>
+<span id="cb194-14"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-15"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-15" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
+<span id="cb194-16"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 直接更換原先的資料</span></span>
+<span id="cb194-17"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-17" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">&lt;-</span> <span class="fu">rbind</span>(iris, <span class="co">#資料框</span></span>
+<span id="cb194-18"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">&quot;setosa&quot;</span>)  <span class="do">## 新增一列</span></span>
+<span id="cb194-19"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-19" aria-hidden="true" tabindex="-1"></a>      ) </span></code></pre></div>
 <p><img src="picture/rbind2.png" /></p>
 <p><img src="picture/rbind1.png" /><br />
 </p>
 <p>若今天想在<code>iris</code>資料中加入新的一行(原先有四行)</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector</span></span>
-<span id="cb192-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="do">## 第一行</span></span>
-<span id="cb192-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)  <span class="do">## 第二行</span></span>
-<span id="cb192-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-4" aria-hidden="true" tabindex="-1"></a>      ) </span>
-<span id="cb192-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb192-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
-<span id="cb192-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb192-8"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span>
-<span id="cb192-9"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb192-10"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增成另一個資料</span></span>
-<span id="cb192-11"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-11" aria-hidden="true" tabindex="-1"></a>iris_newcol <span class="ot">&lt;-</span> <span class="fu">cbind</span>(iris, <span class="do">## 資料框</span></span>
-<span id="cb192-12"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rep</span>(<span class="st">&quot;newcol&quot;</span>, <span class="fu">nrow</span>(iris))  <span class="do">## 自行新增一行、或是有對應的資料可以直接新增</span></span>
-<span id="cb192-13"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb192-13" aria-hidden="true" tabindex="-1"></a>      ) </span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector</span></span>
+<span id="cb195-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="do">## 第一行</span></span>
+<span id="cb195-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)  <span class="do">## 第二行</span></span>
+<span id="cb195-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-4" aria-hidden="true" tabindex="-1"></a>      ) </span>
+<span id="cb195-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 取得R內建資料</span></span>
+<span id="cb195-7"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb195-8"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span>
+<span id="cb195-9"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-10"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增成另一個資料</span></span>
+<span id="cb195-11"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-11" aria-hidden="true" tabindex="-1"></a>iris_newcol <span class="ot">&lt;-</span> <span class="fu">cbind</span>(iris, <span class="do">## 資料框</span></span>
+<span id="cb195-12"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rep</span>(<span class="st">&quot;newcol&quot;</span>, <span class="fu">nrow</span>(iris))  <span class="do">## 自行新增一行、或是有對應的資料可以直接新增</span></span>
+<span id="cb195-13"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-13" aria-hidden="true" tabindex="-1"></a>      ) </span></code></pre></div>
 <p><img src="picture/cbind.png" /><br />
 </p>
 </div>
@@ -504,12 +502,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 可以使用R原先內建的<code>merge</code>或是用dplyr套件提供的相關指令<br />
 詳細可以查看<a href="https://yijutseng.github.io/DataScienceRBook/manipulation.html#%E8%B3%87%E6%96%99%E7%B5%90%E5%90%88-join">參考1</a>、<a href="https://rforhr.com/join.html">參考2</a>的整理</p>
 <p><img src="picture/dplyr_join.png" /></p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 增加變數：使用R base的merge</span></span>
-<span id="cb193-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(data_frame1, data_frame2, <span class="at">by=</span><span class="st">&quot;idvar&quot;</span>, <span class="at">all=</span><span class="cn">TRUE</span>)</span>
-<span id="cb193-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb193-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 增加觀察值：使用dplyr的bind_rows()</span></span>
-<span id="cb193-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb193-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb193-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(data_frame1, data_frame2)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 增加變數：使用R base的merge</span></span>
+<span id="cb196-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(data_frame1, data_frame2, <span class="at">by=</span><span class="st">&quot;idvar&quot;</span>, <span class="at">all=</span><span class="cn">TRUE</span>)</span>
+<span id="cb196-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 增加觀察值：使用dplyr的bind_rows()</span></span>
+<span id="cb196-5"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb196-6"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(data_frame1, data_frame2)</span></code></pre></div>
 </div>
 <div id="長寬資料轉換" class="section level3 hasAnchor" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> 長寬資料轉換<a href="應用篇_資料讀取匯出合併與瀏覽.html#長寬資料轉換" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -522,61 +520,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>若已經將資料讀取到R裡面，一開始需要看一下或檢查資料的大致狀況如何<br />
 </p>
 <p>以<code>R_practice_new.csv</code>資料為例:</p>
+<p>讀取R_practice_new的.cvs檔案(或用點選方式)</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb197-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb197-2" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_new.csv&quot;</span>)</span></code></pre></div>
 <div id="資料屬性查詢函數" class="section level3 hasAnchor" number="5.5.1">
 <h3><span class="header-section-number">5.5.1</span> 資料屬性查詢函數<a href="應用篇_資料讀取匯出合併與瀏覽.html#資料屬性查詢函數" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>讀取R_practice_new的.cvs檔案(或用點選方式)</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb194-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb194-2" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_new.csv&quot;</span>)</span></code></pre></div>
 <p>查看資料內容</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new) <span class="do">## 查看資料</span></span>
-<span id="cb195-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(R_practice_new) <span class="do">## 查看前6筆資料內容</span></span>
-<span id="cb195-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(R_practice_new) <span class="do">## 查看後6筆資料內容</span></span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new) <span class="do">## 查看資料</span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(R_practice_new) <span class="do">## 查看前6筆資料內容</span></span></code></pre></div>
+<pre><code>## # A tibble: 6 × 8
+##      id   sex   age height weight area  score fitness
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1    75     1    18    167     49 中區     97       0
+## 2    55     1    22    161     55 南區     97       0
+## 3    50     1    22    167     66 南區     99       1
+## 4   104     1    22    166     66 南區     99       1
+## 5    37     1    24    168     61 中區     96       0
+## 6    16     2    24    172     52 中區     91       0</code></pre>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(R_practice_new) <span class="do">## 查看後6筆資料內容</span></span></code></pre></div>
+<pre><code>## # A tibble: 6 × 8
+##      id   sex   age height weight area  score fitness
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1    66     1    54    157     78 南區     48       0
+## 2     5     1    59    170     80 南區     41       1
+## 3    33     2    46    170     51 北區     NA       0
+## 4    23     1    32    163     57 南區     NA       0
+## 5    61     2    50    181     71 中區     NA       0
+## 6    13     1    28    170     72 中區     NA       1</code></pre>
 <p>查看資料各種名稱</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(R_practice_new) <span class="do">## 顯示資料名稱</span></span>
-<span id="cb196-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(R_practice_new) <span class="do">## 顯示欄位名稱</span></span>
-<span id="cb196-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(R_practice_new) <span class="do">## 顯示列名稱(若沒有則顯示編號)</span></span>
-<span id="cb196-4"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(R_practice_new) <span class="do">## 先顯示列再顯示欄位的名稱</span></span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(R_practice_new) <span class="do">## 顯示資料名稱</span></span></code></pre></div>
+<pre><code>## [1] &quot;id&quot;      &quot;sex&quot;     &quot;age&quot;     &quot;height&quot;  &quot;weight&quot;  &quot;area&quot;    &quot;score&quot;  
+## [8] &quot;fitness&quot;</code></pre>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(R_practice_new) <span class="do">## 顯示欄位名稱</span></span></code></pre></div>
+<pre><code>## [1] &quot;id&quot;      &quot;sex&quot;     &quot;age&quot;     &quot;height&quot;  &quot;weight&quot;  &quot;area&quot;    &quot;score&quot;  
+## [8] &quot;fitness&quot;</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(R_practice_new) <span class="do">## 顯示列名稱(若沒有則顯示編號)</span></span></code></pre></div>
+<pre><code>##   [1] &quot;1&quot;   &quot;2&quot;   &quot;3&quot;   &quot;4&quot;   &quot;5&quot;   &quot;6&quot;   &quot;7&quot;   &quot;8&quot;   &quot;9&quot;   &quot;10&quot;  &quot;11&quot;  &quot;12&quot; 
+##  [13] &quot;13&quot;  &quot;14&quot;  &quot;15&quot;  &quot;16&quot;  &quot;17&quot;  &quot;18&quot;  &quot;19&quot;  &quot;20&quot;  &quot;21&quot;  &quot;22&quot;  &quot;23&quot;  &quot;24&quot; 
+##  [25] &quot;25&quot;  &quot;26&quot;  &quot;27&quot;  &quot;28&quot;  &quot;29&quot;  &quot;30&quot;  &quot;31&quot;  &quot;32&quot;  &quot;33&quot;  &quot;34&quot;  &quot;35&quot;  &quot;36&quot; 
+##  [37] &quot;37&quot;  &quot;38&quot;  &quot;39&quot;  &quot;40&quot;  &quot;41&quot;  &quot;42&quot;  &quot;43&quot;  &quot;44&quot;  &quot;45&quot;  &quot;46&quot;  &quot;47&quot;  &quot;48&quot; 
+##  [49] &quot;49&quot;  &quot;50&quot;  &quot;51&quot;  &quot;52&quot;  &quot;53&quot;  &quot;54&quot;  &quot;55&quot;  &quot;56&quot;  &quot;57&quot;  &quot;58&quot;  &quot;59&quot;  &quot;60&quot; 
+##  [61] &quot;61&quot;  &quot;62&quot;  &quot;63&quot;  &quot;64&quot;  &quot;65&quot;  &quot;66&quot;  &quot;67&quot;  &quot;68&quot;  &quot;69&quot;  &quot;70&quot;  &quot;71&quot;  &quot;72&quot; 
+##  [73] &quot;73&quot;  &quot;74&quot;  &quot;75&quot;  &quot;76&quot;  &quot;77&quot;  &quot;78&quot;  &quot;79&quot;  &quot;80&quot;  &quot;81&quot;  &quot;82&quot;  &quot;83&quot;  &quot;84&quot; 
+##  [85] &quot;85&quot;  &quot;86&quot;  &quot;87&quot;  &quot;88&quot;  &quot;89&quot;  &quot;90&quot;  &quot;91&quot;  &quot;92&quot;  &quot;93&quot;  &quot;94&quot;  &quot;95&quot;  &quot;96&quot; 
+##  [97] &quot;97&quot;  &quot;98&quot;  &quot;99&quot;  &quot;100&quot; &quot;101&quot; &quot;102&quot; &quot;103&quot; &quot;104&quot; &quot;105&quot; &quot;106&quot; &quot;107&quot; &quot;108&quot;
+## [109] &quot;109&quot; &quot;110&quot;</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(R_practice_new) <span class="do">## 先顯示列再顯示欄位的名稱</span></span></code></pre></div>
+<pre><code>## [[1]]
+##   [1] &quot;1&quot;   &quot;2&quot;   &quot;3&quot;   &quot;4&quot;   &quot;5&quot;   &quot;6&quot;   &quot;7&quot;   &quot;8&quot;   &quot;9&quot;   &quot;10&quot;  &quot;11&quot;  &quot;12&quot; 
+##  [13] &quot;13&quot;  &quot;14&quot;  &quot;15&quot;  &quot;16&quot;  &quot;17&quot;  &quot;18&quot;  &quot;19&quot;  &quot;20&quot;  &quot;21&quot;  &quot;22&quot;  &quot;23&quot;  &quot;24&quot; 
+##  [25] &quot;25&quot;  &quot;26&quot;  &quot;27&quot;  &quot;28&quot;  &quot;29&quot;  &quot;30&quot;  &quot;31&quot;  &quot;32&quot;  &quot;33&quot;  &quot;34&quot;  &quot;35&quot;  &quot;36&quot; 
+##  [37] &quot;37&quot;  &quot;38&quot;  &quot;39&quot;  &quot;40&quot;  &quot;41&quot;  &quot;42&quot;  &quot;43&quot;  &quot;44&quot;  &quot;45&quot;  &quot;46&quot;  &quot;47&quot;  &quot;48&quot; 
+##  [49] &quot;49&quot;  &quot;50&quot;  &quot;51&quot;  &quot;52&quot;  &quot;53&quot;  &quot;54&quot;  &quot;55&quot;  &quot;56&quot;  &quot;57&quot;  &quot;58&quot;  &quot;59&quot;  &quot;60&quot; 
+##  [61] &quot;61&quot;  &quot;62&quot;  &quot;63&quot;  &quot;64&quot;  &quot;65&quot;  &quot;66&quot;  &quot;67&quot;  &quot;68&quot;  &quot;69&quot;  &quot;70&quot;  &quot;71&quot;  &quot;72&quot; 
+##  [73] &quot;73&quot;  &quot;74&quot;  &quot;75&quot;  &quot;76&quot;  &quot;77&quot;  &quot;78&quot;  &quot;79&quot;  &quot;80&quot;  &quot;81&quot;  &quot;82&quot;  &quot;83&quot;  &quot;84&quot; 
+##  [85] &quot;85&quot;  &quot;86&quot;  &quot;87&quot;  &quot;88&quot;  &quot;89&quot;  &quot;90&quot;  &quot;91&quot;  &quot;92&quot;  &quot;93&quot;  &quot;94&quot;  &quot;95&quot;  &quot;96&quot; 
+##  [97] &quot;97&quot;  &quot;98&quot;  &quot;99&quot;  &quot;100&quot; &quot;101&quot; &quot;102&quot; &quot;103&quot; &quot;104&quot; &quot;105&quot; &quot;106&quot; &quot;107&quot; &quot;108&quot;
+## [109] &quot;109&quot; &quot;110&quot;
+## 
+## [[2]]
+## [1] &quot;id&quot;      &quot;sex&quot;     &quot;age&quot;     &quot;height&quot;  &quot;weight&quot;  &quot;area&quot;    &quot;score&quot;  
+## [8] &quot;fitness&quot;</code></pre>
 <p>查看資料長度</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(R_practice_new) <span class="do">## 顯示資料查度(若為data.frame會顯示欄位數)</span></span>
-<span id="cb197-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(R_practice_new) <span class="do">## 先顯示列再顯示欄位的長度</span></span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(R_practice_new) <span class="do">## 顯示資料查度(若為data.frame會顯示欄位數)</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(R_practice_new) <span class="do">## 先顯示列再顯示欄位的長度</span></span></code></pre></div>
+<pre><code>## [1] 110   8</code></pre>
 <p>顯示資料的架構資訊</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(R_practice_new) </span>
-<span id="cb198-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(R_practice_new<span class="sc">$</span>age) <span class="do">## 數值資料</span></span>
-<span id="cb198-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(R_practice_new<span class="sc">$</span>area) <span class="do">## 文字資料</span></span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(R_practice_new) </span></code></pre></div>
+<pre><code>## spc_tbl_ [110 × 8] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ id     : num [1:110] 75 55 50 104 37 16 82 70 47 94 ...
+##  $ sex    : num [1:110] 1 1 1 1 1 2 2 2 1 1 ...
+##  $ age    : num [1:110] 18 22 22 22 24 24 26 24 26 27 ...
+##  $ height : num [1:110] 167 161 167 166 168 172 167 163 170 152 ...
+##  $ weight : num [1:110] 49 55 66 66 61 52 74 72 63 47 ...
+##  $ area   : chr [1:110] &quot;中區&quot; &quot;南區&quot; &quot;南區&quot; &quot;南區&quot; ...
+##  $ score  : num [1:110] 97 97 99 99 96 91 99 99 93 90 ...
+##  $ fitness: num [1:110] 0 0 1 1 0 0 1 1 0 1 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   id = col_double(),
+##   ..   sex = col_double(),
+##   ..   age = col_double(),
+##   ..   height = col_double(),
+##   ..   weight = col_double(),
+##   ..   area = col_character(),
+##   ..   score = col_double(),
+##   ..   fitness = col_double()
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(R_practice_new<span class="sc">$</span>age) <span class="do">## 數值資料</span></span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(R_practice_new<span class="sc">$</span>area) <span class="do">## 文字資料</span></span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
 <p>簡單查看資料分配</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(R_practice_new<span class="sc">$</span>sex) <span class="do">## sex(性別)次數分配</span></span>
-<span id="cb199-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(R_practice_new<span class="sc">$</span>area) <span class="do">## area(地區)次數分配</span></span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(R_practice_new<span class="sc">$</span>sex) <span class="do">## sex(性別)次數分配</span></span></code></pre></div>
+<pre><code>## 
+##  1  2 
+## 57 53</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(R_practice_new<span class="sc">$</span>area) <span class="do">## area(地區)次數分配</span></span></code></pre></div>
+<pre><code>## 
+## 中區 北區 東區 南區 
+##   30   26   15   36</code></pre>
 <p>上述函數也可以合併使用</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 顯示前6筆資料的area(地區)次數分配</span></span>
-<span id="cb200-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">head</span>(R_practice_new)<span class="sc">$</span>area)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 顯示前6筆資料的area(地區)次數分配</span></span>
+<span id="cb225-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb225-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">head</span>(R_practice_new)<span class="sc">$</span>area)</span></code></pre></div>
+<pre><code>## 
+## 中區 南區 
+##    3    3</code></pre>
 </div>
 <div id="資料排序" class="section level3 hasAnchor" number="5.5.2">
 <h3><span class="header-section-number">5.5.2</span> 資料排序<a href="應用篇_資料讀取匯出合併與瀏覽.html#資料排序" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>另外也可以對向量或資料進行排序</p>
 <p>創建一個由數值組成的<code>nosort向量</code></p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb201-1" aria-hidden="true" tabindex="-1"></a>nosort <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb227-1" aria-hidden="true" tabindex="-1"></a>nosort <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
 <p>使用<code>sort()函數</code>，預設是由小排到大</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(nosort) <span class="do">## 預設是由小排到大</span></span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(nosort) <span class="do">## 預設是由小排到大</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3 5 6 8</code></pre>
 <p>使用<code>sort()函數</code>，將<code>decreasing</code>設為T(TRUE)，代表由大排到小</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(nosort, <span class="at">decreasing =</span> T) <span class="do">## 由大排到小</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(nosort, <span class="at">decreasing =</span> T) <span class="do">## 由大排到小</span></span></code></pre></div>
 <pre><code>## [1] 8 6 5 3 2 1</code></pre>
 <p>使用R_practice_new資料為範例:</p>
 <p>讀取R_practice_new的.cvs檔案(或用點選方式)</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb206-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb206-2" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_new.csv&quot;</span>)</span>
-<span id="cb206-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb206-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb232-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb232-2" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_new.csv&quot;</span>)</span>
+<span id="cb232-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new)</span></code></pre></div>
 <p>顯示age(年齡)前6筆資料</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(R_practice_new<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(R_practice_new<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>## [1] 18 22 22 22 24 24</code></pre>
 <p>顯示age(年齡)排序之後的前6筆資料</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">head</span>(R_practice_new<span class="sc">$</span>age)) </span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">head</span>(R_practice_new<span class="sc">$</span>age)) </span></code></pre></div>
 <pre><code>## [1] 18 22 22 22 24 24</code></pre>
-<p>顯示age(年齡)排序排序之後前6筆資料的原始位置(由小到大)</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(<span class="fu">head</span>(R_practice_new<span class="sc">$</span>age))</span></code></pre></div>
+<p>顯示age(年齡)排序之後前6筆資料的原始位置(由小到大)</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(<span class="fu">head</span>(R_practice_new<span class="sc">$</span>age))</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5 6</code></pre>
 <p>根據age(年齡)排序之後的前6筆資料的原始位置，來排序整個資料</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb213-1" aria-hidden="true" tabindex="-1"></a>R_practice_new[<span class="fu">order</span>(<span class="fu">head</span>(R_practice_new<span class="sc">$</span>age)), ]</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb239-1" aria-hidden="true" tabindex="-1"></a>R_practice_new[<span class="fu">order</span>(<span class="fu">head</span>(R_practice_new<span class="sc">$</span>age)), ]</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
 ##      id   sex   age height weight area  score fitness
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;
@@ -598,26 +677,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>group_by()</code>: 用來分組瀏覽</li>
 </ul>
 <p>讀取R_practice_new的.cvs檔案(或用點選方式)</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb215-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb215-2" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_new.csv&quot;</span>)</span>
-<span id="cb215-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb241-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb241-2" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_new.csv&quot;</span>)</span>
+<span id="cb241-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb241-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(R_practice_new)</span></code></pre></div>
 <p>載入套件</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="do">## 整合性的資料分析(包括dplyr)</span></span>
-<span id="cb216-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="do">## OR</span></span>
-<span id="cb216-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb216-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="do">## 也可以直接載入dplyr</span></span></code></pre></div>
-<p>若只想要查看欄位 id、age(年齡),用<code>select()</code> 進行選擇</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb217-1" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="sc">%&gt;%</span></span>
-<span id="cb217-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb217-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, age)</span></code></pre></div>
-<p>若只想要查看age(年齡)大於等於50的資料，用<code>filter()</code>進行篩選</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb218-1" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="sc">%&gt;%</span></span>
-<span id="cb218-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb218-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">50</span>)</span></code></pre></div>
-<p>若想根據sex(性別)和age(年齡)排序(先排序sex再排age)來查看資料，用<code>arrange()</code>進行排序</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb219-1" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="sc">%&gt;%</span></span>
-<span id="cb219-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(sex, age)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="do">## 整合性的資料分析(包括dplyr)</span></span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="do">## OR</span></span>
+<span id="cb243-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="do">## 也可以直接載入dplyr</span></span></code></pre></div>
+<p>若只想要查看前6筆資料值中，欄位 id、age(年齡),用<code>select()</code> 進行選擇</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(R_practice_new) <span class="sc">%&gt;%</span></span>
+<span id="cb244-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb244-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, age)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##      id   age
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1    75    18
+## 2    55    22
+## 3    50    22
+## 4   104    22
+## 5    37    24
+## 6    16    24</code></pre>
+<p>若只想要查看前6筆資料值中，weight(體重)大於等於60，用<code>filter()</code>進行篩選</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(R_practice_new) <span class="sc">%&gt;%</span></span>
+<span id="cb246-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb246-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weight <span class="sc">&gt;=</span> <span class="dv">60</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 8
+##      id   sex   age height weight area  score fitness
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1    50     1    22    167     66 南區     99       1
+## 2   104     1    22    166     66 南區     99       1
+## 3    37     1    24    168     61 中區     96       0</code></pre>
+<p>若想根據sex(性別)和age(年齡)排序(先排序sex再排age)來查看前6筆資料值，用<code>arrange()</code>進行排序</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb248-1" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="sc">%&gt;%</span></span>
+<span id="cb248-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb248-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(sex, age)</span></code></pre></div>
+<pre><code>## # A tibble: 110 × 8
+##       id   sex   age height weight area  score fitness
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;
+##  1    75     1    18    167     49 中區     97       0
+##  2    55     1    22    161     55 南區     97       0
+##  3    50     1    22    167     66 南區     99       1
+##  4   104     1    22    166     66 南區     99       1
+##  5    37     1    24    168     61 中區     96       0
+##  6    47     1    26    170     63 北區     93       0
+##  7    94     1    27    152     47 北區     90       1
+##  8    13     1    28    170     72 中區     NA       1
+##  9    88     1    30    154     47 北區     89       1
+## 10    57     1    31    154     49 東區     90       1
+## # ℹ 100 more rows</code></pre>
 <p>若想根據sex(性別)進行分組來看男女性不同的age(年齡)平均，用<code>group_by()</code>進行分組統計，通常是與summarise()結合使用，來查看描述統計</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb220-1" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="sc">%&gt;%</span></span>
-<span id="cb220-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
-<span id="cb220-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb220-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">age_mean =</span> <span class="fu">mean</span>(age))</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb250-1" aria-hidden="true" tabindex="-1"></a>R_practice_new <span class="sc">%&gt;%</span></span>
+<span id="cb250-2"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb250-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb250-3"><a href="應用篇_資料讀取匯出合併與瀏覽.html#cb250-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">age_mean =</span> <span class="fu">mean</span>(age))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##     sex age_mean
+##   &lt;dbl&gt;    &lt;dbl&gt;
+## 1     1     46.3
+## 2     2     48.0</code></pre>
 </div>
 <div id="其他" class="section level3 hasAnchor" number="5.5.4">
 <h3><span class="header-section-number">5.5.4</span> 其他<a href="應用篇_資料讀取匯出合併與瀏覽.html#其他" class="anchor-section" aria-label="Anchor link to header"></a></h3>

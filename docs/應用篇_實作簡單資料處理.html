@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-08-20" />
+<meta name="date" content="2023-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,16 +226,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出vector中的元素"><i class="fa fa-check"></i><b>4.3.1</b> 檢索/取出vector中的元素</a></li>
 <li class="chapter" data-level="4.3.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出list中的元素"><i class="fa fa-check"></i><b>4.3.2</b> 取出list中的元素</a></li>
+<li class="chapter" data-level="4.3.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.3.3</b> <code>[[]]</code>和<code>[]</code> 差異</a></li>
+<li class="chapter" data-level="4.3.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.3.4</b> 取出data frame中的元素</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.4</b> <code>[[]]</code>和<code>[]</code> 差異</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.4.1</b> 取出data frame中的元素</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.5</b> 替換元素</a></li>
-<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.6</b> 新增元素</a></li>
-<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.7</b> 刪除元素</a></li>
-<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.8</b> 判斷位置的其他方法</a></li>
-<li class="chapter" data-level="4.9" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.9</b> 元素命名</a></li>
+<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.4</b> 替換元素</a></li>
+<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.5</b> 新增元素</a></li>
+<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.6</b> 刪除元素</a></li>
+<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.7</b> 判斷位置的其他方法</a></li>
+<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.8</b> 元素命名</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html"><i class="fa fa-check"></i><b>5</b> 應用篇_資料讀取、匯出、合併與瀏覽</a>
 <ul>
@@ -342,32 +340,32 @@ R_practice_new.csv 是已經清理好的檔案)</p>
 <p><img src="picture/tidyverse.png" /><br />
 </p>
 <p><strong>在接續下面分析前請先library以下套件</strong></p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="應用篇_實作簡單資料處理.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="do">## 讀取檔案</span></span>
-<span id="cb221-2"><a href="應用篇_實作簡單資料處理.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="do">## 大部分的資處工具 (包含dplyr套件)</span></span>
-<span id="cb221-3"><a href="應用篇_實作簡單資料處理.html#cb221-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table) <span class="do">## 高效能資處工具</span></span>
-<span id="cb221-4"><a href="應用篇_實作簡單資料處理.html#cb221-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools) <span class="do">## 初步描述統計</span></span>
-<span id="cb221-5"><a href="應用篇_實作簡單資料處理.html#cb221-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc) <span class="do">## 設置缺失值</span></span>
-<span id="cb221-6"><a href="應用篇_實作簡單資料處理.html#cb221-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjlabelled) <span class="do">## 上標籤用</span></span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="應用篇_實作簡單資料處理.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="do">## 讀取檔案</span></span>
+<span id="cb252-2"><a href="應用篇_實作簡單資料處理.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="do">## 大部分的資處工具 (包含dplyr套件)</span></span>
+<span id="cb252-3"><a href="應用篇_實作簡單資料處理.html#cb252-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table) <span class="do">## 高效能資處工具</span></span>
+<span id="cb252-4"><a href="應用篇_實作簡單資料處理.html#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools) <span class="do">## 初步描述統計</span></span>
+<span id="cb252-5"><a href="應用篇_實作簡單資料處理.html#cb252-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc) <span class="do">## 設置缺失值</span></span>
+<span id="cb252-6"><a href="應用篇_實作簡單資料處理.html#cb252-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjlabelled) <span class="do">## 上標籤用</span></span></code></pre></div>
 <p>接下來關於資料清理的部分，並不會特別單一仔細的講解，而是會使用<strong>簡單的實際例子</strong>來呈現，並適時補充一點額外的解釋，當然由於R語言的功能強大有很多套件，也持續在整合並強化，下面介紹的資料清理可能<strong>不會是唯一</strong>的方式，也不一定是最有效率方式，但仍可以稍微參考。</p>
 </div>
 <div id="設定工作路徑-1" class="section level3 hasAnchor" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> 設定工作路徑<a href="應用篇_實作簡單資料處理.html#設定工作路徑-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="應用篇_實作簡單資料處理.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/Dropbox/R_for_NGO&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="應用篇_實作簡單資料處理.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/Dropbox/R_for_NGO&quot;</span>) </span></code></pre></div>
 </div>
 <div id="讀取檔案" class="section level3 hasAnchor" number="6.1.3">
 <h3><span class="header-section-number">6.1.3</span> 讀取檔案<a href="應用篇_實作簡單資料處理.html#讀取檔案" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>讀取R_practice_row的.cvs檔案(或用點選方式)</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="應用篇_實作簡單資料處理.html#cb223-1" aria-hidden="true" tabindex="-1"></a>R_practice_row <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_row.csv&quot;</span>)</span>
-<span id="cb223-2"><a href="應用篇_實作簡單資料處理.html#cb223-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-3"><a href="應用篇_實作簡單資料處理.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(R_practice_row) <span class="do">## 查看變項名稱</span></span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="應用篇_實作簡單資料處理.html#cb254-1" aria-hidden="true" tabindex="-1"></a>R_practice_row <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_row.csv&quot;</span>)</span>
+<span id="cb254-2"><a href="應用篇_實作簡單資料處理.html#cb254-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb254-3"><a href="應用篇_實作簡單資料處理.html#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(R_practice_row) <span class="do">## 查看變項名稱</span></span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;      &quot;sex&quot;     &quot;age&quot;     &quot;height&quot;  &quot;weight&quot;  &quot;area&quot;    &quot;score&quot;  
 ## [8] &quot;fitness&quot;</code></pre>
 </div>
 <div id="選取需要的變項到新的資料檔中" class="section level3 hasAnchor" number="6.1.4">
 <h3><span class="header-section-number">6.1.4</span> 選取需要的變項到「新」的資料檔中<a href="應用篇_實作簡單資料處理.html#選取需要的變項到新的資料檔中" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>在此因為都要分析，但為了示範，因此全部都列上去，/ 複製到新的資料檔是為了不更改最初的資料。</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="應用篇_實作簡單資料處理.html#cb225-1" aria-hidden="true" tabindex="-1"></a>R_practice_row1 <span class="ot">&lt;-</span> R_practice_row[<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;height&quot;</span>, <span class="st">&quot;weight&quot;</span>,</span>
-<span id="cb225-2"><a href="應用篇_實作簡單資料處理.html#cb225-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;area&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="st">&quot;fitness&quot;</span>)]</span></code></pre></div>
+<p>在此因為都要分析，但為了示範，因此全部都列上去，複製到新的資料檔是為了不更改最初的資料。</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="應用篇_實作簡單資料處理.html#cb256-1" aria-hidden="true" tabindex="-1"></a>R_practice_row1 <span class="ot">&lt;-</span> R_practice_row[<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;height&quot;</span>, <span class="st">&quot;weight&quot;</span>,</span>
+<span id="cb256-2"><a href="應用篇_實作簡單資料處理.html#cb256-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;area&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="st">&quot;fitness&quot;</span>)]</span></code></pre></div>
 </div>
 <div id="瀏覽資料" class="section level3 hasAnchor" number="6.1.5">
 <h3><span class="header-section-number">6.1.5</span> 瀏覽資料<a href="應用篇_實作簡單資料處理.html#瀏覽資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -375,12 +373,12 @@ R_practice_new.csv 是已經清理好的檔案)</p>
 (以下指令都還有各自呈現的細節可以調整，可自行查看該指令的help)</p>
 <p>使用<code>table()函數</code>初步查看次數分配(以sex性別為例)<br />
 (useNA 是設定列出是否有NA)</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="應用篇_實作簡單資料處理.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(R_practice_row1<span class="sc">$</span>sex, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>) <span class="do">## 呈現簡單次數分配</span></span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="應用篇_實作簡單資料處理.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(R_practice_row1<span class="sc">$</span>sex, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>) <span class="do">## 呈現簡單次數分配</span></span></code></pre></div>
 <pre><code>## 
 ##    1    2   22 &lt;NA&gt; 
 ##   57   52    1    0</code></pre>
 <p>使用<code>frq()函數</code>呈現更多內容的次數分配表與簡單描述統計</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="應用篇_實作簡單資料處理.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(R_practice_row1<span class="sc">$</span>sex) </span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="應用篇_實作簡單資料處理.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(R_practice_row1<span class="sc">$</span>sex) </span></code></pre></div>
 <pre><code>## x &lt;numeric&gt; 
 ## # total N=110 valid N=110 mean=1.66 sd=2.02
 ## 
@@ -391,7 +389,7 @@ R_practice_new.csv 是已經清理好的檔案)</p>
 ##    22 |  1 |  0.91 |    0.91 | 100.00
 ##  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 <p>上述結果我們可以得知，選1(女生)的總共有57人，佔51.82%、選2(男生)的總共有52人，佔47.27%，顯示這份資料女生稍微點一點，但另外可以看到，還有一個「22」的值，回去看一開始的變項描述也沒有出現這個值，因此可以判斷「22」很有可能是<strong>不合理的值</strong>，不應該出現在性別的變項當中，下一步則是要來處理這個不合理值。</p>
-<p>我們可以看到，柳覽資料的其中一個重要的目的，就是查看資料<strong>是否有不合理</strong>的地方。</p>
+<p>我們可以看到，瀏覽資料的其中一個重要的目的，就是查看資料<strong>是否有不合理</strong>的地方。</p>
 </div>
 </div>
 <div id="設定不合理值" class="section level2 hasAnchor" number="6.2">
@@ -400,16 +398,16 @@ R_practice_new.csv 是已經清理好的檔案)</p>
 R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數值型的遺漏值<code>NA_integer_</code>或是字串型的遺漏值<code>NA_character_</code></p>
 <p>以下僅列出部分方式，但同樣也有其他套件可以做到相同的設定遺漏值<br />
 目標是按照瀏覽檔案的覺得是不合理的值，將這些值的都當NA處理，並回傳到新的data frame<code>R_practice_row2</code></p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="應用篇_實作簡單資料處理.html#cb230-1" aria-hidden="true" tabindex="-1"></a>R_practice_row2  <span class="ot">&lt;-</span> R_practice_row1 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將WVS_w7_n1(資料)用於mutate()函數中</span></span>
-<span id="cb230-2"><a href="應用篇_實作簡單資料處理.html#cb230-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="do">## 使用dplyr套件中的 mutate()代表創建/修改變項</span></span>
-<span id="cb230-3"><a href="應用篇_實作簡單資料處理.html#cb230-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第一種設定遺漏值方式(用if_else)</span></span>
-<span id="cb230-4"><a href="應用篇_實作簡單資料處理.html#cb230-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">if_else</span>(sex <span class="sc">==</span> <span class="dv">22</span> ,  <span class="do">## 當sex的值不是1或不是2，</span></span>
-<span id="cb230-5"><a href="應用篇_實作簡單資料處理.html#cb230-5" aria-hidden="true" tabindex="-1"></a>                      <span class="cn">NA_integer_</span>,    <span class="do">## 設定為遺漏(NA_integer_)，</span></span>
-<span id="cb230-6"><a href="應用篇_實作簡單資料處理.html#cb230-6" aria-hidden="true" tabindex="-1"></a>                      sex),           <span class="do">## 其他回傳原本的值</span></span>
-<span id="cb230-7"><a href="應用篇_實作簡單資料處理.html#cb230-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第二種設定遺漏值方式(用set_na)</span></span>
-<span id="cb230-8"><a href="應用篇_實作簡單資料處理.html#cb230-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight =</span> <span class="fu">set_na</span>(weight, <span class="at">na =</span> <span class="sc">-</span><span class="dv">65</span>), <span class="do">## 設定weight當中-65為NA</span></span>
-<span id="cb230-9"><a href="應用篇_實作簡單資料處理.html#cb230-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">score =</span> <span class="fu">set_na</span>(score, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">101</span><span class="sc">:</span><span class="dv">800</span>)) <span class="do">## 設定score當中101-800為NA</span></span>
-<span id="cb230-10"><a href="應用篇_實作簡單資料處理.html#cb230-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="應用篇_實作簡單資料處理.html#cb261-1" aria-hidden="true" tabindex="-1"></a>R_practice_row2  <span class="ot">&lt;-</span> R_practice_row1 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將WVS_w7_n1(資料)用於mutate()函數中</span></span>
+<span id="cb261-2"><a href="應用篇_實作簡單資料處理.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="do">## 使用dplyr套件中的 mutate()代表創建/修改變項</span></span>
+<span id="cb261-3"><a href="應用篇_實作簡單資料處理.html#cb261-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第一種設定遺漏值方式(用if_else)</span></span>
+<span id="cb261-4"><a href="應用篇_實作簡單資料處理.html#cb261-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">if_else</span>(sex <span class="sc">==</span> <span class="dv">22</span> ,  <span class="do">## 當sex的值不是1或不是2，</span></span>
+<span id="cb261-5"><a href="應用篇_實作簡單資料處理.html#cb261-5" aria-hidden="true" tabindex="-1"></a>                      <span class="cn">NA_integer_</span>,    <span class="do">## 設定為遺漏(NA_integer_)，</span></span>
+<span id="cb261-6"><a href="應用篇_實作簡單資料處理.html#cb261-6" aria-hidden="true" tabindex="-1"></a>                      sex),           <span class="do">## 其他回傳原本的值</span></span>
+<span id="cb261-7"><a href="應用篇_實作簡單資料處理.html#cb261-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第二種設定遺漏值方式(用set_na)</span></span>
+<span id="cb261-8"><a href="應用篇_實作簡單資料處理.html#cb261-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight =</span> <span class="fu">set_na</span>(weight, <span class="at">na =</span> <span class="sc">-</span><span class="dv">65</span>), <span class="do">## 設定weight當中-65為NA</span></span>
+<span id="cb261-9"><a href="應用篇_實作簡單資料處理.html#cb261-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">score =</span> <span class="fu">set_na</span>(score, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">101</span><span class="sc">:</span><span class="dv">800</span>)) <span class="do">## 設定score當中101-800為NA</span></span>
+<span id="cb261-10"><a href="應用篇_實作簡單資料處理.html#cb261-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
 <div id="新建修改轉換變項" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> 新建/修改/轉換變項<a href="應用篇_實作簡單資料處理.html#新建修改轉換變項" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -430,21 +428,21 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <li><code>transform</code>: 轉換資料型態</li>
 <li><code>factor</code>: 將資料型態轉變成類別變項(factor)</li>
 </ul>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="應用篇_實作簡單資料處理.html#cb231-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row2 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
-<span id="cb231-2"><a href="應用篇_實作簡單資料處理.html#cb231-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
-<span id="cb231-3"><a href="應用篇_實作簡單資料處理.html#cb231-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 性別</span></span>
-<span id="cb231-4"><a href="應用篇_實作簡單資料處理.html#cb231-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span> <span class="fu">case_match</span>( <span class="do">## case_match 將變項值重新編碼</span></span>
-<span id="cb231-5"><a href="應用篇_實作簡單資料處理.html#cb231-5" aria-hidden="true" tabindex="-1"></a>      sex, <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>, <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span>, <span class="do">## 原先1變成1、2變成0</span></span>
-<span id="cb231-6"><a href="應用篇_實作簡單資料處理.html#cb231-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="cn">NA</span> <span class="do">## 其他沒定義到的設定成NA(也設定成返回原先a01的值)</span></span>
-<span id="cb231-7"><a href="應用篇_實作簡單資料處理.html#cb231-7" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb231-8"><a href="應用篇_實作簡單資料處理.html#cb231-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span> <span class="do">## 可以根據上面mutate好的變項再連結到下面transform函數</span></span>
-<span id="cb231-9"><a href="應用篇_實作簡單資料處理.html#cb231-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">transform</span>( <span class="do">## 轉換資料型態</span></span>
-<span id="cb231-10"><a href="應用篇_實作簡單資料處理.html#cb231-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">female =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的female變成類別變項(factor)</span></span>
-<span id="cb231-11"><a href="應用篇_實作簡單資料處理.html#cb231-11" aria-hidden="true" tabindex="-1"></a>          female,</span>
-<span id="cb231-12"><a href="應用篇_實作簡單資料處理.html#cb231-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="do">## 設定類別的順序</span></span>
-<span id="cb231-13"><a href="應用篇_實作簡單資料處理.html#cb231-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;男&quot;</span>, <span class="st">&quot;女&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
-<span id="cb231-14"><a href="應用篇_實作簡單資料處理.html#cb231-14" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb231-15"><a href="應用篇_實作簡單資料處理.html#cb231-15" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="應用篇_實作簡單資料處理.html#cb262-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row2 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
+<span id="cb262-2"><a href="應用篇_實作簡單資料處理.html#cb262-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb262-3"><a href="應用篇_實作簡單資料處理.html#cb262-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 性別</span></span>
+<span id="cb262-4"><a href="應用篇_實作簡單資料處理.html#cb262-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span> <span class="fu">case_match</span>( <span class="do">## case_match 將變項值重新編碼</span></span>
+<span id="cb262-5"><a href="應用篇_實作簡單資料處理.html#cb262-5" aria-hidden="true" tabindex="-1"></a>      sex, <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>, <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span>, <span class="do">## 原先1變成1、2變成0</span></span>
+<span id="cb262-6"><a href="應用篇_實作簡單資料處理.html#cb262-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="cn">NA</span> <span class="do">## 其他沒定義到的設定成NA(也設定成返回原先a01的值)</span></span>
+<span id="cb262-7"><a href="應用篇_實作簡單資料處理.html#cb262-7" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb262-8"><a href="應用篇_實作簡單資料處理.html#cb262-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span> <span class="do">## 可以根據上面mutate好的變項再連結到下面transform函數</span></span>
+<span id="cb262-9"><a href="應用篇_實作簡單資料處理.html#cb262-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">transform</span>( <span class="do">## 轉換資料型態</span></span>
+<span id="cb262-10"><a href="應用篇_實作簡單資料處理.html#cb262-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">female =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的female變成類別變項(factor)</span></span>
+<span id="cb262-11"><a href="應用篇_實作簡單資料處理.html#cb262-11" aria-hidden="true" tabindex="-1"></a>          female,</span>
+<span id="cb262-12"><a href="應用篇_實作簡單資料處理.html#cb262-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="do">## 設定類別的順序</span></span>
+<span id="cb262-13"><a href="應用篇_實作簡單資料處理.html#cb262-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;男&quot;</span>, <span class="st">&quot;女&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
+<span id="cb262-14"><a href="應用篇_實作簡單資料處理.html#cb262-14" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb262-15"><a href="應用篇_實作簡單資料處理.html#cb262-15" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
 <ul>
 <li>居住地區 = area
 <ul>
@@ -452,21 +450,21 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <li>修改成數值變項: 1 = 北區、2 = 中區、3 = 南區、4 = 東區，並轉成類別變項(factor)並命名為<code>area_g4</code></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="應用篇_實作簡單資料處理.html#cb232-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row3 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
-<span id="cb232-2"><a href="應用篇_實作簡單資料處理.html#cb232-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
-<span id="cb232-3"><a href="應用篇_實作簡單資料處理.html#cb232-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 居住地區</span></span>
-<span id="cb232-4"><a href="應用篇_實作簡單資料處理.html#cb232-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_g4 =</span> <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;北區&quot;</span>, <span class="dv">1</span>,</span>
-<span id="cb232-5"><a href="應用篇_實作簡單資料處理.html#cb232-5" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;中區&quot;</span>, <span class="dv">2</span>,</span>
-<span id="cb232-6"><a href="應用篇_實作簡單資料處理.html#cb232-6" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;南區&quot;</span>, <span class="dv">3</span>,</span>
-<span id="cb232-7"><a href="應用篇_實作簡單資料處理.html#cb232-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;東區&quot;</span>, <span class="dv">4</span>, <span class="cn">NA</span>))))</span>
-<span id="cb232-8"><a href="應用篇_實作簡單資料處理.html#cb232-8" aria-hidden="true" tabindex="-1"></a>    )<span class="sc">%&gt;%</span> <span class="do">## 可以根據上面mutate好的變項再連結到下面transform函數</span></span>
-<span id="cb232-9"><a href="應用篇_實作簡單資料處理.html#cb232-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">transform</span>( <span class="do">## 轉換資料型態</span></span>
-<span id="cb232-10"><a href="應用篇_實作簡單資料處理.html#cb232-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">area_g4 =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的female變成類別變項(factor)</span></span>
-<span id="cb232-11"><a href="應用篇_實作簡單資料處理.html#cb232-11" aria-hidden="true" tabindex="-1"></a>          area_g4,</span>
-<span id="cb232-12"><a href="應用篇_實作簡單資料處理.html#cb232-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="do">## 設定類別的順序</span></span>
-<span id="cb232-13"><a href="應用篇_實作簡單資料處理.html#cb232-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;北區&quot;</span>, <span class="st">&quot;中區&quot;</span>, <span class="st">&quot;南區&quot;</span>, <span class="st">&quot;東區&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
-<span id="cb232-14"><a href="應用篇_實作簡單資料處理.html#cb232-14" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb232-15"><a href="應用篇_實作簡單資料處理.html#cb232-15" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="應用篇_實作簡單資料處理.html#cb263-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row3 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
+<span id="cb263-2"><a href="應用篇_實作簡單資料處理.html#cb263-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb263-3"><a href="應用篇_實作簡單資料處理.html#cb263-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 居住地區</span></span>
+<span id="cb263-4"><a href="應用篇_實作簡單資料處理.html#cb263-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_g4 =</span> <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;北區&quot;</span>, <span class="dv">1</span>,</span>
+<span id="cb263-5"><a href="應用篇_實作簡單資料處理.html#cb263-5" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;中區&quot;</span>, <span class="dv">2</span>,</span>
+<span id="cb263-6"><a href="應用篇_實作簡單資料處理.html#cb263-6" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;南區&quot;</span>, <span class="dv">3</span>,</span>
+<span id="cb263-7"><a href="應用篇_實作簡單資料處理.html#cb263-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;東區&quot;</span>, <span class="dv">4</span>, <span class="cn">NA</span>))))</span>
+<span id="cb263-8"><a href="應用篇_實作簡單資料處理.html#cb263-8" aria-hidden="true" tabindex="-1"></a>    )<span class="sc">%&gt;%</span> <span class="do">## 可以根據上面mutate好的變項再連結到下面transform函數</span></span>
+<span id="cb263-9"><a href="應用篇_實作簡單資料處理.html#cb263-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">transform</span>( <span class="do">## 轉換資料型態</span></span>
+<span id="cb263-10"><a href="應用篇_實作簡單資料處理.html#cb263-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">area_g4 =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的female變成類別變項(factor)</span></span>
+<span id="cb263-11"><a href="應用篇_實作簡單資料處理.html#cb263-11" aria-hidden="true" tabindex="-1"></a>          area_g4,</span>
+<span id="cb263-12"><a href="應用篇_實作簡單資料處理.html#cb263-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="do">## 設定類別的順序</span></span>
+<span id="cb263-13"><a href="應用篇_實作簡單資料處理.html#cb263-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;北區&quot;</span>, <span class="st">&quot;中區&quot;</span>, <span class="st">&quot;南區&quot;</span>, <span class="st">&quot;東區&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
+<span id="cb263-14"><a href="應用篇_實作簡單資料處理.html#cb263-14" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb263-15"><a href="應用篇_實作簡單資料處理.html#cb263-15" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
 <ul>
 <li>bmi = bmi
 <ul>
@@ -474,34 +472,33 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <li>根據bmi計算公式建立新變項bmi</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="應用篇_實作簡單資料處理.html#cb233-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row3 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
-<span id="cb233-2"><a href="應用篇_實作簡單資料處理.html#cb233-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
-<span id="cb233-3"><a href="應用篇_實作簡單資料處理.html#cb233-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># bmi</span></span>
-<span id="cb233-4"><a href="應用篇_實作簡單資料處理.html#cb233-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bmi =</span> weight<span class="sc">/</span>((height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb233-5"><a href="應用篇_實作簡單資料處理.html#cb233-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="應用篇_實作簡單資料處理.html#cb264-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row3 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
+<span id="cb264-2"><a href="應用篇_實作簡單資料處理.html#cb264-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb264-3"><a href="應用篇_實作簡單資料處理.html#cb264-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># bmi</span></span>
+<span id="cb264-4"><a href="應用篇_實作簡單資料處理.html#cb264-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bmi =</span> weight<span class="sc">/</span>((height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb264-5"><a href="應用篇_實作簡單資料處理.html#cb264-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <ul>
 <li>塑身意願 = fitness
 <ul>
 <li>原先是數值變項，轉成類別變項(factor)</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="應用篇_實作簡單資料處理.html#cb234-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row3 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
-<span id="cb234-2"><a href="應用篇_實作簡單資料處理.html#cb234-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transform</span>( </span>
-<span id="cb234-3"><a href="應用篇_實作簡單資料處理.html#cb234-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 塑身意願</span></span>
-<span id="cb234-4"><a href="應用篇_實作簡單資料處理.html#cb234-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitness =</span> <span class="fu">factor</span>(</span>
-<span id="cb234-5"><a href="應用篇_實作簡單資料處理.html#cb234-5" aria-hidden="true" tabindex="-1"></a>      fitness,</span>
-<span id="cb234-6"><a href="應用篇_實作簡單資料處理.html#cb234-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb234-7"><a href="應用篇_實作簡單資料處理.html#cb234-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb234-8"><a href="應用篇_實作簡單資料處理.html#cb234-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="應用篇_實作簡單資料處理.html#cb265-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row3 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
+<span id="cb265-2"><a href="應用篇_實作簡單資料處理.html#cb265-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transform</span>( </span>
+<span id="cb265-3"><a href="應用篇_實作簡單資料處理.html#cb265-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 塑身意願</span></span>
+<span id="cb265-4"><a href="應用篇_實作簡單資料處理.html#cb265-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitness =</span> <span class="fu">factor</span>(</span>
+<span id="cb265-5"><a href="應用篇_實作簡單資料處理.html#cb265-5" aria-hidden="true" tabindex="-1"></a>      fitness,</span>
+<span id="cb265-6"><a href="應用篇_實作簡單資料處理.html#cb265-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb265-7"><a href="應用篇_實作簡單資料處理.html#cb265-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb265-8"><a href="應用篇_實作簡單資料處理.html#cb265-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>將不需要的欄位刪除</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="應用篇_實作簡單資料處理.html#cb235-1" aria-hidden="true" tabindex="-1"></a>R_practice_row4 <span class="ot">&lt;-</span> <span class="fu">subset</span>(R_practice_row3, <span class="at">select =</span> <span class="fu">c</span>(<span class="sc">-</span>sex, <span class="sc">-</span>area, </span>
-<span id="cb235-2"><a href="應用篇_實作簡單資料處理.html#cb235-2" aria-hidden="true" tabindex="-1"></a>                                                      <span class="sc">-</span>height, <span class="sc">-</span>weight))</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="應用篇_實作簡單資料處理.html#cb266-1" aria-hidden="true" tabindex="-1"></a>R_practice_row4 <span class="ot">&lt;-</span> <span class="fu">subset</span>(R_practice_row3, <span class="at">select =</span> <span class="fu">c</span>(<span class="sc">-</span>sex, <span class="sc">-</span>area, </span>
+<span id="cb266-2"><a href="應用篇_實作簡單資料處理.html#cb266-2" aria-hidden="true" tabindex="-1"></a>                                                      <span class="sc">-</span>height, <span class="sc">-</span>weight))</span></code></pre></div>
 <div id="將資料上標籤" class="section level3 hasAnchor" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> 將資料上標籤<a href="應用篇_實作簡單資料處理.html#將資料上標籤" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>另外除了剛剛factor有上值標籤(labels)，其實也有其他套件可以幫助數值變項上標籤<br />
-可以在呈現時更容易了解</p>
+<p>另外除了剛剛factor有上值標籤(labels)，其實也有其他套件可以幫助數值變項上標籤，可以在呈現時更容易了解</p>
 <p>可以先查看次數分配，此時fitness(塑身意願)是沒有值標籤的</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="應用篇_實作簡單資料處理.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(R_practice_row4<span class="sc">$</span>fitness)</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="應用篇_實作簡單資料處理.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(R_practice_row4<span class="sc">$</span>fitness)</span></code></pre></div>
 <pre><code>## x &lt;categorical&gt; 
 ## # total N=110 valid N=110 mean=0.37 sd=0.49
 ## 
@@ -511,27 +508,26 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 ##     1 | 41 | 37.27 |   37.27 | 100.00
 ##  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 <p>使用<code>set_label()</code>函數，貼上變項標籤variable labels</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="應用篇_實作簡單資料處理.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb238-2"><a href="應用篇_實作簡單資料處理.html#cb238-2" aria-hidden="true" tabindex="-1"></a>R_practice_row4 <span class="ot">&lt;-</span> R_practice_row4 <span class="sc">%&gt;%</span></span>
-<span id="cb238-3"><a href="應用篇_實作簡單資料處理.html#cb238-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
-<span id="cb238-4"><a href="應用篇_實作簡單資料處理.html#cb238-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span>  <span class="fu">set_label</span>(female,</span>
-<span id="cb238-5"><a href="應用篇_實作簡單資料處理.html#cb238-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;性別&quot;</span>), </span>
-<span id="cb238-6"><a href="應用篇_實作簡單資料處理.html#cb238-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">set_label</span>(age,</span>
-<span id="cb238-7"><a href="應用篇_實作簡單資料處理.html#cb238-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;年齡&quot;</span>),</span>
-<span id="cb238-8"><a href="應用篇_實作簡單資料處理.html#cb238-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_g4 =</span> <span class="fu">set_label</span>(area_g4,</span>
-<span id="cb238-9"><a href="應用篇_實作簡單資料處理.html#cb238-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;居住地區&quot;</span>),</span>
-<span id="cb238-10"><a href="應用篇_實作簡單資料處理.html#cb238-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitness =</span> <span class="fu">set_label</span>(fitness,</span>
-<span id="cb238-11"><a href="應用篇_實作簡單資料處理.html#cb238-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;塑身意願&quot;</span>),</span>
-<span id="cb238-12"><a href="應用篇_實作簡單資料處理.html#cb238-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb238-13"><a href="應用篇_實作簡單資料處理.html#cb238-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="應用篇_實作簡單資料處理.html#cb269-1" aria-hidden="true" tabindex="-1"></a>R_practice_row4 <span class="ot">&lt;-</span> R_practice_row4 <span class="sc">%&gt;%</span></span>
+<span id="cb269-2"><a href="應用篇_實作簡單資料處理.html#cb269-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb269-3"><a href="應用篇_實作簡單資料處理.html#cb269-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span>  <span class="fu">set_label</span>(female,</span>
+<span id="cb269-4"><a href="應用篇_實作簡單資料處理.html#cb269-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;性別&quot;</span>), </span>
+<span id="cb269-5"><a href="應用篇_實作簡單資料處理.html#cb269-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">set_label</span>(age,</span>
+<span id="cb269-6"><a href="應用篇_實作簡單資料處理.html#cb269-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;年齡&quot;</span>),</span>
+<span id="cb269-7"><a href="應用篇_實作簡單資料處理.html#cb269-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_g4 =</span> <span class="fu">set_label</span>(area_g4,</span>
+<span id="cb269-8"><a href="應用篇_實作簡單資料處理.html#cb269-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;居住地區&quot;</span>),</span>
+<span id="cb269-9"><a href="應用篇_實作簡單資料處理.html#cb269-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitness =</span> <span class="fu">set_label</span>(fitness,</span>
+<span id="cb269-10"><a href="應用篇_實作簡單資料處理.html#cb269-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;塑身意願&quot;</span>),</span>
+<span id="cb269-11"><a href="應用篇_實作簡單資料處理.html#cb269-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-12"><a href="應用篇_實作簡單資料處理.html#cb269-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>使用<code>set_labels()</code>函數，貼上變項值標籤value labels</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="應用篇_實作簡單資料處理.html#cb239-1" aria-hidden="true" tabindex="-1"></a>R_practice_row4  <span class="ot">&lt;-</span> R_practice_row4 <span class="sc">%&gt;%</span></span>
-<span id="cb239-2"><a href="應用篇_實作簡單資料處理.html#cb239-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
-<span id="cb239-3"><a href="應用篇_實作簡單資料處理.html#cb239-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitness =</span>  <span class="fu">set_labels</span>(fitness,</span>
-<span id="cb239-4"><a href="應用篇_實作簡單資料處理.html#cb239-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;沒意願&quot;</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">&quot;有意願&quot;</span> <span class="ot">=</span> <span class="dv">1</span>)), </span>
-<span id="cb239-5"><a href="應用篇_實作簡單資料處理.html#cb239-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="應用篇_實作簡單資料處理.html#cb270-1" aria-hidden="true" tabindex="-1"></a>R_practice_row4  <span class="ot">&lt;-</span> R_practice_row4 <span class="sc">%&gt;%</span></span>
+<span id="cb270-2"><a href="應用篇_實作簡單資料處理.html#cb270-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb270-3"><a href="應用篇_實作簡單資料處理.html#cb270-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitness =</span>  <span class="fu">set_labels</span>(fitness,</span>
+<span id="cb270-4"><a href="應用篇_實作簡單資料處理.html#cb270-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;沒意願&quot;</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">&quot;有意願&quot;</span> <span class="ot">=</span> <span class="dv">1</span>)), </span>
+<span id="cb270-5"><a href="應用篇_實作簡單資料處理.html#cb270-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>再次查看次數分配可以看到有值標籤了</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="應用篇_實作簡單資料處理.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(R_practice_row4<span class="sc">$</span>fitness)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="應用篇_實作簡單資料處理.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(R_practice_row4<span class="sc">$</span>fitness)</span></code></pre></div>
 <pre><code>## 塑身意願 (x) &lt;categorical&gt; 
 ## # total N=110 valid N=110 mean=0.37 sd=0.49
 ## 
@@ -545,13 +541,13 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <div id="遺漏值處理" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> 遺漏值處理<a href="應用篇_實作簡單資料處理.html#遺漏值處理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>若將需要分析的變項都清理、創建/修改整理好後，不同的變項可能有不同數量的遺漏值，在此這些缺失值可能就會導致在分析上樣本數的差距<br />
-對於這些缺失值有很多種處理方式，但在此不會特別介紹，</p>
+對於這些缺失值有很多種處理方式，在此只會介紹其中一種</p>
 <p>以下將所有有缺失的資料在分析時用<code>complete.cases</code>一併排除</p>
 <p>查看遺漏值</p>
 <ul>
 <li><code>is.na()</code>: 遺漏值的位置會顯示成TRUE</li>
 </ul>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="應用篇_實作簡單資料處理.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(R_practice_row4<span class="sc">$</span>female) <span class="do">## 遺漏值的位置會顯示成TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="應用篇_實作簡單資料處理.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(R_practice_row4<span class="sc">$</span>female) <span class="do">## 遺漏值的位置會顯示成TRUE</span></span></code></pre></div>
 <pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ##  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -565,13 +561,13 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <ul>
 <li><code>sum(is.na())</code>: 計算遺漏值的數量</li>
 </ul>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="應用篇_實作簡單資料處理.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(R_practice_row4<span class="sc">$</span>female))</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="應用篇_實作簡單資料處理.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(R_practice_row4<span class="sc">$</span>female))</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>排除遺漏值</p>
 <ul>
 <li><code>complete.cases</code>: 將有遺漏的樣本直接刪除</li>
 </ul>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="應用篇_實作簡單資料處理.html#cb246-1" aria-hidden="true" tabindex="-1"></a>R_use_analysis <span class="ot">&lt;-</span> R_practice_row4[<span class="fu">complete.cases</span>(R_practice_row4), ]</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="應用篇_實作簡單資料處理.html#cb277-1" aria-hidden="true" tabindex="-1"></a>R_use_analysis <span class="ot">&lt;-</span> R_practice_row4[<span class="fu">complete.cases</span>(R_practice_row4), ]</span></code></pre></div>
 </div>
 <div id="其他處理" class="section level2 hasAnchor" number="6.5">
 <h2><span class="header-section-number">6.5</span> 其他處理<a href="應用篇_實作簡單資料處理.html#其他處理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -591,8 +587,8 @@ R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數�
 <p>最後我們需要將資料輸出以便後續分析或保存，前一章節有介紹過如何輸出資料</p>
 <p>在此，當我們資料清理好後，可能之後還需要做進一步的分析，但若並不是在同一時間來做或需換個檔案來寫分析時，可以將處理好的檔案先暫時存成.rds檔案，以便之後繼續在R語言使用<br />
 若整理好也可以存成其他格式</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="應用篇_實作簡單資料處理.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 存成.rds檔</span></span>
-<span id="cb247-2"><a href="應用篇_實作簡單資料處理.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(R_use_analysis, <span class="st">&quot;data/R_use_analysis&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="應用篇_實作簡單資料處理.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 存成.rds檔</span></span>
+<span id="cb278-2"><a href="應用篇_實作簡單資料處理.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(R_use_analysis, <span class="st">&quot;data/R_use_analysis&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
