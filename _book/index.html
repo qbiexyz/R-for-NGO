@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>R for NGO</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="R for NGO" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R for NGO" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="台北大學社會所_吳永健" />
+
+
+<meta name="date" content="2023-08-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="基礎篇_r-與r-studio的介紹.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 前言_關於本講義</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r語言-應用性-高難度-中高"><i class="fa fa-check"></i><b>1.1</b> R語言 應用性: 高、難度: 中高</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#學習目標"><i class="fa fa-check"></i><b>1.2</b> 學習目標</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#參考資料"><i class="fa fa-check"></i><b>1.3</b> 參考資料</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#講義"><i class="fa fa-check"></i><b>1.3.1</b> 講義</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#其他學習資源"><i class="fa fa-check"></i><b>1.3.2</b> 其他學習資源</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#資料"><i class="fa fa-check"></i><b>1.4</b> 資料</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#政府公開資料相關資源"><i class="fa fa-check"></i><b>1.4.1</b> 政府公開資料相關資源</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#公開調查資料"><i class="fa fa-check"></i><b>1.4.2</b> 公開調查資料</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#使用資料"><i class="fa fa-check"></i><b>1.4.3</b> 使用資料</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#大綱教材主題"><i class="fa fa-check"></i><b>1.5</b> 大綱(教材主題)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html"><i class="fa fa-check"></i><b>2</b> 基礎篇_R 與R studio的介紹</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#什麼是r-和-rstudio"><i class="fa fa-check"></i><b>2.1</b> 什麼是R 和 Rstudio</a></li>
+<li class="chapter" data-level="2.2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#下載r-和-rstudio"><i class="fa fa-check"></i><b>2.2</b> 下載R 和 Rstudio</a></li>
+<li class="chapter" data-level="2.3" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio介面與初步設定"><i class="fa fa-check"></i><b>2.3</b> Rstudio介面與初步設定</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio介面"><i class="fa fa-check"></i><b>2.3.1</b> Rstudio介面</a></li>
+<li class="chapter" data-level="2.3.2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio初步設定"><i class="fa fa-check"></i><b>2.3.2</b> Rstudio初步設定</a></li>
+<li class="chapter" data-level="2.3.3" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#新建r-script"><i class="fa fa-check"></i><b>2.3.3</b> 新建R Script</a></li>
+<li class="chapter" data-level="2.3.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#新建r-project"><i class="fa fa-check"></i><b>2.3.4</b> 新建R project</a></li>
+<li class="chapter" data-level="2.3.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#小技巧"><i class="fa fa-check"></i><b>2.3.5</b> 小技巧</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝套件和help"><i class="fa fa-check"></i><b>2.4</b> 安裝套件和help</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝講義所用套件"><i class="fa fa-check"></i><b>2.4.1</b> 安裝講義所用套件</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#錯誤訊息"><i class="fa fa-check"></i><b>2.5</b> 錯誤訊息</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html"><i class="fa fa-check"></i><b>3</b> 基礎篇_R語言的基礎概念</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#物件基礎操作"><i class="fa fa-check"></i><b>3.1</b> 物件基礎操作</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#指派assignment"><i class="fa fa-check"></i><b>3.1.1</b> 指派（assignment）：</a></li>
+<li class="chapter" data-level="3.1.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>3.1.2</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="3.1.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#命名"><i class="fa fa-check"></i><b>3.1.3</b> 命名</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#基本運算"><i class="fa fa-check"></i><b>3.2</b> 基本運算</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數學基本運算"><i class="fa fa-check"></i><b>3.2.1</b> 數學基本運算</a></li>
+<li class="chapter" data-level="3.2.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯運算"><i class="fa fa-check"></i><b>3.2.2</b> 邏輯運算</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料型態"><i class="fa fa-check"></i><b>3.3</b> 資料型態</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數字numeric"><i class="fa fa-check"></i><b>3.3.1</b> 數字(numeric):</a></li>
+<li class="chapter" data-level="3.3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#字串character"><i class="fa fa-check"></i><b>3.3.2</b> 字串(character):</a></li>
+<li class="chapter" data-level="3.3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯logical"><i class="fa fa-check"></i><b>3.3.3</b> 邏輯(logical):</a></li>
+<li class="chapter" data-level="3.3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#日期date"><i class="fa fa-check"></i><b>3.3.4</b> 日期(date):</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料結構"><i class="fa fa-check"></i><b>3.4</b> 資料結構</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#向量vectors"><i class="fa fa-check"></i><b>3.4.1</b> 向量(vectors):</a></li>
+<li class="chapter" data-level="3.4.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#因子factor"><i class="fa fa-check"></i><b>3.4.2</b> 因子(factor):</a></li>
+<li class="chapter" data-level="3.4.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#列表list"><i class="fa fa-check"></i><b>3.4.3</b> 列表(list):</a></li>
+<li class="chapter" data-level="3.4.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#矩陣matrices"><i class="fa fa-check"></i><b>3.4.4</b> 矩陣(matrices):</a></li>
+<li class="chapter" data-level="3.4.5" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#陣列array"><i class="fa fa-check"></i><b>3.4.5</b> 陣列(array):</a></li>
+<li class="chapter" data-level="3.4.6" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料框架data-frame"><i class="fa fa-check"></i><b>3.4.6</b> 資料框架(data frame)：</a></li>
+<li class="chapter" data-level="3.4.7" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#查詢資料型態或結構"><i class="fa fa-check"></i><b>3.4.7</b> 查詢資料型態或結構</a></li>
+<li class="chapter" data-level="3.4.8" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#轉換資料型態或結構"><i class="fa fa-check"></i><b>3.4.8</b> 轉換資料型態或結構</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#簡單條件判斷式"><i class="fa fa-check"></i><b>3.5</b> 簡單條件判斷式</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#if-else敘述"><i class="fa fa-check"></i><b>3.5.1</b> if-else敘述</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#管道控制pipe"><i class="fa fa-check"></i><b>3.6</b> 管道控制pipe</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#section"><i class="fa fa-check"></i><b>3.6.1</b> |&gt; &amp; %&gt;%</a></li>
+<li class="chapter" data-level="3.6.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#其他管道控制"><i class="fa fa-check"></i><b>3.6.2</b> 其他管道控制</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html"><i class="fa fa-check"></i><b>4</b> 基礎篇_元素的基礎操作</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#值與元素"><i class="fa fa-check"></i><b>4.1</b> 值與元素</a></li>
+<li class="chapter" data-level="4.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素位置"><i class="fa fa-check"></i><b>4.2</b> 元素位置</a></li>
+<li class="chapter" data-level="4.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出元素"><i class="fa fa-check"></i><b>4.3</b> 檢索/取出元素</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出vector中的元素"><i class="fa fa-check"></i><b>4.3.1</b> 檢索/取出vector中的元素</a></li>
+<li class="chapter" data-level="4.3.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出list中的元素"><i class="fa fa-check"></i><b>4.3.2</b> 取出list中的元素</a></li>
+<li class="chapter" data-level="4.3.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.3.3</b> <code>[[]]</code>和<code>[]</code> 差異</a></li>
+<li class="chapter" data-level="4.3.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.3.4</b> 取出data frame中的元素</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.4</b> 替換元素</a></li>
+<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.5</b> 新增元素</a></li>
+<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.6</b> 刪除元素</a></li>
+<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.7</b> 判斷位置的其他方法</a></li>
+<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.8</b> 元素命名</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html"><i class="fa fa-check"></i><b>5</b> 應用篇_資料讀取、匯出、合併與瀏覽</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#設定工作路徑"><i class="fa fa-check"></i><b>5.1</b> 設定工作路徑</a></li>
+<li class="chapter" data-level="5.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#讀取資料"><i class="fa fa-check"></i><b>5.2</b> 讀取資料</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#import-dataset功能-rstudio"><i class="fa fa-check"></i><b>5.2.1</b> Import Dataset功能 (RStudio)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#匯出資料"><i class="fa fa-check"></i><b>5.3</b> 匯出資料</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#r物件.rds"><i class="fa fa-check"></i><b>5.3.1</b> R物件.rds</a></li>
+<li class="chapter" data-level="5.3.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#文字檔.txt"><i class="fa fa-check"></i><b>5.3.2</b> 文字檔.txt</a></li>
+<li class="chapter" data-level="5.3.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#csv檔.csv"><i class="fa fa-check"></i><b>5.3.3</b> CSV檔.csv</a></li>
+<li class="chapter" data-level="5.3.4" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#excel-試算表.xslx"><i class="fa fa-check"></i><b>5.3.4</b> Excel 試算表.xslx</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#簡單資料合併"><i class="fa fa-check"></i><b>5.4</b> 簡單資料合併</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#rbind和cbind"><i class="fa fa-check"></i><b>5.4.1</b> <code>rbind()</code>和<code>cbind()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#用dplyr套件合併資料"><i class="fa fa-check"></i><b>5.4.2</b> 用dplyr套件合併資料</a></li>
+<li class="chapter" data-level="5.4.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#長寬資料轉換"><i class="fa fa-check"></i><b>5.4.3</b> 長寬資料轉換</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#資料瀏覽"><i class="fa fa-check"></i><b>5.5</b> 資料瀏覽</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#資料屬性查詢函數"><i class="fa fa-check"></i><b>5.5.1</b> 資料屬性查詢函數</a></li>
+<li class="chapter" data-level="5.5.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#資料排序"><i class="fa fa-check"></i><b>5.5.2</b> 資料排序</a></li>
+<li class="chapter" data-level="5.5.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#用dplyr瀏覽"><i class="fa fa-check"></i><b>5.5.3</b> 用dplyr瀏覽</a></li>
+<li class="chapter" data-level="5.5.4" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#其他"><i class="fa fa-check"></i><b>5.5.4</b> 其他</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html"><i class="fa fa-check"></i><b>6</b> 應用篇_實作簡單資料處理</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#前置準備"><i class="fa fa-check"></i><b>6.1</b> 前置準備</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#讀取需要使用套件"><i class="fa fa-check"></i><b>6.1.1</b> 讀取需要使用套件</a></li>
+<li class="chapter" data-level="6.1.2" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#設定工作路徑-1"><i class="fa fa-check"></i><b>6.1.2</b> 設定工作路徑</a></li>
+<li class="chapter" data-level="6.1.3" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#讀取檔案"><i class="fa fa-check"></i><b>6.1.3</b> 讀取檔案</a></li>
+<li class="chapter" data-level="6.1.4" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#選取需要的變項到新的資料檔中"><i class="fa fa-check"></i><b>6.1.4</b> 選取需要的變項到「新」的資料檔中</a></li>
+<li class="chapter" data-level="6.1.5" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#瀏覽資料"><i class="fa fa-check"></i><b>6.1.5</b> 瀏覽資料</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#設定不合理值"><i class="fa fa-check"></i><b>6.2</b> 設定不合理值</a></li>
+<li class="chapter" data-level="6.3" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#新建修改轉換變項"><i class="fa fa-check"></i><b>6.3</b> 新建/修改/轉換變項</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#將資料上標籤"><i class="fa fa-check"></i><b>6.3.1</b> 將資料上標籤</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#遺漏值處理"><i class="fa fa-check"></i><b>6.4</b> 遺漏值處理</a></li>
+<li class="chapter" data-level="6.5" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#其他處理"><i class="fa fa-check"></i><b>6.5</b> 其他處理</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#字串處理"><i class="fa fa-check"></i><b>6.5.1</b> 字串處理</a></li>
+<li class="chapter" data-level="6.5.2" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#時間資料處理"><i class="fa fa-check"></i><b>6.5.2</b> 時間資料處理</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#匯出資料-1"><i class="fa fa-check"></i><b>6.6</b> 匯出資料</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html"><i class="fa fa-check"></i><b>7</b> 應用篇_探索性資料分析</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#前置準備-1"><i class="fa fa-check"></i><b>7.0.1</b> 前置準備</a></li>
+<li class="chapter" data-level="7.1" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#資料視覺化簡略介紹-ggplot2"><i class="fa fa-check"></i><b>7.1</b> 資料視覺化簡略介紹 ggplot2</a></li>
+<li class="chapter" data-level="7.2" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#簡單呈現探索式資料分析"><i class="fa fa-check"></i><b>7.2</b> 簡單呈現探索式資料分析</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#單一類別變項"><i class="fa fa-check"></i><b>7.2.1</b> 單一類別變項</a></li>
+<li class="chapter" data-level="7.2.2" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#單一數值變項"><i class="fa fa-check"></i><b>7.2.2</b> 單一數值變項</a></li>
+<li class="chapter" data-level="7.2.3" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#兩個類別變項"><i class="fa fa-check"></i><b>7.2.3</b> 兩個類別變項</a></li>
+<li class="chapter" data-level="7.2.4" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#兩個數值變項"><i class="fa fa-check"></i><b>7.2.4</b> 兩個數值變項</a></li>
+<li class="chapter" data-level="7.2.5" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#一個類別一個數值變項"><i class="fa fa-check"></i><b>7.2.5</b> 一個類別一個數值變項</a></li>
+<li class="chapter" data-level="7.2.6" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#兩個數值變項用類別變項分組"><i class="fa fa-check"></i><b>7.2.6</b> 兩個數值變項用類別變項分組</a></li>
+<li class="chapter" data-level="7.2.7" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#其他進階統計"><i class="fa fa-check"></i><b>7.2.7</b> 其他進階統計</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for NGO</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">R for NGO</h1>
+<p class="author"><em>台北大學社會所_吳永健</em></p>
+<p class="date"><em>2023-08-20</em></p>
+</div>
+<div id="前言_關於本講義" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> 前言_關於本講義<a href="index.html#前言_關於本講義" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>講義的資料若有錯誤，再麻煩寄信告知修改 email: <a href="mailto:qbieqbiexyz@gmail.com" class="email">qbieqbiexyz@gmail.com</a></p>
+<p>這份講義是希望讓原本沒有程式與或統計基礎的人，能夠在短時間初步了解R語言的<strong>簡單概念和操作</strong>，以及能夠<strong>進行初步的資料讀取、清理、分析與視覺化</strong>。</p>
+<p>由於是初步介紹的入門講義，因此會簡單介紹一下R的基礎概念，但部分過於涉及程式設計的部分會稍微略過，重點會放在<strong>了解R的基礎概念、資料處理</strong>以及後續<strong>使用資料實作初步統計與視覺化</strong>部分</p>
+<p>目的是讓讀者能夠輕鬆並短時間知道使用資料的好處，因此在分析或實作上，也不會涉及到深入的統計或視覺化，</p>
+<p>若是在看過這份講義後對進階分析有興趣者，可以到以下所列參考書籍或資源，進一步學習。</p>
+<div id="r語言-應用性-高難度-中高" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> R語言 應用性: 高、難度: 中高<a href="index.html#r語言-應用性-高難度-中高" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R的好處在於<strong>免費</strong>、靈活，且有許多額外的套件輔助分析，若想要做的分析一般的套件沒有支援時，可以自寫函數或程式來處理，另外在<strong>統計方法與視覺化</strong>上面都有很多應用，且網路上有很多自學資源以及論壇解答遇到的問題。<br />
+缺點在於，由於R是由類似<strong>程式語言</strong>的方式執行，因此在學習上會比excel、spss、stata等統計軟體再困難一些，較接近python，因此學習坡度較高、需要學習程式語言，且一些新的外裝套件並沒有通過學術檢證、沒有售後服務。</p>
+</div>
+<div id="學習目標" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> 學習目標<a href="index.html#學習目標" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>初步認識R語言與R語言基礎概念</li>
+<li>運用R語言讀取、整理資料</li>
+<li>運用R語言進行簡單資料清理</li>
+<li>運用R語言進行簡單探索性分析與資料視覺化</li>
+</ol>
+</div>
+<div id="參考資料" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> 參考資料<a href="index.html#參考資料" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="講義" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> 講義<a href="index.html#講義" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>本講義是擷取/修改下列講義部分內容，希望能透過更簡易的方式了解資料分析初步內容與過程，若因此對於資料分析有興趣，想嘗試更進階/深入的資料分析， 建議深入查看以下講義中更完整的內容。</p>
+<ul>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
+<li><a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a></li>
+<li>量化研究方法實作(課堂教材)，by <a href="https://sociology.ntpu.edu.tw/index.php/ch/teacher/teacher_more/4">陳易甫</a></li>
+<li><a href="https://yijutseng.github.io/DataScienceRBook/index.html">資料科學與R語言</a>，by <a href="https://www.cs.nycu.edu.tw/members/detail/yijutseng">曾意儒</a></li>
+<li><a href="https://tpemartin.github.io/NTPU-R-for-Data-Science-EN/">Programming for Data Science (I)</a>，by <a href="https://econ.ntpu.edu.tw/teachers/5/22">林茂廷</a></li>
+<li><a href="https://eloquentr.datainpoint.com/">輕鬆學習 R 語言</a>，by <a href="https://hahow.in/@tonykuoyj">郭耀仁</a></li>
+<li><a href="https://bookdown.org/jefflinmd38/r4biost/">R 資料科學與統計</a>，by 林建甫</li>
+<li><a href="https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html">R语言教程</a></li>
+<li><a href="https://www.uvm.edu/~tdonovan/RforFledglings/#fn1">R for Fledglings</a></li>
+<li><a href="https://rforhr.com/">R for HR:An Introduction to Human Resource Analytics Using R</a></li>
+<li><a href="https://www.r4epi.com/">R for Epidemiology</a></li>
+<li><a href="https://uribo.github.io/rpkg_showcase/index.html">R Package Showcase</a></li>
+<li><a href="https://tidyverse.tidyverse.org/index.html">tidyverse</a></li>
+</ul>
+</div>
+<div id="其他學習資源" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> 其他學習資源<a href="index.html#其他學習資源" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><a href="https://www.rstudio.com/resources/books/">其他進階R books</a></li>
+<li><a href="https://posit.co/resources/cheatsheets/">各種Cheatsheets</a></li>
+<li><a href="https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf">base R cheat-sheet</a></li>
+<li><a href="https://rpubs.com/">RPubs</a></li>
+<li><a href="https://posit.co/">Posit</a></li>
+<li>網路上的各種筆記或論壇</li>
+</ul>
+</div>
+</div>
+<div id="資料" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> 資料<a href="index.html#資料" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>開放資料</strong>(英語：Open data)指的是一種經過挑選與許可的資料。這種資料不受著作權、專利權，以及其他管理機制所限制，可以開放給社會公眾，任何人都可以自由出版使用，不論是要拿來出版或是做其他的運用都不加以限制。</p>
+<div id="政府公開資料相關資源" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> 政府公開資料相關資源<a href="index.html#政府公開資料相關資源" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>以下列出台灣部分的政府公開資料，下面列出的只是一小部分，還有很多其他政府或非政府的Open data可以自行探索</p>
+<ul>
+<li><a href="https://data.gov.tw/">政府資料開放平台</a></li>
+<li><a href="https://data.taipei/">臺北市資料大平台</a></li>
+<li><a href="https://segis.moi.gov.tw/STAT/Web/Portal/STAT_PortalHome.aspx">社會經濟資料服務平台</a></li>
+<li><a href="https://www.stat.gov.tw/Default.aspx">中華民國統計資訊網</a></li>
+<li><a href="https://depart.moe.edu.tw/ED4500/Default.aspx">教育部統計資料</a></li>
+<li><a href="https://dep.mohw.gov.tw/dos/mp-113.html">衛服部統計資料</a></li>
+<li><a href="https://www.npa.gov.tw/ch/app/folder/589">內政部警政署統計資料</a></li>
+<li><a href="https://pride.stpi.narl.org.tw/index">PRIDE政策研究指標資料庫</a></li>
+</ul>
+<p>除台灣外，世界各國也有各自的Open data，可以用關鍵字自行查找，另外也有<a href="https://opendatainception.io/">網站</a>整理世界各地約2600以上的開放資料庫，可以按照地圖去查找</p>
+<p>參考: <a href="https://www.finereport.com/tw/data-analysis/freedata.html">資料分析人的福利：20個免費開放資料源</a></p>
+</div>
+<div id="公開調查資料" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> 公開調查資料<a href="index.html#公開調查資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>另外也有一些「調查資料」可以免費提供申請下載使用，調查資料可能不像Open data一樣可以隨意使用，但多數公開的調查資料經申請後即可下載使用，</p>
+<p>在台灣多數有公開的調查資料會被整理在<a href="https://srda.sinica.edu.tw/index.php">「SRDA學術調查資料庫」</a>當中，其中也包括政府每年的調查型資料，兩者都可以提供申請下載使用，但也需注意相關的參考格式/</p>
+<p>若需要下載資料需要先加入會員，一般而言若不具有學術身分，也可以加入網路會員/</p>
+<p>在youtube上也有<a href="https://www.youtube.com/@SRDATW/featured">SRDA頻道</a>與一系列<a href="https://www.youtube.com/watch?v=K9kYwCYpO9M&amp;list=PLFhNbLV04ceWLY6orqC6JOnpG9SU_U_0w">使用教學</a>，若有需要可自行觀看</p>
+<p><img src="picture/srda.png" /></p>
+<p>調查型資料的資源也非常豐富，SRDA也只是整理出部份台灣的調查資料，另外一些可能是放在該調查官網需自行下載，或是跨國型資料、國外的調查資料，有些可能須申請，有些是公開的，大多數都有問卷可以先查看是否有想要分析的題目再決定是否使用該資料，若有需要可以依需求自行搜索並下載</p>
+</div>
+<div id="使用資料" class="section level3 hasAnchor" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> 使用資料<a href="index.html#使用資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>講義有使用到的資料都可以從<a href="https://github.com/qbiexyz/R-for-NGO/tree/master/data">這裡</a>下載</p>
+</div>
+</div>
+<div id="大綱教材主題" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> 大綱(教材主題)<a href="index.html#大綱教材主題" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://qbiexyz.github.io/R-for-NGO/%E5%9F%BA%E7%A4%8E%E7%AF%87_r-%E8%88%87r-studio%E7%9A%84%E4%BB%8B%E7%B4%B9.html">基礎篇_R的介面與R studio的介紹</a></p>
+<ul>
+<li>什麼是R 和 Rstudio</li>
+<li>下載R 和 Rstudio</li>
+<li>Rstudio介面與初步設定</li>
+<li>安裝套件和help</li>
+<li>錯誤訊息</li>
+</ul>
+<p><a href="https://qbiexyz.github.io/R-for-NGO/%E5%9F%BA%E7%A4%8E%E7%AF%87_r%E8%AA%9E%E8%A8%80%E7%9A%84%E5%9F%BA%E7%A4%8E%E6%A6%82%E5%BF%B5.html">基礎篇_R語言的基礎概念</a></p>
+<ul>
+<li>物件基礎操作</li>
+<li>基本運算</li>
+<li>資料型態</li>
+<li>資料結構</li>
+<li>簡單條件判斷式</li>
+<li>管道控制pipe</li>
+</ul>
+<p><a href="https://qbiexyz.github.io/R-for-NGO/%E5%9F%BA%E7%A4%8E%E7%AF%87_%E5%85%83%E7%B4%A0%E7%9A%84%E5%9F%BA%E7%A4%8E%E6%93%8D%E4%BD%9C.html">基礎篇_元素的基礎操作</a></p>
+<ul>
+<li>值與元素</li>
+<li>元素位置</li>
+<li>檢索/取出元素</li>
+<li><code>[[]]</code>和<code>[]</code> 差異</li>
+<li>替換元素</li>
+<li>新增元素</li>
+<li>刪除元素</li>
+<li>判斷位置的其他方法</li>
+<li>元素命名</li>
+</ul>
+<p><a href="https://qbiexyz.github.io/R-for-NGO/%E6%87%89%E7%94%A8%E7%AF%87_%E8%B3%87%E6%96%99%E8%AE%80%E5%8F%96%E5%8C%AF%E5%87%BA%E5%90%88%E4%BD%B5%E8%88%87%E7%80%8F%E8%A6%BD.html">應用篇_資料讀取、匯出、合併與瀏覽</a></p>
+<ul>
+<li>設定工作路徑</li>
+<li>讀取資料</li>
+<li>匯出資料</li>
+<li>簡單資料合併</li>
+<li>資料瀏覽</li>
+</ul>
+<p><a href="https://qbiexyz.github.io/R-for-NGO/%E6%87%89%E7%94%A8%E7%AF%87_%E5%AF%A6%E4%BD%9C%E7%B0%A1%E5%96%AE%E8%B3%87%E6%96%99%E8%99%95%E7%90%86.html">應用篇_實作簡單資料處理</a></p>
+<ul>
+<li>前置準備</li>
+<li>設定不合理值</li>
+<li>新建/修改/轉換變項</li>
+<li>遺漏值處理</li>
+<li>其他處理</li>
+<li>匯出資料</li>
+</ul>
+<p><a href="https://qbiexyz.github.io/R-for-NGO/%E6%87%89%E7%94%A8%E7%AF%87_%E6%8E%A2%E7%B4%A2%E6%80%A7%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90.html">應用篇_探索性資料分析</a></p>
+<ul>
+<li>資料視覺化簡略介紹 ggplot2</li>
+<li>簡單呈現探索式資料分析</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="基礎篇_r-與r-studio的介紹.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

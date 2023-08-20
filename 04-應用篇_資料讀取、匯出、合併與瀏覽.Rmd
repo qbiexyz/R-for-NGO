@@ -231,26 +231,29 @@ bind_rows(data_frame1, data_frame2)
 
 以`R_practice_new.csv`資料為例:
 
-### 資料屬性查詢函數
-
 讀取R_practice_new的.cvs檔案(或用點選方式)
 
-```{r eval=FALSE}
+```{r message=FALSE}
 library(readr)
 R_practice_new <- read_csv("data/R_practice_new.csv")
 ```
+
+### 資料屬性查詢函數
 
 查看資料內容
 
 ```{r eval=FALSE}
 View(R_practice_new) ## 查看資料
+```
+
+```{r}
 head(R_practice_new) ## 查看前6筆資料內容
 tail(R_practice_new) ## 查看後6筆資料內容
 ```
 
 查看資料各種名稱
 
-```{r eval=FALSE}
+```{r}
 names(R_practice_new) ## 顯示資料名稱
 colnames(R_practice_new) ## 顯示欄位名稱
 rownames(R_practice_new) ## 顯示列名稱(若沒有則顯示編號)
@@ -259,14 +262,14 @@ dimnames(R_practice_new) ## 先顯示列再顯示欄位的名稱
 
 查看資料長度
 
-```{r eval=FALSE}
+```{r}
 length(R_practice_new) ## 顯示資料查度(若為data.frame會顯示欄位數)
 dim(R_practice_new) ## 先顯示列再顯示欄位的長度
 ```
 
 顯示資料的架構資訊
 
-```{r eval=FALSE}
+```{r}
 str(R_practice_new) 
 class(R_practice_new$age) ## 數值資料
 class(R_practice_new$area) ## 文字資料
@@ -274,14 +277,14 @@ class(R_practice_new$area) ## 文字資料
 
 簡單查看資料分配
 
-```{r eval=FALSE}
+```{r}
 table(R_practice_new$sex) ## sex(性別)次數分配
 table(R_practice_new$area) ## area(地區)次數分配
 ```
 
 上述函數也可以合併使用
 
-```{r eval=FALSE}
+```{r}
 ## 顯示前6筆資料的area(地區)次數分配
 table(head(R_practice_new)$area)
 ```
@@ -330,7 +333,7 @@ head(R_practice_new$age)
 sort(head(R_practice_new$age)) 
 ```
 
-顯示age(年齡)排序排序之後前6筆資料的原始位置(由小到大)
+顯示age(年齡)排序之後前6筆資料的原始位置(由小到大)
 
 ```{r}
 order(head(R_practice_new$age))
@@ -354,7 +357,7 @@ dplyr套件有許多函數可以更方便的瀏覽或操作data.frame資料，�
 
 讀取R_practice_new的.cvs檔案(或用點選方式)
 
-```{r eval=FALSE}
+```{r message=FALSE}
 library(readr)
 R_practice_new <- read_csv("data/R_practice_new.csv")
 View(R_practice_new)
@@ -362,36 +365,39 @@ View(R_practice_new)
 
 載入套件
 
-```{r eval=FALSE}
+```{r message=FALSE}
 library(tidyverse) ## 整合性的資料分析(包括dplyr)
+```
+
+```{r eval=FALSE}
 ## OR
 library(dplyr) ## 也可以直接載入dplyr
 ```
 
-若只想要查看欄位 id、age(年齡),用`select()` 進行選擇
+若只想要查看前6筆資料值中，欄位 id、age(年齡),用`select()` 進行選擇
 
-```{r eval=FALSE}
-R_practice_new %>%
+```{r}
+head(R_practice_new) %>%
   select(id, age)
 ```
 
-若只想要查看age(年齡)大於等於50的資料，用`filter()`進行篩選
+若只想要查看前6筆資料值中，weight(體重)大於等於60，用`filter()`進行篩選
 
-```{r eval=FALSE}
-R_practice_new %>%
-  filter(age >= 50)
+```{r}
+head(R_practice_new) %>%
+  filter(weight >= 60)
 ```
 
-若想根據sex(性別)和age(年齡)排序(先排序sex再排age)來查看資料，用`arrange()`進行排序
+若想根據sex(性別)和age(年齡)排序(先排序sex再排age)來查看前6筆資料值，用`arrange()`進行排序
 
-```{r eval=FALSE}
+```{r}
 R_practice_new %>%
   arrange(sex, age)
 ```
 
 若想根據sex(性別)進行分組來看男女性不同的age(年齡)平均，用`group_by()`進行分組統計，通常是與summarise()結合使用，來查看描述統計
 
-```{r eval=FALSE}
+```{r}
 R_practice_new %>%
   group_by(sex) %>% 
   summarise(age_mean = mean(age))

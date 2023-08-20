@@ -68,7 +68,7 @@ value6_position3 <- list("banana", 2) ## 第三個位置
 
 ## 檢索/取出元素
 
-檢索元素時，第一步就是必須知道該元素的位置，而透過這個位置我們就可以檢索/取出該元素，。
+檢索元素時，第一步就是必須知道該元素的位置，而透過這個位置我們就可以檢索/取出該元素。
 
 ### 檢索/取出vector中的元素
 
@@ -157,7 +157,7 @@ weather[["today"]][[1]][[1]]
 weather$today[[1]][[1]] ## [1] "台北市"
 ```
 
-## `[[]]`和`[]` 差異
+### `[[]]`和`[]` 差異
 
 在選取元素位置時，有時可以看到選取資料時有`[[]]`和`[]`兩種，在此我們可以做個簡單比較:
 
@@ -184,10 +184,9 @@ taipei2 ## [[1]] [1] "台北市"
 
 ![taipei2還是list的結構，但taipei1是單純的Value](picture/taipei.png)
 
-以下可以自己練習看看: 取出tomorrow當中新北市的highest_temp值(25) 並**保留**highest_temp的名稱
+以下可以練習看看: 取出tomorrow當中新北市的highest_temp值(25) 並**保留**highest_temp的名稱
 
 ```{r}
-# 取出tomorrow當中新北市的highest_temp值(25) 並保留highest_temp的名稱
 weather$tomorrow[[2]][[2]] ## highest_temp 28
 weather$tomorrow[[2]][[2]][1] ## highest_temp 28
 ```
@@ -385,7 +384,7 @@ vector_delete1 <- vector_delete1[[2]]
 vector_delete1 ## 只剩下banana，apple和cat則被刪除
 ```
 
-2_1. 取出不需要(要刪除)的元素(apple和cat)，用`-`指派到原先的物件
+2_2. 取出不需要(要刪除)的元素(apple和cat)，用`-`指派到原先的物件
 
 ```{r}
 vector_delete1 <- c("apple", "banana", "cat")
@@ -486,7 +485,7 @@ vector_name4 <- setNames(c(1, 2, 3), c("apple", "banana", "cat"))
 vector_name4
 ```
 
-方法4，用names()函數
+方法5，用names()函數
 
 ```{r}
 vector_name5 <- c(1, 2, 3)
@@ -494,11 +493,10 @@ names(vector_name5) <- c("apple", "banana", "cat")
 vector_name5
 ```
 
-其他list或data frame的替換也是類似相同概念
 
 另外若元素有命名，前面的選取、新增等操作中，也可以用命名的文字來取代位置
 
-```{r eval=FALSE}
+```{r}
 vector_name <- c(1, 2, 3)
 vector_name[[1]]
 

@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 基礎篇_R語言的基礎概念 | R for NGO</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 基礎篇_R語言的基礎概念 | R for NGO" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 基礎篇_R語言的基礎概念 | R for NGO" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="台北大學社會所_吳永健" />
+
+
+<meta name="date" content="2023-08-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="基礎篇_r-與r-studio的介紹.html"/>
+<link rel="next" href="基礎篇_元素的基礎操作.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 前言_關於本講義</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r語言-應用性-高難度-中高"><i class="fa fa-check"></i><b>1.1</b> R語言 應用性: 高、難度: 中高</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#學習目標"><i class="fa fa-check"></i><b>1.2</b> 學習目標</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#參考資料"><i class="fa fa-check"></i><b>1.3</b> 參考資料</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#講義"><i class="fa fa-check"></i><b>1.3.1</b> 講義</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#其他學習資源"><i class="fa fa-check"></i><b>1.3.2</b> 其他學習資源</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#資料"><i class="fa fa-check"></i><b>1.4</b> 資料</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#政府公開資料相關資源"><i class="fa fa-check"></i><b>1.4.1</b> 政府公開資料相關資源</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#公開調查資料"><i class="fa fa-check"></i><b>1.4.2</b> 公開調查資料</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#使用資料"><i class="fa fa-check"></i><b>1.4.3</b> 使用資料</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#大綱教材主題"><i class="fa fa-check"></i><b>1.5</b> 大綱(教材主題)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html"><i class="fa fa-check"></i><b>2</b> 基礎篇_R 與R studio的介紹</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#什麼是r-和-rstudio"><i class="fa fa-check"></i><b>2.1</b> 什麼是R 和 Rstudio</a></li>
+<li class="chapter" data-level="2.2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#下載r-和-rstudio"><i class="fa fa-check"></i><b>2.2</b> 下載R 和 Rstudio</a></li>
+<li class="chapter" data-level="2.3" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio介面與初步設定"><i class="fa fa-check"></i><b>2.3</b> Rstudio介面與初步設定</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio介面"><i class="fa fa-check"></i><b>2.3.1</b> Rstudio介面</a></li>
+<li class="chapter" data-level="2.3.2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio初步設定"><i class="fa fa-check"></i><b>2.3.2</b> Rstudio初步設定</a></li>
+<li class="chapter" data-level="2.3.3" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#新建r-script"><i class="fa fa-check"></i><b>2.3.3</b> 新建R Script</a></li>
+<li class="chapter" data-level="2.3.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#新建r-project"><i class="fa fa-check"></i><b>2.3.4</b> 新建R project</a></li>
+<li class="chapter" data-level="2.3.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#小技巧"><i class="fa fa-check"></i><b>2.3.5</b> 小技巧</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝套件和help"><i class="fa fa-check"></i><b>2.4</b> 安裝套件和help</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝講義所用套件"><i class="fa fa-check"></i><b>2.4.1</b> 安裝講義所用套件</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#錯誤訊息"><i class="fa fa-check"></i><b>2.5</b> 錯誤訊息</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html"><i class="fa fa-check"></i><b>3</b> 基礎篇_R語言的基礎概念</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#物件基礎操作"><i class="fa fa-check"></i><b>3.1</b> 物件基礎操作</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#指派assignment"><i class="fa fa-check"></i><b>3.1.1</b> 指派（assignment）：</a></li>
+<li class="chapter" data-level="3.1.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>3.1.2</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="3.1.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#命名"><i class="fa fa-check"></i><b>3.1.3</b> 命名</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#基本運算"><i class="fa fa-check"></i><b>3.2</b> 基本運算</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數學基本運算"><i class="fa fa-check"></i><b>3.2.1</b> 數學基本運算</a></li>
+<li class="chapter" data-level="3.2.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯運算"><i class="fa fa-check"></i><b>3.2.2</b> 邏輯運算</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料型態"><i class="fa fa-check"></i><b>3.3</b> 資料型態</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數字numeric"><i class="fa fa-check"></i><b>3.3.1</b> 數字(numeric):</a></li>
+<li class="chapter" data-level="3.3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#字串character"><i class="fa fa-check"></i><b>3.3.2</b> 字串(character):</a></li>
+<li class="chapter" data-level="3.3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯logical"><i class="fa fa-check"></i><b>3.3.3</b> 邏輯(logical):</a></li>
+<li class="chapter" data-level="3.3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#日期date"><i class="fa fa-check"></i><b>3.3.4</b> 日期(date):</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料結構"><i class="fa fa-check"></i><b>3.4</b> 資料結構</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#向量vectors"><i class="fa fa-check"></i><b>3.4.1</b> 向量(vectors):</a></li>
+<li class="chapter" data-level="3.4.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#因子factor"><i class="fa fa-check"></i><b>3.4.2</b> 因子(factor):</a></li>
+<li class="chapter" data-level="3.4.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#列表list"><i class="fa fa-check"></i><b>3.4.3</b> 列表(list):</a></li>
+<li class="chapter" data-level="3.4.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#矩陣matrices"><i class="fa fa-check"></i><b>3.4.4</b> 矩陣(matrices):</a></li>
+<li class="chapter" data-level="3.4.5" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#陣列array"><i class="fa fa-check"></i><b>3.4.5</b> 陣列(array):</a></li>
+<li class="chapter" data-level="3.4.6" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料框架data-frame"><i class="fa fa-check"></i><b>3.4.6</b> 資料框架(data frame)：</a></li>
+<li class="chapter" data-level="3.4.7" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#查詢資料型態或結構"><i class="fa fa-check"></i><b>3.4.7</b> 查詢資料型態或結構</a></li>
+<li class="chapter" data-level="3.4.8" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#轉換資料型態或結構"><i class="fa fa-check"></i><b>3.4.8</b> 轉換資料型態或結構</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#簡單條件判斷式"><i class="fa fa-check"></i><b>3.5</b> 簡單條件判斷式</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#if-else敘述"><i class="fa fa-check"></i><b>3.5.1</b> if-else敘述</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#管道控制pipe"><i class="fa fa-check"></i><b>3.6</b> 管道控制pipe</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#section"><i class="fa fa-check"></i><b>3.6.1</b> |&gt; &amp; %&gt;%</a></li>
+<li class="chapter" data-level="3.6.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#其他管道控制"><i class="fa fa-check"></i><b>3.6.2</b> 其他管道控制</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html"><i class="fa fa-check"></i><b>4</b> 基礎篇_元素的基礎操作</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#值與元素"><i class="fa fa-check"></i><b>4.1</b> 值與元素</a></li>
+<li class="chapter" data-level="4.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素位置"><i class="fa fa-check"></i><b>4.2</b> 元素位置</a></li>
+<li class="chapter" data-level="4.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出元素"><i class="fa fa-check"></i><b>4.3</b> 檢索/取出元素</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出vector中的元素"><i class="fa fa-check"></i><b>4.3.1</b> 檢索/取出vector中的元素</a></li>
+<li class="chapter" data-level="4.3.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出list中的元素"><i class="fa fa-check"></i><b>4.3.2</b> 取出list中的元素</a></li>
+<li class="chapter" data-level="4.3.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.3.3</b> <code>[[]]</code>和<code>[]</code> 差異</a></li>
+<li class="chapter" data-level="4.3.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.3.4</b> 取出data frame中的元素</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.4</b> 替換元素</a></li>
+<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.5</b> 新增元素</a></li>
+<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.6</b> 刪除元素</a></li>
+<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.7</b> 判斷位置的其他方法</a></li>
+<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.8</b> 元素命名</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html"><i class="fa fa-check"></i><b>5</b> 應用篇_資料讀取、匯出、合併與瀏覽</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#設定工作路徑"><i class="fa fa-check"></i><b>5.1</b> 設定工作路徑</a></li>
+<li class="chapter" data-level="5.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#讀取資料"><i class="fa fa-check"></i><b>5.2</b> 讀取資料</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#import-dataset功能-rstudio"><i class="fa fa-check"></i><b>5.2.1</b> Import Dataset功能 (RStudio)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#匯出資料"><i class="fa fa-check"></i><b>5.3</b> 匯出資料</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#r物件.rds"><i class="fa fa-check"></i><b>5.3.1</b> R物件.rds</a></li>
+<li class="chapter" data-level="5.3.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#文字檔.txt"><i class="fa fa-check"></i><b>5.3.2</b> 文字檔.txt</a></li>
+<li class="chapter" data-level="5.3.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#csv檔.csv"><i class="fa fa-check"></i><b>5.3.3</b> CSV檔.csv</a></li>
+<li class="chapter" data-level="5.3.4" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#excel-試算表.xslx"><i class="fa fa-check"></i><b>5.3.4</b> Excel 試算表.xslx</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#簡單資料合併"><i class="fa fa-check"></i><b>5.4</b> 簡單資料合併</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#rbind和cbind"><i class="fa fa-check"></i><b>5.4.1</b> <code>rbind()</code>和<code>cbind()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#用dplyr套件合併資料"><i class="fa fa-check"></i><b>5.4.2</b> 用dplyr套件合併資料</a></li>
+<li class="chapter" data-level="5.4.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#長寬資料轉換"><i class="fa fa-check"></i><b>5.4.3</b> 長寬資料轉換</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#資料瀏覽"><i class="fa fa-check"></i><b>5.5</b> 資料瀏覽</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#資料屬性查詢函數"><i class="fa fa-check"></i><b>5.5.1</b> 資料屬性查詢函數</a></li>
+<li class="chapter" data-level="5.5.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#資料排序"><i class="fa fa-check"></i><b>5.5.2</b> 資料排序</a></li>
+<li class="chapter" data-level="5.5.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#用dplyr瀏覽"><i class="fa fa-check"></i><b>5.5.3</b> 用dplyr瀏覽</a></li>
+<li class="chapter" data-level="5.5.4" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#其他"><i class="fa fa-check"></i><b>5.5.4</b> 其他</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html"><i class="fa fa-check"></i><b>6</b> 應用篇_實作簡單資料處理</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#前置準備"><i class="fa fa-check"></i><b>6.1</b> 前置準備</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#讀取需要使用套件"><i class="fa fa-check"></i><b>6.1.1</b> 讀取需要使用套件</a></li>
+<li class="chapter" data-level="6.1.2" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#設定工作路徑-1"><i class="fa fa-check"></i><b>6.1.2</b> 設定工作路徑</a></li>
+<li class="chapter" data-level="6.1.3" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#讀取檔案"><i class="fa fa-check"></i><b>6.1.3</b> 讀取檔案</a></li>
+<li class="chapter" data-level="6.1.4" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#選取需要的變項到新的資料檔中"><i class="fa fa-check"></i><b>6.1.4</b> 選取需要的變項到「新」的資料檔中</a></li>
+<li class="chapter" data-level="6.1.5" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#瀏覽資料"><i class="fa fa-check"></i><b>6.1.5</b> 瀏覽資料</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#設定不合理值"><i class="fa fa-check"></i><b>6.2</b> 設定不合理值</a></li>
+<li class="chapter" data-level="6.3" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#新建修改轉換變項"><i class="fa fa-check"></i><b>6.3</b> 新建/修改/轉換變項</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#將資料上標籤"><i class="fa fa-check"></i><b>6.3.1</b> 將資料上標籤</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#遺漏值處理"><i class="fa fa-check"></i><b>6.4</b> 遺漏值處理</a></li>
+<li class="chapter" data-level="6.5" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#其他處理"><i class="fa fa-check"></i><b>6.5</b> 其他處理</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#字串處理"><i class="fa fa-check"></i><b>6.5.1</b> 字串處理</a></li>
+<li class="chapter" data-level="6.5.2" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#時間資料處理"><i class="fa fa-check"></i><b>6.5.2</b> 時間資料處理</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#匯出資料-1"><i class="fa fa-check"></i><b>6.6</b> 匯出資料</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html"><i class="fa fa-check"></i><b>7</b> 應用篇_探索性資料分析</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#前置準備-1"><i class="fa fa-check"></i><b>7.0.1</b> 前置準備</a></li>
+<li class="chapter" data-level="7.1" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#資料視覺化簡略介紹-ggplot2"><i class="fa fa-check"></i><b>7.1</b> 資料視覺化簡略介紹 ggplot2</a></li>
+<li class="chapter" data-level="7.2" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#簡單呈現探索式資料分析"><i class="fa fa-check"></i><b>7.2</b> 簡單呈現探索式資料分析</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#單一類別變項"><i class="fa fa-check"></i><b>7.2.1</b> 單一類別變項</a></li>
+<li class="chapter" data-level="7.2.2" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#單一數值變項"><i class="fa fa-check"></i><b>7.2.2</b> 單一數值變項</a></li>
+<li class="chapter" data-level="7.2.3" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#兩個類別變項"><i class="fa fa-check"></i><b>7.2.3</b> 兩個類別變項</a></li>
+<li class="chapter" data-level="7.2.4" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#兩個數值變項"><i class="fa fa-check"></i><b>7.2.4</b> 兩個數值變項</a></li>
+<li class="chapter" data-level="7.2.5" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#一個類別一個數值變項"><i class="fa fa-check"></i><b>7.2.5</b> 一個類別一個數值變項</a></li>
+<li class="chapter" data-level="7.2.6" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#兩個數值變項用類別變項分組"><i class="fa fa-check"></i><b>7.2.6</b> 兩個數值變項用類別變項分組</a></li>
+<li class="chapter" data-level="7.2.7" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#其他進階統計"><i class="fa fa-check"></i><b>7.2.7</b> 其他進階統計</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for NGO</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="基礎篇_r語言的基礎概念" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> 基礎篇_R語言的基礎概念<a href="基礎篇_r語言的基礎概念.html#基礎篇_r語言的基礎概念" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="物件基礎操作" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> 物件基礎操作<a href="基礎篇_r語言的基礎概念.html#物件基礎操作" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R語言是以<strong>「物件導向」</strong>為主的程式語言，可以簡單想成在R語言當中，每一個<strong>東西</strong>都可以視為一個物件(object)，或著可以暫時先將物件想像成「資料」，這樣的資料內容可以是由一個或多個文字、數字或其他形式所組成的。<br />
+</p>
+<p>接著我們會介紹，在R語言當中可以根據創建出來的物件進行各種操作，像是指派、命名或數學運算，而物件也可能是由不同的結構所組成，也有可能會儲存成不同的形態。</p>
+<div id="指派assignment" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> 指派（assignment）：<a href="基礎篇_r語言的基礎概念.html#指派assignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我們可以簡單的將指派理解為一種<strong>「變項的設定」</strong>，也就是將不管是一個或多個物件視為某一個<strong>「變項的內容」</strong>，而指派就是將這些物件(組合成的變項內容)指派(設定)一個<strong>「變項(物件)名稱」</strong>。</p>
+<p>將資料儲存至一個代號（變項）內，可以用”&lt;-” 或”=“，但使用”&lt;-“好過”=“，另外也可以換個方向指派”-&gt;“，但通常由左至右較易閱讀因此較少使用。<br />
+(「&lt;-」的 Windows快捷鍵: 「<strong>Alt+-</strong>」)</p>
+<p>若我們沒有指派成為某個變項，那麼這個物件會直接的顯示在視窗 以下範例單獨顯示「24」</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="基礎篇_r語言的基礎概念.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">24</span></span></code></pre></div>
+<pre><code>## [1] 24</code></pre>
+<p>若是我們有指派物件，那麼這個變項就會暫存在R語言的環境當中，可隨時拿來使用</p>
+<p>以下範例將「24」作為一個物件，並指派為「a」(變項名稱)。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="基礎篇_r語言的基礎概念.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 將24存在「a」這個代號當中</span></span>
+<span id="cb5-2"><a href="基礎篇_r語言的基礎概念.html#cb5-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">24</span> </span>
+<span id="cb5-3"><a href="基礎篇_r語言的基礎概念.html#cb5-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">24</span></span>
+<span id="cb5-4"><a href="基礎篇_r語言的基礎概念.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dv">24</span> <span class="ot">-&gt;</span> a</span>
+<span id="cb5-5"><a href="基礎篇_r語言的基礎概念.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="基礎篇_r語言的基礎概念.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 輸出a為24</span></span>
+<span id="cb5-7"><a href="基礎篇_r語言的基礎概念.html#cb5-7" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] 24</code></pre>
+<div class="figure">
+<img src="picture/a.png" alt="" />
+<p class="caption">若有指派a，則旁邊Environment -&gt; Global Environment -&gt; Values 就會出現a</p>
+</div>
+<p>一個<strong>已經</strong>被指派(設定)的變項，也可以當作另一個變項的內容，<br />
+以下範例將「a - 10」作為一個物件，並指派為「b」，而因為原先a是代表24，因此「b」就會是24-10 = 14。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="基礎篇_r語言的基礎概念.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 將a-10存在「b」這個代號當中(a 需要先被指派)</span></span>
+<span id="cb7-2"><a href="基礎篇_r語言的基礎概念.html#cb7-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">24</span> </span>
+<span id="cb7-3"><a href="基礎篇_r語言的基礎概念.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="基礎篇_r語言的基礎概念.html#cb7-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> a <span class="sc">-</span> <span class="dv">10</span></span>
+<span id="cb7-5"><a href="基礎篇_r語言的基礎概念.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
+<span id="cb7-6"><a href="基礎篇_r語言的基礎概念.html#cb7-6" aria-hidden="true" tabindex="-1"></a>a <span class="sc">-</span> <span class="dv">10</span> <span class="ot">-&gt;</span> b</span>
+<span id="cb7-7"><a href="基礎篇_r語言的基礎概念.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="基礎篇_r語言的基礎概念.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 輸出b:若a已經代表24，那麼b就會等於24-10=14</span></span>
+<span id="cb7-9"><a href="基礎篇_r語言的基礎概念.html#cb7-9" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<pre><code>## [1] 14</code></pre>
+<p>另外如果不同的物件都指派到相同的變項名稱，那<strong>較後面</strong>指派會取代較早指派的物件，<br />
+以下範例先將「2」作為一個物件，並指派為「c」，再將「4」作為一個物件，並同樣指派為「c」，此時C所代表的是後面所指派的4。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="基礎篇_r語言的基礎概念.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 先將2存在「c」這個代號當中</span></span>
+<span id="cb9-2"><a href="基礎篇_r語言的基礎概念.html#cb9-2" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb9-3"><a href="基礎篇_r語言的基礎概念.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 輸出c為2</span></span>
+<span id="cb9-4"><a href="基礎篇_r語言的基礎概念.html#cb9-4" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="基礎篇_r語言的基礎概念.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 再將4同樣存在「c」這個代號當中</span></span>
+<span id="cb11-2"><a href="基礎篇_r語言的基礎概念.html#cb11-2" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb11-3"><a href="基礎篇_r語言的基礎概念.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 輸出c為4</span></span>
+<span id="cb11-4"><a href="基礎篇_r語言的基礎概念.html#cb11-4" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+</div>
+<div id="查詢顯示物件與刪除物件" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> 查詢顯示物件與刪除物件<a href="基礎篇_r語言的基礎概念.html#查詢顯示物件與刪除物件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在我們已經指派了某個變項後，此時他會暫存R語言的環境當中， 在此我們先重新指派a、b、c(注意，相同變項名稱，後續指派會取代前面指派的)。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="基礎篇_r語言的基礎概念.html#cb13-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">24</span> </span>
+<span id="cb13-2"><a href="基礎篇_r語言的基礎概念.html#cb13-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> a <span class="sc">-</span> <span class="dv">10</span></span>
+<span id="cb13-3"><a href="基礎篇_r語言的基礎概念.html#cb13-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">4</span></span></code></pre></div>
+<div class="figure">
+<img src="picture/abc.png" alt="" />
+<p class="caption">指派a、b、c</p>
+</div>
+<p>若是我們想要<strong>查看/輸出</strong>「a」當中的內容，可以直接打物件名稱或著用<code>print()函數</code>輸出。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="基礎篇_r語言的基礎概念.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 直接打物件名稱</span></span>
+<span id="cb14-2"><a href="基礎篇_r語言的基礎概念.html#cb14-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] 24</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="基礎篇_r語言的基礎概念.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 用print()函數將物件內容輸出</span></span>
+<span id="cb16-2"><a href="基礎篇_r語言的基礎概念.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code></pre></div>
+<pre><code>## [1] 24</code></pre>
+<p>若是我們想要<strong>移除</strong>整個變項「a」，可以用<code>rm()函數</code>移除。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="基礎篇_r語言的基礎概念.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 用rm()函數移除物件</span></span>
+<span id="cb18-2"><a href="基礎篇_r語言的基礎概念.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(a)</span></code></pre></div>
+<div class="figure">
+<img src="picture/bc.png" alt="" />
+<p class="caption">移除a</p>
+</div>
+</div>
+<div id="命名" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> 命名<a href="基礎篇_r語言的基礎概念.html#命名" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>上述的a、b、c都是我們自己給予的一個簡單的變項名稱，在R語言當中對於變項名稱也有需要遵守的<strong>命名規則</strong>，最需要注意的是在R語言當中英文字母的<strong>大小寫</strong>是有區分的，另外也針對開頭的強制規定。</p>
+<ul>
+<li><p>有效的命名</p>
+<ul>
+<li>以字母(大小寫都可)、數字、逗點(.)、下底線(_)<strong>開頭</strong></li>
+<li>若以.點開頭，後面不能接數字</li>
+</ul></li>
+</ul>
+<p>而實際在操作上，通常會有兩種常見的命名方式，若是英文單詞太長也可以進行適當縮寫</p>
+<ul>
+<li><p>常見命名規則</p>
+<ul>
+<li>1.以小寫字母開頭的一個單詞(常見多以小寫字母開頭)</li>
+<li>2.若為兩個單詞組成，以小寫字母開頭的一個單詞，後面的單詞第一個字母大寫</li>
+<li>3.若為兩個單詞組成，以小寫字母開頭的一個單詞，後面接<code>_</code>，再接著第二個單詞且第一個字母小寫</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="基礎篇_r語言的基礎概念.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
+<span id="cb19-2"><a href="基礎篇_r語言的基礎概念.html#cb19-2" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> <span class="dv">50000</span></span>
+<span id="cb19-3"><a href="基礎篇_r語言的基礎概念.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 縮寫</span></span>
+<span id="cb19-4"><a href="基礎篇_r語言的基礎概念.html#cb19-4" aria-hidden="true" tabindex="-1"></a>inc <span class="ot">&lt;-</span> <span class="dv">50000</span></span>
+<span id="cb19-5"><a href="基礎篇_r語言的基礎概念.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
+<span id="cb19-6"><a href="基礎篇_r語言的基礎概念.html#cb19-6" aria-hidden="true" tabindex="-1"></a>incomeLevel <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;middle&quot;</span>, <span class="st">&quot;high&quot;</span>)</span>
+<span id="cb19-7"><a href="基礎篇_r語言的基礎概念.html#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3</span></span>
+<span id="cb19-8"><a href="基礎篇_r語言的基礎概念.html#cb19-8" aria-hidden="true" tabindex="-1"></a>income_level <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;middle&quot;</span>, <span class="st">&quot;high&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="基本運算" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> 基本運算<a href="基礎篇_r語言的基礎概念.html#基本運算" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>以下介紹簡單的運算方式，另外還有很多其他函數可以做基礎或進階的數學換算或運算，若有需要使用到可自行查找</p>
+<div id="數學基本運算" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> 數學基本運算<a href="基礎篇_r語言的基礎概念.html#數學基本運算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="基礎篇_r語言的基礎概念.html#cb20-1" aria-hidden="true" tabindex="-1"></a>num1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb20-2"><a href="基礎篇_r語言的基礎概念.html#cb20-2" aria-hidden="true" tabindex="-1"></a>num2 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb20-3"><a href="基礎篇_r語言的基礎概念.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="基礎篇_r語言的基礎概念.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 加 + </span></span>
+<span id="cb20-5"><a href="基礎篇_r語言的基礎概念.html#cb20-5" aria-hidden="true" tabindex="-1"></a>num1<span class="sc">+</span>num2 <span class="do">## 1+10 = 11</span></span>
+<span id="cb20-6"><a href="基礎篇_r語言的基礎概念.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 減 - </span></span>
+<span id="cb20-7"><a href="基礎篇_r語言的基礎概念.html#cb20-7" aria-hidden="true" tabindex="-1"></a>num1<span class="sc">-</span>num2 <span class="do">## 1-10 = -9</span></span>
+<span id="cb20-8"><a href="基礎篇_r語言的基礎概念.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 乘 * </span></span>
+<span id="cb20-9"><a href="基礎篇_r語言的基礎概念.html#cb20-9" aria-hidden="true" tabindex="-1"></a>num1<span class="sc">*</span>num2 <span class="do">## 1*10 = 10</span></span>
+<span id="cb20-10"><a href="基礎篇_r語言的基礎概念.html#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 除 / </span></span>
+<span id="cb20-11"><a href="基礎篇_r語言的基礎概念.html#cb20-11" aria-hidden="true" tabindex="-1"></a>num1<span class="sc">/</span>num2 <span class="do">## 1/10 = 0.1</span></span>
+<span id="cb20-12"><a href="基礎篇_r語言的基礎概念.html#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 餘數 %% </span></span>
+<span id="cb20-13"><a href="基礎篇_r語言的基礎概念.html#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">%%</span><span class="dv">3</span> <span class="do">## 10除以3後所得餘數</span></span>
+<span id="cb20-14"><a href="基礎篇_r語言的基礎概念.html#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 次方 ^ </span></span>
+<span id="cb20-15"><a href="基礎篇_r語言的基礎概念.html#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">2</span> <span class="do">## 10的2次方 = 100</span></span></code></pre></div>
+</div>
+<div id="邏輯運算" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> 邏輯運算<a href="基礎篇_r語言的基礎概念.html#邏輯運算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="基礎篇_r語言的基礎概念.html#cb21-1" aria-hidden="true" tabindex="-1"></a>num1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb21-2"><a href="基礎篇_r語言的基礎概念.html#cb21-2" aria-hidden="true" tabindex="-1"></a>num2 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb21-3"><a href="基礎篇_r語言的基礎概念.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="基礎篇_r語言的基礎概念.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 大於 &gt; </span></span>
+<span id="cb21-5"><a href="基礎篇_r語言的基礎概念.html#cb21-5" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">&gt;</span> num2 <span class="do">## num1是否大於num2 -&gt; FALSE</span></span>
+<span id="cb21-6"><a href="基礎篇_r語言的基礎概念.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 小於 &lt;</span></span>
+<span id="cb21-7"><a href="基礎篇_r語言的基礎概念.html#cb21-7" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">&lt;</span> num2 <span class="do">## num1是否小於num2 -&gt; TRUE</span></span>
+<span id="cb21-8"><a href="基礎篇_r語言的基礎概念.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 等於 ==，為了不與變數設定混淆，判斷兩變數是否相等，要用雙等號</span></span>
+<span id="cb21-9"><a href="基礎篇_r語言的基礎概念.html#cb21-9" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">==</span> num2 <span class="do">## num1是否等於num2 -&gt; FALSE</span></span>
+<span id="cb21-10"><a href="基礎篇_r語言的基礎概念.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 大於等於 &gt;=</span></span>
+<span id="cb21-11"><a href="基礎篇_r語言的基礎概念.html#cb21-11" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">&gt;=</span> num2 <span class="do">## num1是否大於等於num2 -&gt; FALSE</span></span>
+<span id="cb21-12"><a href="基礎篇_r語言的基礎概念.html#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 小於等於 &lt;=</span></span>
+<span id="cb21-13"><a href="基礎篇_r語言的基礎概念.html#cb21-13" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">&lt;=</span> num2 <span class="do">## num1是否小於等於num2 -&gt; TRUE</span></span>
+<span id="cb21-14"><a href="基礎篇_r語言的基礎概念.html#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 且 &amp;</span></span>
+<span id="cb21-15"><a href="基礎篇_r語言的基礎概念.html#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span> <span class="do">## TRUE</span></span>
+<span id="cb21-16"><a href="基礎篇_r語言的基礎概念.html#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span> <span class="do">## FALSE</span></span>
+<span id="cb21-17"><a href="基礎篇_r語言的基礎概念.html#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 或 |</span></span>
+<span id="cb21-18"><a href="基礎篇_r語言的基礎概念.html#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span> <span class="do">## TRUE</span></span>
+<span id="cb21-19"><a href="基礎篇_r語言的基礎概念.html#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span> <span class="do">## TRUE</span></span>
+<span id="cb21-20"><a href="基礎篇_r語言的基礎概念.html#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 反向布林變數! </span></span>
+<span id="cb21-21"><a href="基礎篇_r語言的基礎概念.html#cb21-21" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span> <span class="do">## 不等於TRUE 所以是 FALSE</span></span></code></pre></div>
+</div>
+</div>
+<div id="資料型態" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> 資料型態<a href="基礎篇_r語言的基礎概念.html#資料型態" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>不同的物件都會有各自的資料型態，在R語言當中常用的資料型態包括數值 (numeric)、字串 (character)、布林變數 (logic)以及日期 (Date)等。<br />
+使用函式<code>class()</code>可以檢視資料型態。</p>
+<div id="數字numeric" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> 數字(numeric):<a href="基礎篇_r語言的基礎概念.html#數字numeric" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>numeric包括整數integer（沒有小數點）與浮點數double（有小數點）的數值</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="基礎篇_r語言的基礎概念.html#cb22-1" aria-hidden="true" tabindex="-1"></a>numeric1 <span class="ot">&lt;-</span> <span class="fl">3.14</span> <span class="do">## numeric </span></span>
+<span id="cb22-2"><a href="基礎篇_r語言的基礎概念.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(numeric1)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="基礎篇_r語言的基礎概念.html#cb24-1" aria-hidden="true" tabindex="-1"></a>numeric2 <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="do">## numeric</span></span>
+<span id="cb24-2"><a href="基礎篇_r語言的基礎概念.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(numeric2)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>若是在整是數字後面有加上<code>L</code>就會被認為是純粹的整數，型態會顯示<code>integer</code></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="基礎篇_r語言的基礎概念.html#cb26-1" aria-hidden="true" tabindex="-1"></a>numeric3 <span class="ot">&lt;-</span> 15L <span class="do">## integer</span></span>
+<span id="cb26-2"><a href="基礎篇_r語言的基礎概念.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(numeric3)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>另外還有複數的數值型態，顯示為<code>complex</code></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="基礎篇_r語言的基礎概念.html#cb28-1" aria-hidden="true" tabindex="-1"></a>complex1 <span class="ot">=</span> <span class="dv">2</span> <span class="sc">+</span> 4i <span class="do">## complex</span></span>
+<span id="cb28-2"><a href="基礎篇_r語言的基礎概念.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(complex1)</span></code></pre></div>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+</div>
+<div id="字串character" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> 字串(character):<a href="基礎篇_r語言的基礎概念.html#字串character" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>用雙引號”框起的文字會被儲存為字串格式，若在數字前後加上雙引號，數字也會被儲存為文字形式，無法進行數值的加減乘除等運算。</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="基礎篇_r語言的基礎概念.html#cb30-1" aria-hidden="true" tabindex="-1"></a>character1 <span class="ot">&lt;-</span> <span class="st">&quot;Apple&quot;</span></span>
+<span id="cb30-2"><a href="基礎篇_r語言的基礎概念.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(character1)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="基礎篇_r語言的基礎概念.html#cb32-1" aria-hidden="true" tabindex="-1"></a>character2 <span class="ot">&lt;-</span> <span class="st">&quot;1&quot;</span></span>
+<span id="cb32-2"><a href="基礎篇_r語言的基礎概念.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(character2)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="邏輯logical" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> 邏輯(logical):<a href="基礎篇_r語言的基礎概念.html#邏輯logical" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>邏輯型或布林型 (true or false)，用於邏輯判斷，可使用TRUE或T代表真，FALSE或F代表假。</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="基礎篇_r語言的基礎概念.html#cb34-1" aria-hidden="true" tabindex="-1"></a>logical1 <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb34-2"><a href="基礎篇_r語言的基礎概念.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(logical1)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="基礎篇_r語言的基礎概念.html#cb36-1" aria-hidden="true" tabindex="-1"></a>logical2 <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb36-2"><a href="基礎篇_r語言的基礎概念.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(logical2)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<p>有時 T 與 F可以分別代表1、0整數。</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="基礎篇_r語言的基礎概念.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">+</span> <span class="dv">2</span> <span class="do">## 等於 1 + 2</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="基礎篇_r語言的基礎概念.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">+</span> <span class="dv">2</span> <span class="do">## 等於 0 + 2</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="日期date" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> 日期(date):<a href="基礎篇_r語言的基礎概念.html#日期date" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>使用 lubridate 套件可更好呈現，其應用範圍很廣在此不多做介紹</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="基礎篇_r語言的基礎概念.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb42-2"><a href="基礎篇_r語言的基礎概念.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&#39;2012/3/3&#39;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="資料結構" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> 資料結構<a href="基礎篇_r語言的基礎概念.html#資料結構" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>前述講到R語言當中物件有各自的資料型態，而一個物件本身是如何被<strong>「儲存」</strong>，就是以不同<strong>「資料結構」</strong>的方式，在R語言當中有五大類的資料結構形式，分別是向量(vectors)、清單(list)、矩陣(matrices)、陣列(array)、資料架構(data frames)。</p>
+<div id="向量vectors" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> 向量(vectors):<a href="基礎篇_r語言的基礎概念.html#向量vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>向量(vectors)是物件最<strong>「基礎」</strong>的資料結構，且只包含單維、單一類型的資料。<br />
+concatenate(堆疊): 以<code>c(...)</code>將「<strong>相同類型</strong>」值以「逗點」分隔而形成的向量</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="基礎篇_r語言的基礎概念.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 同樣是數字</span></span>
+<span id="cb43-2"><a href="基礎篇_r語言的基礎概念.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span> ,<span class="dv">3</span>)</span>
+<span id="cb43-3"><a href="基礎篇_r語言的基礎概念.html#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="基礎篇_r語言的基礎概念.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>)) <span class="do">## 等於c(1, 2, 3, 4)</span></span>
+<span id="cb43-5"><a href="基礎篇_r語言的基礎概念.html#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="基礎篇_r語言的基礎概念.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 同樣是文字</span></span>
+<span id="cb43-7"><a href="基礎篇_r語言的基礎概念.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>)</span>
+<span id="cb43-8"><a href="基礎篇_r語言的基礎概念.html#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="基礎篇_r語言的基礎概念.html#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 若文字中混數字會被自動當作文字</span></span>
+<span id="cb43-10"><a href="基礎篇_r語言的基礎概念.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="dv">5</span>) <span class="do">## 等於c(&quot;apple, banana&quot;, &quot;5&quot;) </span></span></code></pre></div>
+</div>
+<div id="因子factor" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> 因子(factor):<a href="基礎篇_r語言的基礎概念.html#因子factor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>因子是由向量轉換而成，多用於表示「<strong>類別資料(categorical data)</strong>｣， 例如有三種收入等級的類別，分別是低收入、中等收入、高收入， 簡單的使用方法為<code>factor(資料向量,levels=類別次序)</code>，levels參數可設定各類別的次序， 另外還有其他的參數可以進行設定。</p>
+<p>以下範例將income_1設定為由不同的四個收入所組成的向量，此時資料的格式是顯示為文字(character)。</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="基礎篇_r語言的基礎概念.html#cb44-1" aria-hidden="true" tabindex="-1"></a>income_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;低收入&quot;</span>, <span class="st">&quot;中等收入&quot;</span>, <span class="st">&quot;高收入&quot;</span>, <span class="st">&quot;低收入&quot;</span>)</span>
+<span id="cb44-2"><a href="基礎篇_r語言的基礎概念.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(income_1)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>若查看次數分配會發現順序是中等收入-&gt;低收入-&gt;高收入。</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="基礎篇_r語言的基礎概念.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(income_1) <span class="do">## 查看次數分配</span></span></code></pre></div>
+<pre><code>## income_1
+## 中等收入   低收入   高收入 
+##        1        2        1</code></pre>
+<p>接著我們將income_1轉成類別變項，而類別的順序是設定為低收入-&gt;中等收入-&gt;高收入，此時資料的格式也會轉變為為因子(factor)。</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="基礎篇_r語言的基礎概念.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 原本是文字資料，設定類別</span></span>
+<span id="cb48-2"><a href="基礎篇_r語言的基礎概念.html#cb48-2" aria-hidden="true" tabindex="-1"></a>fac_1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(income_1,</span>
+<span id="cb48-3"><a href="基礎篇_r語言的基礎概念.html#cb48-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;低收入&quot;</span>, <span class="st">&quot;中等收入&quot;</span>, <span class="st">&quot;高收入&quot;</span>))</span>
+<span id="cb48-4"><a href="基礎篇_r語言的基礎概念.html#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="基礎篇_r語言的基礎概念.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fac_1)</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<p>若查看次數分配會發現順序改成我們設定的低收入-&gt;中等收入-&gt;高收入。</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="基礎篇_r語言的基礎概念.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(fac_1) <span class="do">## 查看次數分配</span></span></code></pre></div>
+<pre><code>## fac_1
+##   低收入 中等收入   高收入 
+##        2        1        1</code></pre>
+<p>在統計模型當中使用類別資料時，有時會需要針對類別資料設定參考組別，而若是沒有特別設定，R語言會自動把最低順序的當作參考組(以上述為例:低收入)，這時我們可以使用<code>relevel()</code>改變參考組別(改成中等收入為參考)。</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="基礎篇_r語言的基礎概念.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">relevel</span>(fac_1, <span class="at">ref =</span> <span class="st">&quot;中等收入&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 低收入   中等收入 高收入   低收入  
+## Levels: 中等收入 低收入 高收入</code></pre>
+<p>數字資料也是類似，可以再另外設定標籤</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="基礎篇_r語言的基礎概念.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 原本是數字資料，設定類別</span></span>
+<span id="cb54-2"><a href="基礎篇_r語言的基礎概念.html#cb54-2" aria-hidden="true" tabindex="-1"></a>fac_2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb54-3"><a href="基礎篇_r語言的基礎概念.html#cb54-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb54-4"><a href="基礎篇_r語言的基礎概念.html#cb54-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;低收入&quot;</span>, <span class="st">&quot;中等收入&quot;</span>, <span class="st">&quot;高收入&quot;</span>)) </span>
+<span id="cb54-5"><a href="基礎篇_r語言的基礎概念.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(fac_2) <span class="do">## 查看次數分配</span></span></code></pre></div>
+<pre><code>## fac_2
+##   低收入 中等收入   高收入 
+##        2        1        2</code></pre>
+<p>若是資料多了一個數字(範例是4)沒有被設定成類別，那麼轉成factor時被自動當成缺失值</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="基礎篇_r語言的基礎概念.html#cb56-1" aria-hidden="true" tabindex="-1"></a>fac_3 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb56-2"><a href="基礎篇_r語言的基礎概念.html#cb56-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb56-3"><a href="基礎篇_r語言的基礎概念.html#cb56-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;低收入&quot;</span>, <span class="st">&quot;中等收入&quot;</span>, <span class="st">&quot;高收入&quot;</span>)) </span>
+<span id="cb56-4"><a href="基礎篇_r語言的基礎概念.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(fac_3, <span class="at">exclude =</span> <span class="cn">NULL</span>) <span class="do">## 查看次數分配</span></span></code></pre></div>
+<pre><code>## fac_3
+##   低收入 中等收入   高收入     &lt;NA&gt; 
+##        2        1        2        1</code></pre>
+</div>
+<div id="列表list" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> 列表(list):<a href="基礎篇_r語言的基礎概念.html#列表list" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>列表(list)是一種較複雜的向量模式，可以包含向量、矩陣、不同的清單，可以包含「<strong>不同的資料型態</strong>」，通常統計跑完後，結果會儲存在列表之中。</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="基礎篇_r語言的基礎概念.html#cb58-1" aria-hidden="true" tabindex="-1"></a>num_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb58-2"><a href="基礎篇_r語言的基礎概念.html#cb58-2" aria-hidden="true" tabindex="-1"></a>char_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb58-3"><a href="基礎篇_r語言的基礎概念.html#cb58-3" aria-hidden="true" tabindex="-1"></a>logic_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb58-4"><a href="基礎篇_r語言的基礎概念.html#cb58-4" aria-hidden="true" tabindex="-1"></a>out_list_1 <span class="ot">&lt;-</span> <span class="fu">list</span>(num_list, char_list, logic_list, <span class="dv">3</span>)</span>
+<span id="cb58-5"><a href="基礎篇_r語言的基礎概念.html#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-6"><a href="基礎篇_r語言的基礎概念.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="do">## or </span></span>
+<span id="cb58-7"><a href="基礎篇_r語言的基礎概念.html#cb58-7" aria-hidden="true" tabindex="-1"></a>out_list_2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb58-8"><a href="基礎篇_r語言的基礎概念.html#cb58-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb58-9"><a href="基礎篇_r語言的基礎概念.html#cb58-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>),</span>
+<span id="cb58-10"><a href="基礎篇_r語言的基礎概念.html#cb58-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb58-11"><a href="基礎篇_r語言的基礎概念.html#cb58-11" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span></span>
+<span id="cb58-12"><a href="基礎篇_r語言的基礎概念.html#cb58-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb58-13"><a href="基礎篇_r語言的基礎概念.html#cb58-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-14"><a href="基礎篇_r語言的基礎概念.html#cb58-14" aria-hidden="true" tabindex="-1"></a><span class="do">## or 給予名稱</span></span>
+<span id="cb58-15"><a href="基礎篇_r語言的基礎概念.html#cb58-15" aria-hidden="true" tabindex="-1"></a>out_list_3 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb58-16"><a href="基礎篇_r語言的基礎概念.html#cb58-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">num_list =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb58-17"><a href="基礎篇_r語言的基礎概念.html#cb58-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">char_list =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>),</span>
+<span id="cb58-18"><a href="基礎篇_r語言的基礎概念.html#cb58-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">logic_list =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb58-19"><a href="基礎篇_r語言的基礎概念.html#cb58-19" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span></span>
+<span id="cb58-20"><a href="基礎篇_r語言的基礎概念.html#cb58-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure">
+<img src="picture/list3.png" alt="" />
+<p class="caption">點開out_list_3</p>
+</div>
+<div class="figure">
+<img src="picture/list3_2.png" alt="" />
+<p class="caption">可以看到詳細out_list_3的架構</p>
+</div>
+<p>另外列表(list)也可以包含其他列表(list)。
+以剛剛創建的out_list_3為例，我們還可以再套上一層list。</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="基礎篇_r語言的基礎概念.html#cb59-1" aria-hidden="true" tabindex="-1"></a>out_list_4 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb59-2"><a href="基礎篇_r語言的基礎概念.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  out_list_3,</span>
+<span id="cb59-3"><a href="基礎篇_r語言的基礎概念.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>)</span>
+<span id="cb59-4"><a href="基礎篇_r語言的基礎概念.html#cb59-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure">
+<img src="picture/list4.png" alt="" />
+<p class="caption">可以看到詳細out_list_4的架構</p>
+</div>
+</div>
+<div id="矩陣matrices" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> 矩陣(matrices):<a href="基礎篇_r語言的基礎概念.html#矩陣matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>二維的資料</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="基礎篇_r語言的基礎概念.html#cb60-1" aria-hidden="true" tabindex="-1"></a>mat_1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb60-2"><a href="基礎篇_r語言的基礎概念.html#cb60-2" aria-hidden="true" tabindex="-1"></a>mat_2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+</div>
+<div id="陣列array" class="section level3 hasAnchor" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> 陣列(array):<a href="基礎篇_r語言的基礎概念.html#陣列array" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>多維度的資料</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="基礎篇_r語言的基礎概念.html#cb61-1" aria-hidden="true" tabindex="-1"></a>vec_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb61-2"><a href="基礎篇_r語言的基礎概念.html#cb61-2" aria-hidden="true" tabindex="-1"></a>vec_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">27</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb61-3"><a href="基礎篇_r語言的基礎概念.html#cb61-3" aria-hidden="true" tabindex="-1"></a>array1 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(vec_1, vec_2), <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span></code></pre></div>
+</div>
+<div id="資料框架data-frame" class="section level3 hasAnchor" number="3.4.6">
+<h3><span class="header-section-number">3.4.6</span> 資料框架(data frame)：<a href="基礎篇_r語言的基礎概念.html#資料框架data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>資料框架是列表(list)的一種特殊的形式，一樣可以包含不同的資料型態，但不同的是每個變數的觀察值都需要有相同數量(長度)的資料，更類似一種矩陣形式，而這樣的形態也更像是我們使用的其他套裝統計軟體（如excel, spss, stata）中資料儲存的方式，每一行(欄)（Column）儲存不同的資料、每一列（Row）代表不同的觀察值</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="基礎篇_r語言的基礎概念.html#cb62-1" aria-hidden="true" tabindex="-1"></a>num_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb62-2"><a href="基礎篇_r語言的基礎概念.html#cb62-2" aria-hidden="true" tabindex="-1"></a>char_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)</span>
+<span id="cb62-3"><a href="基礎篇_r語言的基礎概念.html#cb62-3" aria-hidden="true" tabindex="-1"></a>logic_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb62-4"><a href="基礎篇_r語言的基礎概念.html#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="基礎篇_r語言的基礎概念.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用data.frame()來創建新的資料框</span></span>
+<span id="cb62-6"><a href="基礎篇_r語言的基礎概念.html#cb62-6" aria-hidden="true" tabindex="-1"></a>data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(num_list, char_list, logic_list)</span>
+<span id="cb62-7"><a href="基礎篇_r語言的基礎概念.html#cb62-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-8"><a href="基礎篇_r語言的基礎概念.html#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 或是將list 轉成data.frame</span></span>
+<span id="cb62-9"><a href="基礎篇_r語言的基礎概念.html#cb62-9" aria-hidden="true" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb62-10"><a href="基礎篇_r語言的基礎概念.html#cb62-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">num_list =</span> num_list,</span>
+<span id="cb62-11"><a href="基礎篇_r語言的基礎概念.html#cb62-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">char_list =</span> char_list, </span>
+<span id="cb62-12"><a href="基礎篇_r語言的基礎概念.html#cb62-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">logic_list =</span> logic_list</span>
+<span id="cb62-13"><a href="基礎篇_r語言的基礎概念.html#cb62-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb62-14"><a href="基礎篇_r語言的基礎概念.html#cb62-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-15"><a href="基礎篇_r語言的基礎概念.html#cb62-15" aria-hidden="true" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(data_list)</span></code></pre></div>
+<div class="figure">
+<img src="picture/dataframe1.png" alt="" />
+<p class="caption">點開data_list</p>
+</div>
+<div class="figure">
+<img src="picture/dataframe2.png" alt="" />
+<p class="caption">可以看到一個簡單的資料框架</p>
+</div>
+</div>
+<div id="查詢資料型態或結構" class="section level3 hasAnchor" number="3.4.7">
+<h3><span class="header-section-number">3.4.7</span> 查詢資料型態或結構<a href="基礎篇_r語言的基礎概念.html#查詢資料型態或結構" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Type: 是查看電腦如何儲存資料，物件的基本型態</li>
+<li>Class: 是查看物件的類別(螢幕顯示的型態)，及能對它進行的操作所做的分類</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="基礎篇_r語言的基礎概念.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># type</span></span>
+<span id="cb63-2"><a href="基礎篇_r語言的基礎概念.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Mary&quot;</span>)) <span class="do">## &quot;character&quot;</span></span>
+<span id="cb63-3"><a href="基礎篇_r語言的基礎概念.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">3.1412</span>)) <span class="do">## &quot;double&quot;</span></span>
+<span id="cb63-4"><a href="基礎篇_r語言的基礎概念.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, F)) <span class="do">## &quot;logical&quot;</span></span>
+<span id="cb63-5"><a href="基礎篇_r語言的基礎概念.html#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="基礎篇_r語言的基礎概念.html#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co"># class</span></span>
+<span id="cb63-7"><a href="基礎篇_r語言的基礎概念.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Mary&quot;</span>)) <span class="do">## &quot;character&quot;</span></span>
+<span id="cb63-8"><a href="基礎篇_r語言的基礎概念.html#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">3.1412</span>)) <span class="do">## &quot;numeric&quot;</span></span>
+<span id="cb63-9"><a href="基礎篇_r語言的基礎概念.html#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, F)) <span class="do">## &quot;logical&quot;</span></span></code></pre></div>
+</div>
+<div id="轉換資料型態或結構" class="section level3 hasAnchor" number="3.4.8">
+<h3><span class="header-section-number">3.4.8</span> 轉換資料型態或結構<a href="基礎篇_r語言的基礎概念.html#轉換資料型態或結構" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>使用<code>as.targetClass</code>將值轉換為<code>targetClass</code>類。</p>
+<ul>
+<li><code>as.numeric()</code>將值轉換為數字類</li>
+<li><code>as.character()</code>將值轉換為字符類</li>
+<li>其他轉換……</li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="基礎篇_r語言的基礎概念.html#cb64-1" aria-hidden="true" tabindex="-1"></a>num_t1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">2</span> , <span class="dv">4</span>)</span>
+<span id="cb64-2"><a href="基礎篇_r語言的基礎概念.html#cb64-2" aria-hidden="true" tabindex="-1"></a>char_t1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;0.1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;4&quot;</span>)</span>
+<span id="cb64-3"><a href="基礎篇_r語言的基礎概念.html#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="基礎篇_r語言的基礎概念.html#cb64-4" aria-hidden="true" tabindex="-1"></a>num_t2 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(num_t1)</span>
+<span id="cb64-5"><a href="基礎篇_r語言的基礎概念.html#cb64-5" aria-hidden="true" tabindex="-1"></a>char_t2 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(char_t1)</span>
+<span id="cb64-6"><a href="基礎篇_r語言的基礎概念.html#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="基礎篇_r語言的基礎概念.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(num_t1) <span class="do">## &quot;numeric&quot;</span></span>
+<span id="cb64-8"><a href="基礎篇_r語言的基礎概念.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(num_t2) <span class="do">## &quot;character&quot;</span></span>
+<span id="cb64-9"><a href="基礎篇_r語言的基礎概念.html#cb64-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-10"><a href="基礎篇_r語言的基礎概念.html#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(char_t1) <span class="do">## &quot;character&quot;</span></span>
+<span id="cb64-11"><a href="基礎篇_r語言的基礎概念.html#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(char_t2) <span class="do">## &quot;numeric&quot;</span></span></code></pre></div>
+</div>
+</div>
+<div id="簡單條件判斷式" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> 簡單條件判斷式<a href="基礎篇_r語言的基礎概念.html#簡單條件判斷式" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="if-else敘述" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> if-else敘述<a href="基礎篇_r語言的基礎概念.html#if-else敘述" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>邏輯判斷: if-else敘述 若if後所接邏輯判斷為真(TRUE)，就會執行if下方之程式碼，若為偽(FALSE)，則執行else下方之程式碼，若程式中沒有else片段，則不執行任何程式碼。</li>
+</ul>
+<p>以下範例，若考試分數大於等於60分，則印出及格字樣，小於60分則印出不及格字樣。</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="基礎篇_r語言的基礎概念.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 先隨便設定一個考試分數</span></span>
+<span id="cb65-2"><a href="基礎篇_r語言的基礎概念.html#cb65-2" aria-hidden="true" tabindex="-1"></a>score1 <span class="ot">&lt;-</span> <span class="dv">59</span></span>
+<span id="cb65-3"><a href="基礎篇_r語言的基礎概念.html#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="基礎篇_r語言的基礎概念.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 執行判斷</span></span>
+<span id="cb65-5"><a href="基礎篇_r語言的基礎概念.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(score1 <span class="sc">&gt;=</span> <span class="dv">60</span>){ <span class="do">## 若考試分數大於等於60分</span></span>
+<span id="cb65-6"><a href="基礎篇_r語言的基礎概念.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;及格&quot;</span>) <span class="do">## 及格</span></span>
+<span id="cb65-7"><a href="基礎篇_r語言的基礎概念.html#cb65-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>上述只有設定考試分數大於等於60分並沒有設定其他的條件，因此小於60分不會有輸出結果，此時我們加上一個<code>else</code>的判斷，如果「<strong>非</strong>上述的條件(考試分數大於等於60分)」，那麼就輸出不及格。</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="基礎篇_r語言的基礎概念.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(score1 <span class="sc">&gt;=</span> <span class="dv">60</span>){ <span class="do">## 若考試分數大於等於60分</span></span>
+<span id="cb66-2"><a href="基礎篇_r語言的基礎概念.html#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;及格&quot;</span>) <span class="do">## 及格</span></span>
+<span id="cb66-3"><a href="基礎篇_r語言的基礎概念.html#cb66-3" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
+<span id="cb66-4"><a href="基礎篇_r語言的基礎概念.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;不及格&quot;</span>) <span class="do">## 否則就是不及格</span></span>
+<span id="cb66-5"><a href="基礎篇_r語言的基礎概念.html#cb66-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;不及格&quot;</code></pre>
+<ul>
+<li>多重邏輯判斷: if-else if-else</li>
+</ul>
+<p>同時若有多個條件也可以開頭用<code>if</code>中間設定多個<code>else if</code>，最後結果用<code>else</code>。</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="基礎篇_r語言的基礎概念.html#cb68-1" aria-hidden="true" tabindex="-1"></a>score2 <span class="ot">&lt;-</span> <span class="dv">39</span></span>
+<span id="cb68-2"><a href="基礎篇_r語言的基礎概念.html#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="基礎篇_r語言的基礎概念.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(score2 <span class="sc">&gt;=</span> <span class="dv">90</span>){</span>
+<span id="cb68-4"><a href="基礎篇_r語言的基礎概念.html#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;優秀&quot;</span>)</span>
+<span id="cb68-5"><a href="基礎篇_r語言的基礎概念.html#cb68-5" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(score2 <span class="sc">&gt;=</span> <span class="dv">60</span>){</span>
+<span id="cb68-6"><a href="基礎篇_r語言的基礎概念.html#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;及格&quot;</span>)</span>
+<span id="cb68-7"><a href="基礎篇_r語言的基礎概念.html#cb68-7" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(score2 <span class="sc">&gt;=</span> <span class="dv">40</span> <span class="sc">&amp;</span> score2 <span class="sc">&lt;</span> <span class="dv">60</span>){</span>
+<span id="cb68-8"><a href="基礎篇_r語言的基礎概念.html#cb68-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;不及格&quot;</span>)</span>
+<span id="cb68-9"><a href="基礎篇_r語言的基礎概念.html#cb68-9" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
+<span id="cb68-10"><a href="基礎篇_r語言的基礎概念.html#cb68-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;死當&quot;</span>)</span>
+<span id="cb68-11"><a href="基礎篇_r語言的基礎概念.html#cb68-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;死當&quot;</code></pre>
+<ul>
+<li>邏輯判斷簡化: ifelse<br />
+ifelse()函數可用最短的方式取代if-else敘述(類似excel當中的if函數)，<br />
+使用方法為<code>ifelse(邏輯判斷, 判斷為真要執行的程式碼, 判斷為偽要執行的程式碼)</code></li>
+</ul>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="基礎篇_r語言的基礎概念.html#cb70-1" aria-hidden="true" tabindex="-1"></a>score3 <span class="ot">&lt;-</span> <span class="dv">90</span></span>
+<span id="cb70-2"><a href="基礎篇_r語言的基礎概念.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(score3 <span class="sc">&gt;=</span> <span class="dv">60</span>, <span class="st">&quot;及格&quot;</span>, <span class="st">&quot;不及格&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;及格&quot;</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="基礎篇_r語言的基礎概念.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(score3 <span class="sc">&gt;=</span> <span class="dv">90</span>, <span class="st">&quot;優秀&quot;</span>,</span>
+<span id="cb72-2"><a href="基礎篇_r語言的基礎概念.html#cb72-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">ifelse</span>(score3 <span class="sc">&gt;=</span> <span class="dv">60</span>, <span class="st">&quot;及格&quot;</span>, <span class="st">&quot;不及格&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;優秀&quot;</code></pre>
+</div>
+</div>
+<div id="管道控制pipe" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> 管道控制pipe<a href="基礎篇_r語言的基礎概念.html#管道控制pipe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在語法操作上，很常需要對於同一個變項進行重複操作，在此<code>magrittr</code>套件提供了一些可以讓程式更容易查看、理解的語法，而在R版本4.1.0後也有提後一個內建的符號來進行，以下對此作簡單介紹，後續資料處理的章節會較常使用到 <a href="https://tpemartin.github.io/NTPU-R-for-Data-Science-EN/operations-on-atomic-vectors.html#pipe-operator">參考1</a>、<a href="https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/prog-control.html">參考2</a></p>
+<div id="section" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> |&gt; &amp; %&gt;%<a href="基礎篇_r語言的基礎概念.html#section" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>|&gt;</code>為內建的連結符號，目的是要將符號左側的變項連結(放入使用)到符號右邊的函數 <code>%&gt;%</code>是<code>magrittr</code>套件中的其中一個管道，其使用方法大致與<code>|&gt;</code>一模一樣</p>
+<p>首先先載入<code>magrittr</code>套件</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="基礎篇_r語言的基礎概念.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span></code></pre></div>
+<p>假設此時有個<code>向量x</code>，內容為數值1-4，另外有個函數<code>sum()</code>(用來加總數值)，<br />
+而我們想在函數當中放入x，可以有以下方法1和方法2，方法1是直接放入函數內，方法2是使用管道控制符號，可以在讀程式時<strong>更直觀</strong>的看到x被用於f()函數</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="基礎篇_r語言的基礎概念.html#cb75-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb75-2"><a href="基礎篇_r語言的基礎概念.html#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="基礎篇_r語言的基礎概念.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 方法1</span></span>
+<span id="cb75-4"><a href="基礎篇_r語言的基礎概念.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="基礎篇_r語言的基礎概念.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 方法2 </span></span>
+<span id="cb77-2"><a href="基礎篇_r語言的基礎概念.html#cb77-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">sum</span>() <span class="co"># 視為將x用於(放入)f()函數當中</span></span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="基礎篇_r語言的基礎概念.html#cb79-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">sum</span>()</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<p><code>sum()</code>函數也可以同時放入兩個參數，我們想在函數當中放入<code>向量x</code>和5</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="基礎篇_r語言的基礎概念.html#cb81-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb81-2"><a href="基礎篇_r語言的基礎概念.html#cb81-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-3"><a href="基礎篇_r語言的基礎概念.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 方法1</span></span>
+<span id="cb81-4"><a href="基礎篇_r語言的基礎概念.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x, <span class="dv">5</span>) </span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="基礎篇_r語言的基礎概念.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 方法2 </span></span>
+<span id="cb83-2"><a href="基礎篇_r語言的基礎概念.html#cb83-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">sum</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="基礎篇_r語言的基礎概念.html#cb85-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">sum</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<p>另外管道也可以<strong>連續使用</strong>，<br />
+若想先加總<code>向量x</code>再取平方根</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="基礎篇_r語言的基礎概念.html#cb87-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb87-2"><a href="基礎篇_r語言的基礎概念.html#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="基礎篇_r語言的基礎概念.html#cb87-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">sum</span>() <span class="sc">|&gt;</span> <span class="fu">sqrt</span>() </span></code></pre></div>
+<pre><code>## [1] 3.162278</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="基礎篇_r語言的基礎概念.html#cb89-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">sum</span>() <span class="sc">%&gt;%</span> <span class="fu">sqrt</span>() </span></code></pre></div>
+<pre><code>## [1] 3.162278</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="基礎篇_r語言的基礎概念.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 等於</span></span>
+<span id="cb91-2"><a href="基礎篇_r語言的基礎概念.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(x))</span></code></pre></div>
+<pre><code>## [1] 3.162278</code></pre>
+</div>
+<div id="其他管道控制" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> 其他管道控制<a href="基礎篇_r語言的基礎概念.html#其他管道控制" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>magrittr</code>套件中也包含其他讓程式更容易理解的管道，可以做為參考就好</p>
+<ul>
+<li><code>%T%</code>是臨時想查看f(x)但最後卻想只返回x值就可以使用<code>x %T% f()</code>，如此並不會改變x的值</li>
+<li><code>%&lt;&gt;%</code>如同<code>%&gt;%</code>，但是將原先x的值變為f(x)，使用<code>x %&gt;% f()</code>，可以將x變成f(x)</li>
+<li>…</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="基礎篇_r-與r-studio的介紹.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="基礎篇_元素的基礎操作.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-基礎篇_R語言的基礎概念.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

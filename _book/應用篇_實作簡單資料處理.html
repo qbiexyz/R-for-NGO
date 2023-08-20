@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 應用篇_實作簡單資料處理 | R for NGO</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 應用篇_實作簡單資料處理 | R for NGO" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 應用篇_實作簡單資料處理 | R for NGO" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="台北大學社會所_吳永健" />
+
+
+<meta name="date" content="2023-08-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="應用篇_資料讀取匯出合併與瀏覽.html"/>
+<link rel="next" href="應用篇_探索性資料分析.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 前言_關於本講義</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r語言-應用性-高難度-中高"><i class="fa fa-check"></i><b>1.1</b> R語言 應用性: 高、難度: 中高</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#學習目標"><i class="fa fa-check"></i><b>1.2</b> 學習目標</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#參考資料"><i class="fa fa-check"></i><b>1.3</b> 參考資料</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#講義"><i class="fa fa-check"></i><b>1.3.1</b> 講義</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#其他學習資源"><i class="fa fa-check"></i><b>1.3.2</b> 其他學習資源</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#資料"><i class="fa fa-check"></i><b>1.4</b> 資料</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#政府公開資料相關資源"><i class="fa fa-check"></i><b>1.4.1</b> 政府公開資料相關資源</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#公開調查資料"><i class="fa fa-check"></i><b>1.4.2</b> 公開調查資料</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#使用資料"><i class="fa fa-check"></i><b>1.4.3</b> 使用資料</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#大綱教材主題"><i class="fa fa-check"></i><b>1.5</b> 大綱(教材主題)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html"><i class="fa fa-check"></i><b>2</b> 基礎篇_R 與R studio的介紹</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#什麼是r-和-rstudio"><i class="fa fa-check"></i><b>2.1</b> 什麼是R 和 Rstudio</a></li>
+<li class="chapter" data-level="2.2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#下載r-和-rstudio"><i class="fa fa-check"></i><b>2.2</b> 下載R 和 Rstudio</a></li>
+<li class="chapter" data-level="2.3" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio介面與初步設定"><i class="fa fa-check"></i><b>2.3</b> Rstudio介面與初步設定</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio介面"><i class="fa fa-check"></i><b>2.3.1</b> Rstudio介面</a></li>
+<li class="chapter" data-level="2.3.2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#rstudio初步設定"><i class="fa fa-check"></i><b>2.3.2</b> Rstudio初步設定</a></li>
+<li class="chapter" data-level="2.3.3" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#新建r-script"><i class="fa fa-check"></i><b>2.3.3</b> 新建R Script</a></li>
+<li class="chapter" data-level="2.3.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#新建r-project"><i class="fa fa-check"></i><b>2.3.4</b> 新建R project</a></li>
+<li class="chapter" data-level="2.3.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#小技巧"><i class="fa fa-check"></i><b>2.3.5</b> 小技巧</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝套件和help"><i class="fa fa-check"></i><b>2.4</b> 安裝套件和help</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝講義所用套件"><i class="fa fa-check"></i><b>2.4.1</b> 安裝講義所用套件</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#錯誤訊息"><i class="fa fa-check"></i><b>2.5</b> 錯誤訊息</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html"><i class="fa fa-check"></i><b>3</b> 基礎篇_R語言的基礎概念</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#物件基礎操作"><i class="fa fa-check"></i><b>3.1</b> 物件基礎操作</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#指派assignment"><i class="fa fa-check"></i><b>3.1.1</b> 指派（assignment）：</a></li>
+<li class="chapter" data-level="3.1.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>3.1.2</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="3.1.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#命名"><i class="fa fa-check"></i><b>3.1.3</b> 命名</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#基本運算"><i class="fa fa-check"></i><b>3.2</b> 基本運算</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數學基本運算"><i class="fa fa-check"></i><b>3.2.1</b> 數學基本運算</a></li>
+<li class="chapter" data-level="3.2.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯運算"><i class="fa fa-check"></i><b>3.2.2</b> 邏輯運算</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料型態"><i class="fa fa-check"></i><b>3.3</b> 資料型態</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數字numeric"><i class="fa fa-check"></i><b>3.3.1</b> 數字(numeric):</a></li>
+<li class="chapter" data-level="3.3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#字串character"><i class="fa fa-check"></i><b>3.3.2</b> 字串(character):</a></li>
+<li class="chapter" data-level="3.3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯logical"><i class="fa fa-check"></i><b>3.3.3</b> 邏輯(logical):</a></li>
+<li class="chapter" data-level="3.3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#日期date"><i class="fa fa-check"></i><b>3.3.4</b> 日期(date):</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料結構"><i class="fa fa-check"></i><b>3.4</b> 資料結構</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#向量vectors"><i class="fa fa-check"></i><b>3.4.1</b> 向量(vectors):</a></li>
+<li class="chapter" data-level="3.4.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#因子factor"><i class="fa fa-check"></i><b>3.4.2</b> 因子(factor):</a></li>
+<li class="chapter" data-level="3.4.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#列表list"><i class="fa fa-check"></i><b>3.4.3</b> 列表(list):</a></li>
+<li class="chapter" data-level="3.4.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#矩陣matrices"><i class="fa fa-check"></i><b>3.4.4</b> 矩陣(matrices):</a></li>
+<li class="chapter" data-level="3.4.5" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#陣列array"><i class="fa fa-check"></i><b>3.4.5</b> 陣列(array):</a></li>
+<li class="chapter" data-level="3.4.6" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料框架data-frame"><i class="fa fa-check"></i><b>3.4.6</b> 資料框架(data frame)：</a></li>
+<li class="chapter" data-level="3.4.7" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#查詢資料型態或結構"><i class="fa fa-check"></i><b>3.4.7</b> 查詢資料型態或結構</a></li>
+<li class="chapter" data-level="3.4.8" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#轉換資料型態或結構"><i class="fa fa-check"></i><b>3.4.8</b> 轉換資料型態或結構</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#簡單條件判斷式"><i class="fa fa-check"></i><b>3.5</b> 簡單條件判斷式</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#if-else敘述"><i class="fa fa-check"></i><b>3.5.1</b> if-else敘述</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#管道控制pipe"><i class="fa fa-check"></i><b>3.6</b> 管道控制pipe</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#section"><i class="fa fa-check"></i><b>3.6.1</b> |&gt; &amp; %&gt;%</a></li>
+<li class="chapter" data-level="3.6.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#其他管道控制"><i class="fa fa-check"></i><b>3.6.2</b> 其他管道控制</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html"><i class="fa fa-check"></i><b>4</b> 基礎篇_元素的基礎操作</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#值與元素"><i class="fa fa-check"></i><b>4.1</b> 值與元素</a></li>
+<li class="chapter" data-level="4.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素位置"><i class="fa fa-check"></i><b>4.2</b> 元素位置</a></li>
+<li class="chapter" data-level="4.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出元素"><i class="fa fa-check"></i><b>4.3</b> 檢索/取出元素</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#檢索取出vector中的元素"><i class="fa fa-check"></i><b>4.3.1</b> 檢索/取出vector中的元素</a></li>
+<li class="chapter" data-level="4.3.2" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出list中的元素"><i class="fa fa-check"></i><b>4.3.2</b> 取出list中的元素</a></li>
+<li class="chapter" data-level="4.3.3" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#和-差異"><i class="fa fa-check"></i><b>4.3.3</b> <code>[[]]</code>和<code>[]</code> 差異</a></li>
+<li class="chapter" data-level="4.3.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#取出data-frame中的元素"><i class="fa fa-check"></i><b>4.3.4</b> 取出data frame中的元素</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#替換元素"><i class="fa fa-check"></i><b>4.4</b> 替換元素</a></li>
+<li class="chapter" data-level="4.5" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#新增元素"><i class="fa fa-check"></i><b>4.5</b> 新增元素</a></li>
+<li class="chapter" data-level="4.6" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#刪除元素"><i class="fa fa-check"></i><b>4.6</b> 刪除元素</a></li>
+<li class="chapter" data-level="4.7" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#判斷位置的其他方法"><i class="fa fa-check"></i><b>4.7</b> 判斷位置的其他方法</a></li>
+<li class="chapter" data-level="4.8" data-path="基礎篇_元素的基礎操作.html"><a href="基礎篇_元素的基礎操作.html#元素命名"><i class="fa fa-check"></i><b>4.8</b> 元素命名</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html"><i class="fa fa-check"></i><b>5</b> 應用篇_資料讀取、匯出、合併與瀏覽</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#設定工作路徑"><i class="fa fa-check"></i><b>5.1</b> 設定工作路徑</a></li>
+<li class="chapter" data-level="5.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#讀取資料"><i class="fa fa-check"></i><b>5.2</b> 讀取資料</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#import-dataset功能-rstudio"><i class="fa fa-check"></i><b>5.2.1</b> Import Dataset功能 (RStudio)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#匯出資料"><i class="fa fa-check"></i><b>5.3</b> 匯出資料</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#r物件.rds"><i class="fa fa-check"></i><b>5.3.1</b> R物件.rds</a></li>
+<li class="chapter" data-level="5.3.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#文字檔.txt"><i class="fa fa-check"></i><b>5.3.2</b> 文字檔.txt</a></li>
+<li class="chapter" data-level="5.3.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#csv檔.csv"><i class="fa fa-check"></i><b>5.3.3</b> CSV檔.csv</a></li>
+<li class="chapter" data-level="5.3.4" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#excel-試算表.xslx"><i class="fa fa-check"></i><b>5.3.4</b> Excel 試算表.xslx</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#簡單資料合併"><i class="fa fa-check"></i><b>5.4</b> 簡單資料合併</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#rbind和cbind"><i class="fa fa-check"></i><b>5.4.1</b> <code>rbind()</code>和<code>cbind()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#用dplyr套件合併資料"><i class="fa fa-check"></i><b>5.4.2</b> 用dplyr套件合併資料</a></li>
+<li class="chapter" data-level="5.4.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#長寬資料轉換"><i class="fa fa-check"></i><b>5.4.3</b> 長寬資料轉換</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#資料瀏覽"><i class="fa fa-check"></i><b>5.5</b> 資料瀏覽</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#資料屬性查詢函數"><i class="fa fa-check"></i><b>5.5.1</b> 資料屬性查詢函數</a></li>
+<li class="chapter" data-level="5.5.2" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#資料排序"><i class="fa fa-check"></i><b>5.5.2</b> 資料排序</a></li>
+<li class="chapter" data-level="5.5.3" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#用dplyr瀏覽"><i class="fa fa-check"></i><b>5.5.3</b> 用dplyr瀏覽</a></li>
+<li class="chapter" data-level="5.5.4" data-path="應用篇_資料讀取匯出合併與瀏覽.html"><a href="應用篇_資料讀取匯出合併與瀏覽.html#其他"><i class="fa fa-check"></i><b>5.5.4</b> 其他</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html"><i class="fa fa-check"></i><b>6</b> 應用篇_實作簡單資料處理</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#前置準備"><i class="fa fa-check"></i><b>6.1</b> 前置準備</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#讀取需要使用套件"><i class="fa fa-check"></i><b>6.1.1</b> 讀取需要使用套件</a></li>
+<li class="chapter" data-level="6.1.2" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#設定工作路徑-1"><i class="fa fa-check"></i><b>6.1.2</b> 設定工作路徑</a></li>
+<li class="chapter" data-level="6.1.3" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#讀取檔案"><i class="fa fa-check"></i><b>6.1.3</b> 讀取檔案</a></li>
+<li class="chapter" data-level="6.1.4" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#選取需要的變項到新的資料檔中"><i class="fa fa-check"></i><b>6.1.4</b> 選取需要的變項到「新」的資料檔中</a></li>
+<li class="chapter" data-level="6.1.5" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#瀏覽資料"><i class="fa fa-check"></i><b>6.1.5</b> 瀏覽資料</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#設定不合理值"><i class="fa fa-check"></i><b>6.2</b> 設定不合理值</a></li>
+<li class="chapter" data-level="6.3" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#新建修改轉換變項"><i class="fa fa-check"></i><b>6.3</b> 新建/修改/轉換變項</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#將資料上標籤"><i class="fa fa-check"></i><b>6.3.1</b> 將資料上標籤</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#遺漏值處理"><i class="fa fa-check"></i><b>6.4</b> 遺漏值處理</a></li>
+<li class="chapter" data-level="6.5" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#其他處理"><i class="fa fa-check"></i><b>6.5</b> 其他處理</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#字串處理"><i class="fa fa-check"></i><b>6.5.1</b> 字串處理</a></li>
+<li class="chapter" data-level="6.5.2" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#時間資料處理"><i class="fa fa-check"></i><b>6.5.2</b> 時間資料處理</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="應用篇_實作簡單資料處理.html"><a href="應用篇_實作簡單資料處理.html#匯出資料-1"><i class="fa fa-check"></i><b>6.6</b> 匯出資料</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html"><i class="fa fa-check"></i><b>7</b> 應用篇_探索性資料分析</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#前置準備-1"><i class="fa fa-check"></i><b>7.0.1</b> 前置準備</a></li>
+<li class="chapter" data-level="7.1" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#資料視覺化簡略介紹-ggplot2"><i class="fa fa-check"></i><b>7.1</b> 資料視覺化簡略介紹 ggplot2</a></li>
+<li class="chapter" data-level="7.2" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#簡單呈現探索式資料分析"><i class="fa fa-check"></i><b>7.2</b> 簡單呈現探索式資料分析</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#單一類別變項"><i class="fa fa-check"></i><b>7.2.1</b> 單一類別變項</a></li>
+<li class="chapter" data-level="7.2.2" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#單一數值變項"><i class="fa fa-check"></i><b>7.2.2</b> 單一數值變項</a></li>
+<li class="chapter" data-level="7.2.3" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#兩個類別變項"><i class="fa fa-check"></i><b>7.2.3</b> 兩個類別變項</a></li>
+<li class="chapter" data-level="7.2.4" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#兩個數值變項"><i class="fa fa-check"></i><b>7.2.4</b> 兩個數值變項</a></li>
+<li class="chapter" data-level="7.2.5" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#一個類別一個數值變項"><i class="fa fa-check"></i><b>7.2.5</b> 一個類別一個數值變項</a></li>
+<li class="chapter" data-level="7.2.6" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#兩個數值變項用類別變項分組"><i class="fa fa-check"></i><b>7.2.6</b> 兩個數值變項用類別變項分組</a></li>
+<li class="chapter" data-level="7.2.7" data-path="應用篇_探索性資料分析.html"><a href="應用篇_探索性資料分析.html#其他進階統計"><i class="fa fa-check"></i><b>7.2.7</b> 其他進階統計</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for NGO</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="應用篇_實作簡單資料處理" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> 應用篇_實作簡單資料處理<a href="應用篇_實作簡單資料處理.html#應用篇_實作簡單資料處理" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>接下來會使用「R_practice_row.csv」的檔案，來繼續示範資料的初步清理與整理，</p>
+<p>(R_practice_row.csv 是尚未清理的檔案，存在不合理值<br />
+R_practice_new.csv 是已經清理好的檔案)</p>
+<p>以下為檔案簡略的變項描述</p>
+<div class="figure">
+<img src="picture/codebook.png" alt="" />
+<p class="caption">簡略的變項描述</p>
+</div>
+<div id="前置準備" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> 前置準備<a href="應用篇_實作簡單資料處理.html#前置準備" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="讀取需要使用套件" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> 讀取需要使用套件<a href="應用篇_實作簡單資料處理.html#讀取需要使用套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>以下為資處常使用的套件:<br />
+大部分的資處會使用到一個整合性的套件<a href="https://tidyverse.tidyverse.org/index.html">tidyverse</a>(上述連結點進去後，可以根據不同套件的連結查看套件的cheatsheet)，其功能非常強大，在此只會簡單介紹關於資處的部分內容，</p>
+<p><img src="picture/tidyverse.png" /><br />
+</p>
+<p><strong>在接續下面分析前請先library以下套件</strong></p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="應用篇_實作簡單資料處理.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="do">## 讀取檔案</span></span>
+<span id="cb252-2"><a href="應用篇_實作簡單資料處理.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="do">## 大部分的資處工具 (包含dplyr套件)</span></span>
+<span id="cb252-3"><a href="應用篇_實作簡單資料處理.html#cb252-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table) <span class="do">## 高效能資處工具</span></span>
+<span id="cb252-4"><a href="應用篇_實作簡單資料處理.html#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools) <span class="do">## 初步描述統計</span></span>
+<span id="cb252-5"><a href="應用篇_實作簡單資料處理.html#cb252-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc) <span class="do">## 設置缺失值</span></span>
+<span id="cb252-6"><a href="應用篇_實作簡單資料處理.html#cb252-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjlabelled) <span class="do">## 上標籤用</span></span></code></pre></div>
+<p>接下來關於資料清理的部分，並不會特別單一仔細的講解，而是會使用<strong>簡單的實際例子</strong>來呈現，並適時補充一點額外的解釋，當然由於R語言的功能強大有很多套件，也持續在整合並強化，下面介紹的資料清理可能<strong>不會是唯一</strong>的方式，也不一定是最有效率方式，但仍可以稍微參考。</p>
+</div>
+<div id="設定工作路徑-1" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> 設定工作路徑<a href="應用篇_實作簡單資料處理.html#設定工作路徑-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="應用篇_實作簡單資料處理.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/Dropbox/R_for_NGO&quot;</span>) </span></code></pre></div>
+</div>
+<div id="讀取檔案" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> 讀取檔案<a href="應用篇_實作簡單資料處理.html#讀取檔案" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>讀取R_practice_row的.cvs檔案(或用點選方式)</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="應用篇_實作簡單資料處理.html#cb254-1" aria-hidden="true" tabindex="-1"></a>R_practice_row <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/R_practice_row.csv&quot;</span>)</span>
+<span id="cb254-2"><a href="應用篇_實作簡單資料處理.html#cb254-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb254-3"><a href="應用篇_實作簡單資料處理.html#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(R_practice_row) <span class="do">## 查看變項名稱</span></span></code></pre></div>
+<pre><code>## [1] &quot;id&quot;      &quot;sex&quot;     &quot;age&quot;     &quot;height&quot;  &quot;weight&quot;  &quot;area&quot;    &quot;score&quot;  
+## [8] &quot;fitness&quot;</code></pre>
+</div>
+<div id="選取需要的變項到新的資料檔中" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> 選取需要的變項到「新」的資料檔中<a href="應用篇_實作簡單資料處理.html#選取需要的變項到新的資料檔中" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在此因為都要分析，但為了示範，因此全部都列上去，/ 複製到新的資料檔是為了不更改最初的資料。</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="應用篇_實作簡單資料處理.html#cb256-1" aria-hidden="true" tabindex="-1"></a>R_practice_row1 <span class="ot">&lt;-</span> R_practice_row[<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;height&quot;</span>, <span class="st">&quot;weight&quot;</span>,</span>
+<span id="cb256-2"><a href="應用篇_實作簡單資料處理.html#cb256-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;area&quot;</span>, <span class="st">&quot;score&quot;</span>, <span class="st">&quot;fitness&quot;</span>)]</span></code></pre></div>
+</div>
+<div id="瀏覽資料" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> 瀏覽資料<a href="應用篇_實作簡單資料處理.html#瀏覽資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>查看變項初步分配，來檢查是否有不合理值或缺失值<br />
+(以下指令都還有各自呈現的細節可以調整，可自行查看該指令的help)</p>
+<p>使用<code>table()函數</code>初步查看次數分配(以sex性別為例)<br />
+(useNA 是設定列出是否有NA)</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="應用篇_實作簡單資料處理.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(R_practice_row1<span class="sc">$</span>sex, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>) <span class="do">## 呈現簡單次數分配</span></span></code></pre></div>
+<pre><code>## 
+##    1    2   22 &lt;NA&gt; 
+##   57   52    1    0</code></pre>
+<p>使用<code>frq()函數</code>呈現更多內容的次數分配表與簡單描述統計</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="應用篇_實作簡單資料處理.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(R_practice_row1<span class="sc">$</span>sex) </span></code></pre></div>
+<pre><code>## x &lt;numeric&gt; 
+## # total N=110 valid N=110 mean=1.66 sd=2.02
+## 
+## Value |  N | Raw % | Valid % | Cum. %
+## -------------------------------------
+##     1 | 57 | 51.82 |   51.82 |  51.82
+##     2 | 52 | 47.27 |   47.27 |  99.09
+##    22 |  1 |  0.91 |    0.91 | 100.00
+##  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+<p>上述結果我們可以得知，選1(女生)的總共有57人，佔51.82%、選2(男生)的總共有52人，佔47.27%，顯示這份資料女生稍微點一點，但另外可以看到，還有一個「22」的值，回去看一開始的變項描述也沒有出現這個值，因此可以判斷「22」很有可能是<strong>不合理的值</strong>，不應該出現在性別的變項當中，下一步則是要來處理這個不合理值。</p>
+<p>我們可以看到，柳覽資料的其中一個重要的目的，就是查看資料<strong>是否有不合理</strong>的地方。</p>
+</div>
+</div>
+<div id="設定不合理值" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> 設定不合理值<a href="應用篇_實作簡單資料處理.html#設定不合理值" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>資料可能會有一些不合理的值，或是像上述「性別變項中回答22」，在分析上會當作遺漏值處理<br />
+R語言的遺漏值是以<code>NA</code>表示，但可以進一部細分成數值型的遺漏值<code>NA_integer_</code>或是字串型的遺漏值<code>NA_character_</code></p>
+<p>以下僅列出部分方式，但同樣也有其他套件可以做到相同的設定遺漏值<br />
+目標是按照瀏覽檔案的覺得是不合理的值，將這些值的都當NA處理，並回傳到新的data frame<code>R_practice_row2</code></p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="應用篇_實作簡單資料處理.html#cb261-1" aria-hidden="true" tabindex="-1"></a>R_practice_row2  <span class="ot">&lt;-</span> R_practice_row1 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將WVS_w7_n1(資料)用於mutate()函數中</span></span>
+<span id="cb261-2"><a href="應用篇_實作簡單資料處理.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="do">## 使用dplyr套件中的 mutate()代表創建/修改變項</span></span>
+<span id="cb261-3"><a href="應用篇_實作簡單資料處理.html#cb261-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第一種設定遺漏值方式(用if_else)</span></span>
+<span id="cb261-4"><a href="應用篇_實作簡單資料處理.html#cb261-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">if_else</span>(sex <span class="sc">==</span> <span class="dv">22</span> ,  <span class="do">## 當sex的值不是1或不是2，</span></span>
+<span id="cb261-5"><a href="應用篇_實作簡單資料處理.html#cb261-5" aria-hidden="true" tabindex="-1"></a>                      <span class="cn">NA_integer_</span>,    <span class="do">## 設定為遺漏(NA_integer_)，</span></span>
+<span id="cb261-6"><a href="應用篇_實作簡單資料處理.html#cb261-6" aria-hidden="true" tabindex="-1"></a>                      sex),           <span class="do">## 其他回傳原本的值</span></span>
+<span id="cb261-7"><a href="應用篇_實作簡單資料處理.html#cb261-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第二種設定遺漏值方式(用set_na)</span></span>
+<span id="cb261-8"><a href="應用篇_實作簡單資料處理.html#cb261-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight =</span> <span class="fu">set_na</span>(weight, <span class="at">na =</span> <span class="sc">-</span><span class="dv">65</span>), <span class="do">## 設定weight當中-65為NA</span></span>
+<span id="cb261-9"><a href="應用篇_實作簡單資料處理.html#cb261-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">score =</span> <span class="fu">set_na</span>(score, <span class="at">na =</span> <span class="fu">c</span>(<span class="dv">101</span><span class="sc">:</span><span class="dv">800</span>)) <span class="do">## 設定score當中101-800為NA</span></span>
+<span id="cb261-10"><a href="應用篇_實作簡單資料處理.html#cb261-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="新建修改轉換變項" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> 新建/修改/轉換變項<a href="應用篇_實作簡單資料處理.html#新建修改轉換變項" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>接著我們可以對變項進行一些修改，<br />
+以下僅列出部分方式，但同樣也有其他套件可以做到相同的資料清理</p>
+<ul>
+<li>性別 = sex
+<ul>
+<li>原先: 1 = 女 2 = 男</li>
+<li>修改成: 0 = 男 1 = 女
+<ul>
+<li>轉成類別變項(factor)並命名為<code>female</code></li>
+</ul></li>
+</ul></li>
+<li><code>%&gt;%</code>: 管道控制(pipe)，將R_practice_row2(資料)連結到mutate()函數</li>
+<li><code>mutate()</code>: dplyr套件中的mutate()代表創建/修改變項</li>
+<li><code>case_match</code>: 將變項值重新編碼</li>
+<li><code>transform</code>: 轉換資料型態</li>
+<li><code>factor</code>: 將資料型態轉變成類別變項(factor)</li>
+</ul>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="應用篇_實作簡單資料處理.html#cb262-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row2 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
+<span id="cb262-2"><a href="應用篇_實作簡單資料處理.html#cb262-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb262-3"><a href="應用篇_實作簡單資料處理.html#cb262-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 性別</span></span>
+<span id="cb262-4"><a href="應用篇_實作簡單資料處理.html#cb262-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span> <span class="fu">case_match</span>( <span class="do">## case_match 將變項值重新編碼</span></span>
+<span id="cb262-5"><a href="應用篇_實作簡單資料處理.html#cb262-5" aria-hidden="true" tabindex="-1"></a>      sex, <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>, <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span>, <span class="do">## 原先1變成1、2變成0</span></span>
+<span id="cb262-6"><a href="應用篇_實作簡單資料處理.html#cb262-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="cn">NA</span> <span class="do">## 其他沒定義到的設定成NA(也設定成返回原先a01的值)</span></span>
+<span id="cb262-7"><a href="應用篇_實作簡單資料處理.html#cb262-7" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb262-8"><a href="應用篇_實作簡單資料處理.html#cb262-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span> <span class="do">## 可以根據上面mutate好的變項再連結到下面transform函數</span></span>
+<span id="cb262-9"><a href="應用篇_實作簡單資料處理.html#cb262-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">transform</span>( <span class="do">## 轉換資料型態</span></span>
+<span id="cb262-10"><a href="應用篇_實作簡單資料處理.html#cb262-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">female =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的female變成類別變項(factor)</span></span>
+<span id="cb262-11"><a href="應用篇_實作簡單資料處理.html#cb262-11" aria-hidden="true" tabindex="-1"></a>          female,</span>
+<span id="cb262-12"><a href="應用篇_實作簡單資料處理.html#cb262-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="do">## 設定類別的順序</span></span>
+<span id="cb262-13"><a href="應用篇_實作簡單資料處理.html#cb262-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;男&quot;</span>, <span class="st">&quot;女&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
+<span id="cb262-14"><a href="應用篇_實作簡單資料處理.html#cb262-14" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb262-15"><a href="應用篇_實作簡單資料處理.html#cb262-15" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<ul>
+<li>居住地區 = area
+<ul>
+<li>原先: 文字變項</li>
+<li>修改成數值變項: 1 = 北區、2 = 中區、3 = 南區、4 = 東區，並轉成類別變項(factor)並命名為<code>area_g4</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="應用篇_實作簡單資料處理.html#cb263-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row3 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
+<span id="cb263-2"><a href="應用篇_實作簡單資料處理.html#cb263-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb263-3"><a href="應用篇_實作簡單資料處理.html#cb263-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 居住地區</span></span>
+<span id="cb263-4"><a href="應用篇_實作簡單資料處理.html#cb263-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_g4 =</span> <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;北區&quot;</span>, <span class="dv">1</span>,</span>
+<span id="cb263-5"><a href="應用篇_實作簡單資料處理.html#cb263-5" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;中區&quot;</span>, <span class="dv">2</span>,</span>
+<span id="cb263-6"><a href="應用篇_實作簡單資料處理.html#cb263-6" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;南區&quot;</span>, <span class="dv">3</span>,</span>
+<span id="cb263-7"><a href="應用篇_實作簡單資料處理.html#cb263-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">ifelse</span>(area <span class="sc">==</span> <span class="st">&quot;東區&quot;</span>, <span class="dv">4</span>, <span class="cn">NA</span>))))</span>
+<span id="cb263-8"><a href="應用篇_實作簡單資料處理.html#cb263-8" aria-hidden="true" tabindex="-1"></a>    )<span class="sc">%&gt;%</span> <span class="do">## 可以根據上面mutate好的變項再連結到下面transform函數</span></span>
+<span id="cb263-9"><a href="應用篇_實作簡單資料處理.html#cb263-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">transform</span>( <span class="do">## 轉換資料型態</span></span>
+<span id="cb263-10"><a href="應用篇_實作簡單資料處理.html#cb263-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">area_g4 =</span> <span class="fu">factor</span>( <span class="do">## 將前面重新編碼的female變成類別變項(factor)</span></span>
+<span id="cb263-11"><a href="應用篇_實作簡單資料處理.html#cb263-11" aria-hidden="true" tabindex="-1"></a>          area_g4,</span>
+<span id="cb263-12"><a href="應用篇_實作簡單資料處理.html#cb263-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="do">## 設定類別的順序</span></span>
+<span id="cb263-13"><a href="應用篇_實作簡單資料處理.html#cb263-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;北區&quot;</span>, <span class="st">&quot;中區&quot;</span>, <span class="st">&quot;南區&quot;</span>, <span class="st">&quot;東區&quot;</span>) <span class="do">## 設定類別的標籤</span></span>
+<span id="cb263-14"><a href="應用篇_實作簡單資料處理.html#cb263-14" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb263-15"><a href="應用篇_實作簡單資料處理.html#cb263-15" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<ul>
+<li>bmi = bmi
+<ul>
+<li>bmi計算方式: 體重(公斤)/身高平方(公尺平方)</li>
+<li>根據bmi計算公式建立新變項bmi</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="應用篇_實作簡單資料處理.html#cb264-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row3 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
+<span id="cb264-2"><a href="應用篇_實作簡單資料處理.html#cb264-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb264-3"><a href="應用篇_實作簡單資料處理.html#cb264-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># bmi</span></span>
+<span id="cb264-4"><a href="應用篇_實作簡單資料處理.html#cb264-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bmi =</span> weight<span class="sc">/</span>((height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb264-5"><a href="應用篇_實作簡單資料處理.html#cb264-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<ul>
+<li>塑身意願 = fitness
+<ul>
+<li>原先是數值變項，轉成類別變項(factor)</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="應用篇_實作簡單資料處理.html#cb265-1" aria-hidden="true" tabindex="-1"></a>R_practice_row3  <span class="ot">&lt;-</span> R_practice_row3 <span class="sc">%&gt;%</span> <span class="do">## %&gt;% : pipe 將R_practice_row2(資料)連結到mutate()函數</span></span>
+<span id="cb265-2"><a href="應用篇_實作簡單資料處理.html#cb265-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transform</span>( </span>
+<span id="cb265-3"><a href="應用篇_實作簡單資料處理.html#cb265-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 塑身意願</span></span>
+<span id="cb265-4"><a href="應用篇_實作簡單資料處理.html#cb265-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitness =</span> <span class="fu">factor</span>(</span>
+<span id="cb265-5"><a href="應用篇_實作簡單資料處理.html#cb265-5" aria-hidden="true" tabindex="-1"></a>      fitness,</span>
+<span id="cb265-6"><a href="應用篇_實作簡單資料處理.html#cb265-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb265-7"><a href="應用篇_實作簡單資料處理.html#cb265-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb265-8"><a href="應用篇_實作簡單資料處理.html#cb265-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>將不需要的欄位刪除</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="應用篇_實作簡單資料處理.html#cb266-1" aria-hidden="true" tabindex="-1"></a>R_practice_row4 <span class="ot">&lt;-</span> <span class="fu">subset</span>(R_practice_row3, <span class="at">select =</span> <span class="fu">c</span>(<span class="sc">-</span>sex, <span class="sc">-</span>area, </span>
+<span id="cb266-2"><a href="應用篇_實作簡單資料處理.html#cb266-2" aria-hidden="true" tabindex="-1"></a>                                                      <span class="sc">-</span>height, <span class="sc">-</span>weight))</span></code></pre></div>
+<div id="將資料上標籤" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> 將資料上標籤<a href="應用篇_實作簡單資料處理.html#將資料上標籤" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>另外除了剛剛factor有上值標籤(labels)，其實也有其他套件可以幫助數值變項上標籤<br />
+可以在呈現時更容易了解</p>
+<p>可以先查看次數分配，此時fitness(塑身意願)是沒有值標籤的</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="應用篇_實作簡單資料處理.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(R_practice_row4<span class="sc">$</span>fitness)</span></code></pre></div>
+<pre><code>## x &lt;categorical&gt; 
+## # total N=110 valid N=110 mean=0.37 sd=0.49
+## 
+## Value |  N | Raw % | Valid % | Cum. %
+## -------------------------------------
+##     0 | 69 | 62.73 |   62.73 |  62.73
+##     1 | 41 | 37.27 |   37.27 | 100.00
+##  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+<p>使用<code>set_label()</code>函數，貼上變項標籤variable labels</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="應用篇_實作簡單資料處理.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb269-2"><a href="應用篇_實作簡單資料處理.html#cb269-2" aria-hidden="true" tabindex="-1"></a>R_practice_row4 <span class="ot">&lt;-</span> R_practice_row4 <span class="sc">%&gt;%</span></span>
+<span id="cb269-3"><a href="應用篇_實作簡單資料處理.html#cb269-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb269-4"><a href="應用篇_實作簡單資料處理.html#cb269-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span>  <span class="fu">set_label</span>(female,</span>
+<span id="cb269-5"><a href="應用篇_實作簡單資料處理.html#cb269-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;性別&quot;</span>), </span>
+<span id="cb269-6"><a href="應用篇_實作簡單資料處理.html#cb269-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">set_label</span>(age,</span>
+<span id="cb269-7"><a href="應用篇_實作簡單資料處理.html#cb269-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;年齡&quot;</span>),</span>
+<span id="cb269-8"><a href="應用篇_實作簡單資料處理.html#cb269-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">area_g4 =</span> <span class="fu">set_label</span>(area_g4,</span>
+<span id="cb269-9"><a href="應用篇_實作簡單資料處理.html#cb269-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;居住地區&quot;</span>),</span>
+<span id="cb269-10"><a href="應用篇_實作簡單資料處理.html#cb269-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitness =</span> <span class="fu">set_label</span>(fitness,</span>
+<span id="cb269-11"><a href="應用篇_實作簡單資料處理.html#cb269-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> <span class="st">&quot;塑身意願&quot;</span>),</span>
+<span id="cb269-12"><a href="應用篇_實作簡單資料處理.html#cb269-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-13"><a href="應用篇_實作簡單資料處理.html#cb269-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>使用<code>set_labels()</code>函數，貼上變項值標籤value labels</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="應用篇_實作簡單資料處理.html#cb270-1" aria-hidden="true" tabindex="-1"></a>R_practice_row4  <span class="ot">&lt;-</span> R_practice_row4 <span class="sc">%&gt;%</span></span>
+<span id="cb270-2"><a href="應用篇_實作簡單資料處理.html#cb270-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb270-3"><a href="應用篇_實作簡單資料處理.html#cb270-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitness =</span>  <span class="fu">set_labels</span>(fitness,</span>
+<span id="cb270-4"><a href="應用篇_實作簡單資料處理.html#cb270-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;沒意願&quot;</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">&quot;有意願&quot;</span> <span class="ot">=</span> <span class="dv">1</span>)), </span>
+<span id="cb270-5"><a href="應用篇_實作簡單資料處理.html#cb270-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>再次查看次數分配可以看到有值標籤了</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="應用篇_實作簡單資料處理.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(R_practice_row4<span class="sc">$</span>fitness)</span></code></pre></div>
+<pre><code>## 塑身意願 (x) &lt;categorical&gt; 
+## # total N=110 valid N=110 mean=0.37 sd=0.49
+## 
+## Value |  Label |  N | Raw % | Valid % | Cum. %
+## ----------------------------------------------
+##     0 | 沒意願 | 69 | 62.73 |   62.73 |  62.73
+##     1 | 有意願 | 41 | 37.27 |   37.27 | 100.00
+##  &lt;NA&gt; |   &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+</div>
+<div id="遺漏值處理" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> 遺漏值處理<a href="應用篇_實作簡單資料處理.html#遺漏值處理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>若將需要分析的變項都清理、創建/修改整理好後，不同的變項可能有不同數量的遺漏值，在此這些缺失值可能就會導致在分析上樣本數的差距<br />
+對於這些缺失值有很多種處理方式，但在此不會特別介紹，</p>
+<p>以下將所有有缺失的資料在分析時用<code>complete.cases</code>一併排除</p>
+<p>查看遺漏值</p>
+<ul>
+<li><code>is.na()</code>: 遺漏值的位置會顯示成TRUE</li>
+</ul>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="應用篇_實作簡單資料處理.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(R_practice_row4<span class="sc">$</span>female) <span class="do">## 遺漏值的位置會顯示成TRUE</span></span></code></pre></div>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [109] FALSE FALSE</code></pre>
+<ul>
+<li><code>sum(is.na())</code>: 計算遺漏值的數量</li>
+</ul>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="應用篇_實作簡單資料處理.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(R_practice_row4<span class="sc">$</span>female))</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>排除遺漏值</p>
+<ul>
+<li><code>complete.cases</code>: 將有遺漏的樣本直接刪除</li>
+</ul>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="應用篇_實作簡單資料處理.html#cb277-1" aria-hidden="true" tabindex="-1"></a>R_use_analysis <span class="ot">&lt;-</span> R_practice_row4[<span class="fu">complete.cases</span>(R_practice_row4), ]</span></code></pre></div>
+</div>
+<div id="其他處理" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> 其他處理<a href="應用篇_實作簡單資料處理.html#其他處理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>除了上述所說的清理方式，實務上可能還會碰到其他類型需要較複雜處理的資料，以及其他方式的清理，以下列出兩個常見處理的資料型態，有需要者可再進一步查看，當然也有蠻多部分可能是講義所沒有列出，若有碰到再自行上網查找相關方法</p>
+<div id="字串處理" class="section level3 hasAnchor" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> 字串處理<a href="應用篇_實作簡單資料處理.html#字串處理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>除了上述簡單介紹的對於「數值」資料的處理，另外也有針對「字串」資料的處理，<br />
+但這部分較複雜，有興趣者至以下連結參考，<a href="https://tpemartin.github.io/NTPU-R-for-Data-Science/operationonvectorandlist.html#on-character-class">參考1</a>、<a href="https://yijutseng.github.io/DataScienceRBook/manipulation.html#%E6%96%87%E5%AD%97%E5%AD%97%E4%B8%B2%E8%99%95%E7%90%86">參考2</a>、<a href="https://github.com/tidyverse/stringr">參考3</a></p>
+</div>
+<div id="時間資料處理" class="section level3 hasAnchor" number="6.5.2">
+<h3><span class="header-section-number">6.5.2</span> 時間資料處理<a href="應用篇_實作簡單資料處理.html#時間資料處理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>有時資料也會包括時間形式的數據，而<a href="https://github.com/tidyverse/lubridate">lubridate</a>就是專門處理時間數據的套件，有興趣者有可以自行參考</p>
+</div>
+</div>
+<div id="匯出資料-1" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> 匯出資料<a href="應用篇_實作簡單資料處理.html#匯出資料-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>最後我們需要將資料輸出以便後續分析或保存，前一章節有介紹過如何輸出資料</p>
+<p>在此，當我們資料清理好後，可能之後還需要做進一步的分析，但若並不是在同一時間來做或需換個檔案來寫分析時，可以將處理好的檔案先暫時存成.rds檔案，以便之後繼續在R語言使用<br />
+若整理好也可以存成其他格式</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="應用篇_實作簡單資料處理.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 存成.rds檔</span></span>
+<span id="cb278-2"><a href="應用篇_實作簡單資料處理.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(R_use_analysis, <span class="st">&quot;data/R_use_analysis&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="應用篇_資料讀取匯出合併與瀏覽.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="應用篇_探索性資料分析.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-應用篇_實作簡單資料處理.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
