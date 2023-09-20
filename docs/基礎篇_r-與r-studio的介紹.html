@@ -8,7 +8,7 @@
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 基礎篇_R 與R studio的介紹 | R for NGO" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-08-21" />
+<meta name="date" content="2023-09-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -125,6 +125,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -171,9 +175,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#新建r-project"><i class="fa fa-check"></i><b>2.3.4</b> 新建R project</a></li>
 <li class="chapter" data-level="2.3.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#小技巧"><i class="fa fa-check"></i><b>2.3.5</b> 小技巧</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝套件和help"><i class="fa fa-check"></i><b>2.4</b> 安裝套件和help</a>
+<li class="chapter" data-level="2.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#簡介r套件"><i class="fa fa-check"></i><b>2.4</b> 簡介R套件</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝講義所用套件"><i class="fa fa-check"></i><b>2.4.1</b> 安裝講義所用套件</a></li>
+<li class="chapter" data-level="2.4.1" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝套件"><i class="fa fa-check"></i><b>2.4.1</b> 安裝套件</a></li>
+<li class="chapter" data-level="2.4.2" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#載入套件"><i class="fa fa-check"></i><b>2.4.2</b> 載入套件</a></li>
+<li class="chapter" data-level="2.4.3" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#刪除套件"><i class="fa fa-check"></i><b>2.4.3</b> 刪除套件</a></li>
+<li class="chapter" data-level="2.4.4" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#更新套件"><i class="fa fa-check"></i><b>2.4.4</b> 更新套件</a></li>
+<li class="chapter" data-level="2.4.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#輔助文件與help"><i class="fa fa-check"></i><b>2.4.5</b> 輔助文件與help</a></li>
+<li class="chapter" data-level="2.4.6" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#安裝講義所用套件"><i class="fa fa-check"></i><b>2.4.6</b> 安裝講義所用套件</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="基礎篇_r-與r-studio的介紹.html"><a href="基礎篇_r-與r-studio的介紹.html#錯誤訊息"><i class="fa fa-check"></i><b>2.5</b> 錯誤訊息</a></li>
 </ul></li>
@@ -185,17 +194,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>3.1.2</b> 查詢顯示物件與刪除物件</a></li>
 <li class="chapter" data-level="3.1.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#命名"><i class="fa fa-check"></i><b>3.1.3</b> 命名</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#基本運算"><i class="fa fa-check"></i><b>3.2</b> 基本運算</a>
+<li class="chapter" data-level="3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料型態"><i class="fa fa-check"></i><b>3.2</b> 資料型態</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數學基本運算"><i class="fa fa-check"></i><b>3.2.1</b> 數學基本運算</a></li>
-<li class="chapter" data-level="3.2.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯運算"><i class="fa fa-check"></i><b>3.2.2</b> 邏輯運算</a></li>
+<li class="chapter" data-level="3.2.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數字numeric"><i class="fa fa-check"></i><b>3.2.1</b> 數字(numeric):</a></li>
+<li class="chapter" data-level="3.2.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#字串character"><i class="fa fa-check"></i><b>3.2.2</b> 字串(character):</a></li>
+<li class="chapter" data-level="3.2.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯logical"><i class="fa fa-check"></i><b>3.2.3</b> 邏輯(logical):</a></li>
+<li class="chapter" data-level="3.2.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#日期date"><i class="fa fa-check"></i><b>3.2.4</b> 日期(date):</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料型態"><i class="fa fa-check"></i><b>3.3</b> 資料型態</a>
+<li class="chapter" data-level="3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#基本運算"><i class="fa fa-check"></i><b>3.3</b> 基本運算</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數字numeric"><i class="fa fa-check"></i><b>3.3.1</b> 數字(numeric):</a></li>
-<li class="chapter" data-level="3.3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#字串character"><i class="fa fa-check"></i><b>3.3.2</b> 字串(character):</a></li>
-<li class="chapter" data-level="3.3.3" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯logical"><i class="fa fa-check"></i><b>3.3.3</b> 邏輯(logical):</a></li>
-<li class="chapter" data-level="3.3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#日期date"><i class="fa fa-check"></i><b>3.3.4</b> 日期(date):</a></li>
+<li class="chapter" data-level="3.3.1" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#數學基本運算"><i class="fa fa-check"></i><b>3.3.1</b> 數學基本運算</a></li>
+<li class="chapter" data-level="3.3.2" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#邏輯運算"><i class="fa fa-check"></i><b>3.3.2</b> 邏輯運算</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="基礎篇_r語言的基礎概念.html"><a href="基礎篇_r語言的基礎概念.html#資料結構"><i class="fa fa-check"></i><b>3.4</b> 資料結構</a>
 <ul>
@@ -349,10 +358,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="rstudio初步設定" class="section level3 hasAnchor" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Rstudio初步設定<a href="基礎篇_r-與r-studio的介紹.html#rstudio初步設定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Tools &gt; Global Options
+<li>Tools &gt; Global Options <img src="picture/new_RScript.png" alt="Global Options" />
 <ul>
-<li>Code: Display tab下勾選Show whitespace characters。</li>
-<li>Appearance: 可改變RStudio Theme.</li>
+<li>Code: Display 下勾選Show whitespace characters。 (coding時更清楚前面空格狀況) <img src="picture/whitespace_characters.png" alt="Show whitespace characters" /></li>
+<li>Appearance: 可改變RStudio Theme. (可以改成深色模式讓眼睛休息一下) <img src="picture/Appearance.png" alt="Appearance" /></li>
 </ul></li>
 </ul>
 </div>
@@ -375,36 +384,150 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>另外比較重要的是R的註解標籤是<strong>#</strong></p>
 </div>
 </div>
-<div id="安裝套件和help" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> 安裝套件和help<a href="基礎篇_r-與r-studio的介紹.html#安裝套件和help" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>安裝套件：安裝只需要做一次，就是將你要的套件從網路上抓下來並安裝到你的電腦裡<br />
-載入套件：確定要用的套件已經在電腦中後，在使用前，需要將該套件載入至R才能夠使用</p>
-<p>例如，我們想要裝haven這個套件。<br />
-等R跑完安裝後，就可將這個套件載入。必須載入後才能夠使用這個套件，這個套件可以讓我們將SPSS, SAS, STATA等資料檔讀入R之中。<br />
-至於詳細的用法，我們可以用「<strong>help</strong>」來看這個套件的語法該如何設定</p>
+<div id="簡介r套件" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> 簡介R套件<a href="基礎篇_r-與r-studio的介紹.html#簡介r套件" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R語言有很多的套件，這些套件可以簡單理解為「特定目的的函式、文件、資料之集合」(<a href="https://2formosa.blogspot.com/2019/01/Introduction-to-R-packages.html">參考</a>)<br />
+這些套件有些是下載完就內建的，有些是需要外部安裝的，而R語言的強大之處也建立在這些套件上</p>
+<div id="安裝套件" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> 安裝套件<a href="基礎篇_r-與r-studio的介紹.html#安裝套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>安裝套件：安裝只需要做一次，就是將你要的套件從網路上抓下來並安裝到你的電腦裡</p>
+<p>若是外部的套件，第一次使用時需要先「安裝」<br />
+例如，我們想要裝haven這個套件。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="基礎篇_r-與r-studio的介紹.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 安裝套件：</span></span>
-<span id="cb1-2"><a href="基礎篇_r-與r-studio的介紹.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;haven&quot;</span>)</span>
-<span id="cb1-3"><a href="基礎篇_r-與r-studio的介紹.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="基礎篇_r-與r-studio的介紹.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 載入套件：</span></span>
-<span id="cb1-5"><a href="基礎篇_r-與r-studio的介紹.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb1-6"><a href="基礎篇_r-與r-studio的介紹.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
-<span id="cb1-7"><a href="基礎篇_r-與r-studio的介紹.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(haven)</span>
-<span id="cb1-8"><a href="基礎篇_r-與r-studio的介紹.html#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="基礎篇_r-與r-studio的介紹.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 查詢套件/函數用法</span></span>
-<span id="cb1-10"><a href="基礎篇_r-與r-studio的介紹.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(haven) <span class="do">## 查詢套件</span></span>
-<span id="cb1-11"><a href="基礎篇_r-與r-studio的介紹.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(read_dta) <span class="do">## 查詢函數</span></span>
-<span id="cb1-12"><a href="基礎篇_r-與r-studio的介紹.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
-<span id="cb1-13"><a href="基礎篇_r-與r-studio的介紹.html#cb1-13" aria-hidden="true" tabindex="-1"></a>?haven</span>
-<span id="cb1-14"><a href="基礎篇_r-與r-studio的介紹.html#cb1-14" aria-hidden="true" tabindex="-1"></a>?read_dta</span>
-<span id="cb1-15"><a href="基礎篇_r-與r-studio的介紹.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">## or 在想查詢的套件/函數上面按F1</span></span></code></pre></div>
-<div id="安裝講義所用套件" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> 安裝講義所用套件<a href="基礎篇_r-與r-studio的介紹.html#安裝講義所用套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="基礎篇_r-與r-studio的介紹.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 接下來會用到的套件</span></span>
-<span id="cb2-2"><a href="基礎篇_r-與r-studio的介紹.html#cb2-2" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;haven&quot;</span>, <span class="st">&quot;lubridate&quot;</span>, <span class="st">&quot;magrittr&quot;</span>,  <span class="st">&quot;readr&quot;</span>, <span class="st">&quot;writexl&quot;</span>,</span>
-<span id="cb2-3"><a href="基礎篇_r-與r-studio的介紹.html#cb2-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;data.table&quot;</span>, <span class="st">&quot;DescTools&quot;</span>, <span class="st">&quot;sjmisc&quot;</span>, </span>
-<span id="cb2-4"><a href="基礎篇_r-與r-studio的介紹.html#cb2-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;sjlabelled&quot;</span>, <span class="st">&quot;validate&quot;</span>, <span class="st">&quot;skimr&quot;</span>)</span>
-<span id="cb2-5"><a href="基礎篇_r-與r-studio的介紹.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 一次安裝套件：</span></span>
-<span id="cb2-6"><a href="基礎篇_r-與r-studio的介紹.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pkgs&quot;</span>)</span></code></pre></div>
+<span id="cb1-2"><a href="基礎篇_r-與r-studio的介紹.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;haven&quot;</span>)</span></code></pre></div>
+<p>安裝完成後，右邊packages就會跟著出現<br />
+<img src="picture/installpackages.png" alt="packages" /></p>
+</div>
+<div id="載入套件" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> 載入套件<a href="基礎篇_r-與r-studio的介紹.html#載入套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>載入套件：確定要用的套件已經在電腦中後，在使用前，需要將該套件載入至R才能夠使用</p>
+<p>但是安裝不等於載入，在每次開啟R檔案時，若需要使用套件中的函數，必須先載入後才能夠使用</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="基礎篇_r-與r-studio的介紹.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 載入套件：</span></span>
+<span id="cb2-2"><a href="基礎篇_r-與r-studio的介紹.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb2-3"><a href="基礎篇_r-與r-studio的介紹.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
+<span id="cb2-4"><a href="基礎篇_r-與r-studio的介紹.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(haven)</span></code></pre></div>
+<p>也可以用勾選的方式<br />
+<img src="picture/library.png" alt="library" /></p>
+</div>
+<div id="刪除套件" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> 刪除套件<a href="基礎篇_r-與r-studio的介紹.html#刪除套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>當我們可能裝錯套件時，也可以直接刪除特定套件</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="基礎篇_r-與r-studio的介紹.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remove.packages</span>(<span class="st">&quot;haven&quot;</span>)</span></code></pre></div>
+<p>或著直接按旁邊的X<br />
+<img src="picture/remove_packages.png" alt="remove_packages" /></p>
+</div>
+<div id="更新套件" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> 更新套件<a href="基礎篇_r-與r-studio的介紹.html#更新套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>另外R語言中的套件時常進行更新，我們可以一次檢查那些需要更新</p>
+<div class="figure">
+<img src="picture/oldpackages.png" alt="" />
+<p class="caption">oldpackages</p>
+</div>
+<p>接著就可以點選進行特定套件的更新</p>
+<p>或著也可以使用函數更新</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="基礎篇_r-與r-studio的介紹.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 更新所有套件</span></span>
+<span id="cb4-2"><a href="基礎篇_r-與r-studio的介紹.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>()</span>
+<span id="cb4-3"><a href="基礎篇_r-與r-studio的介紹.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="基礎篇_r-與r-studio的介紹.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 更新特定套件如haven</span></span>
+<span id="cb4-5"><a href="基礎篇_r-與r-studio的介紹.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;haven&quot;</span>)</span></code></pre></div>
+</div>
+<div id="輔助文件與help" class="section level3 hasAnchor" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> 輔助文件與help<a href="基礎篇_r-與r-studio的介紹.html#輔助文件與help" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>至於套件或著裡面函數的詳細用法，我們可以用「<strong>help</strong>」來看這個套件的語法該如何設定</p>
+<p>R語言當中有蠻完整的「查詢文件」可以查看</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="基礎篇_r-與r-studio的介紹.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 載入套件：</span></span>
+<span id="cb5-2"><a href="基礎篇_r-與r-studio的介紹.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb5-3"><a href="基礎篇_r-與r-studio的介紹.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="基礎篇_r-與r-studio的介紹.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 查詢套件/函數用法</span></span>
+<span id="cb5-5"><a href="基礎篇_r-與r-studio的介紹.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(haven) <span class="do">## 查詢套件</span></span>
+<span id="cb5-6"><a href="基礎篇_r-與r-studio的介紹.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(read_dta) <span class="do">## 查詢函數</span></span>
+<span id="cb5-7"><a href="基礎篇_r-與r-studio的介紹.html#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="基礎篇_r-與r-studio的介紹.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
+<span id="cb5-9"><a href="基礎篇_r-與r-studio的介紹.html#cb5-9" aria-hidden="true" tabindex="-1"></a>?haven</span>
+<span id="cb5-10"><a href="基礎篇_r-與r-studio的介紹.html#cb5-10" aria-hidden="true" tabindex="-1"></a>?read_dta</span>
+<span id="cb5-11"><a href="基礎篇_r-與r-studio的介紹.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">## or 在想查詢的套件/函數上面按F1</span></span></code></pre></div>
+</div>
+<div id="安裝講義所用套件" class="section level3 hasAnchor" number="2.4.6">
+<h3><span class="header-section-number">2.4.6</span> 安裝講義所用套件<a href="基礎篇_r-與r-studio的介紹.html#安裝講義所用套件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>可以一次安裝多個套件，以下為本講義會使用的套件</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="基礎篇_r-與r-studio的介紹.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 接下來會用到的套件</span></span>
+<span id="cb6-2"><a href="基礎篇_r-與r-studio的介紹.html#cb6-2" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;haven&quot;</span>, <span class="st">&quot;lubridate&quot;</span>, <span class="st">&quot;magrittr&quot;</span>,  <span class="st">&quot;readr&quot;</span>, <span class="st">&quot;writexl&quot;</span>, <span class="st">&quot;devtools&quot;</span></span>
+<span id="cb6-3"><a href="基礎篇_r-與r-studio的介紹.html#cb6-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;data.table&quot;</span>, <span class="st">&quot;DescTools&quot;</span>, <span class="st">&quot;sjmisc&quot;</span>, </span>
+<span id="cb6-4"><a href="基礎篇_r-與r-studio的介紹.html#cb6-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;sjlabelled&quot;</span>, <span class="st">&quot;validate&quot;</span>, <span class="st">&quot;skimr&quot;</span>)</span>
+<span id="cb6-5"><a href="基礎篇_r-與r-studio的介紹.html#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="基礎篇_r-與r-studio的介紹.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 一次安裝套件：</span></span>
+<span id="cb6-7"><a href="基礎篇_r-與r-studio的介紹.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pkgs&quot;</span>)</span></code></pre></div>
+<p>另外以下是本講義使用的R語言環境</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="基礎篇_r-與r-studio的介紹.html#cb7-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
+<pre><code>## ─ Session info ───────────────────────────
+##  setting  value
+##  version  R version 4.3.0 (2023-04-21 ucrt)
+##  os       Windows 11 x64 (build 22621)
+##  system   x86_64, mingw32
+##  ui       RTerm
+##  language (EN)
+##  collate  Chinese (Traditional)_Taiwan.utf8
+##  ctype    Chinese (Traditional)_Taiwan.utf8
+##  tz       Asia/Taipei
+##  date     2023-09-20
+##  pandoc   2.19.2 @ D:/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
+## 
+## ─ Packages ───────────────────────────────
+##  package     * version date (UTC) lib source
+##  bookdown      0.35    2023-08-09 [1] CRAN (R 4.3.1)
+##  bslib         0.5.1   2023-08-11 [1] CRAN (R 4.3.1)
+##  cachem        1.0.8   2023-05-01 [1] CRAN (R 4.3.0)
+##  callr         3.7.3   2022-11-02 [1] CRAN (R 4.3.0)
+##  cli           3.6.1   2023-03-23 [1] CRAN (R 4.3.0)
+##  crayon        1.5.2   2022-09-29 [1] CRAN (R 4.3.0)
+##  devtools      2.4.5   2022-10-11 [1] CRAN (R 4.3.1)
+##  digest        0.6.31  2022-12-11 [1] CRAN (R 4.3.0)
+##  ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.3.0)
+##  evaluate      0.21    2023-05-05 [1] CRAN (R 4.3.0)
+##  fastmap       1.1.1   2023-02-24 [1] CRAN (R 4.3.0)
+##  fs            1.6.2   2023-04-25 [1] CRAN (R 4.3.0)
+##  glue          1.6.2   2022-02-24 [1] CRAN (R 4.3.0)
+##  htmltools     0.5.5   2023-03-23 [1] CRAN (R 4.3.0)
+##  htmlwidgets   1.6.2   2023-03-17 [1] CRAN (R 4.3.1)
+##  httpuv        1.6.11  2023-05-11 [1] CRAN (R 4.3.1)
+##  jquerylib     0.1.4   2021-04-26 [1] CRAN (R 4.3.0)
+##  jsonlite      1.8.7   2023-06-29 [1] CRAN (R 4.3.1)
+##  knitr         1.44    2023-09-11 [1] CRAN (R 4.3.1)
+##  later         1.3.1   2023-05-02 [1] CRAN (R 4.3.1)
+##  lifecycle     1.0.3   2022-10-07 [1] CRAN (R 4.3.0)
+##  magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.3.0)
+##  memoise       2.0.1   2021-11-26 [1] CRAN (R 4.3.0)
+##  mime          0.12    2021-09-28 [1] CRAN (R 4.3.0)
+##  miniUI        0.1.1.1 2018-05-18 [1] CRAN (R 4.3.1)
+##  pkgbuild      1.4.2   2023-06-26 [1] CRAN (R 4.3.1)
+##  pkgload       1.3.2.1 2023-07-08 [1] CRAN (R 4.3.1)
+##  prettyunits   1.1.1   2020-01-24 [1] CRAN (R 4.3.0)
+##  processx      3.8.1   2023-04-18 [1] CRAN (R 4.3.0)
+##  profvis       0.3.8   2023-05-02 [1] CRAN (R 4.3.1)
+##  promises      1.2.1   2023-08-10 [1] CRAN (R 4.3.1)
+##  ps            1.7.5   2023-04-18 [1] CRAN (R 4.3.0)
+##  purrr         1.0.1   2023-01-10 [1] CRAN (R 4.3.0)
+##  R6            2.5.1   2021-08-19 [1] CRAN (R 4.3.0)
+##  Rcpp          1.0.10  2023-01-22 [1] CRAN (R 4.3.0)
+##  remotes       2.4.2.1 2023-07-18 [1] CRAN (R 4.3.1)
+##  rlang         1.1.1   2023-04-28 [1] CRAN (R 4.3.0)
+##  rmarkdown     2.25    2023-09-18 [1] CRAN (R 4.3.1)
+##  rstudioapi    0.15.0  2023-07-07 [1] CRAN (R 4.3.1)
+##  sass          0.4.7   2023-07-15 [1] CRAN (R 4.3.1)
+##  sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.3.1)
+##  shiny         1.7.5   2023-08-12 [1] CRAN (R 4.3.1)
+##  stringi       1.7.12  2023-01-11 [1] CRAN (R 4.3.0)
+##  stringr       1.5.0   2022-12-02 [1] CRAN (R 4.3.0)
+##  urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.3.1)
+##  usethis       2.2.2   2023-07-06 [1] CRAN (R 4.3.1)
+##  vctrs         0.6.2   2023-04-19 [1] CRAN (R 4.3.0)
+##  xfun          0.39    2023-04-20 [1] CRAN (R 4.3.0)
+##  xtable        1.8-4   2019-04-21 [1] CRAN (R 4.3.1)
+##  yaml          2.3.7   2023-01-23 [1] CRAN (R 4.3.0)
+## 
+##  [1] D:/R-4.3.0/library
+## 
+## ──────────────────────────────────────────</code></pre>
 </div>
 </div>
 <div id="錯誤訊息" class="section level2 hasAnchor" number="2.5">

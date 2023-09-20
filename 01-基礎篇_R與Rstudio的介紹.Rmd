@@ -25,9 +25,9 @@ Install RStudio Desktop:
 
 ### Rstudio初步設定
 
--   Tools \> Global Options
-    -   Code: Display tab下勾選Show whitespace characters。
-    -   Appearance: 可改變RStudio Theme.
+-   Tools \> Global Options ![Global Options](picture/new_RScript.png)
+    -   Code: Display 下勾選Show whitespace characters。 (coding時更清楚前面空格狀況) ![Show whitespace characters](picture/whitespace_characters.png)
+    -   Appearance: 可改變RStudio Theme. (可以改成深色模式讓眼睛休息一下) ![Appearance](picture/Appearance.png)
 
 ### 新建R Script
 
@@ -52,27 +52,85 @@ New Project -\> New Directory -\> New Project -\> 設定Project Name 和放檔�
 
 另外比較重要的是R的註解標籤是**\#**
 
-## 安裝套件和help
+## 簡介R套件
 
-安裝套件：安裝只需要做一次，就是將你要的套件從網路上抓下來並安裝到你的電腦裡\
-載入套件：確定要用的套件已經在電腦中後，在使用前，需要將該套件載入至R才能夠使用
+R語言有很多的套件，這些套件可以簡單理解為「特定目的的函式、文件、資料之集合」([參考](https://2formosa.blogspot.com/2019/01/Introduction-to-R-packages.html))\
+這些套件有些是下載完就內建的，有些是需要外部安裝的，而R語言的強大之處也建立在這些套件上
 
-例如，我們想要裝haven這個套件。\
-等R跑完安裝後，就可將這個套件載入。必須載入後才能夠使用這個套件，這個套件可以讓我們將SPSS, SAS, STATA等資料檔讀入R之中。\
-至於詳細的用法，我們可以用「**help**」來看這個套件的語法該如何設定
+### 安裝套件
+
+安裝套件：安裝只需要做一次，就是將你要的套件從網路上抓下來並安裝到你的電腦裡
+
+若是外部的套件，第一次使用時需要先「安裝」\
+例如，我們想要裝haven這個套件。
 
 ```{r eval=FALSE}
 # 安裝套件：
 install.packages("haven")
+```
 
+安裝完成後，右邊packages就會跟著出現\
+![packages](picture/installpackages.png)
+
+### 載入套件
+
+載入套件：確定要用的套件已經在電腦中後，在使用前，需要將該套件載入至R才能夠使用
+
+但是安裝不等於載入，在每次開啟R檔案時，若需要使用套件中的函數，必須先載入後才能夠使用
+
+```{r eval=FALSE}
 # 載入套件：
 library(haven)
 ## or
 require(haven)
+```
+
+也可以用勾選的方式\
+![library](picture/library.png)
+
+### 刪除套件
+
+當我們可能裝錯套件時，也可以直接刪除特定套件
+
+```{r eval=FALSE}
+remove.packages("haven")
+```
+
+或著直接按旁邊的X\
+![remove_packages](picture/remove_packages.png)
+
+### 更新套件
+
+另外R語言中的套件時常進行更新，我們可以一次檢查那些需要更新
+
+![oldpackages](picture/oldpackages.png)
+
+接著就可以點選進行特定套件的更新
+
+或著也可以使用函數更新
+
+```{r eval=FALSE}
+# 更新所有套件
+update.packages()
+
+# 更新特定套件如haven
+install.packages("haven")
+```
+
+### 輔助文件與help
+
+至於套件或著裡面函數的詳細用法，我們可以用「**help**」來看這個套件的語法該如何設定
+
+R語言當中有蠻完整的「查詢文件」可以查看
+
+```{r eval=FALSE}
+# 載入套件：
+library(haven)
 
 # 查詢套件/函數用法
 help(haven) ## 查詢套件
 help(read_dta) ## 查詢函數
+
 ## or
 ?haven
 ?read_dta
@@ -81,13 +139,22 @@ help(read_dta) ## 查詢函數
 
 ### 安裝講義所用套件
 
+可以一次安裝多個套件，以下為本講義會使用的套件
+
 ```{r eval=FALSE}
 # 接下來會用到的套件
-pkgs <- c("haven", "lubridate", "magrittr",  "readr", "writexl",
+pkgs <- c("haven", "lubridate", "magrittr",  "readr", "writexl", "devtools"
           "dplyr", "tidyverse", "data.table", "DescTools", "sjmisc", 
           "sjlabelled", "validate", "skimr")
+
 # 一次安裝套件：
 install.packages("pkgs")
+```
+
+另外以下是本講義使用的R語言環境
+
+```{r}
+devtools::session_info()
 ```
 
 ## 錯誤訊息

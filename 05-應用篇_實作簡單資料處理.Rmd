@@ -61,6 +61,14 @@ R_practice_row1 <- R_practice_row[c("id", "sex", "age", "height", "weight",
 查看變項初步分配，來檢查是否有不合理值或缺失值\
 (以下指令都還有各自呈現的細節可以調整，可自行查看該指令的help)
 
+
+若是我們想查看資料當中性別(sex)的資訊，需要先將此變項從資料裡取出，\
+可以使用前面講義所教方法，用「$」選取，將有關性別欄位的每個數值取出
+
+```{r}
+R_practice_row1$sex
+```
+
 使用`table()函數`初步查看次數分配(以sex性別為例)\
 (useNA 是設定列出是否有NA)
 
@@ -107,7 +115,7 @@ R_practice_row2  <- R_practice_row1 %>% ## %>% : pipe 將WVS_w7_n1(資料)用於
 -   性別 = sex
     -   原先: 1 = 女 2 = 男
     -   修改成: 0 = 男 1 = 女
-        -   轉成類別變項(factor)並命名為`female`
+    -   轉成類別變項(factor)並命名為`female`
 -   `%>%`: 管道控制(pipe)，將R_practice_row2(資料)連結到mutate()函數
 -   `mutate()`: dplyr套件中的mutate()代表創建/修改變項
 -   `case_match`: 將變項值重新編碼
@@ -253,7 +261,7 @@ sum(is.na(R_practice_row4$female))
 
 排除遺漏值
 
--   `complete.cases`: 將有遺漏的樣本直接刪除
+-   `complete.cases`: 將有遺漏的觀察值直接刪除
 
 ```{r}
 R_use_analysis <- R_practice_row4[complete.cases(R_practice_row4), ]

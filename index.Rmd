@@ -114,14 +114,14 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 -   什麼是R 和 Rstudio
 -   下載R 和 Rstudio
 -   Rstudio介面與初步設定
--   安裝套件和help
+-   簡介R套件
 -   錯誤訊息
 
 [基礎篇_R語言的基礎概念](https://qbiexyz.github.io/R-for-NGO/%E5%9F%BA%E7%A4%8E%E7%AF%87_r%E8%AA%9E%E8%A8%80%E7%9A%84%E5%9F%BA%E7%A4%8E%E6%A6%82%E5%BF%B5.html)
 
 -   物件基礎操作
--   基本運算
 -   資料型態
+-   基本運算
 -   資料結構
 -   簡單條件判斷式
 -   管道控制pipe
