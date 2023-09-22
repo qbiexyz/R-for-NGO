@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-09-20" />
+<meta name="date" content="2023-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -333,7 +333,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">R for NGO</h1>
 <p class="author"><em>台北大學社會所_吳永健</em></p>
-<p class="date"><em>2023-09-20</em></p>
+<p class="date"><em>2023-09-22</em></p>
 </div>
 <div id="前言_關於本講義" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> 前言_關於本講義<a href="index.html#前言_關於本講義" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -341,7 +341,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>這份講義是希望讓原本沒有程式與或統計基礎的人，能夠在短時間初步了解R語言的<strong>簡單概念和操作</strong>，以及能夠<strong>進行初步的資料讀取、清理、分析與視覺化</strong>。</p>
 <p>由於是初步介紹的入門講義，因此會簡單介紹一下R的基礎概念，但部分過於涉及程式設計的部分會稍微略過，重點會放在<strong>了解R的基礎概念、資料處理</strong>以及後續<strong>使用資料實作初步統計與視覺化</strong>部分</p>
 <p>目的是讓讀者能夠輕鬆並短時間知道使用資料的好處，因此在分析或實作上，也不會涉及到深入的統計或視覺化，</p>
-<p>若是在看過這份講義後對進階分析有興趣者，可以到以下所列參考書籍或資源，進一步學習。</p>
+<p>若是在看過這份講義後對進階分析有興趣者，可以到以下所列<a href="https://qbiexyz.github.io/R-for-NGO/index.html#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考書籍或資源</a>，進一步學習。</p>
 <div id="r語言-應用性-高難度-中高" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> R語言 應用性: 高、難度: 中高<a href="index.html#r語言-應用性-高難度-中高" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>R的好處在於<strong>免費</strong>、靈活，且有許多額外的套件輔助分析，若想要做的分析一般的套件沒有支援時，可以自寫函數或程式來處理，另外在<strong>統計方法與視覺化</strong>上面都有很多應用，且網路上有很多自學資源以及論壇解答遇到的問題。<br />
@@ -397,12 +397,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>以下列出台灣部分的政府公開資料，下面列出的只是一小部分，還有很多其他政府或非政府的Open data可以自行探索</p>
 <ul>
 <li><a href="https://data.gov.tw/">政府資料開放平台</a></li>
+<li><a href="https://www.datastation.org.tw/opendata">Data Station-開放數據</a></li>
 <li><a href="https://data.taipei/">臺北市資料大平台</a></li>
 <li><a href="https://segis.moi.gov.tw/STAT/Web/Portal/STAT_PortalHome.aspx">社會經濟資料服務平台</a></li>
 <li><a href="https://www.stat.gov.tw/Default.aspx">中華民國統計資訊網</a></li>
-<li><a href="https://depart.moe.edu.tw/ED4500/Default.aspx">教育部統計資料</a></li>
-<li><a href="https://dep.mohw.gov.tw/dos/mp-113.html">衛服部統計資料</a></li>
-<li><a href="https://www.npa.gov.tw/ch/app/folder/589">內政部警政署統計資料</a></li>
 <li><a href="https://pride.stpi.narl.org.tw/index">PRIDE政策研究指標資料庫</a></li>
 </ul>
 <p>除台灣外，世界各國也有各自的Open data，可以用關鍵字自行查找，另外也有<a href="https://opendatainception.io/">網站</a>整理世界各地約2600以上的開放資料庫，可以按照地圖去查找</p>
@@ -411,8 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="公開調查資料" class="section level3 hasAnchor" number="1.4.2">
 <h3><span class="header-section-number">1.4.2</span> 公開調查資料<a href="index.html#公開調查資料" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>另外也有一些「調查資料」可以免費提供申請下載使用，調查資料可能不像Open data一樣可以隨意使用，但多數公開的調查資料經申請後即可下載使用，</p>
-<p>在台灣多數有公開的調查資料會被整理在<a href="https://srda.sinica.edu.tw/index.php">「SRDA學術調查資料庫」</a>當中，其中也包括政府每年的調查型資料，兩者都可以提供申請下載使用，但也需注意相關的參考格式/</p>
-<p>若需要下載資料需要先加入會員，一般而言若不具有學術身分，也可以加入網路會員/</p>
+<p>在台灣多數有公開的調查資料會被整理在<a href="https://srda.sinica.edu.tw/index.php">「SRDA學術調查資料庫」</a>當中，其中也包括政府每年的調查型資料，兩者都可以提供申請下載使用，但也需注意相關的參考格式</p>
+<p>若需要下載資料需要先加入會員，一般而言若不具有學術身分，也可以加入網路會員</p>
 <p>在youtube上也有<a href="https://www.youtube.com/@SRDATW/featured">SRDA頻道</a>與一系列<a href="https://www.youtube.com/watch?v=K9kYwCYpO9M&amp;list=PLFhNbLV04ceWLY6orqC6JOnpG9SU_U_0w">使用教學</a>，若有需要可自行觀看</p>
 <p><img src="picture/srda.png" /></p>
 <p>調查型資料的資源也非常豐富，SRDA也只是整理出部份台灣的調查資料，另外一些可能是放在該調查官網需自行下載，或是跨國型資料、國外的調查資料，有些可能須申請，有些是公開的，大多數都有問卷可以先查看是否有想要分析的題目再決定是否使用該資料，若有需要可以依需求自行搜索並下載</p>

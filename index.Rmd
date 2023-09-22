@@ -25,7 +25,7 @@ github-repo: "rstudio/bookdown-demo"
 
 目的是讓讀者能夠輕鬆並短時間知道使用資料的好處，因此在分析或實作上，也不會涉及到深入的統計或視覺化，
 
-若是在看過這份講義後對進階分析有興趣者，可以到以下所列參考書籍或資源，進一步學習。
+若是在看過這份講義後對進階分析有興趣者，可以到以下所列[參考書籍或資源](https://qbiexyz.github.io/R-for-NGO/index.html#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99)，進一步學習。
 
 ## R語言 應用性: 高、難度: 中高
 
@@ -77,12 +77,10 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 以下列出台灣部分的政府公開資料，下面列出的只是一小部分，還有很多其他政府或非政府的Open data可以自行探索
 
 -   [政府資料開放平台](https://data.gov.tw/)
+-   [Data Station-開放數據](https://www.datastation.org.tw/opendata)
 -   [臺北市資料大平台](https://data.taipei/)
 -   [社會經濟資料服務平台](https://segis.moi.gov.tw/STAT/Web/Portal/STAT_PortalHome.aspx)
 -   [中華民國統計資訊網](https://www.stat.gov.tw/Default.aspx)
--   [教育部統計資料](https://depart.moe.edu.tw/ED4500/Default.aspx)
--   [衛服部統計資料](https://dep.mohw.gov.tw/dos/mp-113.html)
--   [內政部警政署統計資料](https://www.npa.gov.tw/ch/app/folder/589)
 -   [PRIDE政策研究指標資料庫](https://pride.stpi.narl.org.tw/index)
 
 除台灣外，世界各國也有各自的Open data，可以用關鍵字自行查找，另外也有[網站](https://opendatainception.io/)整理世界各地約2600以上的開放資料庫，可以按照地圖去查找
@@ -93,9 +91,9 @@ R的好處在於**免費**、靈活，且有許多額外的套件輔助分析，
 
 另外也有一些「調查資料」可以免費提供申請下載使用，調查資料可能不像Open data一樣可以隨意使用，但多數公開的調查資料經申請後即可下載使用，
 
-在台灣多數有公開的調查資料會被整理在[「SRDA學術調查資料庫」](https://srda.sinica.edu.tw/index.php)當中，其中也包括政府每年的調查型資料，兩者都可以提供申請下載使用，但也需注意相關的參考格式/
+在台灣多數有公開的調查資料會被整理在[「SRDA學術調查資料庫」](https://srda.sinica.edu.tw/index.php)當中，其中也包括政府每年的調查型資料，兩者都可以提供申請下載使用，但也需注意相關的參考格式
 
-若需要下載資料需要先加入會員，一般而言若不具有學術身分，也可以加入網路會員/
+若需要下載資料需要先加入會員，一般而言若不具有學術身分，也可以加入網路會員
 
 在youtube上也有[SRDA頻道](https://www.youtube.com/@SRDATW/featured)與一系列[使用教學](https://www.youtube.com/watch?v=K9kYwCYpO9M&list=PLFhNbLV04ceWLY6orqC6JOnpG9SU_U_0w)，若有需要可自行觀看
 

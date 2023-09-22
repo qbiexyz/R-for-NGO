@@ -25,7 +25,7 @@ Install RStudio Desktop:
 
 ### Rstudio初步設定
 
--   Tools \> Global Options ![Global Options](picture/new_RScript.png)
+-   Tools \> Global Options ![Global Options](picture/GlobalOptions.png)
     -   Code: Display 下勾選Show whitespace characters。 (coding時更清楚前面空格狀況) ![Show whitespace characters](picture/whitespace_characters.png)
     -   Appearance: 可改變RStudio Theme. (可以改成深色模式讓眼睛休息一下) ![Appearance](picture/Appearance.png)
 

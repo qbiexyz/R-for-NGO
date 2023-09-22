@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-09-20" />
+<meta name="date" content="2023-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -498,7 +498,8 @@ b &lt;- a - 24<br />
 <h3><span class="header-section-number">3.2.4</span> 日期(date):<a href="基礎篇_r語言的基礎概念.html#日期date" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>使用 lubridate 套件可更好呈現，其應用範圍很廣在此不多做介紹</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="基礎篇_r語言的基礎概念.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb46-2"><a href="基礎篇_r語言的基礎概念.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&#39;2012/3/3&#39;</span>)</span></code></pre></div>
+<span id="cb46-2"><a href="基礎篇_r語言的基礎概念.html#cb46-2" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">&quot;2012/3/3&quot;</span>)</span>
+<span id="cb46-3"><a href="基礎篇_r語言的基礎概念.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(time)</span></code></pre></div>
 </div>
 </div>
 <div id="基本運算" class="section level2 hasAnchor" number="3.3">
@@ -539,12 +540,22 @@ b &lt;- a - 24<br />
 <span id="cb48-13"><a href="基礎篇_r語言的基礎概念.html#cb48-13" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">&lt;=</span> num2 <span class="do">## num1是否小於等於num2 -&gt; TRUE</span></span>
 <span id="cb48-14"><a href="基礎篇_r語言的基礎概念.html#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 且 &amp;</span></span>
 <span id="cb48-15"><a href="基礎篇_r語言的基礎概念.html#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span> <span class="do">## TRUE</span></span>
-<span id="cb48-16"><a href="基礎篇_r語言的基礎概念.html#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span> <span class="do">## FALSE</span></span>
-<span id="cb48-17"><a href="基礎篇_r語言的基礎概念.html#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 或 |</span></span>
-<span id="cb48-18"><a href="基礎篇_r語言的基礎概念.html#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span> <span class="do">## TRUE</span></span>
-<span id="cb48-19"><a href="基礎篇_r語言的基礎概念.html#cb48-19" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span> <span class="do">## TRUE</span></span>
-<span id="cb48-20"><a href="基礎篇_r語言的基礎概念.html#cb48-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 反向布林變數! </span></span>
-<span id="cb48-21"><a href="基礎篇_r語言的基礎概念.html#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span> <span class="do">## 不等於TRUE 所以是 FALSE</span></span></code></pre></div>
+<span id="cb48-16"><a href="基礎篇_r語言的基礎概念.html#cb48-16" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> num2 <span class="sc">==</span> <span class="dv">10</span></span>
+<span id="cb48-17"><a href="基礎篇_r語言的基礎概念.html#cb48-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-18"><a href="基礎篇_r語言的基礎概念.html#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span> <span class="do">## FALSE</span></span>
+<span id="cb48-19"><a href="基礎篇_r語言的基礎概念.html#cb48-19" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> num2 <span class="sc">==</span> <span class="dv">11</span></span>
+<span id="cb48-20"><a href="基礎篇_r語言的基礎概念.html#cb48-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-21"><a href="基礎篇_r語言的基礎概念.html#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 或 |</span></span>
+<span id="cb48-22"><a href="基礎篇_r語言的基礎概念.html#cb48-22" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span> <span class="do">## TRUE</span></span>
+<span id="cb48-23"><a href="基礎篇_r語言的基礎概念.html#cb48-23" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> num2 <span class="sc">==</span> <span class="dv">10</span></span>
+<span id="cb48-24"><a href="基礎篇_r語言的基礎概念.html#cb48-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-25"><a href="基礎篇_r語言的基礎概念.html#cb48-25" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span> <span class="do">## TRUE</span></span>
+<span id="cb48-26"><a href="基礎篇_r語言的基礎概念.html#cb48-26" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> num2 <span class="sc">==</span> <span class="dv">11</span></span>
+<span id="cb48-27"><a href="基礎篇_r語言的基礎概念.html#cb48-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-28"><a href="基礎篇_r語言的基礎概念.html#cb48-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 反向布林變數! </span></span>
+<span id="cb48-29"><a href="基礎篇_r語言的基礎概念.html#cb48-29" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span> <span class="do">## 不等於TRUE 所以是 FALSE</span></span>
+<span id="cb48-30"><a href="基礎篇_r語言的基礎概念.html#cb48-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-31"><a href="基礎篇_r語言的基礎概念.html#cb48-31" aria-hidden="true" tabindex="-1"></a>num1 <span class="sc">!=</span> <span class="dv">1</span></span></code></pre></div>
 </div>
 </div>
 <div id="資料結構" class="section level2 hasAnchor" number="3.4">
@@ -717,7 +728,7 @@ concatenate(堆疊): 以<code>c(...)</code>將「<strong>相同類型</strong>�
 <li><code>as.character()</code>將值轉換為字串類</li>
 <li>其他轉換……</li>
 </ul>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="基礎篇_r語言的基礎概念.html#cb70-1" aria-hidden="true" tabindex="-1"></a>num_t1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">2</span> , <span class="dv">4</span>)</span>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="基礎篇_r語言的基礎概念.html#cb70-1" aria-hidden="true" tabindex="-1"></a>num_t1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
 <span id="cb70-2"><a href="基礎篇_r語言的基礎概念.html#cb70-2" aria-hidden="true" tabindex="-1"></a>char_t1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;0.1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;4&quot;</span>)</span>
 <span id="cb70-3"><a href="基礎篇_r語言的基礎概念.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-4"><a href="基礎篇_r語言的基礎概念.html#cb70-4" aria-hidden="true" tabindex="-1"></a>num_t2 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(num_t1)</span>
@@ -762,7 +773,7 @@ concatenate(堆疊): 以<code>c(...)</code>將「<strong>相同類型</strong>�
 <span id="cb74-4"><a href="基礎篇_r語言的基礎概念.html#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;優秀&quot;</span>)</span>
 <span id="cb74-5"><a href="基礎篇_r語言的基礎概念.html#cb74-5" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(score2 <span class="sc">&gt;=</span> <span class="dv">60</span>){</span>
 <span id="cb74-6"><a href="基礎篇_r語言的基礎概念.html#cb74-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;及格&quot;</span>)</span>
-<span id="cb74-7"><a href="基礎篇_r語言的基礎概念.html#cb74-7" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(score2 <span class="sc">&gt;=</span> <span class="dv">40</span> <span class="sc">&amp;</span> score2 <span class="sc">&lt;</span> <span class="dv">60</span>){</span>
+<span id="cb74-7"><a href="基礎篇_r語言的基礎概念.html#cb74-7" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(score2 <span class="sc">&gt;=</span> <span class="dv">40</span>){</span>
 <span id="cb74-8"><a href="基礎篇_r語言的基礎概念.html#cb74-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;不及格&quot;</span>)</span>
 <span id="cb74-9"><a href="基礎篇_r語言的基礎概念.html#cb74-9" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
 <span id="cb74-10"><a href="基礎篇_r語言的基礎概念.html#cb74-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;死當&quot;</span>)</span>

@@ -202,7 +202,8 @@ FALSE + 2 ## 等於 0 + 2
 
 ```{r eval=FALSE}
 library(lubridate)
-ymd('2012/3/3')
+time <- ymd("2012/3/3")
+class(time)
 ```
 
 ## 基本運算
@@ -247,12 +248,22 @@ num1 >= num2 ## num1是否大於等於num2 -> FALSE
 num1 <= num2 ## num1是否小於等於num2 -> TRUE
 # 且 &
 TRUE & TRUE ## TRUE
+num1 == 1 & num2 == 10
+
 TRUE & FALSE ## FALSE
+num1 == 1 & num2 == 11
+
 # 或 |
 TRUE | TRUE ## TRUE
+num1 == 1 | num2 == 10
+
 TRUE | FALSE ## TRUE
+num1 == 1 | num2 == 11
+
 # 反向布林變數! 
 !TRUE ## 不等於TRUE 所以是 FALSE
+
+num1 != 1
 ```
 
 ## 資料結構
@@ -449,7 +460,7 @@ class(c(TRUE, TRUE, F)) ## "logical"
 -   其他轉換......
 
 ```{r eval=FALSE}
-num_t1 <- c(0.1, 2 , 4)
+num_t1 <- c(0.1, 2, 4)
 char_t1 <- c("0.1", "2", "4")
 
 num_t2 <- as.character(num_t1)
@@ -501,7 +512,7 @@ if(score2 >= 90){
   print("優秀")
 }else if(score2 >= 60){
   print("及格")
-}else if(score2 >= 40 & score2 < 60){
+}else if(score2 >= 40){
   print("不及格")
 }else{
   print("死當")

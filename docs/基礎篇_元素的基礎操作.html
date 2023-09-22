@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="台北大學社會所_吳永健" />
 
 
-<meta name="date" content="2023-09-20" />
+<meta name="date" content="2023-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -586,11 +586,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb143-3"><a href="基礎篇_元素的基礎操作.html#cb143-3" aria-hidden="true" tabindex="-1"></a>vector_replace3[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;一&quot;</span>, <span class="st">&quot;三&quot;</span>) <span class="do">## 此時apple和cat會變成一、三</span></span>
 <span id="cb143-4"><a href="基礎篇_元素的基礎操作.html#cb143-4" aria-hidden="true" tabindex="-1"></a>vector_replace3</span></code></pre></div>
 <pre><code>## [1] &quot;一&quot;     &quot;banana&quot; &quot;三&quot;</code></pre>
-<p>也可以同時新增和替換元素</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="基礎篇_元素的基礎操作.html#cb145-1" aria-hidden="true" tabindex="-1"></a>vector_replace3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
-<span id="cb145-2"><a href="基礎篇_元素的基礎操作.html#cb145-2" aria-hidden="true" tabindex="-1"></a>vector_replace3[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>)</span>
-<span id="cb145-3"><a href="基礎篇_元素的基礎操作.html#cb145-3" aria-hidden="true" tabindex="-1"></a>vector_replace3</span></code></pre></div>
-<pre><code>## [1] &quot;1&quot;      &quot;banana&quot; &quot;3&quot;      &quot;4&quot;</code></pre>
 <p>其他list或data frame的替換也是類似相同概念</p>
 </div>
 <div id="新增元素" class="section level2 hasAnchor" number="4.5">
@@ -600,8 +595,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 2. 將要新增的值指派到不存在元素的位置</p>
 <p>以下範例，<code>vector_add1</code>是由apple、banana、cat組成，若想在<code>vector_add</code>中的cat後面新增一個<code>四</code>:</p>
 <p>先創建<code>vector_add1</code>，並判斷位置</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="基礎篇_元素的基礎操作.html#cb147-1" aria-hidden="true" tabindex="-1"></a>vector_add1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
-<span id="cb147-2"><a href="基礎篇_元素的基礎操作.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(vector_add1)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="基礎篇_元素的基礎操作.html#cb145-1" aria-hidden="true" tabindex="-1"></a>vector_add1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
+<span id="cb145-2"><a href="基礎篇_元素的基礎操作.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(vector_add1)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <ol style="list-style-type: decimal">
 <li>找出不存在的位置</li>
@@ -612,23 +607,28 @@ vector_add1[[4]] # 不存在元素(會出現Error)</code></pre>
 <li>將要新增的值指派到不存在元素的位置</li>
 </ol>
 <p>剛剛已知第四個位置是不存在的，因此若想在cat後面新增一個<code>四</code>，需要將「四」直接指派到不存在的那個位置</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="基礎篇_元素的基礎操作.html#cb150-1" aria-hidden="true" tabindex="-1"></a>vector_add1[[<span class="dv">4</span>]] <span class="ot">&lt;-</span> <span class="st">&quot;四&quot;</span></span>
-<span id="cb150-2"><a href="基礎篇_元素的基礎操作.html#cb150-2" aria-hidden="true" tabindex="-1"></a>vector_add1</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="基礎篇_元素的基礎操作.html#cb148-1" aria-hidden="true" tabindex="-1"></a>vector_add1[[<span class="dv">4</span>]] <span class="ot">&lt;-</span> <span class="st">&quot;四&quot;</span></span>
+<span id="cb148-2"><a href="基礎篇_元素的基礎操作.html#cb148-2" aria-hidden="true" tabindex="-1"></a>vector_add1</span></code></pre></div>
 <pre><code>## [1] &quot;apple&quot;  &quot;banana&quot; &quot;cat&quot;    &quot;四&quot;</code></pre>
 <p>原先<code>vector_add1</code>是只有三個位置，上面範例是新增到第四個位置，若是直接新增到第五個位置，那麼第四個位置會顯示成NA</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="基礎篇_元素的基礎操作.html#cb152-1" aria-hidden="true" tabindex="-1"></a>vector_add1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
-<span id="cb152-2"><a href="基礎篇_元素的基礎操作.html#cb152-2" aria-hidden="true" tabindex="-1"></a>vector_add1[[<span class="dv">5</span>]] <span class="ot">&lt;-</span> <span class="st">&quot;四&quot;</span></span>
-<span id="cb152-3"><a href="基礎篇_元素的基礎操作.html#cb152-3" aria-hidden="true" tabindex="-1"></a>vector_add1</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="基礎篇_元素的基礎操作.html#cb150-1" aria-hidden="true" tabindex="-1"></a>vector_add1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
+<span id="cb150-2"><a href="基礎篇_元素的基礎操作.html#cb150-2" aria-hidden="true" tabindex="-1"></a>vector_add1[[<span class="dv">5</span>]] <span class="ot">&lt;-</span> <span class="st">&quot;四&quot;</span></span>
+<span id="cb150-3"><a href="基礎篇_元素的基礎操作.html#cb150-3" aria-hidden="true" tabindex="-1"></a>vector_add1</span></code></pre></div>
 <pre><code>## [1] &quot;apple&quot;  &quot;banana&quot; &quot;cat&quot;    NA       &quot;四&quot;</code></pre>
 <p>另外我們也可以一次新增多個元素，但同樣也需要指定位置</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="基礎篇_元素的基礎操作.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 也可以新增多個元素</span></span>
-<span id="cb154-2"><a href="基礎篇_元素的基礎操作.html#cb154-2" aria-hidden="true" tabindex="-1"></a>vector_add2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
-<span id="cb154-3"><a href="基礎篇_元素的基礎操作.html#cb154-3" aria-hidden="true" tabindex="-1"></a>vector_add2[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;四&quot;</span>, <span class="st">&quot;五&quot;</span>, <span class="st">&quot;六&quot;</span>)</span>
-<span id="cb154-4"><a href="基礎篇_元素的基礎操作.html#cb154-4" aria-hidden="true" tabindex="-1"></a>vector_add2</span>
-<span id="cb154-5"><a href="基礎篇_元素的基礎操作.html#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
-<span id="cb154-6"><a href="基礎篇_元素的基礎操作.html#cb154-6" aria-hidden="true" tabindex="-1"></a>vector_add3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
-<span id="cb154-7"><a href="基礎篇_元素的基礎操作.html#cb154-7" aria-hidden="true" tabindex="-1"></a>vector_add3[<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">7</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;四&quot;</span>, <span class="st">&quot;六&quot;</span>, <span class="st">&quot;七&quot;</span>) <span class="co"># 此時第5個位置會變成NA</span></span>
-<span id="cb154-8"><a href="基礎篇_元素的基礎操作.html#cb154-8" aria-hidden="true" tabindex="-1"></a>vector_add3</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="基礎篇_元素的基礎操作.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 也可以新增多個元素</span></span>
+<span id="cb152-2"><a href="基礎篇_元素的基礎操作.html#cb152-2" aria-hidden="true" tabindex="-1"></a>vector_add2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
+<span id="cb152-3"><a href="基礎篇_元素的基礎操作.html#cb152-3" aria-hidden="true" tabindex="-1"></a>vector_add2[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;四&quot;</span>, <span class="st">&quot;五&quot;</span>, <span class="st">&quot;六&quot;</span>)</span>
+<span id="cb152-4"><a href="基礎篇_元素的基礎操作.html#cb152-4" aria-hidden="true" tabindex="-1"></a>vector_add2</span>
+<span id="cb152-5"><a href="基礎篇_元素的基礎操作.html#cb152-5" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
+<span id="cb152-6"><a href="基礎篇_元素的基礎操作.html#cb152-6" aria-hidden="true" tabindex="-1"></a>vector_add3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
+<span id="cb152-7"><a href="基礎篇_元素的基礎操作.html#cb152-7" aria-hidden="true" tabindex="-1"></a>vector_add3[<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">7</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;四&quot;</span>, <span class="st">&quot;六&quot;</span>, <span class="st">&quot;七&quot;</span>) <span class="co"># 此時第5個位置會變成NA</span></span>
+<span id="cb152-8"><a href="基礎篇_元素的基礎操作.html#cb152-8" aria-hidden="true" tabindex="-1"></a>vector_add3</span></code></pre></div>
+<p>也可以同時新增和替換元素</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="基礎篇_元素的基礎操作.html#cb153-1" aria-hidden="true" tabindex="-1"></a>vector_replace3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
+<span id="cb153-2"><a href="基礎篇_元素的基礎操作.html#cb153-2" aria-hidden="true" tabindex="-1"></a>vector_replace3[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>)</span>
+<span id="cb153-3"><a href="基礎篇_元素的基礎操作.html#cb153-3" aria-hidden="true" tabindex="-1"></a>vector_replace3</span></code></pre></div>
+<pre><code>## [1] &quot;1&quot;      &quot;banana&quot; &quot;3&quot;      &quot;4&quot;</code></pre>
 <p>其他list或data frame的新增也是類似相同概念</p>
 </div>
 <div id="刪除元素" class="section level2 hasAnchor" number="4.6">
@@ -701,7 +701,7 @@ vector_add1[[4]] # 不存在元素(會出現Error)</code></pre>
 可以使用<code>which()</code>和<code>%in%</code><br />
 </p>
 <p><code>which()</code>函數是進行()中的條件邏輯判斷，並返回位置<br />
-<code>x %in% y</code> 是針對左邊x是否包含在右邊y中，並返回邏輯值</p>
+<code>x %in% y</code> 是針對左邊x是否包含右邊的y，並返回邏輯值</p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="基礎篇_元素的基礎操作.html#cb169-1" aria-hidden="true" tabindex="-1"></a>vector_which <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
 <span id="cb169-2"><a href="基礎篇_元素的基礎操作.html#cb169-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb169-3"><a href="基礎篇_元素的基礎操作.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(vector_which <span class="sc">==</span> <span class="st">&quot;apple&quot;</span>) <span class="do">## 返回apple的位置1</span></span></code></pre></div>
