@@ -143,9 +143,9 @@ help(read_dta) ## 查詢函數
 
 ```{r eval=FALSE}
 # 接下來會用到的套件
-pkgs <- c("haven", "lubridate", "magrittr",  "readr", "writexl", "devtools",
-          "dplyr", "tidyverse", "data.table", "DescTools", "sjmisc", 
-          "sjlabelled", "validate", "skimr")
+pkgs <- c("haven", "lubridate", "magrittr",  "readr", "writexl", 
+          "devtools", "dplyr", "tidyverse", "data.table", "DescTools", 
+          "sjmisc", "sjlabelled", "validate", "skimr")
 
 # 一次安裝套件：
 install.packages("pkgs")
